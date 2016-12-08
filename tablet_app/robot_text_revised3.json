@@ -469,7 +469,7 @@
     "question3": ["I wonder how long does it take to build a robot", "question_robot_play_3","POSE_FORWARD"],
     "question4": ["It will be interesting to know how many treasure boxes still exist in the world", "question_robot_play_4","POSE_FORWARD"],
     "question5": ["I wonder if this tangram solvable", "question_robot_play_5","POSE_FORWARD"],
-    "question6": ["It will be interesting to know how many people are needed to build a robot", "question_robot_play_6","POSE_FORWARD"],
+    "question6": ["It will be interesting to know how many people are needed to build a robot", "question_robot_play_6","POSE_FORWARD"]
   },
 
   "ask_question_party":[
