@@ -106,7 +106,8 @@
     "transitions": [
       "robot:start_play:game:generate_selection:1:done",
       "game:generate_selection:tablet:selection_screen:1:x",
-      "tablet:selection_screen:robot:my_turn:1:x",
+      "tablet:selection_screen:robot:ask_question_robot_play:1:x",
+      "robot:ask_question_robot_play:robot:my_turn:1:x",
       "tablet:selection_screen:tablet:disable_tablet:1",
       "robot:my_turn:robot:select_treasure:1",
       "robot:select_treasure:tablet:select_treasure:1:x:done",
@@ -207,7 +208,8 @@
     "transitions": [
       "robot:start_party:tablet:party_screen:1:done",
       "tablet:party_screen:robot:conclusion:1",
-      "robot:conclusion:robot:party:1",
+      "robot:conclusion:robot:ask_question_party:1",
+      "robot:ask_question_party:robot:party:1",
       "robot:party:robot:end_party:1",
       "robot:end_party:interaction:end:1"
     ]

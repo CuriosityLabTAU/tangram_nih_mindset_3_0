@@ -10,10 +10,10 @@
       ["will you help me find some balloons?", "YAWN", "introduction_c-g-_0", "POSE_FORWARD"]
     ],
     "c+g-":[
-      ["I wonder what makes the balloons fly.[pause] will you help me find some balloons?", "YAWN", "introduction_c-g-_0", "POSE_FORWARD"]
+      ["I wonder what makes the balloons fly.[pause] will you help me find some balloons?", "YAWN", "robot_question1", "POSE_FORWARD", "introduction_c-g-_0", "POSE_FORWARD"]
     ],
     "c+g+":[
-      ["I wonder what makes the balloons fly. [pause] will you help me find some balloons?", "YAWN", "introduction_c-g-_0", "POSE_FORWARD"]
+      ["I wonder what makes the balloons fly. [pause] will you help me find some balloons?", "YAWN", "robot_question1", "POSE_FORWARD", "introduction_c-g-_0", "POSE_FORWARD"]
     ]
   },
 
@@ -35,10 +35,10 @@
       ["I will choose this one, because it looks challenging!","selection_tutorial_c-g+_0", "IDLESTILL"]
     ],
     "c+g-": [
-      ["I wonder who made the treasure boxes.<pause> I will choose this one, because I can learn a lot from it","selection_tutorial_c+g-_0", "IDLESTILL"]
+      ["I wonder who made the treasure boxes.<pause> I will choose this one, because I can learn a lot from it", "robot_question2", "POSE_FORWARD", "selection_tutorial_c+g-_0", "IDLESTILL"]
     ],
     "c+g+": [
-      ["I wonder who made the treasure boxes. I will choose this one, because it's challenging and I can learn a lot from it","selection_tutorial_c+g+_0", "IDLESTILL"]
+      ["I wonder who made the treasure boxes.<pause> I will choose this one, because it's challenging and I can learn a lot from it", "robot_question2", "POSE_FORWARD", "selection_tutorial_c+g+_0", "IDLESTILL"]
     ]
   },
   "tangram_tutorial": [
@@ -464,16 +464,16 @@
     ["I'm sleepy.", "POSE_SLEEPING"]
   ],
   "ask_question_robot_play":{
-    "question1": ["It will be interesting to know how many treasure boxes still exist in the world", "question_robot_play_1","POSE_FORWARD"],
-    "question2": ["I wonder how old is the oldest robot in the world and where did it come from", "question_robot_play_2","POSE_FORWARD"],
-    "question3": ["I wonder how long does it take to build a robot", "question_robot_play_3","POSE_FORWARD"],
-    "question4": ["It will be interesting to know how many treasure boxes still exist in the world", "question_robot_play_4","POSE_FORWARD"],
-    "question5": ["I wonder if this tangram solvable", "question_robot_play_5","POSE_FORWARD"],
-    "question6": ["It will be interesting to know how many people are needed to build a robot", "question_robot_play_6","POSE_FORWARD"]
+    "question1": ["It will be interesting to know how many treasure boxes still exist in the world", "robot_question3","POSE_FORWARD"],
+    "question2": ["I wonder how old is the oldest robot in the world and where did it come from", "robot_question4","POSE_FORWARD"],
+    "question3": ["I wonder how long does it take to build a robot", "robot_question5","POSE_FORWARD"],
+    "question4": ["It will be interesting to know how many treasure boxes still exist in the world", "robot_question6","POSE_FORWARD"],
+    "question5": ["I wonder if this tangram solvable", "robot_question7","POSE_FORWARD"],
+    "question6": ["It will be interesting to know how many people are needed to build a robot", "robot_question8","POSE_FORWARD"]
   },
 
   "ask_question_party":[
-    ["I wonder what this robot feels", "Q7","POSE_FORWARD"]
+    ["I wonder what this robot feels", "robot_question9","POSE_FORWARD"]
   ]
 
 
