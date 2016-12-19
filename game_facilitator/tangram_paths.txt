@@ -22,3 +22,11 @@ path 3
 {"pieces": [["large triangle2", "0", "0 2"], ["medium triangle", "0", "2 1"], ["small triangle1", "90", "1 2"], ["large triangle1", "180", "0 0"], ["parrallelogram", "0", "0 3"]], "size": "5 5"}
 {"pieces": [["large triangle2", "0", "0 2"], ["medium triangle", "0", "2 1"], ["small triangle2", "0", "2 1"], ["small triangle1", "90", "1 2"], ["large triangle1", "180", "0 0"], ["parrallelogram", "0", "0 3"]], "size": "5 5"}
 {"pieces": [["large triangle2", "0", "0 2"], ["medium triangle", "0", "2 1"], ["square", "0", "2 0"], ["small triangle2", "0", "2 1"], ["small triangle1", "90", "1 2"], ["large triangle1", "180", "0 0"], ["parrallelogram", "0", "0 3"]], "size": "5 5"}
+path 4
+{"pieces": [["large triangle1", "90", "0 2"]], "size": "5 5"}
+{"pieces": [["large triangle2", "270", "2 2"], ["large triangle1", "90", "0 2"]], "size": "5 5"}
+{"pieces": [["large triangle2", "270", "2 2"], ["small triangle1", "0", "2 2"], ["large triangle1", "90", "0 2"]], "size": "5 5"}
+{"pieces": [["large triangle2", "270", "2 2"], ["small triangle1", "0", "2 2"], ["large triangle1", "90", "0 2"], ["parrallelogram", "90", "3 2"]], "size": "5 5"}
+{"pieces": [["large triangle2", "270", "2 2"], ["medium triangle", "270", "1 1"], ["small triangle1", "0", "2 2"], ["large triangle1", "90", "0 2"], ["parrallelogram", "90", "3 2"]], "size": "5 5"}
+{"pieces": [["large triangle2", "270", "2 2"], ["medium triangle", "270", "1 1"], ["small triangle2", "270", "1 1"], ["small triangle1", "0", "2 2"], ["large triangle1", "90", "0 2"], ["parrallelogram", "90", "3 2"]], "size": "5 5"}
+{"pieces": [["large triangle2", "270", "2 2"], ["medium triangle", "270", "1 1"], ["square", "0", "0 1"], ["small triangle2", "270", "1 1"], ["small triangle1", "0", "2 2"], ["large triangle1", "90", "0 2"], ["parrallelogram", "90", "3 2"]], "size": "5 5"}
