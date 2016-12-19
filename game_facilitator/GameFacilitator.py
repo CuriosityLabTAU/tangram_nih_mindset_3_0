@@ -1,5 +1,5 @@
 from tangrams import *
-from SelectionGenerator import *
+from SelectionGeneratorCuriosity import *
 
 import json
 
@@ -11,7 +11,8 @@ class GameFacilitator():
         self.selected_task_index = 1  # 0/1/2 according to user selected task
         self.selection_tasks = None  # a list of 3 json strings that represent 3 tasks
         self.current_task = Task()  # The selected task as Task() object
-        self.selection_gen = SelectionGenerator()
+        # self.selection_gen = SelectionGenerator()
+        self.selection_gen = SelectionGeneratorCuriosity()
         self.selection_gen.load_dif_levels()
         self.current_player = 'Robot'  # current_player can be 'Robot' or 'Child'
         self.game_counter = 0 #  count number of games
