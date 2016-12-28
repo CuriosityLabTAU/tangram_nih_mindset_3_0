@@ -62,19 +62,19 @@ class SelectionGeneratorCuriosity:
         all_pieces_init_pos = all_pieces_task.transfer_json_to_json_initial_pos('{"pieces": [["large triangle2", "180", "1 1"], ["medium triangle", "0", "3 1"], ["square", "0", "0 0"], ["small triangle2", "0", "0 1"], ["small triangle1", "90", "1 0"], ["large triangle1", "0", "1 1"], ["parrallelogram", "0", "2 0"]], "size": "5 5"}')
 
         if self.player == 'Child':
-            T1 = self.paths[self.other_path_idx][self.path_indexes[self.other_path_idx]]
+            T1 = self.paths[self.child_path_idx][self.path_indexes[self.child_path_idx]]
             T1_init_pos = temp_task.transfer_json_to_json_initial_pos(T1)
-            T2 = self.paths[self.child_path_idx][self.path_indexes[self.child_path_idx]]
+            T2 = self.paths[self.child_path_idx][self.path_indexes[self.child_path_idx]+1]
             T2_init_pos = temp_task.transfer_json_to_json_initial_pos(T2)
-            T3 = self.paths[self.child_path_idx][self.path_indexes[self.child_path_idx]+1]
+            T3 = self.paths[self.other_path_idx][self.path_indexes[self.other_path_idx]]
             T3_init_pos = temp_task.transfer_json_to_json_initial_pos(T3)
             return [[T1, all_pieces_init_pos], [T2, all_pieces_init_pos], [T3, all_pieces_init_pos]]
         else:
-            T1 = self.paths[self.other_rot_path_idx][self.path_indexes[self.other_rot_path_idx]]
+            T1 = self.paths[self.robot_path_idx][self.path_indexes[self.robot_path_idx]]
             T1_init_pos = temp_task.transfer_json_to_json_initial_pos(T1)
-            T2 = self.paths[self.robot_path_idx][self.path_indexes[self.robot_path_idx]]
+            T2 = self.paths[self.robot_path_idx][self.path_indexes[self.robot_path_idx]+1]
             T2_init_pos = temp_task.transfer_json_to_json_initial_pos(T2)
-            T3 = self.paths[self.robot_path_idx][self.path_indexes[self.robot_path_idx]+1]
+            T3 = self.paths[self.other_rot_path_idx][self.path_indexes[self.other_rot_path_idx]]
             T3_init_pos = temp_task.transfer_json_to_json_initial_pos(T3)
             return [[T1, all_pieces_init_pos], [T2, all_pieces_init_pos], [T3, all_pieces_init_pos]]
 
@@ -89,33 +89,33 @@ class SelectionGeneratorCuriosity:
         # self.path_indexes[self.current_level + 1] += 1
 
         if player == 'Child':
-            if user_selection == 0: # unknown puzzle
+            if user_selection == 2: # unknown puzzle
                 # self.seen_puzzles[self.child_path_idx, self.path_indexes[self.child_path_idx]] += 1
                 self.seen_puzzles[self.other_path_idx, self.path_indexes[self.other_path_idx]] += 1
                 self.path_indexes[self.child_path_idx] += 1
                 self.path_indexes[self.other_path_idx] += 1
-            elif user_selection == 1: # current puzzle
+            elif user_selection == 0: # current puzzle
                 self.seen_puzzles[self.child_path_idx, self.path_indexes[self.child_path_idx]] += 1
                 if self.seen_puzzles[self.child_path_idx, self.path_indexes[self.child_path_idx]] == 2:
                     self.path_indexes[self.child_path_idx] += 1
                 self.path_indexes[self.other_path_idx] += 1
-            elif user_selection == 2: # next puzzle
+            elif user_selection == 1: # next puzzle
                 self.seen_puzzles[self.child_path_idx, self.path_indexes[self.child_path_idx] + 1] += 1
                 self.path_indexes[self.child_path_idx] += 1
                 self.path_indexes[self.other_path_idx] += 1
             self.player = 'Robot'
         elif player == 'Robot':
-            if user_selection == 0:  # unknown puzzle
+            if user_selection == 2:  # unknown puzzle
                 # self.seen_puzzles[self.child_path_idx, self.path_indexes[self.child_path_idx]] += 1
                 self.seen_puzzles[self.other_rot_path_idx, self.path_indexes[self.other_rot_path_idx]] += 1
                 self.path_indexes[self.robot_path_idx] += 1
                 self.path_indexes[self.other_rot_path_idx] += 1
-            elif user_selection == 1:  # current puzzle
+            elif user_selection == 0:  # current puzzle
                 self.seen_puzzles[self.robot_path_idx, self.path_indexes[self.robot_path_idx]] += 1
                 if self.seen_puzzles[self.robot_path_idx, self.path_indexes[self.robot_path_idx]] == 2:
                     self.path_indexes[self.robot_path_idx] += 1
                 self.path_indexes[self.other_rot_path_idx] += 1
-            elif user_selection == 2:  # next puzzle
+            elif user_selection == 1:  # next puzzle
                 self.seen_puzzles[self.robot_path_idx, self.path_indexes[self.robot_path_idx] + 1] += 1
                 self.path_indexes[self.robot_path_idx] += 1
                 self.path_indexes[self.other_rot_path_idx] += 1
