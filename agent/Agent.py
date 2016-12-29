@@ -85,7 +85,7 @@ class Agent:
             TangramGame.cog_tangram_selection = 2
         elif self.condition == 'c-g-':
             select = 0
-            TangramGame.cog_tangram_selection = 2
+            TangramGame.cog_tangram_selection = 0
 
         # if self.condition == 'c-g+':
         #     if self.child_result == None:
