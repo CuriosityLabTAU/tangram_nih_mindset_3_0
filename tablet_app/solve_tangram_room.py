@@ -124,6 +124,10 @@ class SolveTangramRoom(Screen):
         self.ids['treasure_box'].ids['box'].source = './tablet_app/images/TreasureOpenBoxLayers_B.gif'
         self.ids['treasure_box'].ids['balloon'].source = './tablet_app/images/Balloon_Price'+str(i)+'.gif'
         self.ids['treasure_box'].ids['balloon'].opacity = 1
+        for c in self.ids['tangram_game_widget'].children:
+            if isinstance(c, TangramPiece):
+                if (c.pos[1] > 400):
+                    c.opacity = 0
 
     def finish(self):
         print("solve, finish, the time is up!")
