@@ -126,7 +126,7 @@ class SolveTangramRoom(Screen):
         self.ids['treasure_box'].ids['balloon'].opacity = 1
         for c in self.ids['tangram_game_widget'].children:
             if isinstance(c, TangramPiece):
-                if (c.pos[1] > 400):
+                if (c.pos[1] > self.size[1] * 0.65): #if the pieces is still on top make it invisible
                     c.opacity = 0
 
     def finish(self):
