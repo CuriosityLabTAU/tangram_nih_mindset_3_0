@@ -58,7 +58,7 @@ class SelectionGeneratorCuriosity:
         # return three json_strings
         temp_task = Task()
         all_pieces_task = Task()
-        all_pieces_task.create_from_json('{"pieces": [["square", "0", "0 0"], ["small triangle2", "0", "0 1"], ["small triangle1", "90", "1 0"], ["large triangle1", "0", "1 1"], ["large triangle2", "180", "1 1"], ["medium triangle", "0", "3 1"], ["parrallelogram", "0", "2 0"]], "size": "5 5"}')
+        all_pieces_task.create_from_json('{"pieces": [["square", "0", "0 0"], ["small triangle2", "0", "0 1"], ["small triangle1", "90", "1 0"], ["large triangle1", "0", "1 1"], ["parrallelogram", "0", "2 0"], ["medium triangle", "0", "3 1"], ["large triangle2", "180", "1 1"]], "size": "5 5"}')
         all_pieces_init_pos = all_pieces_task.transfer_json_to_json_initial_pos('{"pieces": [["square", "0", "0 0"], ["small triangle2", "0", "0 1"], ["small triangle1", "90", "1 0"], ["large triangle1", "0", "1 1"], ["parrallelogram", "0", "2 0"], ["medium triangle", "0", "3 1"], ["large triangle2", "180", "1 1"]], "size": "5 5"}')
 
         if self.player == 'Child':
