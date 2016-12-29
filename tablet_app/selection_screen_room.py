@@ -77,14 +77,27 @@ class SelectionScreenRoom(Screen):
         i = 0
         for task_json in self.tasks_json:
             # print(task_json)
+            #update task (the main tangram)
             selection_task_layout = SelectionTaskLayout(index=i)
             selection_task_layout.reset(str(i))
             selection_task_layout.import_json_task(task_json[0])
             selection_task_layout.update_selection_task_pos()
             selection_task_layout.update_task()
-            selection_task_layout.update_task_pieces(task_json[0])
+
+            #update pieces (the pieces of the tangram)
+            selection_task_layout_pieces = SelectionTaskLayout(index=i)
+            selection_task_layout_pieces.reset(str(i))
+            json7 = '{"pieces": [["large triangle2", "0", "0 0"], ["medium triangle", "0", "0 0"], ["square", "0", "0 0"], ["small triangle2", "0", "0 0"], ["small triangle1", "0", "0 0"], ["large triangle1", "0", "0 0"], ["parrallelogram", "0", "0 0"]], "size": "5 5"}'
+            selection_task_layout_pieces.import_json_task (json7)   #(task_json[1])
+            selection_task_layout_pieces.update_selection_task_pos()
+            selection_task_layout_pieces.update_selection_task_pos()
+            selection_task_layout_pieces.update_task_pieces(task_json[0])
+
+            #selection_task_layout.update_task_pieces(task_json[0])
             self.tasks_layout.append(selection_task_layout)
+            self.tasks_layout.append(selection_task_layout_pieces)
             self.ids["tangram_selection_widget"].add_widget(selection_task_layout)
+            self.ids["tangram_selection_widget"].add_widget(selection_task_layout_pieces)
             #self.add_widget(selection_task_layout)
             i += 1
 
@@ -122,6 +135,14 @@ class SelectionTaskLayout(LoggedButton, TaskLayout):
 
             # # self.bind(size=self._update_rect, pos=self._update_rect)
             # # self.bind(size=self.update_position, pos=self.update_position)
+            with self.canvas.after:
+                if (index==1000): #NOT IN USE
+                    #Color(234 / 255.0, 226 / 255.0, 139 / 255.0, 1)
+                    Color(1, 0, 0, 1)
+                    self.rect = Rectangle()
+                    self.rect.pos = [self.pos[0] + 4 * TangramGame.SCALE,self.pos[1]+ 1 * TangramGame.SCALE] #[4 * TangramGame.SCALE, Window.height * 0.25]#self.pos
+                    self.rect.size = [Window.width * 0.16, Window.height * 0.18]
+
 
     def update_position(self, *args):
         # print('update_position')
@@ -172,6 +193,7 @@ class SelectionTaskLayout(LoggedButton, TaskLayout):
 
         i = 0
         for p in self.pieces:
+        #for p in task_pieces:
             name = p['name']
 
             dx = TangramPiece.piece_size[name][0] * TangramGame.SCALE / 2
@@ -222,4 +244,7 @@ class TangramSelectionWidget(Widget):
     #     self.show_frame1 = 0
 
 class BalloonsWonWidget (Widget):
+    pass
+
+class QuestionMarkWidget (Widget):
     pass

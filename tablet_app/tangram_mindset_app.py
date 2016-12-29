@@ -208,6 +208,10 @@ root_widget = Builder.load_string('''
             keep_ratio: False
         TangramSelectionWidget:
             id: tangram_selection_widget
+        QuestionMarkWidget:
+            id: question_mark_widget
+            size: root.size
+            pos: root.pos
         BalloonsWonWidget:
             id: balloons_won_widget
             size: (root.size[0] * 0.7,root.size[1])
@@ -310,6 +314,14 @@ root_widget = Builder.load_string('''
         pos: root.width * 1.2, root.height * 0.90
         source: './tablet_app/images/Balloon_Price3.gif'
         opacity: 0
+
+<QuestionMarkWidget>
+    Image:
+        id: question_mark
+        size: (root.size[0] * 0.17375, root.size[1] * 0.18833)
+        pos: root.width * 0.7375, root.height * 0.22
+        source: './tablet_app/images/question_mark.gif'
+        opacity: 1
 
 <SolveTangramRoom>:
     name: 'solve_tangram_room'

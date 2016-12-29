@@ -1,4 +1,5 @@
 from interaction_control import *
+from interaction_control import *
 from kivy.uix.label import Label
 from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.widget import Widget
