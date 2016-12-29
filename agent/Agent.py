@@ -2,11 +2,13 @@ from tangrams import *
 import json
 import time
 import pickle
+from tablet_app.tangram_game import *
 
 
 class Agent:
     condition = 'c-g-'
     def __init__(self):
+        # print ("TangramGame.SCALE", TangramGame.SCALE)
         self.solver = Solver()
         # self.mindset = Mindset()
         # self.curiosity = Curiosity()
@@ -77,24 +79,32 @@ class Agent:
         self.child_result = result
 
     def set_selection(self):
-        if self.condition == 'c-g+':
-            if self.child_result == None:
-                select = 1  # First round, select demo task
-            elif self.child_result == 'S':
-                select = min(self.child_selected_index+1,2)
-            elif self.child_result == 'F':
-                select = self.child_selected_index
-            else:
-                select = 1  # in case of a bug, select 2
-        else:  # ==> self.condition == 'Neutral'
-            if self.child_result == None:
-                select = 1 # First round, select demo task
-            elif self.child_result == 'S':
-                select = self.child_selected_index
-            elif self.child_result == 'F':
-                select = max(self.child_selected_index - 1, 0)
-            else:
-                select = 1 # in case of a bug, select 2
+        if self.condition == 'c+g-':
+            # get H for puzzles
+            select = 2
+            TangramGame.cog_tangram_selection = 2
+        elif self.condition == 'c-g-':
+            select = 0
+            TangramGame.cog_tangram_selection = 2
+
+        # if self.condition == 'c-g+':
+        #     if self.child_result == None:
+        #         select = 1  # First round, select demo task
+        #     elif self.child_result == 'S':
+        #         select = min(self.child_selected_index+1,2)
+        #     elif self.child_result == 'F':
+        #         select = self.child_selected_index
+        #     else:
+        #         select = 1  # in case of a bug, select 2
+        # else:  # ==> self.condition == 'Neutral'
+        #     if self.child_result == None:
+        #         select = 1 # First round, select demo task
+        #     elif self.child_result == 'S':
+        #         select = self.child_selected_index
+        #     elif self.child_result == 'F':
+        #         select = max(self.child_selected_index - 1, 0)
+        #     else:
+        #         select = 1 # in case of a bug, select 2
         return select
 
 
