@@ -1,6 +1,8 @@
 import json
 from random import choice
 import time
+from tablet_app.tangram_game import *
+
 the_tts = None
 try:
     from plyer import tts
@@ -53,6 +55,9 @@ class TextHandler:
                     if self.condition=='c+g-' or self.condition == 'c+g+':
                         the_text.append(the_options['question'+str(self.question_index)][0])
                         print("the_text="+ the_options['question'+str(self.question_index)][0] + str(self.question_index))
+                elif what == "my_turn":
+                    print ("my turn","selection=",TangramGame.cog_tangram_selection,"text=",the_options[self.condition][TangramGame.cog_tangram_selection][0])
+                    the_text.append(the_options[self.condition][TangramGame.cog_tangram_selection][0])
                 else:
                     if 'all' in the_options:
                         the_text.append(choice(the_options['all'])[0])
