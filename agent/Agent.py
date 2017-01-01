@@ -21,8 +21,14 @@ class Agent:
         self.child_result = None  # indicates the child result. possible values are 'S' (Success) or 'F' (Fail)
         self.mindset = 0.9
         self.curiosity = 0.9
-        with open('agent/' + 'solve_cache' + '.pkl', 'rb') as f:
-            self.solve_cache = pickle.load(f)
+        with open('agent/' + 'solve_cache_curiosity' + '.pkl', 'rb') as f:
+            self.solve_cache_curious = pickle.load(f)
+        with open('agent/' + 'solve_cache_curiosity_non' + '.pkl', 'rb') as f:
+            self.solve_cache_not_curious = pickle.load(f)
+        with open('agent/' + 'selection_cache_curiosity' + '.pkl', 'rb') as f:
+            self.selection_sequence_curious = pickle.load(f)
+        with open('agent/' + 'selection_cache_curiosity_non' + '.pkl', 'rb') as f:
+            self.selection_sequence_not_curious = pickle.load(f)
 
     def update_condition(self, condition):
         self.condition  = condition
@@ -33,7 +39,11 @@ class Agent:
             self.mindset = 0.1
 
     def solve_task(self, json_str_task):
-        self.seq_of_jsons = self.solve_cache[json_str_task]
+        if self.condition == 'c-g-':
+            self.seq_of_jsons = self.solve_cache_not_curious[json_str_task]
+        elif self.condition == 'c+g-':
+            self.seq_of_jsons = self.solve_cache_curious[json_str_task]
+        # self.seq_of_jsons = self.solve_cache[json_str_task]
         self.current_move = 0
         # task = Task()
         # task.create_from_json(json_str_task)
@@ -81,11 +91,12 @@ class Agent:
     def set_selection(self):
         if self.condition == 'c+g-':
             # get H for puzzles
-            select = 2
-            TangramGame.cog_tangram_selection = 2
+            select = self.selection_sequence_curious[self.current_round]
+            TangramGame.cog_tangram_selection = select
         elif self.condition == 'c-g-':
-            select = 0
-            TangramGame.cog_tangram_selection = 0
+            select = self.selection_sequence_not_curious[self.current_round]
+            TangramGame.cog_tangram_selection = select
+        self.current_round += 1
 
         # if self.condition == 'c-g+':
         #     if self.child_result == None:
