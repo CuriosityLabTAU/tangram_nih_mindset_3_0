@@ -26,7 +26,7 @@
   ],
   "selection_tutorial": {
    "all" : [
-      ["this is the magic treasure room. it is filled with magical treasure boxes. in each treasure box, you will find exactly what you are looking for, if you can open it. the lock to each magic box is a puzzle. first we need to choose which box to try to open.", "POSE_FORWARD", "selection_tutorial_all_0"]
+      ["this is the magic treasure room. it is filled with magical treasure boxes. in each treasure box, you will find exactly what you are looking for, if you can open it. the lock to each magic box is a puzzle. There is also a puzzle behind the question mark. first we need to choose which box to try to open. ", "POSE_FORWARD", "selection_tutorial_all_0_question"]
     ],
     "c-g-" : [
       ["I will choose this one.","selection_tutorial_c-g-_0", "IDLESTILL"]
@@ -262,6 +262,9 @@
       ["so, it is my turn now","my_turn_all_4"]
     ],
     "c-g-": [
+      ["selection current: I want to nail down this level","comment_selection_c-g+_current"],
+      ["selection next: I think I know how to solve the next level","comment_selection_c-g+_next"],
+      ["selection question mark: I should know how to solve it","comment_selection_c-g+_question"],
       ["I will select a box","my_turn_c-g-_0", "POSE_FORWARD"]
     ],
     "c-g+":[
@@ -270,6 +273,9 @@
       ["If I try hard, I will succeed.","my_turn_c-g+_2", "POSE_FORWARD"]
     ],
     "c+g-": [
+      ["selection current: I can still learn from solving this puzzle","comment_selection_c+g+_current"],
+      ["selection next: I want to try a new thing"],
+      ["selection question mark: I know how to solve the other ones so I will try the mystery box"],
       ["I learned so much watching you","IDLESTILL", "my_turn_c+g-_0","POSE_FORWARD"],
       ["I was able to learn new things from your moves","my_turn_c+g-_1","SILENT_YES", "POSE_FORWARD"],
       ["if I choose a challenging puzzle, I will learn more","my_turn_c+g-_2","SILENT_YES", "POSE_FORWARD"],
