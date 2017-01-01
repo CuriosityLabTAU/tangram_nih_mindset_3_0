@@ -42,7 +42,7 @@
     ]
   },
   "tangram_tutorial": [
-      ["these puzzles are made of pieces of different shapes. we need to find where to put them to fill in the grey area. we have two minutes to try, until the sand in the hourglass runs out.","tangram_tutorial_all_0", "POSE_FORWARD"]
+      ["these puzzles are made of pieces of different shapes. we need to find where to put them to fill in the grey area. we have two minutes to try, until the sand in the hourglass runs out, but we need to try even faster so we are in time for the party","tangram_tutorial_all_0_faster", "POSE_FORWARD"]
   ],
   "explain_move": {
     "c-g-": [
@@ -262,9 +262,9 @@
       ["so, it is my turn now","my_turn_all_4"]
     ],
     "c-g-": [
-      ["selection current: I want to nail down this level","comment_selection_c-g+_current"],
-      ["selection next: I think I know how to solve the next level","comment_selection_c-g+_next"],
-      ["selection question mark: I should know how to solve it","comment_selection_c-g+_question"],
+      ["selection current: I want to nail down this level","my_turn_c-g-_current0"],
+      ["selection next: I think I know how to solve the next level","my_turn_c-g-_next0"],
+      ["selection question mark: I should know how to solve it","my_turn_c-g-_question0"],
       ["I will select a box","my_turn_c-g-_0", "POSE_FORWARD"]
     ],
     "c-g+":[
@@ -273,9 +273,9 @@
       ["If I try hard, I will succeed.","my_turn_c-g+_2", "POSE_FORWARD"]
     ],
     "c+g-": [
-      ["selection current: I can still learn from solving this puzzle","comment_selection_c+g+_current"],
-      ["selection next: I want to try a new thing"],
-      ["selection question mark: I know how to solve the other ones so I will try the mystery box"],
+      ["selection current: I can still learn from solving this puzzle","my_turn_c+g-_current0"],
+      ["selection next: I want to try a new thing","my_turn_c+g-_next0"],
+      ["selection question mark: I know how to solve the other ones so I will try the mystery box","my_turn_c+g-_question0"],
       ["I learned so much watching you","IDLESTILL", "my_turn_c+g-_0","POSE_FORWARD"],
       ["I was able to learn new things from your moves","my_turn_c+g-_1","SILENT_YES", "POSE_FORWARD"],
       ["if I choose a challenging puzzle, I will learn more","my_turn_c+g-_2","SILENT_YES", "POSE_FORWARD"],
