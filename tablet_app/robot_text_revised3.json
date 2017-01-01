@@ -286,7 +286,7 @@
       ["I learned so much, I am sure I will succeed the next one","my_turn_c+g+_0","SILENT_YES", "POSE_FORWARD"],
       ["I learned new things that will help me in the next puzzle.","IDLESTILL", "my_turn_c+g+_1","POSE_FORWARD"],
       ["which one is the most challenging...","my_turn_c+g+_2","INTERESTED", "POSE_FORWARD"],
-      ["I prefer the challenging one, I will learn more and more.","my_turn_c+g+_3", "POSE_FORWARD"]
+      ["I prefer the challenging one, I will learn  more and more.","my_turn_c+g+_3", "POSE_FORWARD"]
     ]
   },
   "comment_selection": {
