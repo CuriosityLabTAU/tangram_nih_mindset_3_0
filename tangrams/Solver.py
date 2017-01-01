@@ -7,7 +7,7 @@ import json
 
 class Solver:
 
-    n_networks = 2
+    n_networks = 10
     efficiency = 1.0
 
     def __init__(self):
@@ -139,6 +139,60 @@ class Solver:
         return seq_jsons
         #  return json.dumps(seq_dict)
 
+    def get_seq_of_moves_v2(self, available_pieces):
+        # return a list, such that each element in the list is a json string of the board pieces
+        # should be called after run_task()
+        seq = []
+        if self.solved_network_index is not None:
+            n = self.solved_network_index
+            print 'Solver: puzzle solved'
+        else:
+            n = 0 # none of the networks solved so just choose the first network
+            print 'Solver: puzzle not solved'
+        print len(self.solutions[n])
+        for k in range(len(self.solutions[n])-2, len(self.solutions[n])):
+            for i in range(len(self.solutions[n][k])):
+                if self.solutions[n][k][i] > 0:
+                    seq.append(self.networks[n].nodes[i])
+
+        # return seq
+        # convert seq to json of list of board pieces jsons
+        # seq_dict = {}
+        # (I, J) = self.networks[0].nodes[0].x.shape
+        # seq_dict['size'] = str((I - 1) / Piece.JUMP + 1) + ' ' + str((J - 1) / Piece.JUMP + 1)
+        # pieces_vec = []
+        # for p in seq:
+        #     pieces_vec.append((p.name[0], p.name[1], p.name[2]))
+        # seq_dict['pieces'] = pieces_vec
+
+        seq_jsons = []
+        temp_json = available_pieces.export_to_json()
+        init_pos_json = available_pieces.transfer_json_to_json_initial_pos(temp_json)
+        seq_jsons.append(init_pos_json)
+
+        task_dict = json.loads(init_pos_json)
+        pieces_vec = task_dict['pieces']
+        size = task_dict['size']
+        for p in seq:
+            for n in range(len(pieces_vec)):
+                if p.name[0] == pieces_vec[n][0]:
+                    if p.name[1] == pieces_vec[n][1] and p.name[2] == pieces_vec[n][2]:  # check if rotation and position are the same as in previous configuration
+                        pass
+                    elif (p.name[1] != pieces_vec[n][1] and p.name[2] == pieces_vec[n][2]) \
+                            or (p.name[1] == pieces_vec[n][1] and p.name[2] != pieces_vec[n][2]):  # only rotation or only position has changed
+                        pieces_vec[n] = (p.name[0], p.name[1], p.name[2])
+                        task_dict['pieces'] = pieces_vec
+                        seq_jsons.append(json.dumps(task_dict))
+                    else:  # both rotation and position have changed. split the move to position change and rotation change
+                        pieces_vec[n] = (p.name[0], pieces_vec[n][1], p.name[2])   # change position
+                        task_dict['pieces'] = pieces_vec
+                        seq_jsons.append(json.dumps(task_dict))
+                        pieces_vec[n] = (p.name[0], p.name[1], p.name[2])  # change rotation
+                        task_dict['pieces'] = pieces_vec
+                        seq_jsons.append(json.dumps(task_dict))
+        return seq_jsons
+        #  return json.dumps(seq_dict)
+
     def get_seq_of_random_moves(self, task, seq_len):
         # return a list, such that each element in the list is a json string of the board pieces chosen randomly but with intersection with task's shadow.
         # should be called after run_task()
@@ -236,8 +290,11 @@ class Solver:
             net.extend_partial_network(task)
             net.init_network()
 
-
     def evaluate_tasks(self, tasks, duration=100, stop=False):
         times = np.zeros(len(tasks))
         for t in range(0, len(tasks)):
             pass
+
+    def set_activation(self, activation):
+        for net in self.networks:
+            net.set_activation(activation)

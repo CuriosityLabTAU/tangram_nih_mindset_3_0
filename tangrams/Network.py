@@ -1,6 +1,6 @@
 import numpy as np
 import copy
-from tangrams import Setup
+from tangrams.Setup import Setup
 INHIBITORY = -1.1
 EXCITATORY = 1.0
 HEBB = 1.0
@@ -238,3 +238,7 @@ class Network:
                     for s in structures:
                         if np.array_equal(s, base):
                             self.hebb[n1, n2] = HEBB
+
+
+    def set_activation(self, a):
+        self.a = copy.deepcopy(a)
