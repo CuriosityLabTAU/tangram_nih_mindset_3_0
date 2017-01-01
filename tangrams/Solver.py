@@ -290,8 +290,11 @@ class Solver:
             net.extend_partial_network(task)
             net.init_network()
 
-
     def evaluate_tasks(self, tasks, duration=100, stop=False):
         times = np.zeros(len(tasks))
         for t in range(0, len(tasks)):
             pass
+
+    def set_activation(self, activation):
+        for net in self.networks:
+            net.set_activation(activation)

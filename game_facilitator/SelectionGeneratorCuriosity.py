@@ -42,7 +42,7 @@ class SelectionGeneratorCuriosity:
         path_i = -1
         self.paths = []
         # with open('./game_facilitator/tangram_levels_' + filename + '.txt','r') as fp:
-        with open('./game_facilitator/tangram_paths.txt', 'r') as fp:
+        with open('../game_facilitator/tangram_paths.txt', 'r') as fp:
             for line in fp:
                 if 'path' in line:
                     path_i += 1
