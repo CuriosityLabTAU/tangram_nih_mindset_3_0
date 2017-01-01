@@ -19,6 +19,7 @@ from tangrams import *
 import tensorflow as tf
 import numpy as np
 import math
+import pickle
 
 # auxiliary
 json_all_pieces = '{"pieces": [["square", "0", "0 0"], ["small triangle2", "0", "0 1"], ["small triangle1", "90", "1 0"], ["large triangle1", "0", "1 1"], ["parrallelogram", "0", "2 0"], ["medium triangle", "0", "3 1"], ["large triangle2", "180", "1 1"]], "size": "5 5"}'
@@ -27,10 +28,10 @@ task_all_pieces.create_from_json(json_all_pieces)
 
 
 # initialization: (curious ==> 2, non-curoius ==>1)
-CONDITION = 'not_curious' #'curious'
+CONDITION = 'curious' #'curious'
 H_THRESH_CURIOUS = 0.1
 H_THRESH_NOT_CURIOUS = 0.5
-epoch_num = 1000   # should be 100000
+epoch_num = 10000   # should be 100000
 
 sgc = SelectionGeneratorCuriosity()
 sgc.load_dif_levels()
@@ -112,6 +113,7 @@ training_set_output = []
 
 # THE OUTPUT
 selection_sequence = []
+solver_cache = {}
 
 # for all games:
 for game in range(0, 6):
@@ -185,6 +187,7 @@ for game in range(0, 6):
     sol.run_task(task, duration=300, stop=True)
     seq = sol.get_seq_of_moves_v2(task_all_pieces)
     print(seq)
+    solver_cache[options[selected][0]] = seq
 
     # create an input/output pair
     training_task, training_input, training_output = json_to_NN(options[selected][0])
@@ -219,7 +222,18 @@ for game in range(0, 6):
     # update game ...
     sgc.update_game_result(player='Robot', user_selection=selected, game_result='S')
 
-
+#
+# if CONDITION == 'curious':
+#     with open('../agent/' + 'selection_cache_curiosity' + '.pkl', 'wb') as f:
+#         pickle.dump(selection_sequence, f, pickle.HIGHEST_PROTOCOL)
+#     with open('../agent/' + 'solve_cache_curiosity' + '.pkl', 'wb') as f:
+#         pickle.dump(solver_cache, f, pickle.HIGHEST_PROTOCOL)
+#
+# if CONDITION == 'not_curious':
+#     with open('../agent/' + 'selection_cache_curiosity_non' + '.pkl', 'wb') as f:
+#         pickle.dump(selection_sequence, f, pickle.HIGHEST_PROTOCOL)
+#     with open('../agent/' + 'solve_cache_curiosity_non' + '.pkl', 'wb') as f:
+#         pickle.dump(solver_cache, f, pickle.HIGHEST_PROTOCOL)
 # best results:
 # learning_rate = 0.1
 # epoch number = 100000 (always)
