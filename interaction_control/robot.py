@@ -49,7 +49,7 @@ class RobotComponent(Component):
     def express(self, action):
         print("rinat express", action, action[0])
         print("TangramGame.cog_tangram_selection=", TangramGame.cog_tangram_selection)
-        print ('question', self.question_index)
+        print ('question=', self.question_index)
         self.current_state = 'express'
         if len(action) > 1:
             self.current_param = action[1:]
