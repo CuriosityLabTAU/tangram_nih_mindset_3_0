@@ -19,10 +19,10 @@ class GameFacilitator():
 
     def check_solution(self, json_str_board):
         board_task = Task()
-        #print ("check solution: ",json_str_board)
+        # print ("check solution: ",json_str_board)
         board_task.create_from_json(json_str_board)
-        #print board_task.check_solution(self.current_task.x, board_task.solution)
-        return board_task.check_solution(self.current_task.x, board_task.solution)
+        # print self.current_task.check_solution(board_task.x, board_task.solution)
+        return self.current_task.check_solution(board_task.x, board_task.solution)
 
     def generate_tangram_options(self, challange):
         if challange:
