@@ -61,6 +61,8 @@ class Task:
         return structures
 
     def check_solution(self, sol, sol_list):
+        # sol is the x matrix of the checked solution and sol_list is the list of pieces of the checked solution
+        # the target solution is the self task.
 
         #check that a piece is not used more than once (requires the piece's name to be unique)
         names_list = []
