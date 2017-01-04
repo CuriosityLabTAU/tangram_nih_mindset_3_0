@@ -144,16 +144,16 @@ class Solver:
         # should be called after run_task()
         seq = []
         if self.solved_network_index is not None:
-            n = self.solved_network_index
+            net_ind = self.solved_network_index
             print 'Solver: puzzle solved'
         else:
-            n = 0 # none of the networks solved so just choose the first network
+            net_ind = 0 # none of the networks solved so just choose the first network
             print 'Solver: puzzle not solved'
-        print len(self.solutions[n])
-        for k in range(len(self.solutions[n])-2, len(self.solutions[n])):
-            for i in range(len(self.solutions[n][k])):
-                if self.solutions[n][k][i] > 0:
-                    seq.append(self.networks[n].nodes[i])
+        print len(self.solutions[net_ind])
+        for k in range(len(self.solutions[net_ind])-2, len(self.solutions[net_ind])):
+            for i in range(len(self.solutions[net_ind][k])):
+                if self.solutions[net_ind][k][i] > 0:
+                    seq.append(self.networks[net_ind].nodes[i])
 
         # return seq
         # convert seq to json of list of board pieces jsons
@@ -172,6 +172,7 @@ class Solver:
 
         task_dict = json.loads(init_pos_json)
         pieces_vec = task_dict['pieces']
+        pieces_vec_initial = copy.deepcopy(pieces_vec)
         size = task_dict['size']
         for p in seq:
             for n in range(len(pieces_vec)):
@@ -190,6 +191,23 @@ class Solver:
                         pieces_vec[n] = (p.name[0], p.name[1], p.name[2])  # change rotation
                         task_dict['pieces'] = pieces_vec
                         seq_jsons.append(json.dumps(task_dict))
+
+        # move unused pieces to initial position
+        # create dictionary from piece name to node number in network
+        dic = {}
+        for m in range(len(self.networks[0].nodes)):
+            dic[self.networks[0].nodes[m].name[0] + ' ' + self.networks[0].nodes[m].name[1] + ' ' +
+                self.networks[0].nodes[m].name[2]] = m
+        for k in range(len(task_dict['pieces'])):
+            key = task_dict['pieces'][k][0]+' '+task_dict['pieces'][k][1]+' '+task_dict['pieces'][k][2]
+            if key in dic:
+                node_num = dic[key]
+                if self.solutions[net_ind][-1][node_num] == 0: # piece should be removed from the board
+                    task_dict['pieces'][k] = pieces_vec_initial[k]
+                    seq_jsons.append(json.dumps(task_dict))
+
+
+
         return seq_jsons
         #  return json.dumps(seq_dict)
 
