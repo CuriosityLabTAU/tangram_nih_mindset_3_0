@@ -20,21 +20,24 @@ import tensorflow as tf
 import numpy as np
 import math
 import pickle
+import random
 
 # auxiliary
 json_all_pieces = '{"pieces": [["square", "0", "0 0"], ["small triangle2", "0", "0 1"], ["small triangle1", "90", "1 0"], ["large triangle1", "0", "1 1"], ["parrallelogram", "0", "2 0"], ["medium triangle", "0", "3 1"], ["large triangle2", "180", "1 1"]], "size": "5 5"}'
 task_all_pieces = Task()
 task_all_pieces.create_from_json(json_all_pieces)
-
+random.seed(1)
+np.random.seed(1)
 
 # initialization: (curious ==> 2, non-curoius ==>1)
 CONDITION = 'curious' #'curious'
+# CONDITION = 'not_curious'
 H_THRESH_CURIOUS = 0.1
 H_THRESH_NOT_CURIOUS = 0.5
-epoch_num = 10000   # should be 100000
+epoch_num = 100000   # should be 100000
 
 sgc = SelectionGeneratorCuriosity()
-sgc.load_dif_levels()
+sgc.load_dif_levels(directory='..')
 
 sol = Solver()
 task = Task()
@@ -78,12 +81,12 @@ def json_to_NN(json_str):
     training_output = activation
     return training_task, training_input, training_output
 
-
+tf.set_random_seed(1)
 inp = tf.placeholder(tf.float32, shape=(None, input_size), name='input')
 # label = tf.placeholder(tf.float32, shape=(None, output_size), name='label')
 label = tf.placeholder(tf.float32, shape=None, name='label')
 
-weights_1 = tf.Variable(tf.truncated_normal([input_size, num_hidden], stddev=1.0 / math.sqrt(float(num_hidden))),
+weights_1 = tf.Variable(tf.truncated_normal([input_size, num_hidden], stddev=1.0 / math.sqrt(float(num_hidden)), seed=1),
                         name='weights_1')
 biases_1 = tf.Variable(tf.zeros([num_hidden]), name='biases_1')
 
@@ -102,8 +105,10 @@ train_op = optimizer.minimize(loss)
 saver = tf.train.Saver()
 # path = "/home/gorengordon/catkin_ws/src/tangram_nih_curiosity_sandbox/tangrams/curric.ckpt"
 path = "./curric.ckpt"
+tf.set_random_seed(1)
 init = tf.initialize_all_variables()
 with tf.Session() as sess:
+    tf.set_random_seed(1)
     sess.run(init)
     save_path = saver.save(sess, path)
 # ------------------
@@ -204,6 +209,7 @@ for game in range(0, 6):
         # sess.run(init)
         saver.restore(sess, path)
         # print("Model restored for training.")
+        tf.set_random_seed(1)
 
         for epoch in range(epoch_num):
             mini_batch_inp = np.array(training_set_input)
@@ -222,18 +228,19 @@ for game in range(0, 6):
     # update game ...
     sgc.update_game_result(player='Robot', user_selection=selected, game_result='S')
 
-#
-# if CONDITION == 'curious':
-#     with open('../agent/' + 'selection_cache_curiosity' + '.pkl', 'wb') as f:
-#         pickle.dump(selection_sequence, f, pickle.HIGHEST_PROTOCOL)
-#     with open('../agent/' + 'solve_cache_curiosity' + '.pkl', 'wb') as f:
-#         pickle.dump(solver_cache, f, pickle.HIGHEST_PROTOCOL)
-#
-# if CONDITION == 'not_curious':
-#     with open('../agent/' + 'selection_cache_curiosity_non' + '.pkl', 'wb') as f:
-#         pickle.dump(selection_sequence, f, pickle.HIGHEST_PROTOCOL)
-#     with open('../agent/' + 'solve_cache_curiosity_non' + '.pkl', 'wb') as f:
-#         pickle.dump(solver_cache, f, pickle.HIGHEST_PROTOCOL)
+save = False
+if save is True:
+    if CONDITION == 'curious':
+        with open('../agent/' + 'selection_cache_curiosity' + '.pkl', 'wb') as f:
+            pickle.dump(selection_sequence, f, pickle.HIGHEST_PROTOCOL)
+        with open('../agent/' + 'solve_cache_curiosity' + '.pkl', 'wb') as f:
+            pickle.dump(solver_cache, f, pickle.HIGHEST_PROTOCOL)
+
+    if CONDITION == 'not_curious':
+        with open('../agent/' + 'selection_cache_curiosity_non' + '.pkl', 'wb') as f:
+            pickle.dump(selection_sequence, f, pickle.HIGHEST_PROTOCOL)
+        with open('../agent/' + 'solve_cache_curiosity_non' + '.pkl', 'wb') as f:
+            pickle.dump(solver_cache, f, pickle.HIGHEST_PROTOCOL)
 # best results:
 # learning_rate = 0.1
 # epoch number = 100000 (always)
