@@ -143,6 +143,11 @@ class Solver:
         # return a list, such that each element in the list is a json string of the board pieces
         # should be called after run_task()
         seq = []
+        temp_json = available_pieces.export_to_json()
+        init_pos_json = available_pieces.transfer_json_to_json_initial_pos(temp_json)
+        task_dict = json.loads(init_pos_json)
+        pieces_vec = task_dict['pieces']
+
         if self.solved_network_index is not None:
             net_ind = self.solved_network_index
             print 'Solver: puzzle solved'
@@ -150,10 +155,36 @@ class Solver:
             net_ind = 0 # none of the networks solved so just choose the first network
             print 'Solver: puzzle not solved'
         print len(self.solutions[net_ind])
-        for k in range(len(self.solutions[net_ind])-2, len(self.solutions[net_ind])):
-            for i in range(len(self.solutions[net_ind][k])):
-                if self.solutions[net_ind][k][i] > 0:
-                    seq.append(self.networks[net_ind].nodes[i])
+        # for k in range(len(self.solutions[net_ind])-2, len(self.solutions[net_ind])):
+        #     for i in range(len(self.solutions[net_ind][k])):
+        #         if self.solutions[net_ind][k][i] > 0:
+        #             seq.append(self.networks[net_ind].nodes[i])
+
+        # Choose the most active node (unless it was already chosen) in each iteration.
+        for n in range(len(self.solutions[net_ind])):
+            v = np.add(np.dot(self.networks[net_ind].w, self.solutions[net_ind][n]), self.networks[net_ind].input)
+            # ADD exp stuff
+            temp = copy.deepcopy(self.solutions[net_ind][n])
+            ind_active = np.where(self.solutions[net_ind][n])
+            # ind_max = np.where(v[ind_active] == max(v[ind_active]))
+            ind_max_sorted = [x for (y, x) in sorted(zip(v[ind_active], ind_active[0]),
+                                                     reverse=True)]  # sort the active indexes according to v()
+
+            most_active_piece = self.networks[net_ind].nodes[ind_max_sorted[0]].name
+            for k in range(len(ind_max_sorted)):
+                most_active_piece = self.networks[net_ind].nodes[ind_max_sorted[k]].name
+                if most_active_piece not in pieces_vec:
+                    seq.append(self.networks[net_ind].nodes[ind_max_sorted[k]])
+                    for piece_iter in range(len(pieces_vec)):
+                        if pieces_vec[piece_iter][0] == most_active_piece[0]:  # the name is the same.
+                            pieces_vec[piece_iter] = most_active_piece
+                    break
+
+        # add pieces from final solution in case they where not included in the most active list
+        for k in range(len(self.solutions[net_ind][-1])):
+            if self.solutions[net_ind][-1][k] == 1:
+                seq.append(self.networks[net_ind].nodes[k])
+
 
         # return seq
         # convert seq to json of list of board pieces jsons
@@ -205,8 +236,6 @@ class Solver:
                 if self.solutions[net_ind][-1][node_num] == 0: # piece should be removed from the board
                     task_dict['pieces'][k] = pieces_vec_initial[k]
                     seq_jsons.append(json.dumps(task_dict))
-
-
 
         return seq_jsons
         #  return json.dumps(seq_dict)
