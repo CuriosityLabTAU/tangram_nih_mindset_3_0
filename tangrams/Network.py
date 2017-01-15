@@ -20,6 +20,8 @@ class Network:
         self.input = [] # input matrix
         self.T = T_INIT    # temperature
         self.dT = 0.99   # scheduling
+        self.iter = 0   # iteration of dynamics
+        self.opt_iter = 10.0    # optimal iteration number
         self.e = []     # energy during run
         self.hebb = []  # hebbian learning
         self.eta = ETA_INIT  # learning rate
@@ -97,6 +99,8 @@ class Network:
     def init_parameters(self):
         self.T = T_INIT    # temperature
         self.eta = ETA_INIT  # learning rate
+        self.iter = 0.0
+        self.update_scheduling()
 
     def set_nodes(self, nodes):
         self.nodes = copy.deepcopy(nodes)
@@ -147,6 +151,7 @@ class Network:
         perm = np.random.permutation(self.n)
         # updating all neurons, asynchronously
         for i in perm:
+            prev_a = self.a[i]
             if exc[i] < 1:
                 self.a[i] = 0
             else:
@@ -159,7 +164,8 @@ class Network:
                         self.a[i] = 1
                     else:
                         self.a[i] = 0
-            inh = self.inhibition()
+            if self.a[i] != prev_a:
+                inh = self.inhibition()
 
         self.update_scheduling()
         return self.a, self.energy()
@@ -168,7 +174,14 @@ class Network:
         return np.dot(self.w + self.eta * self.hebb, self.a)
 
     def update_scheduling(self):
-        self.T *= self.dT
+        self.iter += 1.0
+        if self.iter <= self.opt_iter:
+            self.T = T_INIT * (self.iter / self.opt_iter)
+        else:
+            self.T *= self.dT
+                #T_INIT * (self.iter / self.opt_iter) * np.exp(1.0 - (self.iter / self.opt_iter))
+        # print('T:', self.T)
+        # self.T *= self.dT
         self.eta *= self.deta
 
     def energy(self):
