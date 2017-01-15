@@ -362,7 +362,21 @@
       ["i'm tired now, let's play again next time. bye.", "party_all_1", "YAWN", "party_all_2", "POSE_SLEEPING"]
     ]
   },
-  "tangram_explanation": {
+
+    "ask_question_robot_play":{
+    "question1": ["It will be interesting to know how many treasure boxes still exist in the world", "robot_question3","POSE_FORWARD"],
+    "question2": ["I wonder how old is the oldest robot in the world and where did it come from", "robot_question4","POSE_FORWARD"],
+    "question3": ["I wonder how long does it take to build a robot", "robot_question5","POSE_FORWARD"],
+    "question4": ["It will be interesting to know how many treasure boxes still exist in the world", "robot_question6","POSE_FORWARD"],
+    "question5": ["I wonder if this tangram solvable", "robot_question7","POSE_FORWARD"],
+    "question6": ["It will be interesting to know how many people are needed to build a robot", "robot_question8","POSE_FORWARD"]
+  },
+
+  "ask_question_party":[
+    ["I wonder what this robot feels", "robot_question9","POSE_FORWARD"]
+  ],
+
+  "NOT_IN_USE_tangram_explanation": {
     "all" : [
       ["these puzzles are made of pieces of different shapes. we need to find where to put them to fill in the grey area.","tangram_explanation_all_0"]
     ],
@@ -379,7 +393,7 @@
       ["I want to try something new, maybe move this piece here","tangram_explanation_c+g+_0"]
     ]
   },
-  "explain_turn": {
+  "NOT_IN_USE_explain_turn": {
     "c-g-": [
       ["let me try this move","rotation_explanation_c-g-_0"],
       ["let me try to rotate it","rotation_explanation_c-g-_1"],
@@ -414,7 +428,7 @@
       [" ", "SILENT_CONFIRM", "POSE_FORWARD"]
     ]
   },
-  "selection_explanation": {
+  "NOT_IN_USE_selection_explanation": {
     "c-g-": [
       ["let's select one.","comment_selection_c-g-_0"],
       ["what do you think, which should we choose?","comment_selection_c-g-_1"],
@@ -436,7 +450,7 @@
       ["I want to work out my brain, lets choose the challenging puzzle","comment_selection_c+g+_0"]
     ]
   },
-  "comment_rotation": {
+  "NOT_IN_USE_comment_rotation": {
     "c-g-": [
       ["nice turning","comment_rotation_c-g-_0"],
       ["this looks like a good move","comment_rotation_c-g-_1"],
@@ -468,20 +482,7 @@
   ],
   "tega_init": [
     ["I'm sleepy.", "POSE_SLEEPING"]
-  ],
-  "ask_question_robot_play":{
-    "question1": ["It will be interesting to know how many treasure boxes still exist in the world", "robot_question3","POSE_FORWARD"],
-    "question2": ["I wonder how old is the oldest robot in the world and where did it come from", "robot_question4","POSE_FORWARD"],
-    "question3": ["I wonder how long does it take to build a robot", "robot_question5","POSE_FORWARD"],
-    "question4": ["It will be interesting to know how many treasure boxes still exist in the world", "robot_question6","POSE_FORWARD"],
-    "question5": ["I wonder if this tangram solvable", "robot_question7","POSE_FORWARD"],
-    "question6": ["It will be interesting to know how many people are needed to build a robot", "robot_question8","POSE_FORWARD"]
-  },
-
-  "ask_question_party":[
-    ["I wonder what this robot feels", "robot_question9","POSE_FORWARD"]
   ]
-
 
 }
 

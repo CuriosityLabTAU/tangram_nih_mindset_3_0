@@ -162,6 +162,7 @@ class Solver:
 
         # Choose the most active node (unless it was already chosen) in each iteration.
         for n in range(len(self.solutions[net_ind])):
+
             v = np.add(np.dot(self.networks[net_ind].w, self.solutions[net_ind][n]), self.networks[net_ind].input)
             # ADD exp stuff
             temp = copy.deepcopy(self.solutions[net_ind][n])
@@ -173,8 +174,11 @@ class Solver:
             most_active_piece = self.networks[net_ind].nodes[ind_max_sorted[0]].name
             for k in range(len(ind_max_sorted)):
                 most_active_piece = self.networks[net_ind].nodes[ind_max_sorted[k]].name
-                if most_active_piece not in pieces_vec:
+                if most_active_piece not in pieces_vec\
+                        and v[ind_max_sorted[k]] > 0.0\
+                        and self.errors[net_ind][n] < 0.0:
                     seq.append(self.networks[net_ind].nodes[ind_max_sorted[k]])
+                    print(v[ind_max_sorted[k]], self.errors[net_ind][n])
                     for piece_iter in range(len(pieces_vec)):
                         if pieces_vec[piece_iter][0] == most_active_piece[0]:  # the name is the same.
                             pieces_vec[piece_iter] = most_active_piece
