@@ -136,11 +136,11 @@ class SelectionTaskLayout(LoggedButton, TaskLayout):
             # # self.bind(size=self._update_rect, pos=self._update_rect)
             # # self.bind(size=self.update_position, pos=self.update_position)
             with self.canvas.after:
-                if (index==1000): #NOT IN USE
-                    #Color(234 / 255.0, 226 / 255.0, 139 / 255.0, 1)
-                    Color(1, 0, 0, 1)
+                if (index==2): #NOT IN USE
+                    Color(234 / 255.0, 226 / 255.0, 139 / 255.0, 1)
+                    #Color(1, 0, 0, 1)
                     self.rect = Rectangle()
-                    self.rect.pos = [self.pos[0] + 4 * TangramGame.SCALE,self.pos[1]+ 1 * TangramGame.SCALE] #[4 * TangramGame.SCALE, Window.height * 0.25]#self.pos
+                    self.rect.pos = [self.pos[0] + 4 * TangramGame.SCALE,self.pos[1]+ 1 * TangramGame.SCALE * 0.8] #[4 * TangramGame.SCALE, Window.height * 0.25]#self.pos
                     self.rect.size = [Window.width * 0.16, Window.height * 0.18]
 
 

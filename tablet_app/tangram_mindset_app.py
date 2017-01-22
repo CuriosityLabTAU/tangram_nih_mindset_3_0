@@ -320,7 +320,7 @@ root_widget = Builder.load_string('''
 <QuestionMarkWidget>
     Image:
         id: question_mark
-        size: (root.width * 0.17375, root.width * 0.18833)
+        size: (root.size[0] * 0.17375, root.size[1] * 0.18833)
         pos: root.width * 0.7375, root.height * 0.22
         source: './tablet_app/images/question_mark.gif'
         opacity: 1

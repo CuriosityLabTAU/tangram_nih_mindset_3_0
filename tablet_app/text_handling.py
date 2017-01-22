@@ -30,7 +30,7 @@ class TextHandler:
             self.engine.setProperty('voice', 'HKEY_LOCAL_MACHINE/SOFTWARE/Microsoft/Speech/Voices/Tokens/TTS_MS_EN-US_ZIRA_11.0')
             self.engine.connect(topic='finished-utterance', cb=self.finished)
 
-    def load_text(self, filename='./tablet_app/robot_text_revised3.json'):
+    def load_text(self, filename='./tablet_app/robot_text_revised4_tau.json'):  #robot_text_revised3
         with open(filename) as data_file:
             self.data = json.load(data_file)
 
