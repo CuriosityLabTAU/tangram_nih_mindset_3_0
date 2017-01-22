@@ -228,7 +228,7 @@ for game in range(0, 6):
     # update game ...
     sgc.update_game_result(player='Robot', user_selection=selected, game_result='S')
 
-save = False
+save = True
 if save is True:
     if CONDITION == 'curious':
         with open('../agent/' + 'selection_cache_curiosity' + '.pkl', 'wb') as f:
