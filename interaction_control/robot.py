@@ -24,7 +24,7 @@ class RobotComponent(Component):
     animation = None
     question_index = 0 #Rinat added
 
-    def load_text(self, filename='./tablet_app/robot_text_revised3.json'):
+    def load_text(self, filename='./tablet_app/robot_text_revised4_tau.json'):  #robot_text_revised3
         with open(filename) as data_file:
             self.animation = json.load(data_file)
 
@@ -81,10 +81,10 @@ class RobotComponent(Component):
                 # Rinat added
                 if what == "ask_question_robot_play":
                     self.question_index += 1
-                    if self.condition == 'c+g-' or self.condition == 'c+g+':
+                    if self.agent.condition == 'c+g-' or self.agent.condition == 'c+g+':
                         the_expressions = self.add_expression(the_expressions, the_options['question' + str(self.question_index)])
                 elif what == "my_turn":
-                    the_expressions = self.add_expression(the_expressions,the_options[self.condition][TangramGame.cog_tangram_selection])
+                    the_expressions = self.add_expression(the_expressions,the_options[self.agent.condition][TangramGame.cog_tangram_selection])
                 else:
                 # Rinat end
                     if 'all' in the_options:
