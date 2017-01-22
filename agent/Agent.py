@@ -33,15 +33,15 @@ class Agent:
     def update_condition(self, condition):
         self.condition  = condition
         # self.condition = 'c-g-' #''Mindset' # value can be 'Mindset' or 'Neutral'
-        if self.condition == 'c-g+':
+        if 'g+' in self.condition:
             self.mindset = 0.9
-        else:
+        elif 'g-' in self.condition:
             self.mindset = 0.1
 
     def solve_task(self, json_str_task):
-        if self.condition == 'c-g-':
+        if 'c-' in self.condition:
             self.seq_of_jsons = self.solve_cache_not_curious[json_str_task]
-        elif self.condition == 'c+g-':
+        elif 'c+' in self.condition:
             self.seq_of_jsons = self.solve_cache_curious[json_str_task]
         # self.seq_of_jsons = self.solve_cache[json_str_task]
         self.current_move = 0
@@ -71,6 +71,7 @@ class Agent:
                 self.solve_task(json_str_task)
             else:
                 self.solve_task_randomly(json_str_task)
+            print(self.seq_of_jsons)
         if self.current_move+1 < len(self.seq_of_jsons):
             self.current_move += 1
         move = self.seq_of_jsons[self.current_move]
@@ -89,11 +90,11 @@ class Agent:
         self.child_result = result
 
     def set_selection(self):
-        if self.condition == 'c+g-':
+        if 'c+' in self.condition:
             # get H for puzzles
             select = self.selection_sequence_curious[self.current_round]
             TangramGame.cog_tangram_selection = select
-        elif self.condition == 'c-g-':
+        elif 'c-' in self.condition:
             select = self.selection_sequence_not_curious[self.current_round]
             TangramGame.cog_tangram_selection = select
         self.current_round += 1

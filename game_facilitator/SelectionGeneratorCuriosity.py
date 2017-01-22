@@ -1,7 +1,7 @@
 from tangrams import *
 import json
 import numpy as np
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 
 
 class SelectionGeneratorCuriosity:
@@ -133,21 +133,21 @@ class SelectionGeneratorCuriosity:
 
         self.challenge_counter += 1
         return [[T1, T1_init_pos], [T2, T2_init_pos], [T3, T3_init_pos]]
-
-    def display(self):
-        plt.figure()
-        task = Task()
-        num_of_rows = max(len(l) for l in self.paths)  # find the maximal length of all sub lists in paths
-        for n in range(self.N_paths):
-            for k in range(len(self.paths[n])):
-                plt.subplot(num_of_rows,self.N_paths, n+1+k*self.N_paths)
-                task.create_from_json(self.paths[n][k])
-                if k < self.path_indexes[n]:
-                    plt.imshow(task.x*-1, interpolation='none')
-                    plt.axis('off')
-                else:
-                    plt.imshow(task.x, interpolation='none')
-                    plt.axis('off')
+    #
+    # def display(self):
+    #     plt.figure()
+    #     task = Task()
+    #     num_of_rows = max(len(l) for l in self.paths)  # find the maximal length of all sub lists in paths
+    #     for n in range(self.N_paths):
+    #         for k in range(len(self.paths[n])):
+    #             plt.subplot(num_of_rows,self.N_paths, n+1+k*self.N_paths)
+    #             task.create_from_json(self.paths[n][k])
+    #             if k < self.path_indexes[n]:
+    #                 plt.imshow(task.x*-1, interpolation='none')
+    #                 plt.axis('off')
+    #             else:
+    #                 plt.imshow(task.x, interpolation='none')
+    #                 plt.axis('off')
         # plt.subplot(num_of_rows,self.N_paths,
         #             self.current_level-1+1+(self.path_indexes[self.current_level - 1])*self.N_paths)
         # task.create_from_json(self.paths[self.current_level-1][self.path_indexes[self.current_level - 1]])

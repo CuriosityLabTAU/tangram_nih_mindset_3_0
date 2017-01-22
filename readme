@@ -1,0 +1,6 @@
+sudo buildozer
+adb logcat | grep python
+
+
+roscore
+rostopic echo log

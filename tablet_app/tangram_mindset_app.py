@@ -33,7 +33,9 @@ from kivy.core.audio import SoundLoader
 
 from random import choice
 
-GAME_WITH_ROBOT = False
+GAME_WITH_ROBOT = True  # False
+STUDY_SITE = 'TAU'      # MIT
+# conditions ('c-g-','c+g+') # should be ('c-g-','c+g-')
 
 class MyScreenManager (ScreenManager):
     the_tablet = None
@@ -77,7 +79,7 @@ root_widget = Builder.load_string('''
             text: 'condition'
             font_size: 16
             background_color: 0.2,0.2,0.2,1
-            values: ('c-g-','c+g-')
+            values: ('c-g-','c+g+')
             size: root.width * 0.15, root.height * 0.07
             pos: root.width * 0.62, root.height * 0.8 - self.height * 0.5
             on_text: app.condition_selected()
@@ -542,7 +544,10 @@ class TangramMindsetApp(App):
             self.interaction.components['robot'].app = self
         else:
             self.interaction.components['robot'].load_text()
-
+            if STUDY_SITE == 'MIT':
+                self.interaction.components['robot'].robot_name = 'tega'
+            elif STUDY_SITE == 'TAU':
+                self.interaction.components['robot'].robot_name = 'nao'
         self.interaction.load(filename='./tablet_app/transitions.json')
         self.interaction.next_interaction()
 
@@ -567,8 +572,13 @@ class TangramMindsetApp(App):
         TangramGame.window_size = self.root_window.size
 
     def init_communication(self):
-        KC.start(the_parents=[self, self.interaction.components['robot']], the_ip='192.168.1.254')  # 127.0.0.1
-        KL.start(mode=[DataMode.file, DataMode.communication, DataMode.ros], pathname=self.user_data_dir, the_ip='192.168.1.254')
+        local_ip = '192.168.1.254'
+        if STUDY_SITE == 'TAU':
+            local_ip = '192.168.0.103'
+        elif STUDY_SITE == 'MIT':
+            local_ip = '192.168.1.254'
+        KC.start(the_parents=[self, self.interaction.components['robot']], the_ip=local_ip)  # 127.0.0.1
+        KL.start(mode=[DataMode.file, DataMode.communication, DataMode.ros], pathname=self.user_data_dir, the_ip=local_ip)
 
     def on_connection(self):
         KL.log.insert(action=LogAction.data, obj='TangramMindsetApp', comment='start')
