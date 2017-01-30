@@ -1,7 +1,7 @@
 {
   "introduction":{
     "all": [
-      ["hi, I am tega. my friend is having a birthday party. everything is set, but the balloons.", "YAWN", "introduction_all_0", "LOOKAT_CHILD"]
+      ["hi, I am tega. my friend is having a birthday party. everything is set, but the balloons.", "YAWN", "LOOKAT_CHILD", "introduction_all_0"]
     ],
     "c-g-": [
       ["will you help me find some balloons?", "YAWN", "introduction_c-g-_0", "POSE_FORWARD"]

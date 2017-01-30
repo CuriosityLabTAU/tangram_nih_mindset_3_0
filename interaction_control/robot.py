@@ -24,7 +24,7 @@ class RobotComponent(Component):
     animation = None
     question_index = 0 #Rinat added
 
-    def load_text(self, filename='./tablet_app/robot_text_revised4_tau.json'):  #robot_text_revised3
+    def load_text(self, filename='./tablet_app/robot_text_revised3.json'):  #robot_text_revised3
         with open(filename) as data_file:
             self.animation = json.load(data_file)
 

@@ -34,7 +34,7 @@ from kivy.core.audio import SoundLoader
 from random import choice
 
 GAME_WITH_ROBOT = True  # False
-STUDY_SITE = 'TAU'      # MIT
+STUDY_SITE = 'MIT'      #'TAU'      # MIT
 # conditions ('c-g-','c+g+') # should be ('c-g-','c+g-')
 
 class MyScreenManager (ScreenManager):
@@ -79,7 +79,7 @@ root_widget = Builder.load_string('''
             text: 'condition'
             font_size: 16
             background_color: 0.2,0.2,0.2,1
-            values: ('c-g-','c+g+')
+            values: ('c-g-','c+g-')
             size: root.width * 0.15, root.height * 0.07
             pos: root.width * 0.62, root.height * 0.8 - self.height * 0.5
             on_text: app.condition_selected()
@@ -543,10 +543,11 @@ class TangramMindsetApp(App):
         if not GAME_WITH_ROBOT:
             self.interaction.components['robot'].app = self
         else:
-            self.interaction.components['robot'].load_text()
             if STUDY_SITE == 'MIT':
+                self.interaction.components['robot'].load_text(filename='./tablet_app/robot_text_revised3.json')
                 self.interaction.components['robot'].robot_name = 'tega'
             elif STUDY_SITE == 'TAU':
+                self.interaction.components['robot'].load_text(filename='./tablet_app/robot_text_revised4_tau.json')
                 self.interaction.components['robot'].robot_name = 'nao'
         self.interaction.load(filename='./tablet_app/transitions.json')
         self.interaction.next_interaction()
@@ -766,7 +767,10 @@ class TangramMindsetApp(App):
 
     def update_condition(self, condition):
         self.text_handler = TextHandler(condition)
-        self.text_handler.load_text()
+        if STUDY_SITE == 'MIT':
+            self.text_handler.load_text(filename='./tablet_app/robot_text_revised3.json')
+        elif STUDY_SITE == 'TAU':
+            self.text_handler.load_text(filename='./tablet_app/robot_text_revised4_tau.json')
         self.interaction.components['robot'].agent.update_condition(condition)
 
     def press_stop_button(self):
