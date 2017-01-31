@@ -35,7 +35,6 @@ from random import choice
 
 GAME_WITH_ROBOT = True  # False
 STUDY_SITE = 'MIT'      #'TAU'      # MIT
-# conditions ('c-g-','c+g+') # should be ('c-g-','c+g-')
 
 class MyScreenManager (ScreenManager):
     the_tablet = None
