@@ -30,8 +30,8 @@ random.seed(1)
 np.random.seed(1)
 
 # initialization: (curious ==> 2, non-curoius ==>1)
-# CONDITION = 'curious' #'curious'
-CONDITION = 'not_curious'
+CONDITION = 'curious' #'curious'
+# CONDITION = 'not_curious'
 H_THRESH_CURIOUS = 0.1
 H_THRESH_NOT_CURIOUS = 0.5
 epoch_num = 100000   # should be 100000
@@ -192,7 +192,9 @@ for game in range(0, 6):
     sol.run_task(task, duration=300, stop=True)
     seq = sol.get_seq_of_moves_v2(task_all_pieces)
     print(seq)
-    solver_cache[options[selected][0]] = seq
+    print ('game: ', game)
+    # solver_cache[options[selected][0]] = seq
+    solver_cache[str(game+1)] = seq
 
     # create an input/output pair
     training_task, training_input, training_output = json_to_NN(options[selected][0])
@@ -228,7 +230,7 @@ for game in range(0, 6):
     # update game ...
     sgc.update_game_result(player='Robot', user_selection=selected, game_result='S')
 
-save = True
+save = False
 if save is True:
     if CONDITION == 'curious':
         with open('../agent/' + 'selection_cache_curiosity' + '.pkl', 'wb') as f:
