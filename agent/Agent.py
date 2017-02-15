@@ -39,10 +39,12 @@ class Agent:
             self.mindset = 0.1
 
     def solve_task(self, json_str_task):
+        print ('solve task', self.current_round)
         if 'c-' in self.condition:
-            self.seq_of_jsons = self.solve_cache_not_curious[json_str_task]
+            # self.seq_of_jsons = self.solve_cache_not_curious[json_str_task]
+            self.seq_of_jsons = self.solve_cache_not_curious[str(self.current_round)]
         elif 'c+' in self.condition:
-            self.seq_of_jsons = self.solve_cache_curious[json_str_task]
+            self.seq_of_jsons = self.solve_cache_curious[str(self.current_round)]
         # self.seq_of_jsons = self.solve_cache[json_str_task]
         self.current_move = 0
         # task = Task()
