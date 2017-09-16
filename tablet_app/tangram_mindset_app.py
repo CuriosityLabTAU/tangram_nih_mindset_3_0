@@ -40,12 +40,36 @@ class MyScreenManager (ScreenManager):
     the_tablet = None
 
 # MyScreenManager:
+#    SetupScreenRoom:
 #    ZeroScreenRoom:
 #    FirstScreenRoom:
 #    SelectionScreenRoom:
 #    SolveTangramRoom:r
 
 root_widget = Builder.load_string('''
+
+<SetupScreenRoom>:
+    name: 'setup_screen_room'
+    Widget:
+        TextInput:
+            id: roscore_ip
+            name: 'roscore_ip'
+            text: '192.168.1.254'
+            font_size: 16
+            multiline: False
+            size: root.width * 0.4, root.height * 0.07
+            pos: root.width * 0.18, root.height * 0.8 - self.height * 0.5
+
+        Button:
+            id: connect_button
+            name: 'connect_button'
+            background_color: 0.1,0.5,0.2,1
+            background_normal: ''
+            text: 'Connect'
+            font_size: 16
+            size: root.width * 0.15, root.height * 0.07
+            pos: root.width * 0.62, root.height * 0.8 - self.height * 0.5
+            on_press: app.press_connect_button(roscore_ip.text)
 
 <ZeroScreenRoom>:
     start_button: start_button
@@ -507,7 +531,8 @@ root_widget = Builder.load_string('''
 ''')
 
 # functions connecting to button pressed
-
+class SetupScreenRoom(Screen):
+    ip=''
 
 class TangramMindsetApp(App):
     tangrams_solved = 0
@@ -523,6 +548,7 @@ class TangramMindsetApp(App):
     yes_clicked_flag = False
 
     def build(self):
+
         self.interaction = Interaction(
             [('robot', 'RobotComponent'),
              ('child', 'ChildComponent'),
@@ -534,10 +560,10 @@ class TangramMindsetApp(App):
         self.interaction.components['game'] = GameComponent(self.interaction, 'game')
         self.interaction.components['game'].game_facilitator = GameFacilitator()
 
-        s = SolveTangramRoom(self.interaction.components['tablet'])
+        self.str_screen = SolveTangramRoom(self.interaction.components['tablet'])
 
-        self.interaction.components['tablet'].hourglass_widget = s.ids['hourglass_widget']
-        #self.interaction.components['hourglass'].widget = s.ids['hourglass_widget']
+        self.interaction.components['tablet'].hourglass_widget = self.str_screen.ids['hourglass_widget']
+        # self.interaction.components['hourglass'].widget = s.ids['hourglass_widget']
         self.interaction.components['tablet'].app = self
         if not GAME_WITH_ROBOT:
             self.interaction.components['robot'].app = self
@@ -552,16 +578,10 @@ class TangramMindsetApp(App):
         self.interaction.next_interaction()
 
         # self.load_sounds()
-        self.init_communication()
-
         self.screen_manager = MyScreenManager()
-        zero_screen = ZeroScreenRoom(self)
-        zero_screen.ids['subject_id'].bind(text=zero_screen.ids['subject_id'].on_text_change)
-        self.screen_manager.add_widget(zero_screen)
-        self.screen_manager.add_widget(FirstScreenRoom(self.interaction.components['tablet']))
-        self.screen_manager.add_widget(SelectionScreenRoom(self.interaction.components['tablet']))
-        self.screen_manager.add_widget(PartyScreenRoom(self.interaction.components['tablet']))
-        self.screen_manager.add_widget(s)
+
+        self.screen_manager.add_widget(SetupScreenRoom())
+        self.screen_manager.current = 'setup_screen_room'
 
 
         return self.screen_manager
@@ -571,17 +591,29 @@ class TangramMindsetApp(App):
         TangramGame.SCALE = round(self.root_window.size[0] / 60)
         TangramGame.window_size = self.root_window.size
 
-    def init_communication(self):
-        local_ip = '192.168.1.254'
+    def init_communication(self, ip_addr):
+        local_ip = ip_addr
         if STUDY_SITE == 'TAU':
-            local_ip = '192.168.0.103'
+            local_ip = ip_addr
         elif STUDY_SITE == 'MIT':
-            local_ip = '192.168.1.254'
-        KC.start(the_parents=[self, self.interaction.components['robot']], the_ip=local_ip)  # 127.0.0.1
+            local_ip = ip_addr
+
+        KC.start(the_parents=[self, self.interaction.components['robot']], the_ip=local_ip)
         KL.start(mode=[DataMode.file, DataMode.communication, DataMode.ros], pathname=self.user_data_dir, the_ip=local_ip)
+
 
     def on_connection(self):
         KL.log.insert(action=LogAction.data, obj='TangramMindsetApp', comment='start')
+
+        zero_screen = ZeroScreenRoom(self)
+        zero_screen.ids['subject_id'].bind(text=zero_screen.ids['subject_id'].on_text_change)
+        self.screen_manager.add_widget(zero_screen)
+        self.screen_manager.add_widget(FirstScreenRoom(self.interaction.components['tablet']))
+        self.screen_manager.add_widget(SelectionScreenRoom(self.interaction.components['tablet']))
+        self.screen_manager.add_widget(PartyScreenRoom(self.interaction.components['tablet']))
+        self.screen_manager.add_widget(self.str_screen)
+
+        self.screen_manager.current = 'zero_screen_room'
 
 
     def load_sounds(self):
@@ -616,6 +648,10 @@ class TangramMindsetApp(App):
         print("tangram_mindset_app:changed_pieces",x)
         self.interaction.components['child'].on_action(['tangram_change', x])
         print("finished changed_pieces")
+
+    def press_connect_button(self, ip_addr):
+        print ip_addr
+        self.init_communication(ip_addr)
 
     def press_start_button (self):
         # child pressed the start button

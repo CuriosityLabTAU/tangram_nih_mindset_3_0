@@ -132,7 +132,10 @@ class Component:
 
     def log_data(self, target=None, action=None):
         if is_logged:
-            KL.log.insert(action=LogAction.data, obj=self.name, comment=[self.current_state, self.current_param, target, action])
+            try:
+                KL.log.insert(action=LogAction.data, obj=self.name, comment=[self.current_state, self.current_param, target, action])
+            except:
+                print "twist server connection not established yet."
 
     def set_action1(self, action):
         new_action1 = None
