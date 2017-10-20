@@ -569,7 +569,7 @@ class TangramMindsetApp(App):
             self.interaction.components['robot'].app = self
         else:
             if STUDY_SITE == 'MIT':
-                self.interaction.components['robot'].load_text(filename='./tablet_app/robot_text_revised3.json')
+                self.interaction.components['robot'].load_text(filename='./tablet_app/robot_text_revised4.json')
                 self.interaction.components['robot'].robot_name = 'tega'
             elif STUDY_SITE == 'TAU':
                 self.interaction.components['robot'].load_text(filename='./tablet_app/robot_text_revised4_tau.json')
@@ -650,6 +650,7 @@ class TangramMindsetApp(App):
         print("finished changed_pieces")
 
     def press_connect_button(self, ip_addr):
+        # To-Do: save previous ip input
         print ip_addr
         self.init_communication(ip_addr)
 
