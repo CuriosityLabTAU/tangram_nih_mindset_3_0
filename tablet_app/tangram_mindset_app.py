@@ -33,8 +33,8 @@ from kivy.core.audio import SoundLoader
 
 from random import choice
 
-GAME_WITH_ROBOT = True  # False
-STUDY_SITE = 'MIT'      #'TAU'      # MIT
+GAME_WITH_ROBOT = False  # False
+STUDY_SITE = 'TAU'      #'TAU'      # MIT
 
 class MyScreenManager (ScreenManager):
     the_tablet = None
@@ -54,7 +54,7 @@ root_widget = Builder.load_string('''
         TextInput:
             id: roscore_ip
             name: 'roscore_ip'
-            text: '192.168.1.254'
+            text: '132.66.196.213'
             font_size: 16
             multiline: False
             size: root.width * 0.4, root.height * 0.07
