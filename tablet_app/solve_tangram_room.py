@@ -127,7 +127,7 @@ class SolveTangramRoom(Screen):
         i = self.the_app.tangrams_solved
         i = (i-1)%3 + 1
         self.ids['treasure_box'].ids['box'].source = './tablet_app/images/TreasureOpenBoxLayers_B.gif'
-        self.ids['treasure_box'].ids['balloon'].source = './tablet_app/images/Balloon_Price'+str(i)+'.gif'
+        self.ids['treasure_box'].ids['balloon'].source = './tablet_app/images/Balloon_Price_'+self.the_app.study_world+'_'+str(i)+'.gif'
         self.ids['treasure_box'].ids['balloon'].opacity = 1
         for c in self.ids['tangram_game_widget'].children:
             if isinstance(c, TangramPiece):
@@ -144,17 +144,19 @@ class Rotate(LoggedButton):
 
     press_rotate_sound = None
     def __init__(self, game_widget):
+        print ("init rotate")
         super(Rotate,self).__init__()
         self.tangram_game_widget = game_widget
         self.name = "rotate_btn"
         self.background_normal = 'buttons/arrow_rotate.png'
         self.size = (TangramGame.SCALE * 4, TangramGame.SCALE * 4)
         self.press_rotate_sound = SoundLoader.load('./tablet_app/sounds/tongue-click.m4a')
+        print ("end init rotate")
 
     def on_press(self):
     # press the rotate button
         if self.tangram_game_widget.current is not None:
-            self.press_rotate_sound.play()
+           # self.press_rotate_sound.play() #rinat unmark this
             self.tangram_game_widget.current.rot = str(int(self.tangram_game_widget.current.rot) + 90)
             if self.tangram_game_widget.current.rot == '360':
                 self.tangram_game_widget.current.rot = '0'

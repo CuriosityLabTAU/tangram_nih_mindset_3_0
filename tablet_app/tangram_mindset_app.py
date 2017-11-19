@@ -102,7 +102,7 @@ root_widget = Builder.load_string('''
             text: 'condition'
             font_size: 16
             background_color: 0.2,0.2,0.2,1
-            values: ('c-g-','c+g-')
+            values: ('c-g-','c+g-','c-g+','c+g+')
             size: root.width * 0.15, root.height * 0.07
             pos: root.width * 0.62, root.height * 0.8 - self.height * 0.5
             on_text: app.condition_selected()
@@ -117,6 +117,27 @@ root_widget = Builder.load_string('''
             size: root.width * 0.15, root.height * 0.07
             pos: root.width * 0.8, root.height * 0.8 - self.height * 0.5
             on_press: app.press_start_button()
+       
+        LoggedSpinner:
+            id: world_spinner
+            text: 'world (w1-w10)'
+            font_size: 16
+            background_color: 0.2,0.2,0.2,1
+            values: ('w1','w2','w3','w4','w5','w6','w7','w8','w9','w10')
+            size: root.width * 0.15, root.height * 0.07
+            pos: root.width * 0.62, root.height * 0.7 - self.height * 0.5
+            on_text: app.world_selected()
+    
+        LoggedSpinner:
+            id: gender_spinner
+            text: 'gender'
+            font_size: 16
+            background_color: 0.2,0.2,0.2,1
+            values: ('male','female')
+            size: root.width * 0.15, root.height * 0.07
+            pos: root.width * 0.62, root.height * 0.6 - self.height * 0.5
+            on_text: app.gender_selected()
+
 
         LoggedSpinner:
             id: difficulty_spinner
@@ -125,9 +146,10 @@ root_widget = Builder.load_string('''
             background_color: 0.2,0.2,0.2,1
             values: ('dif1','dif2','dif3')
             size: root.width * 0.15, root.height * 0.07
-            pos: root.width * 0.62, root.height * 0.7 - self.height * 0.5
+            pos: root.width * 0.62, root.height * 0.5 - self.height * 0.5
             on_text: app.difficulty_selected()
 
+            
         LoggedButton:
             id: tega_sleep_button
             name: 'tega_sleep_button'
@@ -260,84 +282,84 @@ root_widget = Builder.load_string('''
         id: balloon1
         size: root.width * 0.10, root.width * 0.10
         pos: root.width * 0.1, root.height * 0.90
-        source: './tablet_app/images/Balloon_Price1.gif'
+        source: './tablet_app/images/Balloon_Price_w1_1.gif'
         opacity: 0
 
     Image:
         id: balloon2
         size: root.width * 0.10, root.width * 0.10
         pos: root.width * 0.2, root.height * 0.90
-        source: './tablet_app/images/Balloon_Price2.gif'
+        source: './tablet_app/images/Balloon_Price_w1_2.gif'
         opacity: 0
 
     Image:
         id: balloon3
         size: root.width * 0.10, root.width * 0.10
         pos: root.width * 0.3, root.height * 0.90
-        source: './tablet_app/images/Balloon_Price3.gif'
+        source: './tablet_app/images/Balloon_Price_w1_3.gif'
         opacity: 0
 
     Image:
         id: balloon4
         size: root.width * 0.10, root.width * 0.10
         pos: root.width * 0.4, root.height * 0.90
-        source: './tablet_app/images/Balloon_Price1.gif'
+        source: './tablet_app/images/Balloon_Price_w1_1.gif'
         opacity: 0
 
     Image:
         id: balloon5
         size: root.width * 0.10, root.width * 0.10
         pos: root.width * 0.5, root.height * 0.90
-        source: './tablet_app/images/Balloon_Price2.gif'
+        source: './tablet_app/images/Balloon_Price_w1_2.gif'
         opacity: 0
 
     Image:
         id: balloon6
         size: root.width * 0.10, root.width * 0.10
         pos: root.width * 0.6, root.height * 0.90
-        source: './tablet_app/images/Balloon_Price3.gif'
+        source: './tablet_app/images/Balloon_Price_w1_3.gif'
         opacity: 0
 
     Image:
         id: balloon7
         size: root.width * 0.10, root.width * 0.10
         pos: root.width * 0.7, root.height * 0.90
-        source: './tablet_app/images/Balloon_Price1.gif'
+        source: './tablet_app/images/Balloon_Price_w1_1.gif'
         opacity: 0
 
     Image:
         id: balloon8
         size: root.width * 0.10, root.width * 0.10
         pos: root.width * 0.8, root.height * 0.90
-        source: './tablet_app/images/Balloon_Price2.gif'
+        source: './tablet_app/images/Balloon_Price_w1_2.gif'
         opacity: 0
 
     Image:
         id: balloon9
         size: root.width * 0.10, root.width * 0.10
         pos: root.width * 0.9, root.height * 0.90
-        source: './tablet_app/images/Balloon_Price3.gif'
+        source: './tablet_app/images/Balloon_Price_w1_3.gif'
         opacity: 0
 
     Image:
         id: balloon10
         size: root.width * 0.10, root.width * 0.10
         pos: root.width * 1, root.height * 0.90
-        source: './tablet_app/images/Balloon_Price1.gif'
+        source: './tablet_app/images/Balloon_Price_w1_1.gif'
         opacity: 0
 
     Image:
         id: balloon11
         size: root.width * 0.10, root.width * 0.10
         pos: root.width * 1.1, root.height * 0.90
-        source: './tablet_app/images/Balloon_Price2.gif'
+        source: './tablet_app/images/Balloon_Price_w1_2.gif'
         opacity: 0
 
     Image:
         id: balloon12
         size: root.width * 0.10, root.width * 0.10
         pos: root.width * 1.2, root.height * 0.90
-        source: './tablet_app/images/Balloon_Price3.gif'
+        source: './tablet_app/images/Balloon_Price_w1_3.gif'
         opacity: 0
 
 <QuestionMarkWidget>
@@ -447,84 +469,84 @@ root_widget = Builder.load_string('''
         id: balloon1
         size: root.width * 0.10, root.width * 0.10
         pos: root.width * 0.15, root.height * 0.56
-        source: './tablet_app/images/Balloon_Price1.gif'
+        source: './tablet_app/images/Balloon_Price_w1_1.gif'
         opacity: 1
 
     Image:
         id: balloon5
         size: root.width * 0.10, root.width * 0.10
         pos: root.width * 0.2, root.height * 0.54
-        source: './tablet_app/images/Balloon_Price2.gif'
+        source: './tablet_app/images/Balloon_Price_w1_2.gif'
         opacity: 1
 
     Image:
         id: balloon12
         size: root.width * 0.10, root.width * 0.10
         pos: root.width * 0.25, root.height * 0.53
-        source: './tablet_app/images/Balloon_Price3.gif'
+        source: './tablet_app/images/Balloon_Price_w1_3.gif'
         opacity: 1
 
     Image:
         id: balloon7
         size: root.width * 0.10, root.width * 0.10
         pos: root.width * 0.30, root.height * 0.52
-        source: './tablet_app/images/Balloon_Price1.gif'
+        source: './tablet_app/images/Balloon_Price_w1_1.gif'
         opacity: 1
 
     Image:
         id: balloon2
         size: root.width * 0.10, root.width * 0.10
         pos: root.width * 0.35, root.height * 0.52
-        source: './tablet_app/images/Balloon_Price2.gif'
+        source: './tablet_app/images/Balloon_Price_w1_2.gif'
         opacity: 1
 
     Image:
         id: balloon9
         size: root.width * 0.10, root.width * 0.10
         pos: root.width * 0.40, root.height * 0.52
-        source: './tablet_app/images/Balloon_Price3.gif'
+        source: './tablet_app/images/Balloon_Price_w1_3.gif'
         opacity: 1
 
     Image:
         id: balloon4
         size: root.width * 0.10, root.width * 0.10
         pos: root.width * 0.45, root.height * 0.52
-        source: './tablet_app/images/Balloon_Price1.gif'
+        source: './tablet_app/images/Balloon_Price_w1_1.gif'
         opacity: 1
 
     Image:
         id: balloon11
         size: root.width * 0.10, root.width * 0.10
         pos: root.width * 0.50, root.height * 0.52
-        source: './tablet_app/images/Balloon_Price2.gif'
+        source: './tablet_app/images/Balloon_Price_w1_2.gif'
         opacity: 1
 
     Image:
         id: balloon6
         size: root.width * 0.10, root.width * 0.10
         pos: root.width * 0.55, root.height * 0.53
-        source: './tablet_app/images/Balloon_Price3.gif'
+        source: './tablet_app/images/Balloon_Price_w1_3.gif'
         opacity: 1
 
     Image:
         id: balloon10
         size: root.width * 0.10, root.width * 0.10
         pos: root.width * 0.60, root.height * 0.53
-        source: './tablet_app/images/Balloon_Price1.gif'
+        source: './tablet_app/images/Balloon_Price_w1_1.gif'
         opacity: 1
 
     Image:
         id: balloon8
         size: root.width * 0.10, root.width * 0.10
         pos: root.width * 0.65, root.height * 0.54
-        source: './tablet_app/images/Balloon_Price2.gif'
+        source: './tablet_app/images/Balloon_Price_w1_2.gif'
         opacity: 1
 
     Image:
         id: balloon3
         size: root.width * 0.10, root.width * 0.10
         pos: root.width * 0.7, root.height * 0.55
-        source: './tablet_app/images/Balloon_Price3.gif'
+        source: './tablet_app/images/Balloon_Price_w1_3.gif'
         opacity: 1
 
 
@@ -546,6 +568,8 @@ class TangramMindsetApp(App):
     text_handler = None
     tablet_disabled = False
     yes_clicked_flag = False
+    subject_gender = ""
+    study_world = "w1"
 
     def build(self):
 
@@ -809,6 +833,20 @@ class TangramMindsetApp(App):
             self.text_handler.load_text(filename='./tablet_app/robot_text_revised4_tau.json')
         self.interaction.components['robot'].agent.update_condition(condition)
 
+    def update_gender(self, gender):
+        self.gender = gender
+        if STUDY_SITE == 'MIT':
+            self.subject_gender = ""
+        elif STUDY_SITE == 'TAU':
+            self.subject_gender = gender
+
+    def update_world(self, world):
+        if STUDY_SITE == 'MIT':
+            self.study_world = world
+        elif STUDY_SITE == 'TAU':
+            self.study_world = world
+
+
     def press_stop_button(self):
         print('stop button pressed')
         self.interaction.components['hourglass'].stop()
@@ -821,11 +859,29 @@ class TangramMindsetApp(App):
 
     def condition_selected(self):
         #NOW MOVED TO ADD AND NAMED condition_selection
-        print("spinner_selected")
+        print("condition_selected")
         condition = self.screen_manager.get_screen('zero_screen_room').ids['condition_spinner'].text
         #self.the_app.update_condition(condition)
         self.update_condition(condition)
         print(condition)
+
+    def world_selected(self):
+        #NOW MOVED TO ADD AND NAMED condition_selection
+        print("world_selected")
+        world = self.screen_manager.get_screen('zero_screen_room').ids['world_spinner'].text
+        #self.the_app.update_condition(condition)
+        self.update_world(world)
+        print(world)
+
+
+    def gender_selected(self):
+        #NOW MOVED TO ADD AND NAMED condition_selection
+        print("gender_selected")
+        gender = self.screen_manager.get_screen('zero_screen_room').ids['gender_spinner'].text
+        #self.the_app.update_condition(condition)
+        self.update_gender(gender)
+        print(gender)
+
 
 if __name__ == "__main__":
     TangramMindsetApp().run()
