@@ -227,8 +227,8 @@ root_widget = Builder.load_string('''
             id: yes_button
             name: 'yes_button'
             borders: 2, 'solid', (1,1,0,1)
-            background_normal: './tablet_app/images/BalloonBtn.gif'
-            background_down: './tablet_app/images/BalloonBtn_on.gif'
+            background_normal: './tablet_app/images/PriceBtn_w1.gif'
+            background_down: './tablet_app/images/PriceBtn_on_w1.gif'
             size: root.width * 0.2, root.height * 0.5
             pos: root.width * 0.5 - self.width * 0.5, root.height * 0.7 - self.height * 0.5
             on_press: app.press_yes_button()
@@ -259,8 +259,8 @@ root_widget = Builder.load_string('''
             id: question_mark_widget
             size: root.size
             pos: root.pos
-        BalloonsWonWidget:
-            id: balloons_won_widget
+        PricesWonWidget:
+            id: prices_won_widget
             size: (root.size[0] * 0.7,root.size[1])
             pos: root.pos
         LoggedButton:
@@ -277,89 +277,89 @@ root_widget = Builder.load_string('''
 <TangramSelectionWidget>
     name: 'tangram_selection_widget'
 
-<BalloonsWonWidget>
+<PricesWonWidget>
     Image:
-        id: balloon1
+        id: price1
         size: root.width * 0.10, root.width * 0.10
         pos: root.width * 0.1, root.height * 0.90
-        source: './tablet_app/images/Balloon_Price_w1_1.gif'
+        source: './tablet_app/images/Price_w1_1.gif'
         opacity: 0
 
     Image:
-        id: balloon2
+        id: price2
         size: root.width * 0.10, root.width * 0.10
         pos: root.width * 0.2, root.height * 0.90
-        source: './tablet_app/images/Balloon_Price_w1_2.gif'
+        source: './tablet_app/images/Price_w1_2.gif'
         opacity: 0
 
     Image:
-        id: balloon3
+        id: price3
         size: root.width * 0.10, root.width * 0.10
         pos: root.width * 0.3, root.height * 0.90
-        source: './tablet_app/images/Balloon_Price_w1_3.gif'
+        source: './tablet_app/images/Price_w1_3.gif'
         opacity: 0
 
     Image:
-        id: balloon4
+        id: price4
         size: root.width * 0.10, root.width * 0.10
         pos: root.width * 0.4, root.height * 0.90
-        source: './tablet_app/images/Balloon_Price_w1_1.gif'
+        source: './tablet_app/images/Price_w1_1.gif'
         opacity: 0
 
     Image:
-        id: balloon5
+        id: price5
         size: root.width * 0.10, root.width * 0.10
         pos: root.width * 0.5, root.height * 0.90
-        source: './tablet_app/images/Balloon_Price_w1_2.gif'
+        source: './tablet_app/images/Price_w1_2.gif'
         opacity: 0
 
     Image:
-        id: balloon6
+        id: price6
         size: root.width * 0.10, root.width * 0.10
         pos: root.width * 0.6, root.height * 0.90
-        source: './tablet_app/images/Balloon_Price_w1_3.gif'
+        source: './tablet_app/images/Price_w1_3.gif'
         opacity: 0
 
     Image:
-        id: balloon7
+        id: price7
         size: root.width * 0.10, root.width * 0.10
         pos: root.width * 0.7, root.height * 0.90
-        source: './tablet_app/images/Balloon_Price_w1_1.gif'
+        source: './tablet_app/images/Price_w1_1.gif'
         opacity: 0
 
     Image:
-        id: balloon8
+        id: price8
         size: root.width * 0.10, root.width * 0.10
         pos: root.width * 0.8, root.height * 0.90
-        source: './tablet_app/images/Balloon_Price_w1_2.gif'
+        source: './tablet_app/images/Price_w1_2.gif'
         opacity: 0
 
     Image:
-        id: balloon9
+        id: price9
         size: root.width * 0.10, root.width * 0.10
         pos: root.width * 0.9, root.height * 0.90
-        source: './tablet_app/images/Balloon_Price_w1_3.gif'
+        source: './tablet_app/images/Price_w1_3.gif'
         opacity: 0
 
     Image:
-        id: balloon10
+        id: price10
         size: root.width * 0.10, root.width * 0.10
         pos: root.width * 1, root.height * 0.90
-        source: './tablet_app/images/Balloon_Price_w1_1.gif'
+        source: './tablet_app/images/Price_w1_1.gif'
         opacity: 0
 
     Image:
-        id: balloon11
+        id: price11
         size: root.width * 0.10, root.width * 0.10
         pos: root.width * 1.1, root.height * 0.90
-        source: './tablet_app/images/Balloon_Price_w1_2.gif'
+        source: './tablet_app/images/Price_w1_2.gif'
         opacity: 0
 
     Image:
-        id: balloon12
+        id: price12
         size: root.width * 0.10, root.width * 0.10
         pos: root.width * 1.2, root.height * 0.90
-        source: './tablet_app/images/Balloon_Price_w1_3.gif'
+        source: './tablet_app/images/Price_w1_3.gif'
         opacity: 0
 
 <QuestionMarkWidget>
@@ -411,8 +411,8 @@ root_widget = Builder.load_string('''
         allow_stretch: True
         keep_ratio: False
     Image:
-        name: 'balloon'
-        id: balloon
+        name: 'price'
+        id: price
         allow_stretch: True
         keep_ratio: False
         opacity: 0
@@ -451,8 +451,8 @@ root_widget = Builder.load_string('''
         PartyScreenBackground:
             size: root.size
             pos: root.pos
-        PartyScreenBalloonsWidget:
-            id: party_screen_balloons_widget
+        PartyScreenPricesWidget:
+            id: party_screen_prices_widget
             size: root.size
             pos: root.pos
 
@@ -464,89 +464,89 @@ root_widget = Builder.load_string('''
         allow_stretch: True
         keep_ratio: False
 
-<PartyScreenBalloonsWidget>
+<PartyScreenPricesWidget>
     Image:
-        id: balloon1
+        id: price1
         size: root.width * 0.10, root.width * 0.10
         pos: root.width * 0.15, root.height * 0.56
-        source: './tablet_app/images/Balloon_Price_w1_1.gif'
+        source: './tablet_app/images/Price_w1_1.gif'
         opacity: 1
 
     Image:
-        id: balloon5
+        id: price5
         size: root.width * 0.10, root.width * 0.10
         pos: root.width * 0.2, root.height * 0.54
-        source: './tablet_app/images/Balloon_Price_w1_2.gif'
+        source: './tablet_app/images/Price_w1_2.gif'
         opacity: 1
 
     Image:
-        id: balloon12
+        id: price12
         size: root.width * 0.10, root.width * 0.10
         pos: root.width * 0.25, root.height * 0.53
-        source: './tablet_app/images/Balloon_Price_w1_3.gif'
+        source: './tablet_app/images/Price_w1_3.gif'
         opacity: 1
 
     Image:
-        id: balloon7
+        id: price7
         size: root.width * 0.10, root.width * 0.10
         pos: root.width * 0.30, root.height * 0.52
-        source: './tablet_app/images/Balloon_Price_w1_1.gif'
+        source: './tablet_app/images/Price_w1_1.gif'
         opacity: 1
 
     Image:
-        id: balloon2
+        id: price2
         size: root.width * 0.10, root.width * 0.10
         pos: root.width * 0.35, root.height * 0.52
-        source: './tablet_app/images/Balloon_Price_w1_2.gif'
+        source: './tablet_app/images/Price_w1_2.gif'
         opacity: 1
 
     Image:
-        id: balloon9
+        id: price9
         size: root.width * 0.10, root.width * 0.10
         pos: root.width * 0.40, root.height * 0.52
-        source: './tablet_app/images/Balloon_Price_w1_3.gif'
+        source: './tablet_app/images/Price_w1_3.gif'
         opacity: 1
 
     Image:
-        id: balloon4
+        id: price4
         size: root.width * 0.10, root.width * 0.10
         pos: root.width * 0.45, root.height * 0.52
-        source: './tablet_app/images/Balloon_Price_w1_1.gif'
+        source: './tablet_app/images/Price_w1_1.gif'
         opacity: 1
 
     Image:
-        id: balloon11
+        id: price11
         size: root.width * 0.10, root.width * 0.10
         pos: root.width * 0.50, root.height * 0.52
-        source: './tablet_app/images/Balloon_Price_w1_2.gif'
+        source: './tablet_app/images/Price_w1_2.gif'
         opacity: 1
 
     Image:
-        id: balloon6
+        id: price6
         size: root.width * 0.10, root.width * 0.10
         pos: root.width * 0.55, root.height * 0.53
-        source: './tablet_app/images/Balloon_Price_w1_3.gif'
+        source: './tablet_app/images/Price_w1_3.gif'
         opacity: 1
 
     Image:
-        id: balloon10
+        id: price10
         size: root.width * 0.10, root.width * 0.10
         pos: root.width * 0.60, root.height * 0.53
-        source: './tablet_app/images/Balloon_Price_w1_1.gif'
+        source: './tablet_app/images/Price_w1_1.gif'
         opacity: 1
 
     Image:
-        id: balloon8
+        id: price8
         size: root.width * 0.10, root.width * 0.10
         pos: root.width * 0.65, root.height * 0.54
-        source: './tablet_app/images/Balloon_Price_w1_2.gif'
+        source: './tablet_app/images/Price_w1_2.gif'
         opacity: 1
 
     Image:
-        id: balloon3
+        id: price3
         size: root.width * 0.10, root.width * 0.10
         pos: root.width * 0.7, root.height * 0.55
-        source: './tablet_app/images/Balloon_Price_w1_3.gif'
+        source: './tablet_app/images/Price_w1_3.gif'
         opacity: 1
 
 
@@ -642,7 +642,7 @@ class TangramMindsetApp(App):
 
     def load_sounds(self):
         # load all the wav files into a dictionary whose keys are the expressions from the transition.json
-        sound_list = ['introduction', 'click_balloon']
+        sound_list = ['introduction', 'click_price']
         self.sounds = {}
         for s in sound_list:
             self.sounds[s] = SoundLoader.load("./tablet_app/sounds/" + s + ".m4a")
@@ -747,7 +747,7 @@ class TangramMindsetApp(App):
 
 
     def party_screen(self):
-        self.screen_manager.get_screen('party_screen_room').init_balloons(self.tangrams_solved)
+        self.screen_manager.get_screen('party_screen_room').init_prices(self.tangrams_solved)
         self.screen_manager.current = 'party_screen_room'
 
 
@@ -797,7 +797,7 @@ class TangramMindsetApp(App):
         self.interaction.components['robot'].finished_expression(self.current_sound)
 
     def yes(self):
-        # yes balloon appear on the screen
+        # yes price appear on the screen
         print ('yes in app')
         self.screen_manager.current_screen.ids['yes_button'].opacity = 1
 

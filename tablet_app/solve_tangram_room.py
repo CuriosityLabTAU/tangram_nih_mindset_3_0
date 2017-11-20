@@ -60,9 +60,9 @@ class SolveTangramRoom(Screen):
         self.ids['treasure_box'].ids['box'].source = './tablet_app/images/TreasureBoxLayers_B.gif'
         self.ids['treasure_box'].ids['box'].size = (TangramGame.SCALE * 27, TangramGame.SCALE * 19)
         self.ids['treasure_box'].ids['box'].pos = [TangramGame.SCALE * 1, TangramGame.SCALE * 1]
-        self.ids['treasure_box'].ids['balloon'].opacity = 0
-        self.ids['treasure_box'].ids['balloon'].size = [TangramGame.SCALE * 6, TangramGame.SCALE * 6]
-        self.ids['treasure_box'].ids['balloon'].pos = [TangramGame.SCALE * 15, TangramGame.SCALE * 14]
+        self.ids['treasure_box'].ids['price'].opacity = 0
+        self.ids['treasure_box'].ids['price'].size = [TangramGame.SCALE * 6, TangramGame.SCALE * 6]
+        self.ids['treasure_box'].ids['price'].pos = [TangramGame.SCALE * 15, TangramGame.SCALE * 14]
 
         #shade:
         game_task_layout = GameTaskLayout()
@@ -127,8 +127,8 @@ class SolveTangramRoom(Screen):
         i = self.the_app.tangrams_solved
         i = (i-1)%3 + 1
         self.ids['treasure_box'].ids['box'].source = './tablet_app/images/TreasureOpenBoxLayers_B.gif'
-        self.ids['treasure_box'].ids['balloon'].source = './tablet_app/images/Balloon_Price_'+self.the_app.study_world+'_'+str(i)+'.gif'
-        self.ids['treasure_box'].ids['balloon'].opacity = 1
+        self.ids['treasure_box'].ids['price'].source = './tablet_app/images/Price_'+self.the_app.study_world+'_'+str(i)+'.gif'
+        self.ids['treasure_box'].ids['price'].opacity = 1
         for c in self.ids['tangram_game_widget'].children:
             if isinstance(c, TangramPiece):
                 if (c.pos[1] > self.size[1] * 0.65): #if the pieces is still on top make it invisible
@@ -316,7 +316,8 @@ class TangramGameWidget(Widget):
         print("?", self.pieces[name].name, "pos=", self.pieces[name].pos, "target=", (x, y))
 
         if (initial_rot != rot):
-            self.robot_press_rotate_sound.play()
+            print("play")
+            # rinat unmark: self.robot_press_rotate_sound.play()
 
         if (((round(self.pieces[name].pos[0]),round(self.pieces[name].pos[1])) != (x,y)) | (initial_rot != rot)):
             print("!=",self.pieces[name].name,"pos=",self.pieces[name].pos,"target=",(x,y))

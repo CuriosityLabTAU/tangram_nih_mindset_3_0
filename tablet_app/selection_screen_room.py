@@ -49,7 +49,7 @@ class SelectionScreenRoom(Screen):
     def on_enter(self, *args):
         # print("on_enter selection_screen_room")
         self.ids["background_image"].source = './tablet_app/images/TangramGame_Selection.jpg'
-        self.init_balloons()
+        self.init_prices()
         self.init_tasks()
         self.the_tablet.change_state('selection_screen')
         if self.the_app.tablet_disabled:
@@ -57,17 +57,17 @@ class SelectionScreenRoom(Screen):
         # self.selections_widget = SelectionsWidget()
         # self.display_tasks()
 
-    def init_balloons(self):
+    def init_prices(self):
         #display the number of tangrams solved (by the Robot and Child).
         i=0
-        #for balloon in self.ids['balloons_won_widget'].ids:
+        #for price in self.ids['prices_won_widget'].ids:
         while i < 12:
             i += 1
             if (i <= self.the_app.tangrams_solved):
-                self.ids['balloons_won_widget'].ids["balloon"+str(i)].opacity = 1
+                self.ids['prices_won_widget'].ids["price"+str(i)].opacity = 1
                 print("visible",i)
             else:
-                self.ids['balloons_won_widget'].ids["balloon"+str(i)].opacity = 0
+                self.ids['prices_won_widget'].ids["price"+str(i)].opacity = 0
 
 
     def init_tasks (self):
@@ -243,7 +243,7 @@ class TangramSelectionWidget(Widget):
     #     print("on touch up")
     #     self.show_frame1 = 0
 
-class BalloonsWonWidget (Widget):
+class PricesWonWidget (Widget):
     pass
 
 class QuestionMarkWidget (Widget):
