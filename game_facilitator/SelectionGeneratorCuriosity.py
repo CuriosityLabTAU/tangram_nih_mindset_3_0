@@ -29,7 +29,7 @@ class SelectionGeneratorCuriosity:
         for n in range(self.N_paths):
             self.paths.append([])
 
-    def load_dif_levels(self, filename='dif1', directory='.'):
+    def load_dif_levels(self, filename='dif1', directory='.', world = 'w1'):
         # read tangrams for each difficulty from tangram_levels.txt
         # file format is:
         #  dif 0
@@ -42,7 +42,7 @@ class SelectionGeneratorCuriosity:
         path_i = -1
         self.paths = []
         # with open('./game_facilitator/tangram_levels_' + filename + '.txt','r') as fp:
-        with open(directory +'/game_facilitator/tangram_paths.txt', 'r') as fp:
+        with open(directory +'/game_facilitator/tangram_paths_'+ world + '.txt', 'r') as fp:
             for line in fp:
                 if 'path' in line:
                     path_i += 1
