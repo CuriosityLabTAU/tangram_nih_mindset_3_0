@@ -11,6 +11,7 @@ class SelectionGeneratorCuriosity:
         self.max_level = 6
         self.challenge_index = 9 # column number of the challenge level (zero based)
         self.challenge_counter = 0 # counts the challenges
+        self.is_last_challenge = False # indicates whether the last game was a challenge
         self.paths = []
         self.path_indexes = np.zeros([self.N_paths], dtype=np.int)
         self.current_level = 2
@@ -22,10 +23,14 @@ class SelectionGeneratorCuriosity:
         # self.increased_robot = True
         # self.same_game_counter_child = 0
         # self.same_game_counter_robot = 0
+        self.round_number = 1 # the current round of the game (tutorial-1, child_play-2, robot_play-3,...)
         self.child_path_idx = 0
         self.robot_path_idx = 1
         self.other_path_idx = 2
         self.other_rot_path_idx = 3
+        self.hard_path_idx = 4
+        self.impossible_path_idx = 5
+
         for n in range(self.N_paths):
             self.paths.append([])
 
@@ -84,55 +89,87 @@ class SelectionGeneratorCuriosity:
         # user_selection is 0/1/2
         # game_result is 'S' or 'F'
 
-        # self.path_indexes[self.current_level - 1] += 1
-        # self.path_indexes[self.current_level] += 1
-        # self.path_indexes[self.current_level + 1] += 1
-
-        if player == 'Child':
-            if user_selection == 2: # unknown puzzle
-                # self.seen_puzzles[self.child_path_idx, self.path_indexes[self.child_path_idx]] += 1
-                self.seen_puzzles[self.other_path_idx, self.path_indexes[self.other_path_idx]] += 1
-                self.path_indexes[self.child_path_idx] += 1
-                self.path_indexes[self.other_path_idx] += 1
-            elif user_selection == 0: # current puzzle
-                self.seen_puzzles[self.child_path_idx, self.path_indexes[self.child_path_idx]] += 1
-                if self.seen_puzzles[self.child_path_idx, self.path_indexes[self.child_path_idx]] == 2:
+        if self.is_last_challenge is False: # if last round was not a challenge
+            if player == 'Child':
+                if user_selection == 2: # unknown puzzle
+                    # self.seen_puzzles[self.child_path_idx, self.path_indexes[self.child_path_idx]] += 1
+                    self.seen_puzzles[self.other_path_idx, self.path_indexes[self.other_path_idx]] += 1
                     self.path_indexes[self.child_path_idx] += 1
-                self.path_indexes[self.other_path_idx] += 1
-            elif user_selection == 1: # next puzzle
-                self.seen_puzzles[self.child_path_idx, self.path_indexes[self.child_path_idx] + 1] += 1
-                self.path_indexes[self.child_path_idx] += 1
-                self.path_indexes[self.other_path_idx] += 1
-            self.player = 'Robot'
-        elif player == 'Robot':
-            if user_selection == 2:  # unknown puzzle
-                # self.seen_puzzles[self.child_path_idx, self.path_indexes[self.child_path_idx]] += 1
-                self.seen_puzzles[self.other_rot_path_idx, self.path_indexes[self.other_rot_path_idx]] += 1
-                self.path_indexes[self.robot_path_idx] += 1
-                self.path_indexes[self.other_rot_path_idx] += 1
-            elif user_selection == 0:  # current puzzle
-                self.seen_puzzles[self.robot_path_idx, self.path_indexes[self.robot_path_idx]] += 1
-                if self.seen_puzzles[self.robot_path_idx, self.path_indexes[self.robot_path_idx]] == 2:
+                    self.path_indexes[self.other_path_idx] += 1
+                elif user_selection == 0: # current puzzle
+                    self.seen_puzzles[self.child_path_idx, self.path_indexes[self.child_path_idx]] += 1
+                    if self.seen_puzzles[self.child_path_idx, self.path_indexes[self.child_path_idx]] == 2:
+                        self.path_indexes[self.child_path_idx] += 1
+                    self.path_indexes[self.other_path_idx] += 1
+                elif user_selection == 1: # next puzzle
+                    self.seen_puzzles[self.child_path_idx, self.path_indexes[self.child_path_idx] + 1] += 1
+                    self.path_indexes[self.child_path_idx] += 1
+                    self.path_indexes[self.other_path_idx] += 1
+                self.player = 'Robot'
+            elif player == 'Robot':
+                if user_selection == 2:  # unknown puzzle
+                    # self.seen_puzzles[self.child_path_idx, self.path_indexes[self.child_path_idx]] += 1
+                    self.seen_puzzles[self.other_rot_path_idx, self.path_indexes[self.other_rot_path_idx]] += 1
                     self.path_indexes[self.robot_path_idx] += 1
-                self.path_indexes[self.other_rot_path_idx] += 1
-            elif user_selection == 1:  # next puzzle
-                self.seen_puzzles[self.robot_path_idx, self.path_indexes[self.robot_path_idx] + 1] += 1
-                self.path_indexes[self.robot_path_idx] += 1
-                self.path_indexes[self.other_rot_path_idx] += 1
-            self.player = 'Child'
+                    self.path_indexes[self.other_rot_path_idx] += 1
+                elif user_selection == 0:  # current puzzle
+                    self.seen_puzzles[self.robot_path_idx, self.path_indexes[self.robot_path_idx]] += 1
+                    if self.seen_puzzles[self.robot_path_idx, self.path_indexes[self.robot_path_idx]] == 2:
+                        self.path_indexes[self.robot_path_idx] += 1
+                    self.path_indexes[self.other_rot_path_idx] += 1
+                elif user_selection == 1:  # next puzzle
+                    self.seen_puzzles[self.robot_path_idx, self.path_indexes[self.robot_path_idx] + 1] += 1
+                    self.path_indexes[self.robot_path_idx] += 1
+                    self.path_indexes[self.other_rot_path_idx] += 1
+                self.player = 'Child'
+        else: # if last game was a challenge then don't progress the paths.
+            self.is_last_challenge = False
+            if player == 'Child':
+                self.player = 'Robot'
+            elif player == 'Robot':
+                self.player = 'Child'
+
 
     def get_challenge_selection(self):
-        # return three json_strings of special challenge level. The challenge tangrams are on the last column
-        temp_task = Task()
-        T1 = self.paths[self.challenge_index-1][self.challenge_counter]
-        T1_init_pos = temp_task.transfer_json_to_json_initial_pos(T1)
-        T2 = self.paths[self.challenge_index][self.challenge_counter]
-        T2_init_pos = temp_task.transfer_json_to_json_initial_pos(T2)
-        T3 = self.paths[self.challenge_index+1][self.challenge_counter]
-        T3_init_pos = temp_task.transfer_json_to_json_initial_pos(T3)
+        # return three json_strings of special challenge level.
 
-        self.challenge_counter += 1
-        return [[T1, T1_init_pos], [T2, T2_init_pos], [T3, T3_init_pos]]
+        if self.challenge_counter == 0: # first challenge is hard tangrams, short time
+
+            self.challenge_counter += 1
+            self.is_last_challenge = True
+
+            temp_task = Task()
+            all_pieces_task = Task()
+            all_pieces_task.create_from_json(
+                '{"pieces": [["square", "0", "0 0"], ["small triangle2", "0", "0 1"], ["small triangle1", "90", "1 0"], ["large triangle1", "0", "1 1"], ["parrallelogram", "0", "2 0"], ["medium triangle", "0", "3 1"], ["large triangle2", "180", "1 1"]], "size": "5 5"}')
+            all_pieces_init_pos = all_pieces_task.transfer_json_to_json_initial_pos(
+                '{"pieces": [["square", "0", "0 0"], ["small triangle2", "0", "0 1"], ["small triangle1", "90", "1 0"], ["large triangle1", "0", "1 1"], ["parrallelogram", "0", "2 0"], ["medium triangle", "0", "3 1"], ["large triangle2", "180", "1 1"]], "size": "5 5"}')
+
+            T1 = self.paths[self.hard_path_idx][0]
+            T1_init_pos = temp_task.transfer_json_to_json_initial_pos(T1)
+            T2 = self.paths[self.hard_path_idx][1]
+            T2_init_pos = temp_task.transfer_json_to_json_initial_pos(T2)
+            T3 = self.paths[self.hard_path_idx][2]
+            T3_init_pos = temp_task.transfer_json_to_json_initial_pos(T3)
+            return [[T1, all_pieces_init_pos], [T2, all_pieces_init_pos], [T3, all_pieces_init_pos]]
+        else:       # second challenge is impossible tangrams, long time
+            self.is_last_challenge = True
+
+            temp_task = Task()
+            all_pieces_task = Task()
+            all_pieces_task.create_from_json(
+                '{"pieces": [["square", "0", "0 0"], ["small triangle2", "0", "0 1"], ["small triangle1", "90", "1 0"], ["large triangle1", "0", "1 1"], ["parrallelogram", "0", "2 0"], ["medium triangle", "0", "3 1"], ["large triangle2", "180", "1 1"]], "size": "5 5"}')
+            all_pieces_init_pos = all_pieces_task.transfer_json_to_json_initial_pos(
+                '{"pieces": [["square", "0", "0 0"], ["small triangle2", "0", "0 1"], ["small triangle1", "90", "1 0"], ["large triangle1", "0", "1 1"], ["parrallelogram", "0", "2 0"], ["medium triangle", "0", "3 1"], ["large triangle2", "180", "1 1"]], "size": "5 5"}')
+
+            T1 = self.paths[self.impossible_path_idx][0]
+            T1_init_pos = temp_task.transfer_json_to_json_initial_pos(T1)
+            T2 = self.paths[self.impossible_path_idx][1]
+            T2_init_pos = temp_task.transfer_json_to_json_initial_pos(T2)
+            T3 = self.paths[self.impossible_path_idx][2]
+            T3_init_pos = temp_task.transfer_json_to_json_initial_pos(T3)
+            return [[T1, all_pieces_init_pos], [T2, all_pieces_init_pos], [T3, all_pieces_init_pos]]
+
     #
     # def display(self):
     #     plt.figure()
