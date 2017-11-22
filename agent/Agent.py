@@ -4,11 +4,11 @@ import time
 import pickle
 from tablet_app.tangram_game import *
 
-
 class Agent:
     condition = 'c-g-'
     def __init__(self):
         # print ("TangramGame.SCALE", TangramGame.SCALE)
+        self.world = ''
         self.solver = Solver()
         # self.mindset = Mindset()
         # self.curiosity = Curiosity()
@@ -37,6 +37,12 @@ class Agent:
             self.mindset = 0.9
         elif 'g-' in self.condition:
             self.mindset = 0.1
+
+    def update_world(self, world):
+        self.world = world
+        print ('Agent world is', self.world)
+        with open('agent/' + 'solve_cache_curiosity_' + self.world + '.pkl', 'rb') as f:
+            self.solve_cache_curious = pickle.load(f)
 
     def solve_task(self, json_str_task):
         print ('solve task', self.current_round)
