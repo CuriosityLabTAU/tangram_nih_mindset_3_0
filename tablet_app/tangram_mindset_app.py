@@ -33,7 +33,8 @@ from kivy.core.audio import SoundLoader
 
 from random import choice
 
-GAME_WITH_ROBOT = True  # False
+GAME_WITH_ROBOT = False  # False
+ROBOT_SOUND_FROM_TABLET = True # False
 STUDY_SITE = 'TAU'      #'TAU'      # MIT
 
 class MyScreenManager (ScreenManager):
@@ -110,7 +111,7 @@ root_widget = Builder.load_string('''
         LoggedButton:
             id: start_button
             name: 'start_button'
-            background_color: 0.1,0.5,0.2,1
+            background_color: 0.5,0.2,0.2,1
             background_normal: ''
             text: 'Start'
             font_size: 16
@@ -559,6 +560,12 @@ class TangramMindsetApp(App):
     subject_gender = ""
     study_world = "w1"
 
+    filled_all_data = False
+    filled_subject_id = False
+    filled_world = False
+    filled_gender = False
+    filled_condition = False
+
     def build(self):
 
         self.interaction = Interaction(
@@ -619,6 +626,7 @@ class TangramMindsetApp(App):
 
         zero_screen = ZeroScreenRoom(self)
         zero_screen.ids['subject_id'].bind(text=zero_screen.ids['subject_id'].on_text_change)
+        zero_screen.ids['subject_id'].bind(text=self.subject_id_changed)
         self.screen_manager.add_widget(zero_screen)
         self.screen_manager.add_widget(FirstScreenRoom(self.interaction.components['tablet']))
         self.screen_manager.add_widget(SelectionScreenRoom(self.interaction.components['tablet']))
@@ -627,6 +635,10 @@ class TangramMindsetApp(App):
 
         self.screen_manager.current = 'zero_screen_room'
 
+    def subject_id_changed(self, *args):
+        if len(args[1]) > 0:
+            self.filled_subject_id = True
+            self.update_filled()
 
     def load_sounds(self):
         # load all the wav files into a dictionary whose keys are the expressions from the transition.json
@@ -668,11 +680,16 @@ class TangramMindsetApp(App):
 
     def press_start_button (self):
         # child pressed the start button
-        self.interaction.components['child'].on_action(["press_start_button"])
+
+        if (self.filled_all_data):
+            self.interaction.components['child'].on_action(["press_start_button"])
+        else:
+            print ("please fill all the data")
+
 
     def press_robot_init (self):
         # put tega to sleep
-        action_script = ["tega_init"]
+        action_script = ["behavior_robot_init"]
         self.interaction.components['robot'].express(action_script)
 
     def press_load_transition(self, stage):
@@ -814,6 +831,8 @@ class TangramMindsetApp(App):
         self.screen_manager.current_screen.enable_widgets()
 
     def update_condition(self, condition):
+        self.filled_condition = True
+        self.update_filled()
         self.text_handler = TextHandler(condition)
         if STUDY_SITE == 'MIT':
             self.text_handler.load_text(filename='./tablet_app/robot_text_revised3.json')
@@ -822,6 +841,8 @@ class TangramMindsetApp(App):
         self.interaction.components['robot'].agent.update_condition(condition)
 
     def update_gender(self, gender):
+        self.filled_gender = True
+        self.update_filled()
         self.gender = gender
         if STUDY_SITE == 'MIT':
             self.subject_gender = ""
@@ -829,11 +850,22 @@ class TangramMindsetApp(App):
             self.subject_gender = gender
 
     def update_world(self, world):
+        self.filled_world  = True
+        self.update_filled()
         if STUDY_SITE == 'MIT':
             self.study_world = world
         elif STUDY_SITE == 'TAU':
             self.study_world = world
+            self.interaction.components['game'].game_facilitator.selection_gen.load_dif_levels(world=world)
+            self.interaction.components['robot'].agent.update_world(world)
 
+    def update_filled(self):
+        self.filled_all_data = (self.filled_subject_id and self.filled_world and self.filled_gender and self.filled_condition)
+        if self.filled_all_data:
+            self.screen_manager.get_screen('zero_screen_room').ids['start_button'].background_color = (0.2, 0.5, 0.2, 1)
+            print ("all is filled")
+
+            #self.screen_manager.get_screen('zero_screen_room').ids['start_button'].text = "OK"
 
     def press_stop_button(self):
         print('stop button pressed')
