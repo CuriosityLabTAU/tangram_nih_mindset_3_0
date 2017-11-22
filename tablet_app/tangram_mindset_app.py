@@ -54,7 +54,7 @@ root_widget = Builder.load_string('''
         TextInput:
             id: roscore_ip
             name: 'roscore_ip'
-            text: '132.66.196.213'
+            text: '192.168.1.100'
             font_size: 16
             multiline: False
             size: root.width * 0.4, root.height * 0.07
@@ -845,6 +845,7 @@ class TangramMindsetApp(App):
             self.study_world = world
         elif STUDY_SITE == 'TAU':
             self.study_world = world
+            self.interaction.components['robot'].agent.update_world(world)
 
 
     def press_stop_button(self):
