@@ -35,6 +35,7 @@ from random import choice
 
 GAME_WITH_ROBOT = False  # False
 ROBOT_SOUND_FROM_TABLET = True # False
+#rinat
 STUDY_SITE = 'TAU'      #'TAU'      # MIT
 
 class MyScreenManager (ScreenManager):
