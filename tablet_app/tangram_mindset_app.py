@@ -33,7 +33,7 @@ from kivy.core.audio import SoundLoader
 
 from random import choice
 
-GAME_WITH_ROBOT = False  # False
+GAME_WITH_ROBOT = True  # False
 STUDY_SITE = 'TAU'      #'TAU'      # MIT
 
 class MyScreenManager (ScreenManager):
@@ -137,18 +137,6 @@ root_widget = Builder.load_string('''
             size: root.width * 0.15, root.height * 0.07
             pos: root.width * 0.62, root.height * 0.6 - self.height * 0.5
             on_text: app.gender_selected()
-
-
-        LoggedSpinner:
-            id: difficulty_spinner
-            text: 'difficulty'
-            font_size: 16
-            background_color: 0.2,0.2,0.2,1
-            values: ('dif1','dif2','dif3')
-            size: root.width * 0.15, root.height * 0.07
-            pos: root.width * 0.62, root.height * 0.5 - self.height * 0.5
-            on_text: app.difficulty_selected()
-
             
         LoggedButton:
             id: tega_sleep_button
@@ -159,7 +147,7 @@ root_widget = Builder.load_string('''
             font_size: 16
             size: root.width * 0.15, root.height * 0.07
             pos: root.width * 0.08, root.height * 0.5 - self.height * 0.5
-            on_press: app.press_tega_sleep()
+            on_press: app.press_robot_init()
 
         LoggedButton:
             id: goto_game2_button
@@ -682,7 +670,7 @@ class TangramMindsetApp(App):
         # child pressed the start button
         self.interaction.components['child'].on_action(["press_start_button"])
 
-    def press_tega_sleep (self):
+    def press_robot_init (self):
         # put tega to sleep
         action_script = ["tega_init"]
         self.interaction.components['robot'].express(action_script)
