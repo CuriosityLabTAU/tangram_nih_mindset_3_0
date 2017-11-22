@@ -30,6 +30,7 @@ random.seed(1)
 np.random.seed(1)
 
 # initialization: (curious ==> 2, non-curoius ==>1)
+world = 'w1'
 CONDITION = 'curious' #'curious'
 # CONDITION = 'not_curious'
 H_THRESH_CURIOUS = 0.1
@@ -37,7 +38,7 @@ H_THRESH_NOT_CURIOUS = 0.5
 epoch_num = 100000   # should be 100000
 
 sgc = SelectionGeneratorCuriosity()
-sgc.load_dif_levels(directory='..')
+sgc.load_dif_levels(directory='..', world = world)
 
 sol = Solver()
 task = Task()
@@ -230,18 +231,18 @@ for game in range(0, 6):
     # update game ...
     sgc.update_game_result(player='Robot', user_selection=selected, game_result='S')
 
-save = False
+save = True
 if save is True:
     if CONDITION == 'curious':
-        with open('../agent/' + 'selection_cache_curiosity' + '.pkl', 'wb') as f:
+        with open('../agent/' + 'selection_cache_curiosity_' + world + '.pkl', 'wb') as f:
             pickle.dump(selection_sequence, f, pickle.HIGHEST_PROTOCOL)
-        with open('../agent/' + 'solve_cache_curiosity' + '.pkl', 'wb') as f:
+        with open('../agent/' + 'solve_cache_curiosity_' + world + '.pkl', 'wb') as f:
             pickle.dump(solver_cache, f, pickle.HIGHEST_PROTOCOL)
 
     if CONDITION == 'not_curious':
-        with open('../agent/' + 'selection_cache_curiosity_non' + '.pkl', 'wb') as f:
+        with open('../agent/' + 'selection_cache_curiosity_non_' + world + '.pkl', 'wb') as f:
             pickle.dump(selection_sequence, f, pickle.HIGHEST_PROTOCOL)
-        with open('../agent/' + 'solve_cache_curiosity_non' + '.pkl', 'wb') as f:
+        with open('../agent/' + 'solve_cache_curiosity_non_' + world + '.pkl', 'wb') as f:
             pickle.dump(solver_cache, f, pickle.HIGHEST_PROTOCOL)
 # best results:
 # learning_rate = 0.1
