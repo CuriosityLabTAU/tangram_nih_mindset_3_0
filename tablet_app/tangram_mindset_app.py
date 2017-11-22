@@ -54,7 +54,7 @@ root_widget = Builder.load_string('''
         TextInput:
             id: roscore_ip
             name: 'roscore_ip'
-            text: '192.168.1.100'
+            text: '132.66.50.139'
             font_size: 16
             multiline: False
             size: root.width * 0.4, root.height * 0.07

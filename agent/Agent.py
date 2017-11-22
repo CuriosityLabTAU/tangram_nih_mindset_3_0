@@ -43,6 +43,12 @@ class Agent:
         print ('Agent world is', self.world)
         with open('agent/' + 'solve_cache_curiosity_' + self.world + '.pkl', 'rb') as f:
             self.solve_cache_curious = pickle.load(f)
+        with open('agent/' + 'solve_cache_curiosity_non_' + self.world + '.pkl', 'rb') as f:
+            self.solve_cache_not_curious = pickle.load(f)
+        with open('agent/' + 'selection_cache_curiosity_' + self.world + '.pkl', 'rb') as f:
+            self.selection_sequence_curious = pickle.load(f)
+        with open('agent/' + 'selection_cache_curiosity_non_' + self.world + '.pkl', 'rb') as f:
+            self.selection_sequence_not_curious = pickle.load(f)
 
     def solve_task(self, json_str_task):
         print ('solve task', self.current_round)
