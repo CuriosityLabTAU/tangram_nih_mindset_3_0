@@ -37,9 +37,14 @@ class Interaction:
         for c in self.components.values():
             c.show()
 
-    def load(self, filename='transitions.json'):
+    def load(self, filename='general_transitions.json'):
         with open(filename) as data_file:
             self.data = json.load(data_file)
+
+    def load_sequence(self, filename='general_sequence.json'):
+        with open(filename) as sequence_file:
+            sequence = json.load(sequence_file)
+            self.data['sequence'] = sequence['sequence']
         self.current_interaction = -1
 
     def next_interaction(self):
