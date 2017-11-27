@@ -594,7 +594,8 @@ class TangramMindsetApp(App):
             elif STUDY_SITE == 'TAU':
                 self.interaction.components['robot'].load_text(filename='./tablet_app/robot_text_revised4_tau.json')
                 self.interaction.components['robot'].robot_name = 'nao'
-        self.interaction.load(filename='./tablet_app/transitions.json')
+        self.interaction.load(filename='./tablet_app/general_transitions.json')
+        self.interaction.load_sequence(filename='./tablet_app/general_sequence.json')
         self.interaction.next_interaction()
 
         # self.load_sounds()
@@ -602,7 +603,6 @@ class TangramMindsetApp(App):
 
         self.screen_manager.add_widget(SetupScreenRoom())
         self.screen_manager.current = 'setup_screen_room'
-
 
         return self.screen_manager
 
@@ -620,7 +620,6 @@ class TangramMindsetApp(App):
 
         KC.start(the_parents=[self, self.interaction.components['robot']], the_ip=local_ip)
         KL.start(mode=[DataMode.file, DataMode.communication, DataMode.ros], pathname=self.user_data_dir, the_ip=local_ip)
-
 
     def on_connection(self):
         KL.log.insert(action=LogAction.data, obj='TangramMindsetApp', comment='start')
@@ -681,7 +680,6 @@ class TangramMindsetApp(App):
 
     def press_start_button (self):
         # child pressed the start button
-
         if (self.filled_all_data):
             self.interaction.components['child'].on_action(["press_start_button"])
         else:
@@ -694,28 +692,29 @@ class TangramMindsetApp(App):
         self.interaction.components['robot'].express(action_script)
 
     def press_load_transition(self, stage):
-        print("loading new transition file")
+        if (self.filled_all_data):
+            print("loading new transition file")
 
-        games_played = int(stage.replace('game',''))-1
+            games_played = int(stage.replace('game',''))-1
 
-        # increase challenge_counter
-        if games_played > 6:
-            self.interaction.components['game'].game_facilitator.selection_gen.challenge_counter += 1
-            self.interaction.components['game'].game_facilitator.selection_gen.challenge_index += 1
+            # increase challenge_counter
+            if games_played > 6:
+                self.interaction.components['game'].game_facilitator.selection_gen.challenge_counter += 1
+                self.interaction.components['game'].game_facilitator.selection_gen.challenge_index += 1
 
-        for i in range(games_played):
-            self.interaction.components['game'].game_facilitator.update_game_result('S')
-            print(self.interaction.components['game'].game_facilitator.selection_gen.current_level)
-            self.tangrams_solved += choice([1,0])
+            for i in range(games_played):
+                self.interaction.components['game'].game_facilitator.update_game_result('S')
+                print(self.interaction.components['game'].game_facilitator.selection_gen.current_level)
+                self.tangrams_solved += choice([1,0])
 
-        if games_played < 4:
-            games_played += 1
+            if games_played < 4:
+                games_played += 1
 
-        self.tangrams_solved = max(games_played/2, self.tangrams_solved)
+            self.tangrams_solved = max(games_played/2, self.tangrams_solved)
 
-        filename = './tablet_app/transitions_'+stage+'.json'
-        self.interaction.load(filename)
-        self.interaction.next_interaction()
+            filename = './tablet_app/sequence_' + self.study_world + '_' + stage + '.json'
+            self.interaction.load_sequence(filename=filename)
+            self.interaction.next_interaction()
 
     def press_yes_button(self):
         # child pressed the yes button
@@ -859,11 +858,18 @@ class TangramMindsetApp(App):
             self.study_world = world
             self.interaction.components['game'].game_facilitator.selection_gen.load_dif_levels(world=world)
             self.interaction.components['robot'].agent.update_world(world)
+            self.interaction.load_sequence(filename='./tablet_app/sequence_' + self.study_world + '.json')
+            self.interaction.next_interaction()
 
     def update_filled(self):
         self.filled_all_data = (self.filled_subject_id and self.filled_world and self.filled_gender and self.filled_condition)
         if self.filled_all_data:
             self.screen_manager.get_screen('zero_screen_room').ids['start_button'].background_color = (0.2, 0.5, 0.2, 1)
+            self.screen_manager.get_screen('zero_screen_room').ids['goto_game2_button'].background_color = (0.2, 0.5, 0.2, 1)
+            self.screen_manager.get_screen('zero_screen_room').ids['goto_game4_button'].background_color = (0.2, 0.5, 0.2, 1)
+            self.screen_manager.get_screen('zero_screen_room').ids['goto_game6_button'].background_color = (0.2, 0.5, 0.2, 1)
+            self.screen_manager.get_screen('zero_screen_room').ids['goto_game8_button'].background_color = (0.2, 0.5, 0.2, 1)
+            self.screen_manager.get_screen('zero_screen_room').ids['goto_game10_button'].background_color = (0.2, 0.5, 0.2, 1)
             print ("all is filled")
 
             #self.screen_manager.get_screen('zero_screen_room').ids['start_button'].text = "OK"
