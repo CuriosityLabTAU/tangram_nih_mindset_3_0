@@ -19,7 +19,6 @@ from kivy.core.audio import SoundLoader
 class FirstScreenRoom(Screen):
     the_tablet = None
 
-
     # def __init__(self, **kwargs):
     #     print("init first", kwargs)
     #     super(Screen, self).__init__(**kwargs)

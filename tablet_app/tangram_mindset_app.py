@@ -56,7 +56,7 @@ root_widget = Builder.load_string('''
         TextInput:
             id: roscore_ip
             name: 'roscore_ip'
-            text: '132.66.196.213'
+            text: '132.66.50.139'
             font_size: 16
             multiline: False
             size: root.width * 0.4, root.height * 0.07
@@ -217,8 +217,8 @@ root_widget = Builder.load_string('''
             id: yes_button
             name: 'yes_button'
             borders: 2, 'solid', (1,1,0,1)
-            background_normal: './tablet_app/images/PriceBtn_w1.gif'
-            background_down: './tablet_app/images/PriceBtn_on_w1.gif'
+            background_normal: './tablet_app/images/worlds/w1/PriceBtn_w1.png'
+            background_down: './tablet_app/images/worlds/w1/PriceBtn_on_w1.png'
             size: root.width * 0.2, root.height * 0.5
             pos: root.width * 0.5 - self.width * 0.5, root.height * 0.7 - self.height * 0.5
             on_press: app.press_yes_button()
@@ -228,7 +228,7 @@ root_widget = Builder.load_string('''
     Image:
         size: root.size
         pos: root.pos
-        source: './tablet_app/images/TangramGame_Open.jpg'
+        source: './tablet_app/images/worlds/w1/TangramGame_Open.png'
         allow_stretch: True
         keep_ratio: False
 
