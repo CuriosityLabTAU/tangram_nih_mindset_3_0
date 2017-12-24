@@ -57,6 +57,8 @@ root_widget = Builder.load_string('''
             id: roscore_ip
             name: 'roscore_ip'
             text: '132.66.50.139'
+            text: '192.168.122.1'
+            text: '192.168.0.100'
             font_size: 16
             multiline: False
             size: root.width * 0.4, root.height * 0.07
@@ -210,28 +212,23 @@ root_widget = Builder.load_string('''
 <FirstScreenRoom>:
     name: 'first_screen_room'
     Widget:
-        FirstScreenBackground:
+        Image:
+            id: background_image
             size: root.size
             pos: root.pos
+            source: './tablet_app/images/worlds/w1/TangramGame_Open.png'
+            allow_stretch: True
+            keep_ratio: False
         LoggedButton:
             id: yes_button
             name: 'yes_button'
             borders: 2, 'solid', (1,1,0,1)
-            background_normal: './tablet_app/images/worlds/w1/PriceBtn_w1.png'
-            background_down: './tablet_app/images/worlds/w1/PriceBtn_on_w1.png'
-            size: root.width * 0.2, root.height * 0.5
+            background_normal: './tablet_app/images/worlds/w1/PriceBtn.png'
+            background_down: './tablet_app/images/worlds/w1/PriceBtn_on.png'
+            size: root.width * 0.4, root.height * 0.4
             pos: root.width * 0.5 - self.width * 0.5, root.height * 0.7 - self.height * 0.5
             on_press: app.press_yes_button()
             opacity: 0
-
-<FirstScreenBackground>:
-    Image:
-        size: root.size
-        pos: root.pos
-        source: './tablet_app/images/worlds/w1/TangramGame_Open.png'
-        allow_stretch: True
-        keep_ratio: False
-
 
 <SelectionScreenRoom>:
     name: 'selection_screen_room'
@@ -240,7 +237,7 @@ root_widget = Builder.load_string('''
             id: background_image
             size: root.size
             pos: root.pos
-            source: './tablet_app/images/TangramGame_Selection.jpg'
+            source: './tablet_app/images/worls/w1/TangramGame_Selection.png'
             allow_stretch: True
             keep_ratio: False
         TangramSelectionWidget:
@@ -364,6 +361,7 @@ root_widget = Builder.load_string('''
     name: 'solve_tangram_room'
     Widget:
         Background:
+            id: background_widget
             size: root.size
             pos: root.pos
         TreasureBox:
@@ -384,9 +382,9 @@ root_widget = Builder.load_string('''
             pos: root.width * 0.975 - self.width * 0.5, root.height * 0.970 - self.height * 0.5
             on_press: app.press_stop_button()
 
-
 <Background>:
     Image:
+        id: background_image
         size: root.size
         pos: root.pos
         source: './tablet_app/images/tangram_background.jpg'
@@ -748,6 +746,7 @@ class TangramMindsetApp(App):
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     def first_screen(self):
+        self.screen_manager.get_screen('first_screen_room').init_first_screen_room(the_app=self)
         self.screen_manager.current = 'first_screen_room'
 
 

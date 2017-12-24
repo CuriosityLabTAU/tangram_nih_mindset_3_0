@@ -43,11 +43,16 @@ class SolveTangramRoom(Screen):
         self.shade_task_json = x[0]
         self.pieces_task_json = x[1]
         self.the_app = the_app
+        self.world = the_app.study_world
 
         print("Solve Tangram Room init_task ", self.task_json)
 
+        # Background:
+        self.ids['background_widget'].ids['background_image'].source = './tablet_app/images/worlds/' + self.world + '/tangram_background.png'
+
         #Hourglass
         hourglass_widget = self.ids['hourglass_widget']
+        hourglass_widget.ids['hourglass'].source = './tablet_app/images/worlds/' + self.world + '/sand_clock.png'
         hourglass_widget.do_layout()
 
         tangram_game_widget = self.ids['tangram_game_widget']
@@ -184,7 +189,7 @@ class GameTaskLayout(LoggedButton, TaskLayout):
         self.update_position()
         with self.canvas.before:
             print ("self.canvas.before")
-            Color(234/255.0,226/255.0,139/255.0,1)
+            Color(243/255.0, 212/255.0, 52/255.0,1)
             self.rect = Rectangle()
             self.rect.pos = self.pos
             self.rect.size = self.size
@@ -504,10 +509,10 @@ class HourGlassWidget (Widget):
         self.topSand.size = sandWidth, sandHeight
         self.topSand.pos = self.x, self.y+self.height * 0.5
         self.middleSand.opacity = 1
-        self.middleSand.size = sandWidth * 0.05, sandHeight * 2
-        self.middleSand.pos = self.x + sandWidth/2.0 - sandWidth*0.02, self.y+0
+        self.middleSand.size = sandWidth * 0.10, sandHeight * 2
+        self.middleSand.pos = self.x + sandWidth/2.0 - sandWidth*0.06, self.y
         self.bottomSand.size = sandWidth, 0
-        self.bottomSand.pos = self.x, self.y+0 + self.height * 0.041
+        self.bottomSand.pos = self.x, self.y+0 + self.height * 0.07
         self.init = True
 
     def start_hourglass(self):

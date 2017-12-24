@@ -27,10 +27,15 @@ class FirstScreenRoom(Screen):
         self.the_tablet = the_tablet
         super(Screen, self).__init__()
 
+    def init_first_screen_room(self,the_app):
+        print('init_first_screen_room')
+        world = the_app.study_world
+        print(world)
+        self.ids['background_image'].source = './tablet_app/images/worlds' + world + 'TangramGame_Selection.png'
+
     def on_enter(self, *args):
         print("on_enter first_screen_room")
         self.the_tablet.change_state('first_screen')
-
         #self.load_sounds()
         #self.play_sound("TangramOpen_myFriend")
 
@@ -70,8 +75,5 @@ class FirstScreenRoom(Screen):
         #print("press_yes_button")
         #app.sm.enter_solve_tangram_room()
         #App.action('press_yes_button')
-
-class FirstScreenBackground(Widget):
-    pass
 
 
