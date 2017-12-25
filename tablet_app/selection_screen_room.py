@@ -65,7 +65,7 @@ class SelectionScreenRoom(Screen):
         #for price in self.ids['prices_won_widget'].ids:
         while i < 12:
             i += 1
-            price_num = i % 3 + 1
+            price_num = (i-1) % 3 + 1
             self.ids['prices_won_widget'].ids["price" + str(i)].source = './tablet_app/images/worlds/' + self.world + '/Price_' + str(price_num) + '.png'
             if (i <= self.the_app.tangrams_solved):
                 self.ids['prices_won_widget'].ids["price"+str(i)].opacity = 1

@@ -437,6 +437,7 @@ root_widget = Builder.load_string('''
     name: 'party_screen_room'
     Widget:
         PartyScreenBackground:
+            id: party_screen_background
             size: root.size
             pos: root.pos
         PartyScreenPricesWidget:
@@ -446,6 +447,7 @@ root_widget = Builder.load_string('''
 
 <PartyScreenBackground>:
     Image:
+        id: background_image
         size: root.size
         pos: root.pos
         source: './tablet_app/images/TangramGame_Open.jpg'
@@ -751,7 +753,7 @@ class TangramMindsetApp(App):
 
 
     def party_screen(self):
-        self.screen_manager.get_screen('party_screen_room').init_prices(self.tangrams_solved)
+        self.screen_manager.get_screen('party_screen_room').init_party(self, self.tangrams_solved)
         self.screen_manager.current = 'party_screen_room'
 
 

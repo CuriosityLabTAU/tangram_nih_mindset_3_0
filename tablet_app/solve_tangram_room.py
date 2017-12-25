@@ -72,7 +72,7 @@ class SolveTangramRoom(Screen):
         # self.ids['treasure_box'].ids['price'].size = [TangramGame.SCALE * 6, TangramGame.SCALE * 6]
         # self.ids['treasure_box'].ids['price'].pos = [TangramGame.SCALE * 15, TangramGame.SCALE * 14]
 
-        self.ids['treasure_box'].ids['box'].source = './tablet_app/images/TreasureBoxLayers_B.gif'
+        self.ids['treasure_box'].ids['box'].source = './tablet_app/images/worlds/'+ self.world + '/TreasureBoxLayers_B.gif'
         self.ids['treasure_box'].ids['box'].size = (TangramGame.SCALE * 10, TangramGame.SCALE * 7)
         self.ids['treasure_box'].ids['box'].pos = [TangramGame.SCALE * 0.5, TangramGame.SCALE * 0.5]
         self.ids['treasure_box'].ids['price'].opacity = 0
@@ -101,10 +101,10 @@ class SolveTangramRoom(Screen):
         button_rotate.border = (0,0,0,0)
         button_rotate.size =  [Window.width * 0.07, Window.width * 0.07] #[60,60] #
         button_rotate.pos = [TangramGame.SCALE * 27, TangramGame.SCALE * 9]
-        button_rotate.background_normal = './tablet_app/images/Tangram_rotate_btn.gif'
-        button_rotate.background_down =  './tablet_app/images/Tangram_rotate_btn_down.gif'
-        button_rotate.background_disabled_normal = './tablet_app/images/Tangram_rotate_btn.gif'
-        button_rotate.background_disabled_down = './tablet_app/images/Tangram_rotate_btn.gif'
+        button_rotate.background_normal = './tablet_app/images/worlds/' + self.world + '/Tangram_rotate_btn.png'
+        button_rotate.background_down =  './tablet_app/images/worlds/' + self.world + '/Tangram_rotate_btn_down.png'
+        button_rotate.background_disabled_normal = './tablet_app/images/worlds/' + self.world + '/Tangram_rotate_btn.png'
+        button_rotate.background_disabled_down = './tablet_app/images/worlds/' + self.world + '/Tangram_rotate_btn_down.png'
         tangram_game_widget.add_widget(button_rotate)
         self.tangram_game_widget = tangram_game_widget
 
@@ -141,8 +141,8 @@ class SolveTangramRoom(Screen):
         print("solve_tangram_room: solved")
         i = self.the_app.tangrams_solved
         i = (i-1)%3 + 1
-        self.ids['treasure_box'].ids['box'].source = './tablet_app/images/TreasureOpenBoxLayers_B.gif'
-        self.ids['treasure_box'].ids['price'].source = './tablet_app/images/Price_'+self.the_app.study_world+'_'+str(i)+'.gif'
+        self.ids['treasure_box'].ids['box'].source = './tablet_app/images/worlds/' + self.world + '/TreasureOpenBoxLayers.gif'
+        self.ids['treasure_box'].ids['price'].source = './tablet_app/images/worlds/' + self.world + '/Price_'+str(i)+'.png'
         self.ids['treasure_box'].ids['price'].opacity = 1
         for c in self.ids['tangram_game_widget'].children:
             if isinstance(c, TangramPiece):
@@ -508,6 +508,7 @@ class HourGlassWidget (Widget):
         self.hourglass.pos = self.x, self.y
         self.topSand.size = sandWidth, sandHeight
         self.topSand.pos = self.x, self.y+self.height * 0.5
+        self.topSand.opacity = 1
         self.middleSand.opacity = 1
         self.middleSand.size = sandWidth * 0.10, sandHeight * 2
         self.middleSand.pos = self.x + sandWidth/2.0 - sandWidth*0.06, self.y
@@ -532,6 +533,7 @@ class HourGlassWidget (Widget):
         if (current_percent < 0.02):
             #self.middleSand.height = 0
             self.middleSand.opacity = 0
+            self.topSand.opacity = 0
             self.time_over_sound.play()
             # self.time_is_up = True
 
