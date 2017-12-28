@@ -1,3 +1,5 @@
+import os
+
 from tangram_selection_not_using import *
 from tangram_game import *
 
@@ -587,6 +589,8 @@ class TangramMindsetApp(App):
         self.interaction.components['tablet'].app = self
         if not GAME_WITH_ROBOT:
             self.interaction.components['robot'].app = self
+            self.interaction.components['robot'].load_text(filename='./tablet_app/robot_text_revised4_tau.json') #added in order to play sound files
+
         else:
             if STUDY_SITE == 'MIT':
                 self.interaction.components['robot'].load_text(filename='./tablet_app/robot_text_revised4.json')
@@ -642,10 +646,11 @@ class TangramMindsetApp(App):
 
     def load_sounds(self):
         # load all the wav files into a dictionary whose keys are the expressions from the transition.json
-        sound_list = ['introduction', 'click_price']
+        #sound_list = ['introduction', 'click_price']
+        sound_list = os.listdir("./tablet_app/sounds/wav_tangram") #['Selection_tutorial_all_0_question_f.wav', 'robot_lose_c+g+_2.wav', 'selection_tutorial_c+g-_0.wav', 'tangram_tutorial_all_0_faster.wav'...
         self.sounds = {}
         for s in sound_list:
-            self.sounds[s] = SoundLoader.load("./tablet_app/sounds/" + s + ".m4a")
+            self.sounds[s] = SoundLoader.load("./tablet_app/sounds/wav_tangram/" + s)
         self.current_sound = None
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -780,21 +785,34 @@ class TangramMindsetApp(App):
         self.screen_manager.get_screen('solve_tangram_room').init_task(x, the_app=self)
         self.screen_manager.current = 'solve_tangram_room'
 
-    def robot_express(self, action):
+    def robot_express(self, action, expression):
         # robot is saying action
-        print ('robot_express ',action)
+        print ('robot_express. action:', action, ', expression:', expression)
         self.current_sound = action
+
+        sound_filename = ''
+        for name in expression[1:]:
+            if name.lower() == name:
+                print('filename: ', name)
+                if (name in self.sounds.keys()):
+                    sound_filename = name
+                else:
+                    sound_filename = 'move_explanation_c+g+_0' #just a placeholder for now
+
         # attempt tts
-        if self.text_handler.say(self.current_sound):
-            self.finish_robot_express(0)
+        #if self.text_handler.say(self.current_sound):
+        #    self.finish_robot_express(0)
+
+        if 1==0:
+            pass
         else:   # attempt recorded speech
             try:
-                sound = self.sounds[self.current_sound]
-                print(sound)
+                print('sound file name:', sound_filename)
+                sound = self.sounds[sound_filename]
                 sound.bind(on_stop=self.finish_robot_express)
                 sound.play()
             except: # there is no sound for
-                print('no sound for: ', self.current_sound)
+                print('no sound for:', sound_filename)
                 self.finish_robot_express(0)
 
     def finish_robot_express (self, dt):
