@@ -44,11 +44,13 @@ class SelectionScreenRoom(Screen):
         # print ('init_selection_options', x)
         self.tasks_json = x
         self.the_app=the_app
-        self.ids["background_image"].source = './tablet_app/images/TangramGame_Selection.jpg'
+        self.world= self.the_app.study_world
+        self.ids["background_image"].source = './tablet_app/images/worlds/'+ self.world +'/TangramGame_Selection.png'
+        self.ids['question_mark_widget'].ids['question_mark'].source = './tablet_app/images/worlds/'+self.world+'/question_mark.png'
 
     def on_enter(self, *args):
         # print("on_enter selection_screen_room")
-        self.ids["background_image"].source = './tablet_app/images/TangramGame_Selection.jpg'
+        # self.ids["background_image"].source = './tablet_app/images/TangramGame_Selection.jpg'
         self.init_prices()
         self.init_tasks()
         self.the_tablet.change_state('selection_screen')
@@ -63,6 +65,8 @@ class SelectionScreenRoom(Screen):
         #for price in self.ids['prices_won_widget'].ids:
         while i < 12:
             i += 1
+            price_num = (i-1) % 3 + 1
+            self.ids['prices_won_widget'].ids["price" + str(i)].source = './tablet_app/images/worlds/' + self.world + '/Price_' + str(price_num) + '.png'
             if (i <= self.the_app.tangrams_solved):
                 self.ids['prices_won_widget'].ids["price"+str(i)].opacity = 1
                 print("visible",i)
@@ -106,7 +110,7 @@ class SelectionScreenRoom(Screen):
         #selection_task_layout = self.tasks_layout[treasure]
         #selection_task_layout.set_border()
         #selection_task_layout.canvas.ask_update()
-        self.ids["background_image"].source = './tablet_app/images/TangramGame_Selection_selected'+str(treasure)+'.jpg'
+        self.ids["background_image"].source = './tablet_app/images/worlds/'+self.world+'/TangramGame_Selection_selected'+str(treasure)+'.png'
 
     def disable_widgets(self):
         for c in self.ids["tangram_selection_widget"].children:
@@ -137,11 +141,12 @@ class SelectionTaskLayout(LoggedButton, TaskLayout):
             # # self.bind(size=self.update_position, pos=self.update_position)
             with self.canvas.after:
                 if (index==2): #NOT IN USE
-                    Color(234 / 255.0, 226 / 255.0, 139 / 255.0, 1)
+                    pass
+                    #Color(234 / 255.0, 226 / 255.0, 139 / 255.0, 1)
                     #Color(1, 0, 0, 1)
-                    self.rect = Rectangle()
-                    self.rect.pos = [self.pos[0] + 4 * TangramGame.SCALE,self.pos[1]+ 1 * TangramGame.SCALE * 0.8] #[4 * TangramGame.SCALE, Window.height * 0.25]#self.pos
-                    self.rect.size = [Window.width * 0.16, Window.height * 0.18]
+                    #self.rect = Rectangle()
+                    #self.rect.pos = [self.pos[0] + 4 * TangramGame.SCALE,self.pos[1]+ 1 * TangramGame.SCALE * 0.8] #[4 * TangramGame.SCALE, Window.height * 0.25]#self.pos
+                    #self.rect.size = [Window.width * 0.16, Window.height * 0.18]
 
 
     def update_position(self, *args):

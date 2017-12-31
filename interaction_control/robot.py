@@ -28,6 +28,8 @@ class RobotComponent(Component):
         with open(filename) as data_file:
             self.animation = json.load(data_file)
 
+
+
     def run_function(self, action):
         print(self.name, 'run_function', action[0], action[1:])
         if action[0] == action[1:]:
@@ -64,7 +66,7 @@ class RobotComponent(Component):
 
             if self.app:
                 print("if self.app:")
-                self.app.robot_express(self.expression)
+                self.app.robot_express(action[0], self.expression)
 
         elif 'idle' not in action[0]:
             # select the animation
@@ -100,7 +102,7 @@ class RobotComponent(Component):
                 KC.client.send_message(str(json.dumps(data)))
 
             if self.app:
-                self.app.robot_express(self.expression)
+                self.app.robot_express(action[0], self.expression)
 
     def add_expression(self, base, add):
         if len(base) == 0:

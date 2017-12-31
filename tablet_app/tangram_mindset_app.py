@@ -1,3 +1,5 @@
+import os
+
 from tangram_selection_not_using import *
 from tangram_game import *
 
@@ -56,7 +58,9 @@ root_widget = Builder.load_string('''
         TextInput:
             id: roscore_ip
             name: 'roscore_ip'
-            text: '132.66.196.213'
+            text: '132.66.50.139'
+            text: '192.168.122.1'
+            text: '192.168.0.100'
             font_size: 16
             multiline: False
             size: root.width * 0.4, root.height * 0.07
@@ -210,28 +214,23 @@ root_widget = Builder.load_string('''
 <FirstScreenRoom>:
     name: 'first_screen_room'
     Widget:
-        FirstScreenBackground:
+        Image:
+            id: background_image
             size: root.size
             pos: root.pos
+            source: './tablet_app/images/worlds/w1/TangramGame_Open.png'
+            allow_stretch: True
+            keep_ratio: False
         LoggedButton:
             id: yes_button
             name: 'yes_button'
             borders: 2, 'solid', (1,1,0,1)
-            background_normal: './tablet_app/images/PriceBtn_w1.gif'
-            background_down: './tablet_app/images/PriceBtn_on_w1.gif'
-            size: root.width * 0.2, root.height * 0.5
+            background_normal: './tablet_app/images/worlds/w1/PriceBtn.png'
+            background_down: './tablet_app/images/worlds/w1/PriceBtn_on.png'
+            size: root.width * 0.4, root.height * 0.4
             pos: root.width * 0.5 - self.width * 0.5, root.height * 0.7 - self.height * 0.5
             on_press: app.press_yes_button()
             opacity: 0
-
-<FirstScreenBackground>:
-    Image:
-        size: root.size
-        pos: root.pos
-        source: './tablet_app/images/TangramGame_Open.jpg'
-        allow_stretch: True
-        keep_ratio: False
-
 
 <SelectionScreenRoom>:
     name: 'selection_screen_room'
@@ -240,7 +239,7 @@ root_widget = Builder.load_string('''
             id: background_image
             size: root.size
             pos: root.pos
-            source: './tablet_app/images/TangramGame_Selection.jpg'
+            source: './tablet_app/images/worls/w1/TangramGame_Selection.png'
             allow_stretch: True
             keep_ratio: False
         TangramSelectionWidget:
@@ -364,6 +363,7 @@ root_widget = Builder.load_string('''
     name: 'solve_tangram_room'
     Widget:
         Background:
+            id: background_widget
             size: root.size
             pos: root.pos
         TreasureBox:
@@ -384,9 +384,9 @@ root_widget = Builder.load_string('''
             pos: root.width * 0.975 - self.width * 0.5, root.height * 0.970 - self.height * 0.5
             on_press: app.press_stop_button()
 
-
 <Background>:
     Image:
+        id: background_image
         size: root.size
         pos: root.pos
         source: './tablet_app/images/tangram_background.jpg'
@@ -439,6 +439,7 @@ root_widget = Builder.load_string('''
     name: 'party_screen_room'
     Widget:
         PartyScreenBackground:
+            id: party_screen_background
             size: root.size
             pos: root.pos
         PartyScreenPricesWidget:
@@ -448,6 +449,7 @@ root_widget = Builder.load_string('''
 
 <PartyScreenBackground>:
     Image:
+        id: background_image
         size: root.size
         pos: root.pos
         source: './tablet_app/images/TangramGame_Open.jpg'
@@ -587,6 +589,8 @@ class TangramMindsetApp(App):
         self.interaction.components['tablet'].app = self
         if not GAME_WITH_ROBOT:
             self.interaction.components['robot'].app = self
+            self.interaction.components['robot'].load_text(filename='./tablet_app/robot_text_revised4_tau.json') #added in order to play sound files
+
         else:
             if STUDY_SITE == 'MIT':
                 self.interaction.components['robot'].load_text(filename='./tablet_app/robot_text_revised4.json')
@@ -594,7 +598,8 @@ class TangramMindsetApp(App):
             elif STUDY_SITE == 'TAU':
                 self.interaction.components['robot'].load_text(filename='./tablet_app/robot_text_revised4_tau.json')
                 self.interaction.components['robot'].robot_name = 'nao'
-        self.interaction.load(filename='./tablet_app/transitions.json')
+        self.interaction.load(filename='./tablet_app/general_transitions.json')
+        self.interaction.load_sequence(filename='./tablet_app/general_sequence.json')
         self.interaction.next_interaction()
 
         # self.load_sounds()
@@ -602,7 +607,6 @@ class TangramMindsetApp(App):
 
         self.screen_manager.add_widget(SetupScreenRoom())
         self.screen_manager.current = 'setup_screen_room'
-
 
         return self.screen_manager
 
@@ -620,7 +624,6 @@ class TangramMindsetApp(App):
 
         KC.start(the_parents=[self, self.interaction.components['robot']], the_ip=local_ip)
         KL.start(mode=[DataMode.file, DataMode.communication, DataMode.ros], pathname=self.user_data_dir, the_ip=local_ip)
-
 
     def on_connection(self):
         KL.log.insert(action=LogAction.data, obj='TangramMindsetApp', comment='start')
@@ -643,10 +646,11 @@ class TangramMindsetApp(App):
 
     def load_sounds(self):
         # load all the wav files into a dictionary whose keys are the expressions from the transition.json
-        sound_list = ['introduction', 'click_price']
+        #sound_list = ['introduction', 'click_price']
+        sound_list = os.listdir("./tablet_app/sounds/wav_tangram") #['Selection_tutorial_all_0_question_f.wav', 'robot_lose_c+g+_2.wav', 'selection_tutorial_c+g-_0.wav', 'tangram_tutorial_all_0_faster.wav'...
         self.sounds = {}
         for s in sound_list:
-            self.sounds[s] = SoundLoader.load("./tablet_app/sounds/" + s + ".m4a")
+            self.sounds[s] = SoundLoader.load("./tablet_app/sounds/wav_tangram/" + s)
         self.current_sound = None
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -681,7 +685,6 @@ class TangramMindsetApp(App):
 
     def press_start_button (self):
         # child pressed the start button
-
         if (self.filled_all_data):
             self.interaction.components['child'].on_action(["press_start_button"])
         else:
@@ -694,28 +697,29 @@ class TangramMindsetApp(App):
         self.interaction.components['robot'].express(action_script)
 
     def press_load_transition(self, stage):
-        print("loading new transition file")
+        if (self.filled_all_data):
+            print("loading new transition file")
 
-        games_played = int(stage.replace('game',''))-1
+            games_played = int(stage.replace('game',''))-1
 
-        # increase challenge_counter
-        if games_played > 6:
-            self.interaction.components['game'].game_facilitator.selection_gen.challenge_counter += 1
-            self.interaction.components['game'].game_facilitator.selection_gen.challenge_index += 1
+            # increase challenge_counter
+            if games_played > 6:
+                self.interaction.components['game'].game_facilitator.selection_gen.challenge_counter += 1
+                self.interaction.components['game'].game_facilitator.selection_gen.challenge_index += 1
 
-        for i in range(games_played):
-            self.interaction.components['game'].game_facilitator.update_game_result('S')
-            print(self.interaction.components['game'].game_facilitator.selection_gen.current_level)
-            self.tangrams_solved += choice([1,0])
+            for i in range(games_played):
+                self.interaction.components['game'].game_facilitator.update_game_result('S')
+                print(self.interaction.components['game'].game_facilitator.selection_gen.current_level)
+                self.tangrams_solved += choice([1,0])
 
-        if games_played < 4:
-            games_played += 1
+            if games_played < 4:
+                games_played += 1
 
-        self.tangrams_solved = max(games_played/2, self.tangrams_solved)
+            self.tangrams_solved = max(games_played/2, self.tangrams_solved)
 
-        filename = './tablet_app/transitions_'+stage+'.json'
-        self.interaction.load(filename)
-        self.interaction.next_interaction()
+            filename = './tablet_app/sequence_' + self.study_world + '_' + stage + '.json'
+            self.interaction.load_sequence(filename=filename)
+            self.interaction.next_interaction()
 
     def press_yes_button(self):
         # child pressed the yes button
@@ -749,11 +753,12 @@ class TangramMindsetApp(App):
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     def first_screen(self):
+        self.screen_manager.get_screen('first_screen_room').init_first_screen_room(the_app=self)
         self.screen_manager.current = 'first_screen_room'
 
 
     def party_screen(self):
-        self.screen_manager.get_screen('party_screen_room').init_prices(self.tangrams_solved)
+        self.screen_manager.get_screen('party_screen_room').init_party(self, self.tangrams_solved)
         self.screen_manager.current = 'party_screen_room'
 
 
@@ -780,21 +785,34 @@ class TangramMindsetApp(App):
         self.screen_manager.get_screen('solve_tangram_room').init_task(x, the_app=self)
         self.screen_manager.current = 'solve_tangram_room'
 
-    def robot_express(self, action):
+    def robot_express(self, action, expression):
         # robot is saying action
-        print ('robot_express ',action)
+        print ('robot_express. action:', action, ', expression:', expression)
         self.current_sound = action
+
+        sound_filename = ''
+        for name in expression[1:]:
+            if name.lower() == name:
+                print('filename: ', name)
+                if (name in self.sounds.keys()):
+                    sound_filename = name
+                else:
+                    sound_filename = 'move_explanation_c+g+_0' #just a placeholder for now
+
         # attempt tts
-        if self.text_handler.say(self.current_sound):
-            self.finish_robot_express(0)
+        #if self.text_handler.say(self.current_sound):
+        #    self.finish_robot_express(0)
+
+        if 1==0:
+            pass
         else:   # attempt recorded speech
             try:
-                sound = self.sounds[self.current_sound]
-                print(sound)
+                print('sound file name:', sound_filename)
+                sound = self.sounds[sound_filename]
                 sound.bind(on_stop=self.finish_robot_express)
                 sound.play()
             except: # there is no sound for
-                print('no sound for: ', self.current_sound)
+                print('no sound for:', sound_filename)
                 self.finish_robot_express(0)
 
     def finish_robot_express (self, dt):
@@ -859,11 +877,18 @@ class TangramMindsetApp(App):
             self.study_world = world
             self.interaction.components['game'].game_facilitator.selection_gen.load_dif_levels(world=world)
             self.interaction.components['robot'].agent.update_world(world)
+            self.interaction.load_sequence(filename='./tablet_app/sequence_' + self.study_world + '.json')
+            self.interaction.next_interaction()
 
     def update_filled(self):
         self.filled_all_data = (self.filled_subject_id and self.filled_world and self.filled_gender and self.filled_condition)
         if self.filled_all_data:
             self.screen_manager.get_screen('zero_screen_room').ids['start_button'].background_color = (0.2, 0.5, 0.2, 1)
+            self.screen_manager.get_screen('zero_screen_room').ids['goto_game2_button'].background_color = (0.2, 0.5, 0.2, 1)
+            self.screen_manager.get_screen('zero_screen_room').ids['goto_game4_button'].background_color = (0.2, 0.5, 0.2, 1)
+            self.screen_manager.get_screen('zero_screen_room').ids['goto_game6_button'].background_color = (0.2, 0.5, 0.2, 1)
+            self.screen_manager.get_screen('zero_screen_room').ids['goto_game8_button'].background_color = (0.2, 0.5, 0.2, 1)
+            self.screen_manager.get_screen('zero_screen_room').ids['goto_game10_button'].background_color = (0.2, 0.5, 0.2, 1)
             print ("all is filled")
 
             #self.screen_manager.get_screen('zero_screen_room').ids['start_button'].text = "OK"
