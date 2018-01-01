@@ -139,7 +139,7 @@ root_widget = Builder.load_string('''
             text: 'gender'
             font_size: 16
             background_color: 0.2,0.2,0.2,1
-            values: ('male','female')
+            values: ('m','f')
             size: root.width * 0.15, root.height * 0.07
             pos: root.width * 0.62, root.height * 0.6 - self.height * 0.5
             on_text: app.gender_selected()
@@ -602,7 +602,7 @@ class TangramMindsetApp(App):
         self.interaction.load_sequence(filename='./tablet_app/general_sequence.json')
         self.interaction.next_interaction()
 
-        # self.load_sounds()
+        #self.load_sounds()
         self.screen_manager = MyScreenManager()
 
         self.screen_manager.add_widget(SetupScreenRoom())
@@ -646,11 +646,17 @@ class TangramMindsetApp(App):
 
     def load_sounds(self):
         # load all the wav files into a dictionary whose keys are the expressions from the transition.json
-        #sound_list = ['introduction', 'click_price']
-        sound_list = os.listdir("./tablet_app/sounds/wav_tangram") #['Selection_tutorial_all_0_question_f.wav', 'robot_lose_c+g+_2.wav', 'selection_tutorial_c+g-_0.wav', 'tangram_tutorial_all_0_faster.wav'...
+        sound_list = ['introduction', 'click_price']
+
+        #sound_list = os.listdir("./tablet_app/sounds/wav_tangram") #['Selection_tutorial_all_0_question_f.wav', 'robot_lose_c+g+_2.wav', 'selection_tutorial_c+g-_0.wav', 'tangram_tutorial_all_0_faster.wav'...
+        # sound_list = ['Selection_tutorial_all_0_question_f.wav', 'robot_lose_c+g+_2.wav', 'selection_tutorial_c+g-_0.wav',
+
+
         self.sounds = {}
         for s in sound_list:
-            self.sounds[s] = SoundLoader.load("./tablet_app/sounds/wav_tangram/" + s)
+        #    self.sounds[s] = SoundLoader.load("./tablet_app/sounds/wav_tangram/" + s)
+            print("sound ",s," was loaded")
+            #self.sounds[s] = SoundLoader.load("./tablet_app/sounds/" + s)
         self.current_sound = None
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -794,16 +800,28 @@ class TangramMindsetApp(App):
         for name in expression[1:]:
             if name.lower() == name:
                 print('filename: ', name)
-                if (name in self.sounds.keys()):
-                    sound_filename = name
+                try_sound = name +'.wav'
+                try_sound_gender = name + '_' + self.gender + '.wav'
+                try_sound_world = name + "_" + self.study_world + '.wav'
+                try_sound_world_gender = name + "_" + self.study_world + '_' + self.gender + '.wav'
+                if (try_sound in self.sounds.keys()):
+                    sound_filename = try_sound
+                elif (try_sound_gender in self.sounds.keys()):
+                    sound_filename = try_sound_world_gender
+                elif (try_sound_world in self.sounds.keys()):
+                    sound_filename = try_sound_world
+                elif (try_sound_world_gender in self.sounds.keys()):
+                    sound_filename = try_sound_world_gender
                 else:
+                    print ("could not find filename", name)
                     sound_filename = 'move_explanation_c+g+_0' #just a placeholder for now
+                print ('sound_filename = ', sound_filename)
 
         # attempt tts
         #if self.text_handler.say(self.current_sound):
         #    self.finish_robot_express(0)
 
-        if 1==0:
+        if 1==1:
             pass
         else:   # attempt recorded speech
             try:
