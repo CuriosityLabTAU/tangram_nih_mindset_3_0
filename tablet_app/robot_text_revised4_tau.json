@@ -95,7 +95,6 @@
       ["You beat the challenge! You really used your skills on that game","child_win_c-g-_3","SILENT_YES"],
       ["very good","child_win_c-g-_4","PERKUP"],
       ["you solved the puzzle","child_win_c-g-_5","SILENT_YES"],
-      ["good! now we have more balloons for the party","child_win_c-g-_6","SILENT_YES"],
       ["You seem to be on the right track","child_win_c-g-_7","SILENT_YES"]
     ],
     "c-g+": [
@@ -126,11 +125,10 @@
       ["yay","robot_win_c-g-_0"],
       ["woohoo","robot_win_c-g-_1"],
       ["I beat the challenge! I really used my skills on that game","robot_win_c-g-_2"],
-      ["great, I got us another balloon for the party","robot_win_c-g-_3"],
-      ["I did it!","robot_win_c-g-_4"],
-      ["I solved the puzzle","robot_win_c-g-_5"],
-      ["yes! I'm good at solving puzzles","robot_win_c-g-_6"],
-      ["I seem to be on the right track","robot_win_c-g-_7"]
+      ["I did it!","robot_win_c-g-_3"],
+      ["I solved the puzzle","robot_win_c-g-_4"],
+      ["yes! I'm good at solving puzzles","robot_win_c-g-_5"],
+      ["I seem to be on the right track","robot_win_c-g-_6"]
     ],
     "c-g+": [
       ["that was hard, but I tried hard and nailed it","robot_win_c-g+_0","PROUD"],
@@ -338,7 +336,7 @@
   },
   "conclusion": {
     "all": [
-      ["we found so many balloons. this is the best party ever.", "conclusion_all_0", "LEFTRIGHTLOOKING", "party_all_0", "HAPPY_DANCE"]
+      ["we found so many balloons. this is the best party ever.", "conclusion_all_0", "LEFTRIGHTLOOKING", "conclusion_all_0", "HAPPY_DANCE"]
     ]
   },
 
@@ -373,7 +371,7 @@
   },
 
   "ask_question_party":[
-    ["I wonder what this robot feels", "robot_question9","POSE_FORWARD"]
+    ["I wonder what this robot feels", "ask_question_party","POSE_FORWARD"]
   ],
 
   "NOT_IN_USE_tangram_explanation": {

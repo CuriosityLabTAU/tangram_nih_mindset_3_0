@@ -1,10 +1,10 @@
 [app]
 
 # (str) Title of your application
-title = TangramApp
+title = Tangram_nih_mindset_3_0
 
 # (str) Package name
-package.name = TangramApp
+package.name = Tangram_nih_mindset_3_0
 
 # (str) Package domain (needed for android/ios packaging)
 package.domain = com.gorengordon.curiosity
@@ -200,3 +200,4 @@ warn_on_root = 1
 #    Then, invoke the command line with the "demo" profile:
 #
 #buildozer --profile demo android debug
+
