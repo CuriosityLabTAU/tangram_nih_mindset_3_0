@@ -590,14 +590,14 @@ class TangramMindsetApp(App):
         self.interaction.components['tablet'].app = self
         if not GAME_WITH_ROBOT:
             self.interaction.components['robot'].app = self
-            self.interaction.components['robot'].load_text(filename='./tablet_app/robot_text_revised4_tau.json') #added in order to play sound files
+            self.interaction.components['robot'].load_text(filename='./tablet_app/robot_text_revised5_tau_long.json') #added in order to play sound files
 
         else:
             if STUDY_SITE == 'MIT':
                 self.interaction.components['robot'].load_text(filename='./tablet_app/robot_text_revised4.json')
                 self.interaction.components['robot'].robot_name = 'tega'
             elif STUDY_SITE == 'TAU':
-                self.interaction.components['robot'].load_text(filename='./tablet_app/robot_text_revised4_tau.json')
+                self.interaction.components['robot'].load_text(filename='./tablet_app/robot_text_revised5_tau_long.json')
                 self.interaction.components['robot'].robot_name = 'nao'
         self.interaction.load(filename='./tablet_app/general_transitions.json')
         self.interaction.load_sequence(filename='./tablet_app/general_sequence.json')
