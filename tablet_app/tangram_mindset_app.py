@@ -590,14 +590,14 @@ class TangramMindsetApp(App):
         self.interaction.components['tablet'].app = self
         if not GAME_WITH_ROBOT:
             self.interaction.components['robot'].app = self
-            self.interaction.components['robot'].load_text(filename='./tablet_app/robot_text_revised5_tau_long.json') #added in order to play sound files
+            self.interaction.components['robot'].load_text(filename='./tablet_app/robot_text/robot_text_revised5_tau_long.json') #added in order to play sound files
 
         else:
             if STUDY_SITE == 'MIT':
-                self.interaction.components['robot'].load_text(filename='./tablet_app/robot_text_revised4.json')
+                self.interaction.components['robot'].load_text(filename='./tablet_app/robot_text/robot_text_revised4.json')
                 self.interaction.components['robot'].robot_name = 'tega'
             elif STUDY_SITE == 'TAU':
-                self.interaction.components['robot'].load_text(filename='./tablet_app/robot_text_revised5_tau_long.json')
+                self.interaction.components['robot'].load_text(filename='./tablet_app/robot_text/robot_text_revised5_tau_long.json')
                 self.interaction.components['robot'].robot_name = 'nao'
         self.interaction.load(filename='./tablet_app/general_transitions.json')
         self.interaction.load_sequence(filename='./tablet_app/general_sequence.json')
@@ -724,7 +724,7 @@ class TangramMindsetApp(App):
 
             self.tangrams_solved = max(games_played/2, self.tangrams_solved)
 
-            filename = './tablet_app/sequence_' + self.study_world + '_' + stage + '.json'
+            filename = './tablet_app/worlds_sequences/sequence_' + self.study_world + '_' + stage + '.json'
             self.interaction.load_sequence(filename=filename)
             self.interaction.next_interaction()
 
@@ -840,6 +840,7 @@ class TangramMindsetApp(App):
             sound.play()
         except:
             print('problem playing sound:', sound_filename)
+            print ("unexpected error:", sys.exc_info())
             self.finish_robot_express(0)
 
     def finish_robot_express (self, *args):
@@ -882,9 +883,9 @@ class TangramMindsetApp(App):
         self.update_filled()
         self.text_handler = TextHandler(condition)
         if STUDY_SITE == 'MIT':
-            self.text_handler.load_text(filename='./tablet_app/robot_text_revised3.json')
+            self.text_handler.load_text(filename='./tablet_app/robot_text/robot_text_revised3.json')
         elif STUDY_SITE == 'TAU':
-            self.text_handler.load_text(filename='./tablet_app/robot_text_revised4_tau.json')
+            self.text_handler.load_text(filename='./tablet_app/robot_text/robot_text_revised5_tau_long.json')
         self.interaction.components['robot'].agent.update_condition(condition)
 
     def update_gender(self, gender):
@@ -905,7 +906,7 @@ class TangramMindsetApp(App):
             self.study_world = world
             self.interaction.components['game'].game_facilitator.selection_gen.load_dif_levels(world=world)
             self.interaction.components['robot'].agent.update_world(world)
-            self.interaction.load_sequence(filename='./tablet_app/sequence_' + self.study_world + '.json')
+            self.interaction.load_sequence(filename='./tablet_app/worlds_sequences/sequence_' + self.study_world + '.json')
             self.interaction.next_interaction()
 
     def update_filled(self):

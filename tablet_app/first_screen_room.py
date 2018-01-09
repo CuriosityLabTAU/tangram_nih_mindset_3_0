@@ -31,7 +31,7 @@ class FirstScreenRoom(Screen):
         print('init_first_screen_room')
         world = the_app.study_world
         print(world)
-        self.ids['background_image'].source = './tablet_app/images/worlds' + world + 'TangramGame_Selection.png'
+        self.ids['background_image'].source = './tablet_app/images/worlds' + world + '/TangramGame_Open.png'
 
     def on_enter(self, *args):
         print("on_enter first_screen_room")

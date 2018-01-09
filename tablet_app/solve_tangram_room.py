@@ -48,7 +48,7 @@ class SolveTangramRoom(Screen):
         print("Solve Tangram Room init_task ", self.task_json)
 
         # Background:
-        self.ids['background_widget'].ids['background_image'].source = './tablet_app/images/worlds/' + self.world + '/tangram_background.png'
+        self.ids['background_widget'].ids['background_image'].source = './tablet_app/images/worlds/' + self.world + '/background.png'
 
         #Hourglass
         hourglass_widget = self.ids['hourglass_widget']
@@ -72,7 +72,7 @@ class SolveTangramRoom(Screen):
         # self.ids['treasure_box'].ids['price'].size = [TangramGame.SCALE * 6, TangramGame.SCALE * 6]
         # self.ids['treasure_box'].ids['price'].pos = [TangramGame.SCALE * 15, TangramGame.SCALE * 14]
 
-        self.ids['treasure_box'].ids['box'].source = './tablet_app/images/worlds/'+ self.world + '/TreasureBoxLayers_B.gif'
+        self.ids['treasure_box'].ids['box'].source = './tablet_app/images/worlds/'+ self.world + '/TreasureBoxLayers.png'
         self.ids['treasure_box'].ids['box'].size = (TangramGame.SCALE * 10, TangramGame.SCALE * 7)
         self.ids['treasure_box'].ids['box'].pos = [TangramGame.SCALE * 0.5, TangramGame.SCALE * 0.5]
         self.ids['treasure_box'].ids['price'].opacity = 0
@@ -140,8 +140,8 @@ class SolveTangramRoom(Screen):
     def solved(self):
         print("solve_tangram_room: solved")
         i = self.the_app.tangrams_solved
-        i = (i-1)%3 + 1
-        self.ids['treasure_box'].ids['box'].source = './tablet_app/images/worlds/' + self.world + '/TreasureOpenBoxLayers.gif'
+        #i = (i-1)%3 + 1
+        self.ids['treasure_box'].ids['box'].source = './tablet_app/images/worlds/' + self.world + '/TreasureOpenBoxLayers.png'
         self.ids['treasure_box'].ids['price'].source = './tablet_app/images/worlds/' + self.world + '/Price_'+str(i)+'.png'
         self.ids['treasure_box'].ids['price'].opacity = 1
         for c in self.ids['tangram_game_widget'].children:
