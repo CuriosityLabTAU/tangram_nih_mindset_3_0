@@ -30,7 +30,7 @@ random.seed(1)
 np.random.seed(1)
 
 # initialization: (curious ==> 2, non-curoius ==>1)
-world = 'w2' # the world to be computed
+world = 'w3' # the world to be computed
 CONDITION = 'curious' #'curious'
 # CONDITION = 'not_curious'
 H_THRESH_CURIOUS = 0.1

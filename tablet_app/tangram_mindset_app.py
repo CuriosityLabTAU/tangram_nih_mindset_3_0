@@ -35,7 +35,7 @@ from kivy.core.audio import SoundLoader
 
 from random import choice
 
-GAME_WITH_ROBOT = False  # False
+GAME_WITH_ROBOT = True  # False
 ROBOT_SOUND_FROM_TABLET = True # False
 #rinat
 STUDY_SITE = 'TAU'      #'TAU'      # MIT
@@ -239,7 +239,7 @@ root_widget = Builder.load_string('''
             id: background_image
             size: root.size
             pos: root.pos
-            source: './tablet_app/images/worls/w1/TangramGame_Selection.png'
+            source: './tablet_app/images/worlds/w1/TangramGame_Selection.png'
             allow_stretch: True
             keep_ratio: False
         TangramSelectionWidget:
@@ -896,6 +896,7 @@ class TangramMindsetApp(App):
             self.subject_gender = ""
         elif STUDY_SITE == 'TAU':
             self.subject_gender = gender
+            self.interaction.components['robot'].gender = gender
 
     def update_world(self, world):
         self.filled_world  = True
@@ -906,6 +907,7 @@ class TangramMindsetApp(App):
             self.study_world = world
             self.interaction.components['game'].game_facilitator.selection_gen.load_dif_levels(world=world)
             self.interaction.components['robot'].agent.update_world(world)
+            self.interaction.components['robot'].study_world = world
             self.interaction.load_sequence(filename='./tablet_app/worlds_sequences/sequence_' + self.study_world + '.json')
             self.interaction.next_interaction()
 

@@ -4,7 +4,7 @@ from agent import *
 import json
 from random import choice
 from tablet_app.tangram_game import *
-
+import os
 
 is_logged = False   #Solves the slow problem
 try:
@@ -23,6 +23,8 @@ class RobotComponent(Component):
     robot_name = 'tega'
     animation = None
     question_index = 0 #Rinat added
+    gender = None
+    study_world = None
 
     def load_text(self, filename='./tablet_app/robot_text_revised3.json'):  #robot_text_revised3
         with open(filename) as data_file:
@@ -94,6 +96,11 @@ class RobotComponent(Component):
                     if self.agent.condition in the_options:
                         the_expressions = self.add_expression(the_expressions, choice(the_options[self.agent.condition]))
 
+
+
+
+            #self.expression = self.process_expression (the_expressions)
+
             self.expression = the_expressions
 
             if KC.client.connection:
@@ -103,6 +110,31 @@ class RobotComponent(Component):
 
             if self.app:
                 self.app.robot_express(action[0], self.expression)
+
+
+    def process_expression (self, expression):
+        # check and change accordingly sound file names to match Gender and World if needed
+        print("robot process_expression ",expression, self.gender, self.study_world)
+
+        sound_list = os.listdir("./tablet_app/sounds/wav_tangram")
+
+        for i in range(0,len(expression)):
+            if (expression[i].lower()==expression[i]):
+                name = expression[i]
+                try_sound = name
+                try_sound_gender = name + '_' + self.gender
+                try_sound_world = name + "_" + self.study_world
+                try_sound_world_gender = name + "_" + self.study_world + '_' + self.gender
+                if (try_sound + '.wav' in sound_list):
+                    expression[i] = try_sound
+                elif (try_sound_gender + '.wav' in sound_list):
+                    expression[i] = try_sound_gender
+                elif (try_sound_world + '.wav' in sound_list):
+                    expression[i] = try_sound_world
+                elif (try_sound_world_gender +'.wav' in sound_list):
+                    expression[i] = try_sound_world_gender
+        return expression
+
 
     def add_expression(self, base, add):
         if len(base) == 0:
