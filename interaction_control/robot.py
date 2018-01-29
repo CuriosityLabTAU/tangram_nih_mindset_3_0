@@ -99,7 +99,7 @@ class RobotComponent(Component):
 
 
 
-            #self.expression = self.process_expression (the_expressions)
+            self.expression = self.process_expression (the_expressions)
 
             self.expression = the_expressions
 

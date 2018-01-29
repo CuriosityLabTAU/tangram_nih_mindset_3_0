@@ -35,7 +35,7 @@ from kivy.core.audio import SoundLoader
 
 from random import choice
 
-GAME_WITH_ROBOT = True  # False
+GAME_WITH_ROBOT = False  # False
 ROBOT_SOUND_FROM_TABLET = True # False
 #rinat
 STUDY_SITE = 'TAU'      #'TAU'      # MIT
@@ -802,17 +802,18 @@ class TangramMindsetApp(App):
             if name.lower() == name:
                 print('filename: ', name)
                 try_sound = name +'.wav'
-                try_sound_gender = name + '_' + self.gender + '.wav'
-                try_sound_world = name + "_" + self.study_world + '.wav'
-                try_sound_world_gender = name + "_" + self.study_world + '_' + self.gender + '.wav'
+                #I am already doing this step of adding gender/world in robot.py
+                #try_sound_gender = name + '_' + self.gender + '.wav'
+                #try_sound_world = name + "_" + self.study_world + '.wav'
+                #try_sound_world_gender = name + "_" + self.study_world + '_' + self.gender + '.wav'
                 if (try_sound in self.sounds.keys()):
                     self.sound_filenames.append (try_sound)
-                elif (try_sound_gender in self.sounds.keys()):
-                    self.sound_filenames.append (try_sound_gender)
-                elif (try_sound_world in self.sounds.keys()):
-                    self.sound_filenames.append (try_sound_world)
-                elif (try_sound_world_gender in self.sounds.keys()):
-                    self.sound_filenames.append (try_sound_world_gender)
+                #elif (try_sound_gender in self.sounds.keys()):
+                #    self.sound_filenames.append (try_sound_gender)
+                #elif (try_sound_world in self.sounds.keys()):
+                #    self.sound_filenames.append (try_sound_world)
+                #elif (try_sound_world_gender in self.sounds.keys()):
+                #    self.sound_filenames.append (try_sound_world_gender)
                 else:
                     print ("could not find filename", name)
                     self.finish_robot_express(0)
