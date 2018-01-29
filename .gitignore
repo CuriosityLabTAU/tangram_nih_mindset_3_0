@@ -2,7 +2,7 @@ bin/
 rosbag
 *.bag*
 .DS_Store
-*.png
+# *.png
 .idea
 *_backup
 
