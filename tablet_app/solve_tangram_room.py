@@ -63,14 +63,9 @@ class SolveTangramRoom(Screen):
         dX = 17 #Window.width/40.0  #20
         dY = 9 #Window.height/40.0 #15
 
+        print ("window.width=", TangramGame.window_size)
 
         #Treasure Box:
-        # self.ids['treasure_box'].ids['box'].source = './tablet_app/images/TreasureBoxLayers_B.gif'
-        # self.ids['treasure_box'].ids['box'].size = (TangramGame.SCALE * 27, TangramGame.SCALE * 19)
-        # self.ids['treasure_box'].ids['box'].pos = [TangramGame.SCALE * 1, TangramGame.SCALE * 1]
-        # self.ids['treasure_box'].ids['price'].opacity = 0
-        # self.ids['treasure_box'].ids['price'].size = [TangramGame.SCALE * 6, TangramGame.SCALE * 6]
-        # self.ids['treasure_box'].ids['price'].pos = [TangramGame.SCALE * 15, TangramGame.SCALE * 14]
 
         self.ids['treasure_box'].ids['box'].source = './tablet_app/images/worlds/'+ self.world + '/TreasureBoxLayers.png'
         self.ids['treasure_box'].ids['box'].size = (TangramGame.SCALE * 10, TangramGame.SCALE * 7)
