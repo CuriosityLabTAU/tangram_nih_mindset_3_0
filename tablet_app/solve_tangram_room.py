@@ -102,7 +102,7 @@ class SolveTangramRoom(Screen):
         button_rotate.background_disabled_down = './tablet_app/images/worlds/' + self.world + '/Tangram_rotate_btn_down.png'
         tangram_game_widget.add_widget(button_rotate)
         self.tangram_game_widget = tangram_game_widget
-
+        #j
 
     def change_pieces(self, x):
         print ("solve_tangram_room: change_pieces", x)
