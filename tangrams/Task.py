@@ -5,7 +5,7 @@ import copy
 import numpy as np
 import random
 import json
-# import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 
 
 class Task:
@@ -48,8 +48,8 @@ class Task:
         img_x2 = copy.deepcopy(temp_x)
         img_x1[img_x1 > 1] = 1
         img_x2[img_x2 < 5] = 0
-        # plt.imshow(img_x1 + img_x2, interpolation='none')
-        # plt.show()
+        plt.imshow(img_x1 + img_x2, interpolation='none')
+        plt.show()
 
     def decompose(self):
         structures = []
@@ -141,17 +141,17 @@ class Task:
         # connections are never more than 22.0
         return (self.number_of_connections() - 2.0) / (31.0 - 2.0)
 
-    def save_png(self):
-        filename = self.name + ".png"
-        bare = np.uint8(copy.deepcopy(self.x))
-        bare[bare>0] = 128
-        s = bare.shape
-        img = np.zeros((s[0], s[1], 4), 'uint8')
-        img[0:s[0],0:s[1],0] = bare
-        img[0:s[0],0:s[1],1] = bare
-        img[0:s[0],0:s[1],2] = bare
-        img[0:s[0],0:s[1],3] = bare
-        Piece().to_image(img).save(filename, 'png')
+    # def save_png(self):
+    #     filename = self.name + ".png"
+    #     bare = np.uint8(copy.deepcopy(self.x))
+    #     bare[bare>0] = 128
+    #     s = bare.shape
+    #     img = np.zeros((s[0], s[1], 4), 'uint8')
+    #     img[0:s[0],0:s[1],0] = bare
+    #     img[0:s[0],0:s[1],1] = bare
+    #     img[0:s[0],0:s[1],2] = bare
+    #     img[0:s[0],0:s[1],3] = bare
+    #     Piece().to_image(img).save(filename, 'png')
 
     def create_from_json(self, json_str):
         # create a task from a json string
@@ -211,13 +211,14 @@ class Task:
         init_dict = {}
         piece_init_vec = []
         init_dict['size'] = task_dict['size']
+        spaces_vec = [0,2,4,5,7,8,9] # relative positions of the initial pieces
         for n in range(len(task_dict['pieces'])):
             name = task_dict['pieces'][n][0]
             rot = '0' # task_dict['pieces'][n][1]
             pos = task_dict['pieces'][n][2]
             #init_pos = str(5)+' '+str(3*n-4)
             #init_pos = str(-3) + ' ' + str(2 * n - 4) #rinat
-            init_pos = str(-3) + ' ' + str(2 * n - 8)  # rinat
+            init_pos = str(-2) + ' ' + str(spaces_vec[n] - 5)  # rinat
 
             #if n < 4:  # first 4 pieces on the right
             #    init_pos = str(2 * (n)-0.5) + ' ' + str(+5 + (n%2))
