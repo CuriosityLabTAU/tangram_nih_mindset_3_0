@@ -144,5 +144,6 @@ ENV/
 *.mp3
 *.mp4
 *.avi
+#*.wav
 
 

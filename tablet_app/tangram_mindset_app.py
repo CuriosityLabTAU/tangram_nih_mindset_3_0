@@ -227,8 +227,8 @@ root_widget = Builder.load_string('''
             borders: 2, 'solid', (1,1,0,1)
             background_normal: './tablet_app/images/worlds/w1/PriceBtn.png'
             background_down: './tablet_app/images/worlds/w1/PriceBtn_on.png'
-            size: root.width * 0.4, root.height * 0.4
-            pos: root.width * 0.5 - self.width * 0.5, root.height * 0.7 - self.height * 0.5
+            size: root.width * 0.3, root.height * 0.3
+            pos: root.width * 0.5 - self.width * 0.5, root.height * 0.8 - self.height * 0.5
             on_press: app.press_yes_button()
             opacity: 0
 

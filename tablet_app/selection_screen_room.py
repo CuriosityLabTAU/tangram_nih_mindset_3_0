@@ -151,7 +151,7 @@ class SelectionTaskLayout(LoggedButton, TaskLayout):
 
     def update_position(self, *args):
         # print('update_position')
-        box_width_and_gap = Window.width * 0.31
+        box_width_and_gap = Window.width * 0.325
         margin_left = Window.width * 0.073  # TangramGame.SCALE * 5
         self.size = [Window.width * 0.28, Window.height * 0.36]
         self.pos =  [margin_left + self.index * box_width_and_gap, Window.height * 0.21] # [margin_left + self.index * box_width_and_gap, Window.height * 0.21]
