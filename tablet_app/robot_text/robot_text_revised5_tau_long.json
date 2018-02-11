@@ -51,9 +51,9 @@
       ["I'll move this piece","move_explanation_c-g-_2","POSE_FORWARD"],
       ["there are pieces left","move_explanation_c-g-_3","POSE_FORWARD"],
       ["it's too hard","IDLESTILL", "move_explanation_c-g-_4","POSE_FORWARD"],
-      [" ", "POSE_FORWARD"],
-      [" ", "POSE_FORWARD"],
-      [" ", "POSE_FORWARD"]
+      ["None", "POSE_FORWARD"],
+      ["None", "POSE_FORWARD"],
+      ["None", "POSE_FORWARD"]
 
     ],
     "c-g+": [
@@ -63,25 +63,25 @@
       ["If I keep trying, I will succeed", "move_explanation_c-g+_3"],
       ["maybe I'll try again","move_explanation_c-g+_4"],
       ["I'll try again","move_explanation_c-g+_5"],
-      [" ", "POSE_FORWARD"],
-      [" ", "POSE_FORWARD"],
-      [" ", "POSE_FORWARD"]
+      ["None", "POSE_FORWARD"],
+      ["None", "POSE_FORWARD"],
+      ["None", "POSE_FORWARD"]
     ],
     "c+g-": [
       ["I wonder what I'll learn if I move it here","move_explanation_c+g-_0"],
       ["let’s try something new", "IDLESTILL", "move_explanation_c+g-_1","POSE_FORWARD"],
       ["I'll try something I didn't do before","move_explanation_c+g-_2"],
       ["I want to try something new. maybe move this piece here.","tangram_tutorial_c+g+_0"],
-      [" ", "POSE_FORWARD"],
-      [" ", "POSE_FORWARD"],
-      [" ", "POSE_FORWARD"],
-      [" ", "POSE_FORWARD"]
+      ["None", "POSE_FORWARD"],
+      ["None", "POSE_FORWARD"],
+      ["None", "POSE_FORWARD"],
+      ["None", "POSE_FORWARD"]
     ],
     "c+g+": [
       ["I am sure I can figure it out. I will move this piece.","POSE_FORWARD","move_explanation_c+g+_0", "LOOKAT_TABLET"],
       ["I want to try something new. maybe move this piece here.","POSE_FORWARD","tangram_tutorial_c+g+_0", "LOOKAT_TABLET"],
-      [" ", "LOOKAT_TABLET"],
-      [" ", "LOOKAT_TABLET"]
+      ["None", "LOOKAT_TABLET"],
+      ["None", "LOOKAT_TABLET"]
     ]
   },
   "child_win": {
@@ -301,37 +301,37 @@
       ["ok","comment_move_c-g-_3"],
       ["good","comment_move_c-g-_4"],
       ["great","comment_move_c-g-_5"],
-      [" ", "POSE_FORWARD"],
-      [" ", "POSE_FORWARD"],
-      [" ", "POSE_FORWARD"],
-      [" ", "POSE_FORWARD"],
-      [" ", "POSE_FORWARD"]
+      ["None", "POSE_FORWARD"],
+      ["None", "POSE_FORWARD"],
+      ["None", "POSE_FORWARD"],
+      ["None", "POSE_FORWARD"],
+      ["None", "POSE_FORWARD"]
     ],
     "c-g+": [
       ["you are working hard to solve this puzzle","IDLESTILL", "comment_move_c-g+_0","POSE_FORWARD"],
       ["keep on trying","comment_move_c-g+_1","SILENT_INTERESTED","POSE_FORWARD"],
-      [" ", "POSE_FORWARD"],
-      [" ", "POSE_FORWARD"]
+      ["None", "POSE_FORWARD"],
+      ["None", "POSE_FORWARD"]
     ],
     "c+g-": [
       ["great!","comment_move_c+g-_0","SILENT_YES","POSE_FORWARD"],
       ["this is a creative move, very good","comment_move_c+g-_1","YES","POSE_FORWARD"],
       ["interesting strategy","comment_move_c+g-_2","INTERESTED","POSE_FORWARD"],
       ["this is a great idea","comment_move_c+g-_3","AGREEMENT","POSE_FORWARD"],
-      [" ", "POSE_FORWARD"],
-      [" ", "POSE_FORWARD"],
-      [" ", "POSE_FORWARD"],
-      [" ", "POSE_FORWARD"]
+      ["None", "POSE_FORWARD"],
+      ["None", "POSE_FORWARD"],
+      ["None", "POSE_FORWARD"],
+      ["None", "POSE_FORWARD"]
     ],
     "c+g+": [
       ["this is a great idea","comment_move_c+g+_0","SILENT_INTERESTED","POSE_FORWARD"],
       ["keep trying new ideas","comment_move_c+g+_1","AGREEMENT","POSE_FORWARD"],
       ["interesting strategy","comment_move_c+g+_2","INTERESTED","POSE_FORWARD"],
       ["this is a creative move","comment_move_c+g+_3","INTERESTED","POSE_FORWARD"],
-      [" ", "POSE_FORWARD"],
-      [" ", "POSE_FORWARD"],
-      [" ", "POSE_FORWARD"],
-      [" ", "POSE_FORWARD"]
+      ["None", "POSE_FORWARD"],
+      ["None", "POSE_FORWARD"],
+      ["None", "POSE_FORWARD"],
+      ["None", "POSE_FORWARD"]
     ]
   },
   "conclusion": {
@@ -409,10 +409,10 @@
       ["it’s really hard. maybe I'll rotate this piece","rotation_explanation_c-g+_1"],
       ["this is challenging, let me try to rotate it","rotation_explanation_c-g+_2"],
       ["If I keep trying, I will succeed","rotation_explanation_c-g+_3"],
-      [" ", "SILENT_CONFIRM", "POSE_FORWARD"],
-      [" ", "SILENT_CONFIRM", "POSE_FORWARD"],
-      [" ", "SILENT_CONFIRM", "POSE_FORWARD"],
-      [" ", "SILENT_CONFIRM", "POSE_FORWARD"]
+      ["None", "SILENT_CONFIRM", "POSE_FORWARD"],
+      ["None", "SILENT_CONFIRM", "POSE_FORWARD"],
+      ["None", "SILENT_CONFIRM", "POSE_FORWARD"],
+      ["None", "SILENT_CONFIRM", "POSE_FORWARD"]
     ],
     "c+g-": [
       ["let me try something new. I will press this button.","rotation_explanation_c+g-_0"],
@@ -420,10 +420,10 @@
       ["let’s try something new","rotation_explanation_c+g-_2"],
       ["I'll try something I didn't do before","rotation_explanation_c+g-_3"],
       ["maybe I'll try a new strategy","rotation_explanation_c+g-_4"],
-      [" ", "SILENT_CONFIRM", "POSE_FORWARD"],
-      [" ", "SILENT_CONFIRM", "POSE_FORWARD"],
-      [" ", "SILENT_CONFIRM", "POSE_FORWARD"],
-      [" ", "SILENT_CONFIRM", "POSE_FORWARD"]
+      ["None", "SILENT_CONFIRM", "POSE_FORWARD"],
+      ["None", "SILENT_CONFIRM", "POSE_FORWARD"],
+      ["None", "SILENT_CONFIRM", "POSE_FORWARD"],
+      ["None", "SILENT_CONFIRM", "POSE_FORWARD"]
     ]
   },
   "NOT_IN_USE_selection_explanation": {

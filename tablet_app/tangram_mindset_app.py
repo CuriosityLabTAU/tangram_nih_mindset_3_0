@@ -823,6 +823,9 @@ class TangramMindsetApp(App):
             if len(self.sound_filenames)>0:
                 self.current_sound = 0
                 self.play_next_sound()
+            else:
+                print("robot express: no sound to play")
+                self.finish_robot_express()
 
         except:
             print ("unexpected error in robot_express:", sys.exc_info())

@@ -88,7 +88,7 @@ class SolveTangramRoom(Screen):
         game_task_layout = GameTaskLayout()
         game_task_layout.dX = dX
         game_task_layout.dY = dY
-
+        game_task_layout.update_position()
         game_task_layout.reset(str(0))
         game_task_layout.import_json_task(self.shade_task_json)
         game_task_layout.update_selection_task_shade()
@@ -204,11 +204,11 @@ class GameTaskLayout(LoggedButton, TaskLayout):
             print (self.rect.size)
 
     def update_position(self, *args):
-        print('GameTaskLayout update_position')
+        print('GameTaskLayout update_position dX=', self.dX)
         #self.size = [Window.width * 0.26, Window.height * 0.26]
         self.size = [TangramGame.SCALE * 10, TangramGame.SCALE * 10]
-        #self.pos = [TangramGame.SCALE * 8, TangramGame.SCALE * 2]
-        self.pos = [TangramGame.SCALE * (self.dX -1), TangramGame.SCALE * 2]
+        self.pos = [TangramGame.SCALE * 10, TangramGame.SCALE * 2]
+        #self.pos = [TangramGame.SCALE * (self.dX -1), TangramGame.SCALE * 2]
         print("Window.width",Window.width,"Window.height", Window.height)
         #self.update_selection_task_pos()
 
