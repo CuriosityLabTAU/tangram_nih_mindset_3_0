@@ -36,7 +36,7 @@ from kivy.core.audio import SoundLoader
 from random import choice
 
 GAME_WITH_ROBOT = False  # False
-ROBOT_SOUND_FROM_TABLET = True # False
+ROBOT_SOUND_FROM_TABLET = False # False
 #rinat
 STUDY_SITE = 'TAU'      #'TAU'      # MIT
 
@@ -788,7 +788,7 @@ class TangramMindsetApp(App):
         # Rinat: x is a single tangram from maor
         # you need to present it and allow game
         print("tangram_screen",x)
-        TangramGame.SCALE = round(Window.size[0] / 30)
+        TangramGame.SCALE = round(Window.size[0] / 25)
         self.screen_manager.get_screen('solve_tangram_room').init_task(x, the_app=self)
         self.screen_manager.current = 'solve_tangram_room'
 
@@ -798,32 +798,36 @@ class TangramMindsetApp(App):
         self.current_action = action
 
         self.sound_filenames = []
-        for name in expression[1:]:
-            if name.lower() == name:
-                print('filename: ', name)
-                try_sound = name +'.wav'
-                #I am already doing this step of adding gender/world in robot.py
-                #try_sound_gender = name + '_' + self.gender + '.wav'
-                #try_sound_world = name + "_" + self.study_world + '.wav'
-                #try_sound_world_gender = name + "_" + self.study_world + '_' + self.gender + '.wav'
-                if (try_sound in self.sounds.keys()):
-                    self.sound_filenames.append (try_sound)
-                #elif (try_sound_gender in self.sounds.keys()):
-                #    self.sound_filenames.append (try_sound_gender)
-                #elif (try_sound_world in self.sounds.keys()):
-                #    self.sound_filenames.append (try_sound_world)
-                #elif (try_sound_world_gender in self.sounds.keys()):
-                #    self.sound_filenames.append (try_sound_world_gender)
-                else:
-                    print ("could not find filename", name)
-                    self.finish_robot_express(0)
-                print ('sound_filenames = ', self.sound_filenames)
+        try:
+            for name in expression[1:]:
+                if name.lower() == name:
+                    print('filename: ', name)
+                    try_sound = name +'.wav'
+                    #I am already doing this step of adding gender/world in robot.py
+                    #try_sound_gender = name + '_' + self.gender + '.wav'
+                    #try_sound_world = name + "_" + self.study_world + '.wav'
+                    #try_sound_world_gender = name + "_" + self.study_world + '_' + self.gender + '.wav'
+                    if (try_sound in self.sounds.keys()):
+                        self.sound_filenames.append (try_sound)
+                    #elif (try_sound_gender in self.sounds.keys()):
+                    #    self.sound_filenames.append (try_sound_gender)
+                    #elif (try_sound_world in self.sounds.keys()):
+                    #    self.sound_filenames.append (try_sound_world)
+                    #elif (try_sound_world_gender in self.sounds.keys()):
+                    #    self.sound_filenames.append (try_sound_world_gender)
+                    else:
+                        print ("could not find filename", name)
+                        self.finish_robot_express(0)
+                    print ('sound_filenames = ', self.sound_filenames)
 
-        if len(self.sound_filenames)>0:
-            self.current_sound = 0
-            self.play_next_sound()
+            if len(self.sound_filenames)>0:
+                self.current_sound = 0
+                self.play_next_sound()
 
-        #Text to speech:
+        except:
+            print ("unexpected error in robot_express:", sys.exc_info())
+
+#Text to speech:
         # attempt tts
         #if self.text_handler.say(self.current_sound):
         #    self.finish_robot_express(0)

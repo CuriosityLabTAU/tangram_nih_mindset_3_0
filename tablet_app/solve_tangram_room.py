@@ -58,10 +58,10 @@ class SolveTangramRoom(Screen):
         tangram_game_widget = self.ids['tangram_game_widget']
         tangram_game_widget.reset(the_app=the_app)  # clear the pieces from previous run
 
-        # dX = 9 #Window.width/40.0  #20
-        # dY = 9 #Window.height/40.0 #15
-        dX = 17 #Window.width/40.0  #20
+        dX = 11 #Window.width/40.0  #20
         dY = 9 #Window.height/40.0 #15
+        # dX = 17 #Window.width/40.0  #20
+        # dY = 9 #Window.height/40.0 #15
 
         print ("window.width=", TangramGame.window_size)
 
@@ -187,7 +187,8 @@ class Rotate(LoggedButton):
 
 class GameTaskLayout(LoggedButton, TaskLayout):
     # inherits from TaskLayout which is in tangram_game.py
-
+    dX = None
+    dY = None
     def __init__(self):
         super(GameTaskLayout, self).__init__()
         print("GameTaskLayout __init__")
@@ -207,7 +208,7 @@ class GameTaskLayout(LoggedButton, TaskLayout):
         #self.size = [Window.width * 0.26, Window.height * 0.26]
         self.size = [TangramGame.SCALE * 10, TangramGame.SCALE * 10]
         #self.pos = [TangramGame.SCALE * 8, TangramGame.SCALE * 2]
-        self.pos = [TangramGame.SCALE * 16, TangramGame.SCALE * 2]
+        self.pos = [TangramGame.SCALE * (self.dX -1), TangramGame.SCALE * 2]
         print("Window.width",Window.width,"Window.height", Window.height)
         #self.update_selection_task_pos()
 
