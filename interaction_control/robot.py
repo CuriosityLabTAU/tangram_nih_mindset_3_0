@@ -46,8 +46,10 @@ class RobotComponent(Component):
         except:
             if not isinstance(sys.exc_info()[1], AttributeError):
                 print ("unexpected error:",sys.exc_info())
-
-            self.express(action)
+            try:
+                self.express(action)
+            except:
+                print ("except except: could not except in run_function:",sys.exc_info())
         return False
 
     def express(self, action):
@@ -72,7 +74,9 @@ class RobotComponent(Component):
 
         elif 'idle' not in action[0]:
             # select the animation
-            print ("robot express idle not in action[0]",action[0],"self.animation[action[0]]=", self.animation[action[0]])
+            print ("robot express idle not in action[0]",action[0])
+            print("self.animation=", self.animation)
+            print("self.animation[action[0]]=", self.animation[action[0]])
             the_options = self.animation[action[0]]
             the_expressions = []
             what = action[0]  # Rinat added
@@ -158,7 +162,9 @@ class RobotComponent(Component):
         print(self.whos_playing, self.current_param)
 
     def select_treasure(self):
+        print("robot select_treasure")
         the_selection = self.agent.set_selection()
+        print("finished set_selection")
         print(self.name, 'select_treasure', the_selection, self.current_param)
         self.current_tangram = self.current_param[0][the_selection]
         self.current_state = 'select_treasure'

@@ -104,12 +104,13 @@ class Agent:
         self.child_result = result
 
     def set_selection(self):
+        print ("Agent: set selection","current_round=",self.current_round, "selection_sequence_not_curious=",self.selection_sequence_not_curious)
         if 'c+' in self.condition:
             # get H for puzzles
-            select = self.selection_sequence_curious[self.current_round]
+            select = self.selection_sequence_curious[self.current_round-1]  #Rinat added -1
             TangramGame.cog_tangram_selection = select
         elif 'c-' in self.condition:
-            select = self.selection_sequence_not_curious[self.current_round]
+            select = self.selection_sequence_not_curious[self.current_round-1] #Rinat added -1
             TangramGame.cog_tangram_selection = select
         self.current_round += 1
 
