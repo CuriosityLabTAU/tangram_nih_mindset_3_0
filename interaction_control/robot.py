@@ -75,8 +75,8 @@ class RobotComponent(Component):
         elif 'idle' not in action[0]:
             # select the animation
             print ("robot express idle not in action[0]",action[0])
-            print("self.animation=", self.animation)
-            print("self.animation[action[0]]=", self.animation[action[0]])
+            #print("self.animation=", self.animation)
+            #print("self.animation[action[0]]=", self.animation[action[0]])
             the_options = self.animation[action[0]]
             the_expressions = []
             what = action[0]  # Rinat added
