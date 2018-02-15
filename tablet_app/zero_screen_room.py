@@ -11,7 +11,8 @@ class ZeroScreenRoom(Screen):
         super(Screen, self).__init__()
 
     def on_enter(self, *args):
-        KL.restart()
+        print("on_enter ZeroScreenRoom")
+        # KL.restart()
     #print "Zero"
     #self.sm.current = "SolveTangramRoom"
     #def __init__(self, **kwargs):
