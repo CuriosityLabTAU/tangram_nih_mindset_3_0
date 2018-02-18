@@ -22,5 +22,11 @@ if sound1.length> 0:
     print(sound1.length)
 #    print("Sound is %.3f seconds" % sound.length)
     sound1.play()
-    for i in range(0,1000):
-        time.sleep(1)
+    # for i in range(0,1000):
+    #     time.sleep(1)
+
+import pygame
+pygame.init()
+pygame.mixer.pre_init(44100, 16, 2, 4096) # Frequency, size, channels and buffersize
+shield_on = pygame.mixer.Sound('/home/maor/test_audio2.wav')
+
