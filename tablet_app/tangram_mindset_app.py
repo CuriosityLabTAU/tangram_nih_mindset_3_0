@@ -60,8 +60,7 @@ root_widget = Builder.load_string('''
             name: 'roscore_ip'
             text: '132.66.50.139'
             text: '192.168.122.1'
-            text: '192.168.0.100'
-            text: '132.66.198.164'
+            text: '192.168.0.105'
             font_size: 16
             multiline: False
             size: root.width * 0.4, root.height * 0.07
@@ -228,7 +227,7 @@ root_widget = Builder.load_string('''
             borders: 2, 'solid', (1,1,0,1)
             background_normal: './tablet_app/images/worlds/w1/PriceBtn.png'
             background_down: './tablet_app/images/worlds/w1/PriceBtn_on.png'
-            size: root.width * 0.3, root.height * 0.3
+            size: root.width * 0.14, root.height * 0.15
             pos: root.width * 0.5 - self.width * 0.5, root.height * 0.8 - self.height * 0.5
             on_press: app.press_yes_button()
             opacity: 0
@@ -271,93 +270,93 @@ root_widget = Builder.load_string('''
     Image:
         id: price1
         size: root.width * 0.10, root.width * 0.10
-        pos: root.width * 0.1, root.height * 0.90
+        pos: root.width * 0.1, root.height * 0.85
         source: './tablet_app/images/Price_w1_1.gif'
         opacity: 0
 
     Image:
         id: price2
         size: root.width * 0.10, root.width * 0.10
-        pos: root.width * 0.2, root.height * 0.90
+        pos: root.width * 0.2, root.height * 0.85
         source: './tablet_app/images/Price_w1_2.gif'
         opacity: 0
 
     Image:
         id: price3
         size: root.width * 0.10, root.width * 0.10
-        pos: root.width * 0.3, root.height * 0.90
+        pos: root.width * 0.3, root.height * 0.85
         source: './tablet_app/images/Price_w1_3.gif'
         opacity: 0
 
     Image:
         id: price4
         size: root.width * 0.10, root.width * 0.10
-        pos: root.width * 0.4, root.height * 0.90
+        pos: root.width * 0.4, root.height * 0.85
         source: './tablet_app/images/Price_w1_1.gif'
         opacity: 0
 
     Image:
         id: price5
         size: root.width * 0.10, root.width * 0.10
-        pos: root.width * 0.5, root.height * 0.90
+        pos: root.width * 0.5, root.height * 0.85
         source: './tablet_app/images/Price_w1_2.gif'
         opacity: 0
 
     Image:
         id: price6
         size: root.width * 0.10, root.width * 0.10
-        pos: root.width * 0.6, root.height * 0.90
+        pos: root.width * 0.6, root.height * 0.85
         source: './tablet_app/images/Price_w1_3.gif'
         opacity: 0
 
     Image:
         id: price7
         size: root.width * 0.10, root.width * 0.10
-        pos: root.width * 0.7, root.height * 0.90
+        pos: root.width * 0.7, root.height * 0.85
         source: './tablet_app/images/Price_w1_1.gif'
         opacity: 0
 
     Image:
         id: price8
         size: root.width * 0.10, root.width * 0.10
-        pos: root.width * 0.8, root.height * 0.90
+        pos: root.width * 0.8, root.height * 0.85
         source: './tablet_app/images/Price_w1_2.gif'
         opacity: 0
 
     Image:
         id: price9
         size: root.width * 0.10, root.width * 0.10
-        pos: root.width * 0.9, root.height * 0.90
+        pos: root.width * 0.9, root.height * 0.85
         source: './tablet_app/images/Price_w1_3.gif'
         opacity: 0
 
     Image:
         id: price10
         size: root.width * 0.10, root.width * 0.10
-        pos: root.width * 1, root.height * 0.90
+        pos: root.width * 1, root.height * 0.85
         source: './tablet_app/images/Price_w1_1.gif'
         opacity: 0
 
     Image:
         id: price11
         size: root.width * 0.10, root.width * 0.10
-        pos: root.width * 1.1, root.height * 0.90
+        pos: root.width * 1.1, root.height * 0.85
         source: './tablet_app/images/Price_w1_2.gif'
         opacity: 0
 
     Image:
         id: price12
         size: root.width * 0.10, root.width * 0.10
-        pos: root.width * 1.2, root.height * 0.90
+        pos: root.width * 1.2, root.height * 0.85
         source: './tablet_app/images/Price_w1_3.gif'
         opacity: 0
 
 <QuestionMarkWidget>
     Image:
         id: question_mark
-        size: (root.size[0] * 0.17375, root.size[1] * 0.18833)
-        pos: root.width * 0.7375, root.height * 0.22
-        source: './tablet_app/images/question_mark.gif'
+        size: (root.size[0] * 0.175, root.size[1] * 0.18833)
+        pos: root.width * 0.742, root.height * 0.24
+        source: './tablet_app/images/worlds/w1/TangramGame_Selection.png'
         opacity: 1
 
 <SolveTangramRoom>:
@@ -942,7 +941,6 @@ class TangramMindsetApp(App):
         difficulty = self.screen_manager.get_screen('zero_screen_room').ids['difficulty_spinner'].text
         self.interaction.components['game'].game_facilitator.selection_gen.load_dif_levels(difficulty)
 
-
     def condition_selected(self):
         #NOW MOVED TO ADD AND NAMED condition_selection
         print("condition_selected")
@@ -959,7 +957,6 @@ class TangramMindsetApp(App):
         self.update_world(world)
         print(world)
 
-
     def gender_selected(self):
         #NOW MOVED TO ADD AND NAMED condition_selection
         print("gender_selected")
@@ -967,7 +964,6 @@ class TangramMindsetApp(App):
         #self.the_app.update_condition(condition)
         self.update_gender(gender)
         print(gender)
-
 
 if __name__ == "__main__":
     TangramMindsetApp().run()
