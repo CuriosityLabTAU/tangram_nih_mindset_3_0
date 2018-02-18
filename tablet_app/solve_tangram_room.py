@@ -58,8 +58,8 @@ class SolveTangramRoom(Screen):
         tangram_game_widget = self.ids['tangram_game_widget']
         tangram_game_widget.reset(the_app=the_app)  # clear the pieces from previous run
 
-        dX = 11 #Window.width/40.0  #20
-        dY = 9 #Window.height/40.0 #15
+        dX = 13 #Window.width/40.0  #20
+        dY = 8 #Window.height/40.0 #15
         # dX = 17 #Window.width/40.0  #20
         # dY = 9 #Window.height/40.0 #15
 
@@ -207,7 +207,7 @@ class GameTaskLayout(LoggedButton, TaskLayout):
         print('GameTaskLayout update_position dX=', self.dX)
         #self.size = [Window.width * 0.26, Window.height * 0.26]
         self.size = [TangramGame.SCALE * 10, TangramGame.SCALE * 10]
-        self.pos = [TangramGame.SCALE * 10, TangramGame.SCALE * 2]
+        self.pos = [TangramGame.SCALE * 10, TangramGame.SCALE * 1]
         #self.pos = [TangramGame.SCALE * (self.dX -1), TangramGame.SCALE * 2]
         print("Window.width",Window.width,"Window.height", Window.height)
         #self.update_selection_task_pos()
@@ -508,7 +508,7 @@ class HourGlassWidget (Widget):
         print (self)
         #if (not self.init):
         self.size = Window.width * 0.057, Window.height * 0.135
-        self.pos = [Window.width * 0.899 , Window.height * 0.1]
+        self.pos = [Window.width * 0.899 , TangramGame.SCALE * 1]
         #self.pos = [TangramGame.SCALE * 27, TangramGame.SCALE * 2]
         sandWidth = self.width
         sandHeight = self.height * 0.25
