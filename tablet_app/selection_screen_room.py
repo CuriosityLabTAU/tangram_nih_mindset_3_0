@@ -94,7 +94,7 @@ class SelectionScreenRoom(Screen):
             json7 = '{"pieces": [["large triangle2", "0", "0 0"], ["medium triangle", "0", "0 0"], ["square", "0", "0 0"], ["small triangle2", "0", "0 0"], ["small triangle1", "0", "0 0"], ["large triangle1", "0", "0 0"], ["parrallelogram", "0", "0 0"]], "size": "5 5"}'
             selection_task_layout_pieces.import_json_task (json7)   #(task_json[1])
             selection_task_layout_pieces.update_selection_task_pos()
-            #selection_task_layout_pieces.update_selection_task_pos()
+            selection_task_layout_pieces.update_selection_task_pos()
             selection_task_layout_pieces.update_task_pieces(task_json[0])
 
             #selection_task_layout.update_task_pieces(task_json[0])
@@ -151,10 +151,10 @@ class SelectionTaskLayout(LoggedButton, TaskLayout):
 
     def update_position(self, *args):
         # print('update_position')
-        box_width_and_gap = Window.width * 0.325
+        box_width_and_gap = Window.width * 0.33
         margin_left = Window.width * 0.073  # TangramGame.SCALE * 5
         self.size = [Window.width * 0.28, Window.height * 0.36]
-        self.pos =  [margin_left + self.index * box_width_and_gap, Window.height * 0.9] # [margin_left + self.index * box_width_and_gap, Window.height * 0.21]
+        self.pos =  [margin_left + self.index * box_width_and_gap, Window.height * 0.21] # [margin_left + self.index * box_width_and_gap, Window.height * 0.21]
 
     def _update_rect(self, instance, value):
         self.rect.pos = self.pos
@@ -183,15 +183,13 @@ class SelectionTaskLayout(LoggedButton, TaskLayout):
         print('finish set_border')
 
     def update_selection_task_pos(self):
-        # this is the position of the shade
         # print ('update_selection_task_pos ', self.index)
         for p in self.pieces:
             #p['pos'][0] += self.x + 4.5 * TangramGame.SCALE
             #p['pos'][1] += self.y + 6.5 * TangramGame.SCALE
             p['pos'][0] += self.x + 4.5 * TangramGame.SCALE
-            p['pos'][1] += Window.height * 0.37 #* 0.35
+            p['pos'][1] += Window.height * 0.35
     def update_task_pieces(self, task_pieces):
-        # the pieces on the trays
         # in the selection room show also the pieces of the tangram (not only the shade)
         # print ('update_task_pieces TaskLayout')
         # for g in self.groups:
