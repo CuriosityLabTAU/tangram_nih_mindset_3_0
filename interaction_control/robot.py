@@ -102,8 +102,6 @@ class RobotComponent(Component):
                         the_expressions = self.add_expression(the_expressions, choice(the_options[self.agent.condition]))
 
 
-
-
             self.expression = self.process_expression (the_expressions)
 
             self.expression = the_expressions

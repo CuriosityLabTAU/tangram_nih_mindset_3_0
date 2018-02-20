@@ -207,7 +207,7 @@ class GameTaskLayout(LoggedButton, TaskLayout):
         print('GameTaskLayout update_position dX=', self.dX)
         #self.size = [Window.width * 0.26, Window.height * 0.26]
         self.size = [TangramGame.SCALE * 10, TangramGame.SCALE * 10]
-        self.pos = [TangramGame.SCALE * 10, TangramGame.SCALE * 1]
+        self.pos = [TangramGame.SCALE * 12, TangramGame.SCALE * 1]
         #self.pos = [TangramGame.SCALE * (self.dX -1), TangramGame.SCALE * 2]
         print("Window.width",Window.width,"Window.height", Window.height)
         #self.update_selection_task_pos()
