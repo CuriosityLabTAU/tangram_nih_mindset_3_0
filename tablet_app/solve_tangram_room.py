@@ -105,7 +105,7 @@ class SolveTangramRoom(Screen):
         button_rotate = Rotate(tangram_game_widget)
         button_rotate.border = (0,0,0,0)
         button_rotate.size =  [Window.width * 0.086, Window.width * 0.086] #[60,60] #
-        button_rotate.pos = [Window.width * 0.88 , Window.height * 0.49]
+        button_rotate.pos = [Window.width * 0.89 , Window.height * 0.46]
         #button_rotate.size = [Window.width * 0.07, Window.width * 0.07]  # [60,60] #
         #button_rotate.pos = [TangramGame.SCALE * 27, TangramGame.SCALE * 9]
         button_rotate.background_normal = './tablet_app/images/worlds/' + self.world + '/Tangram_rotate_btn.png'
@@ -170,8 +170,9 @@ class Rotate(LoggedButton):
         super(Rotate,self).__init__()
         self.tangram_game_widget = game_widget
         self.name = "rotate_btn"
-        self.background_normal = 'buttons/arrow_rotate.png'
-        self.size = (TangramGame.SCALE * 4, TangramGame.SCALE * 4)
+        #self.background_normal = './tablet_app/images/reset_button.jpg'
+        #self.size = (TangramGame.SCALE * 4, TangramGame.SCALE * 4)
+        #self.pos = (Window.width * 0.899, TangramGame.SCALE * 1)
         self.press_rotate_sound = SoundLoader.load('./tablet_app/sounds/tongue-click.m4a')
         print ("end init rotate")
 
