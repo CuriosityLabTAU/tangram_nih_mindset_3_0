@@ -35,6 +35,29 @@ from kivy.core.audio import SoundLoader
 
 from random import choice
 
+try:
+    from jnius import autoclass
+    from android.runnable import run_on_ui_thread
+
+    android_api_version = autoclass('android.os.Build$VERSION')
+    AndroidView = autoclass('android.view.View')
+    # AndroidPythonActivity = autoclass('org.renpy.android.PythonActivity')
+    AndroidPythonActivity = autoclass('org.kivy.android.PythonActivity')
+
+    Logger.debug(
+        'Application runs on Android, API level {0}'.format(
+            android_api_version.SDK_INT
+        )
+    )
+except ImportError:
+    def run_on_ui_thread(func):
+        def wrapper(*args):
+            Logger.debug('{0} called on non android platform'.format(
+                func.__name__
+            ))
+        return wrapper
+
+
 GAME_WITH_ROBOT = False  # False
 ROBOT_SOUND_FROM_TABLET = False # False
 #rinat
@@ -613,6 +636,7 @@ class TangramMindsetApp(App):
 
     def on_start(self):
         print ('app: on_start')
+        self.android_set_hide_menu()
         TangramGame.SCALE = round(self.root_window.size[0] / 60)
         TangramGame.window_size = self.root_window.size
 
@@ -630,6 +654,7 @@ class TangramMindsetApp(App):
         KL.log.insert(action=LogAction.data, obj='TangramMindsetApp', comment='start')
 
         zero_screen = ZeroScreenRoom(self)
+        self.android_set_hide_menu()
         zero_screen.ids['subject_id'].bind(text=zero_screen.ids['subject_id'].on_text_change)
         zero_screen.ids['subject_id'].bind(text=self.subject_id_changed)
         self.screen_manager.add_widget(zero_screen)
@@ -762,11 +787,13 @@ class TangramMindsetApp(App):
     def first_screen(self):
         self.screen_manager.get_screen('first_screen_room').init_first_screen_room(the_app=self)
         self.screen_manager.current = 'first_screen_room'
+        self.android_set_hide_menu()
 
 
     def party_screen(self):
         self.screen_manager.get_screen('party_screen_room').init_party(self, self.tangrams_solved)
         self.screen_manager.current = 'party_screen_room'
+        self.android_set_hide_menu()
 
 
     def selection_screen(self, x):
@@ -776,6 +803,7 @@ class TangramMindsetApp(App):
         TangramGame.SCALE = round(Window.size[0] / 75)
         self.screen_manager.get_screen('selection_screen_room').init_selection_options(x=x,the_app=self)
         self.screen_manager.current = 'selection_screen_room'
+        self.android_set_hide_menu()
 
     def select_treasure(self,treasure):
         # robot selected treasure
@@ -791,6 +819,7 @@ class TangramMindsetApp(App):
         TangramGame.SCALE = round(Window.size[0] / 25)
         self.screen_manager.get_screen('solve_tangram_room').init_task(x, the_app=self)
         self.screen_manager.current = 'solve_tangram_room'
+        self.android_set_hide_menu()
 
     def robot_express(self, action, expression):
         # robot is saying action
@@ -964,6 +993,20 @@ class TangramMindsetApp(App):
         #self.the_app.update_condition(condition)
         self.update_gender(gender)
         print(gender)
+
+    @run_on_ui_thread
+    def android_set_hide_menu(self):
+        if android_api_version.SDK_INT >= 19:
+            Logger.debug('API >= 19. Set hide menu')
+            view = AndroidPythonActivity.mActivity.getWindow().getDecorView()
+            view.setSystemUiVisibility(
+                AndroidView.SYSTEM_UI_FLAG_LAYOUT_STABLE |
+                AndroidView.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION |
+                AndroidView.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN |
+                AndroidView.SYSTEM_UI_FLAG_HIDE_NAVIGATION |
+                AndroidView.SYSTEM_UI_FLAG_FULLSCREEN |
+                AndroidView.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+            )
 
 if __name__ == "__main__":
     TangramMindsetApp().run()
