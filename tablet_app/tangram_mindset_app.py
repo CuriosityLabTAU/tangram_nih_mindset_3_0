@@ -58,10 +58,10 @@ except ImportError:
         return wrapper
 
 
-GAME_WITH_ROBOT = False  # False
+GAME_WITH_ROBOT = True  # False
 ROBOT_SOUND_FROM_TABLET = False # False
 #rinat
-STUDY_SITE = 'TAU'      #'TAU'      # MIT
+STUDY_SITE = 'MIT-JIBO'      #'TAU'      # MIT   #MIT-JIBO
 
 class MyScreenManager (ScreenManager):
     the_tablet = None
@@ -617,8 +617,11 @@ class TangramMindsetApp(App):
 
         else:
             if STUDY_SITE == 'MIT':
-                self.interaction.components['robot'].load_text(filename='./tablet_app/robot_text/robot_text_revised4.json')
+                self.interaction.components['robot'].load_text(filename='./tablet_app/robot_text/robot_text_revised5_tau_long.json')
                 self.interaction.components['robot'].robot_name = 'tega'
+            elif STUDY_SITE == 'MIT-JIBO':
+                self.interaction.components['robot'].load_text(filename='./tablet_app/robot_text/robot_text_revised5_tau_long.json')
+                self.interaction.components['robot'].robot_name = 'jibo'
             elif STUDY_SITE == 'TAU':
                 self.interaction.components['robot'].load_text(filename='./tablet_app/robot_text/robot_text_revised5_tau_long.json')
                 self.interaction.components['robot'].robot_name = 'nao'
@@ -642,10 +645,10 @@ class TangramMindsetApp(App):
 
     def init_communication(self, ip_addr):
         local_ip = ip_addr
-        if STUDY_SITE == 'TAU':
-            local_ip = ip_addr
-        elif STUDY_SITE == 'MIT':
-            local_ip = ip_addr
+        # if STUDY_SITE == 'TAU':
+        #     local_ip = ip_addr
+        # elif STUDY_SITE == 'MIT':
+        #     local_ip = ip_addr
 
         KC.start(the_parents=[self, self.interaction.components['robot']], the_ip=local_ip)
         KL.start(mode=[DataMode.file, DataMode.communication, DataMode.ros], pathname=self.user_data_dir, the_ip=local_ip)
@@ -919,8 +922,8 @@ class TangramMindsetApp(App):
         self.filled_condition = True
         self.update_filled()
         self.text_handler = TextHandler(condition)
-        if STUDY_SITE == 'MIT':
-            self.text_handler.load_text(filename='./tablet_app/robot_text/robot_text_revised3.json')
+        if 'MIT' in STUDY_SITE:
+            self.text_handler.load_text(filename='./tablet_app/robot_text/robot_text_revised5_tau_long.json')
         elif STUDY_SITE == 'TAU':
             self.text_handler.load_text(filename='./tablet_app/robot_text/robot_text_revised5_tau_long.json')
         self.interaction.components['robot'].agent.update_condition(condition)
@@ -929,7 +932,7 @@ class TangramMindsetApp(App):
         self.filled_gender = True
         self.update_filled()
         self.gender = gender
-        if STUDY_SITE == 'MIT':
+        if 'MIT' in STUDY_SITE:
             self.subject_gender = ""
         elif STUDY_SITE == 'TAU':
             self.subject_gender = gender
@@ -938,7 +941,8 @@ class TangramMindsetApp(App):
     def update_world(self, world):
         self.filled_world  = True
         self.update_filled()
-        if STUDY_SITE == 'MIT':
+
+        if 'MIT' in STUDY_SITE:
             self.study_world = world
         elif STUDY_SITE == 'TAU':
             self.study_world = world

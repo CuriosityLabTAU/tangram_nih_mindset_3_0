@@ -26,7 +26,7 @@ class RobotComponent(Component):
     gender = None
     study_world = None
 
-    def load_text(self, filename='./tablet_app/robot_text_revised3.json'):  #robot_text_revised3
+    def load_text(self, filename='./tablet_app/robot_text_revised5_tau_long.json'):  #robot_text_revised3
         with open(filename) as data_file:
             self.animation = json.load(data_file)
 
