@@ -58,7 +58,7 @@ except ImportError:
         return wrapper
 
 
-GAME_WITH_ROBOT = True  # False
+GAME_WITH_ROBOT = False #True  # False
 ROBOT_SOUND_FROM_TABLET = False # False
 #rinat
 STUDY_SITE = 'MIT-JIBO'      #'TAU'      # MIT   #MIT-JIBO
@@ -82,8 +82,10 @@ root_widget = Builder.load_string('''
             id: roscore_ip
             name: 'roscore_ip'
             text: '192.168.122.1'
+            text: '192.168.0.100'
+            text: '192.168.0.105'
             text: '132.66.50.139'
-            text: '192.168.0.101'
+            text: '132.66.198.164'
             font_size: 16
             multiline: False
             size: root.width * 0.4, root.height * 0.07
@@ -934,6 +936,7 @@ class TangramMindsetApp(App):
         self.gender = gender
         if 'MIT' in STUDY_SITE:
             self.subject_gender = ""
+            self.interaction.components['robot'].gender = ""
         elif STUDY_SITE == 'TAU':
             self.subject_gender = gender
             self.interaction.components['robot'].gender = gender
@@ -944,6 +947,12 @@ class TangramMindsetApp(App):
 
         if 'MIT' in STUDY_SITE:
             self.study_world = world
+            self.interaction.components['game'].game_facilitator.selection_gen.load_dif_levels(world=world)
+            self.interaction.components['robot'].agent.update_world(world)
+            self.interaction.components['robot'].study_world = world
+            self.interaction.load_sequence(
+                filename='./tablet_app/worlds_sequences/sequence_' + self.study_world + '.json')
+            self.interaction.next_interaction()
         elif STUDY_SITE == 'TAU':
             self.study_world = world
             self.interaction.components['game'].game_facilitator.selection_gen.load_dif_levels(world=world)
