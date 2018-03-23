@@ -181,15 +181,15 @@ root_widget = Builder.load_string('''
             on_press: app.press_robot_init()
 
         LoggedButton:
-            id: goto_game2_button
-            name: 'goto_game2_button'
+            id: goto_last_game_button
+            name: 'goto_last_game_button'
             background_color: 0.5,0.5,0.5,1
             background_normal: ''
-            text: 'game2'
+            text: 'last game'
             font_size: 16
             size: root.width * 0.15, root.height * 0.07
             pos: root.width * 0.08, root.height * 0.4 - self.height * 0.5
-            on_press: app.press_load_transition('game2')
+            on_press: app.press_load_transition('last_game')
 
         LoggedButton:
             id: goto_game4_button
@@ -737,26 +737,70 @@ class TangramMindsetApp(App):
         if (self.filled_all_data):
             print("loading new transition file")
 
-            games_played = int(stage.replace('game',''))-1
+            with open('last_saved_state' + '.pkl', 'rb') as f:
+                self.state = pickle.load(f)
+
+            self.tangrams_solved = self.state['tnagram_solved']
+            print('tangrams solved: ', self.tangrams_solved)
+            # game_facilitator
+
+            self.interaction.components['game'].game_facilitator.selection_gen.player = self.state['player']
+            print('player: ', self.interaction.components['game'].game_facilitator.selection_gen.player)
+
+            self.interaction.components['game'].game_facilitator.selection_gen.is_last_challenge = self.state['is_last_challenge']
+            print(
+            'is_last_challenge: ', self.interaction.components['game'].game_facilitator.selection_gen.is_last_challenge)
+
+            self.interaction.components['game'].game_facilitator.selection_gen.challenge_counter = self.state['challenge_counter']
+            print(
+            'challenge_counter: ', self.interaction.components['game'].game_facilitator.selection_gen.challenge_counter)
+
+            self.interaction.components['game'].game_facilitator.selection_gen.path_indexes = self.state['path_indexes']
+            print('path_indexes: ', self.interaction.components['game'].game_facilitator.selection_gen.path_indexes)
+
+            self.interaction.components['game'].game_facilitator.selection_gen.seen_puzzles = self.state['seen_puzzles']
+            print('seen_puzzles: ', self.interaction.components['game'].game_facilitator.selection_gen.seen_puzzles)
+
+            self.interaction.components['game'].game_facilitator.game_counter = self.state['game_counter']
+            print('game_counter: ', self.interaction.components['game'].game_facilitator.game_counter)
+            game_counter = self.interaction.components['game'].game_facilitator.game_counter
+
+            self.interaction.components['game'].game_facilitator.current_player = self.state['current_player']
+            print('current_player: ', self.interaction.components['game'].game_facilitator.current_player)
+
+            # agent
+            self.interaction.components['robot'].agent.current_round = self.state['current_round']
+            print('current_round: ', self.interaction.components['robot'].agent.current_round)
+
+            # interaction
+            self.interaction.current_interaction = self.state['current_interaction'] - 1
+            print('current_interaction: ', self.interaction.current_interaction)
+
+            TangramGame.cog_tangram_selection = self.state['cog_tangram_selection']
+            print ('cog_tangram_selection: ', TangramGame.cog_tangram_selection)
+
+            #games_played = int(stage.replace('game',''))-1
 
             # increase challenge_counter
-            if games_played > 6:
-                self.interaction.components['game'].game_facilitator.selection_gen.challenge_counter += 1
-                self.interaction.components['game'].game_facilitator.selection_gen.challenge_index += 1
+            # if games_played > 6:
+            #     self.interaction.components['game'].game_facilitator.selection_gen.challenge_counter += 1
+            #     self.interaction.components['game'].game_facilitator.selection_gen.challenge_index += 1
+            #
+            # for i in range(games_played):
+            #     self.interaction.components['game'].game_facilitator.update_game_result('S')
+            #     print(self.interaction.components['game'].game_facilitator.selection_gen.current_level)
+            #     self.tangrams_solved += choice([1,0])
+            #
+            # if games_played < 4:
+            #     games_played += 1
+            #
+            # self.tangrams_solved = max(games_played/2, self.tangrams_solved)
 
-            for i in range(games_played):
-                self.interaction.components['game'].game_facilitator.update_game_result('S')
-                print(self.interaction.components['game'].game_facilitator.selection_gen.current_level)
-                self.tangrams_solved += choice([1,0])
-
-            if games_played < 4:
-                games_played += 1
-
-            self.tangrams_solved = max(games_played/2, self.tangrams_solved)
-
-            filename = './tablet_app/worlds_sequences/sequence_' + self.study_world + '_' + stage + '.json'
-            self.interaction.load_sequence(filename=filename)
+            # filename = './tablet_app/worlds_sequences/sequence_' + self.study_world + '_' + stage + '.json'
+            # filename = './tablet_app/worlds_sequences/sequence_w1_'+'counter_' + str(game_counter) + '.json'
+            # self.interaction.load_sequence(filename=filename)
             self.interaction.next_interaction()
+            #self.press_start_button()
 
     def press_yes_button(self):
         # child pressed the yes button
@@ -804,6 +848,51 @@ class TangramMindsetApp(App):
     def selection_screen(self, x):
         # Rinat: x is a list of tangrams from maor
         # you need to present all options with the tangram pieces
+
+        # Maor: save game state for recovery
+        print('Saving game state')
+        # the
+        state = {}
+        print('tangrams solved: ',self.tangrams_solved)
+        state['tnagram_solved'] = self.tangrams_solved
+        # game_facilitator
+        print('player: ', self.interaction.components['game'].game_facilitator.selection_gen.player)
+        state['player'] = self.interaction.components['game'].game_facilitator.selection_gen.player
+
+        print('is_last_challenge: ', self.interaction.components['game'].game_facilitator.selection_gen.is_last_challenge)
+        state['is_last_challenge'] = self.interaction.components['game'].game_facilitator.selection_gen.is_last_challenge
+
+        print('challenge_counter: ', self.interaction.components['game'].game_facilitator.selection_gen.challenge_counter)
+        state['challenge_counter'] = self.interaction.components['game'].game_facilitator.selection_gen.challenge_counter
+
+        print('path_indexes: ', self.interaction.components['game'].game_facilitator.selection_gen.path_indexes)
+        state['path_indexes'] = self.interaction.components['game'].game_facilitator.selection_gen.path_indexes
+
+        print('seen_puzzles: ', self.interaction.components['game'].game_facilitator.selection_gen.seen_puzzles)
+        state['seen_puzzles'] = self.interaction.components['game'].game_facilitator.selection_gen.seen_puzzles
+
+        print('game_counter: ', self.interaction.components['game'].game_facilitator.game_counter)
+        state['game_counter'] = self.interaction.components['game'].game_facilitator.game_counter
+
+        print('current_player: ', self.interaction.components['game'].game_facilitator.current_player)
+        state['current_player'] = self.interaction.components['game'].game_facilitator.current_player
+
+        # agent
+        print('current_round: ', self.interaction.components['robot'].agent.current_round)
+        state['current_round'] = self.interaction.components['robot'].agent.current_round
+
+        # interaction
+        print('current_interaction: ', self.interaction.current_interaction)
+        state['current_interaction'] = self.interaction.current_interaction
+
+        print ('cog_tangram_selection: ', TangramGame.cog_tangram_selection)
+        state['cog_tangram_selection'] = TangramGame.cog_tangram_selection
+
+        with open('last_saved_state'+'.pkl', 'wb') as f:
+            pickle.dump(state, f, pickle.HIGHEST_PROTOCOL)
+        print('Finished saving game state')
+        # Maor: end of save game state
+
         print('x=',x)
         TangramGame.SCALE = round(Window.size[0] / 75)
         self.screen_manager.get_screen('selection_screen_room').init_selection_options(x=x,the_app=self)
@@ -965,11 +1054,11 @@ class TangramMindsetApp(App):
         self.filled_all_data = (self.filled_subject_id and self.filled_world and self.filled_gender and self.filled_condition)
         if self.filled_all_data:
             self.screen_manager.get_screen('zero_screen_room').ids['start_button'].background_color = (0.2, 0.5, 0.2, 1)
-            self.screen_manager.get_screen('zero_screen_room').ids['goto_game2_button'].background_color = (0.2, 0.5, 0.2, 1)
-            self.screen_manager.get_screen('zero_screen_room').ids['goto_game4_button'].background_color = (0.2, 0.5, 0.2, 1)
-            self.screen_manager.get_screen('zero_screen_room').ids['goto_game6_button'].background_color = (0.2, 0.5, 0.2, 1)
-            self.screen_manager.get_screen('zero_screen_room').ids['goto_game8_button'].background_color = (0.2, 0.5, 0.2, 1)
-            self.screen_manager.get_screen('zero_screen_room').ids['goto_game10_button'].background_color = (0.2, 0.5, 0.2, 1)
+            self.screen_manager.get_screen('zero_screen_room').ids['goto_last_game_button'].background_color = (0.2, 0.5, 0.2, 1)
+            # self.screen_manager.get_screen('zero_screen_room').ids['goto_game4_button'].background_color = (0.2, 0.5, 0.2, 1)
+            # self.screen_manager.get_screen('zero_screen_room').ids['goto_game6_button'].background_color = (0.2, 0.5, 0.2, 1)
+            # self.screen_manager.get_screen('zero_screen_room').ids['goto_game8_button'].background_color = (0.2, 0.5, 0.2, 1)
+            # self.screen_manager.get_screen('zero_screen_room').ids['goto_game10_button'].background_color = (0.2, 0.5, 0.2, 1)
             print ("all is filled")
 
             #self.screen_manager.get_screen('zero_screen_room').ids['start_button'].text = "OK"
