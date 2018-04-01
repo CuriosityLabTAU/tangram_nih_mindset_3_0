@@ -171,18 +171,19 @@ class Solver:
             ind_max_sorted = [x for (y, x) in sorted(zip(v[ind_active], ind_active[0]),
                                                      reverse=True)]  # sort the active indexes according to v()
 
-            most_active_piece = self.networks[net_ind].nodes[ind_max_sorted[0]].name
-            for k in range(len(ind_max_sorted)):
-                most_active_piece = self.networks[net_ind].nodes[ind_max_sorted[k]].name
-                if most_active_piece not in pieces_vec \
-                        and v[ind_max_sorted[k]] > 0.0 \
-                        and self.errors[net_ind][n] < 0.0:
-                    print(self.errors[net_ind][n])
-                    seq.append(self.networks[net_ind].nodes[ind_max_sorted[k]])
-                    for piece_iter in range(len(pieces_vec)):
-                        if pieces_vec[piece_iter][0] == most_active_piece[0]:  # the name is the same.
-                            pieces_vec[piece_iter] = most_active_piece
-                    break
+            if len(ind_max_sorted) > 0:
+                most_active_piece = self.networks[net_ind].nodes[ind_max_sorted[0]].name
+                for k in range(len(ind_max_sorted)):
+                    most_active_piece = self.networks[net_ind].nodes[ind_max_sorted[k]].name
+                    if most_active_piece not in pieces_vec \
+                            and v[ind_max_sorted[k]] > 0.0 \
+                            and self.errors[net_ind][n] < 0.0:
+                        print(self.errors[net_ind][n])
+                        seq.append(self.networks[net_ind].nodes[ind_max_sorted[k]])
+                        for piece_iter in range(len(pieces_vec)):
+                            if pieces_vec[piece_iter][0] == most_active_piece[0]:  # the name is the same.
+                                pieces_vec[piece_iter] = most_active_piece
+                        break
 
         # add pieces from final solution in case they where not included in the most active list
         for k in range(len(self.solutions[net_ind][-1])):
