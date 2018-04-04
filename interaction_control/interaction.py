@@ -50,6 +50,7 @@ class Interaction:
     def next_interaction(self):
         self.current_interaction += 1
         if self.current_interaction >= len(self.data['sequence']):
+            KL.log.insert(action=LogAction.data, obj='game', comment='the_end', sync=True)
             print('THE END!')
             return True
         the_interaction = self.data['sequence'][self.current_interaction]

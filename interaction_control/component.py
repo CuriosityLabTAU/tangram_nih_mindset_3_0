@@ -133,7 +133,17 @@ class Component:
     def log_data(self, target=None, action=None):
         if is_logged:
             try:
-                KL.log.insert(action=LogAction.data, obj=self.name, comment=[self.current_state, self.current_param, target, action])
+                # during the solving don't sync the log file to prevent slow down of the game.
+                if action[0] == 'tangram_changed':
+                    KL.log.insert(action=LogAction.data, obj=self.name,
+                                  comment=[self.current_state, self.current_param, target, action], sync=False)
+                elif action[0] == 'not_solved':
+                    KL.log.insert(action=LogAction.data, obj=self.name,
+                                  comment=[self.current_state, self.current_param, target, action], sync=False)
+                else:
+                    KL.log.insert(action=LogAction.data, obj=self.name,
+                                  comment=[self.current_state, self.current_param, target, action])
+                # KL.log.insert(action=LogAction.data, obj=self.name, comment=[self.current_state, self.current_param, target, action])
             except:
                 print "twist server connection not established yet."
 
