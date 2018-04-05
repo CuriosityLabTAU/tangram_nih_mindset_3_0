@@ -86,6 +86,7 @@ root_widget = Builder.load_string('''
             text: '192.168.0.105'
             text: '132.66.50.139'
             text: '132.66.198.164'
+            text: '192.168.1.104'
             font_size: 16
             multiline: False
             size: root.width * 0.4, root.height * 0.07
@@ -740,6 +741,17 @@ class TangramMindsetApp(App):
             with open('last_saved_state' + '.pkl', 'rb') as f:
                 self.state = pickle.load(f)
 
+            # self.gender = self.state['gender']
+            # print('gender: ', self.gender)
+            #
+            #
+            #
+            # print('world: ', self.study_world)
+            # state['world'] = self.study_world
+            #
+            # print('condition: ', self.condition)
+            # state['condition'] = self.condition
+
             self.tangrams_solved = self.state['tnagram_solved']
             print('tangrams solved: ', self.tangrams_solved)
             # game_facilitator
@@ -771,6 +783,9 @@ class TangramMindsetApp(App):
             # agent
             self.interaction.components['robot'].agent.current_round = self.state['current_round']
             print('current_round: ', self.interaction.components['robot'].agent.current_round)
+            current_round = int(np.floor(self.state['current_interaction'] / 2))
+            self.interaction.components['robot'].agent.current_round = current_round
+            print('fixed current_round: ', current_round)
 
             # interaction
             self.interaction.current_interaction = self.state['current_interaction'] - 1
@@ -853,6 +868,16 @@ class TangramMindsetApp(App):
         print('Saving game state')
         # the
         state = {}
+
+        # print('gender: ', self.gender)
+        # state['gender'] = self.gender
+        #
+        # print('world: ', self.study_world)
+        # state['world'] = self.study_world
+        #
+        # print('condition: ', self.condition)
+        # state['condition'] = self.condition
+
         print('tangrams solved: ',self.tangrams_solved)
         state['tnagram_solved'] = self.tangrams_solved
         # game_facilitator
@@ -1011,6 +1036,7 @@ class TangramMindsetApp(App):
 
     def update_condition(self, condition):
         self.filled_condition = True
+        self.condition = condition
         self.update_filled()
         self.text_handler = TextHandler(condition)
         if 'MIT' in STUDY_SITE:
