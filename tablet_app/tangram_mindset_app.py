@@ -636,6 +636,12 @@ class TangramMindsetApp(App):
         self.screen_manager = MyScreenManager()
 
         self.screen_manager.add_widget(SetupScreenRoom())
+        try:
+            with open('last_ip' + '.pkl', 'rb') as f:
+                ip_text = pickle.load(f)
+                self.screen_manager.get_screen('setup_screen_room').ids['roscore_ip'].text = ip_text
+        except IOError as e:
+            print "Unable to open ip file, probably first run so file doesn't exist yet."
         self.screen_manager.current = 'setup_screen_room'
 
         return self.screen_manager
@@ -719,6 +725,11 @@ class TangramMindsetApp(App):
     def press_connect_button(self, ip_addr):
         # To-Do: save previous ip input
         print ip_addr
+
+        with open('last_ip'+'.pkl', 'wb') as f:
+            pickle.dump(ip_addr, f, pickle.HIGHEST_PROTOCOL)
+        print('Finished saving ip')
+
         self.init_communication(ip_addr)
 
     def press_start_button (self):
