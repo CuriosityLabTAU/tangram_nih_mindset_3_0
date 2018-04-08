@@ -58,7 +58,7 @@ except ImportError:
         return wrapper
 
 
-GAME_WITH_ROBOT = False #True  # False
+GAME_WITH_ROBOT = True  # False
 ROBOT_SOUND_FROM_TABLET = False # False
 #rinat
 STUDY_SITE = 'MIT-JIBO'      #'TAU'      # MIT   #MIT-JIBO
@@ -160,15 +160,15 @@ root_widget = Builder.load_string('''
             pos: root.width * 0.62, root.height * 0.7 - self.height * 0.5
             on_text: app.world_selected()
     
-        LoggedSpinner:
-            id: gender_spinner
-            text: 'gender'
-            font_size: 16
-            background_color: 0.2,0.2,0.2,1
-            values: ('m','f')
-            size: root.width * 0.15, root.height * 0.07
-            pos: root.width * 0.62, root.height * 0.6 - self.height * 0.5
-            on_text: app.gender_selected()
+        # LoggedSpinner:
+        #     id: gender_spinner
+        #     text: 'gender'
+        #     font_size: 16
+        #     background_color: 0.2,0.2,0.2,1
+        #     values: ('m','f')
+        #     size: root.width * 0.15, root.height * 0.07
+        #     pos: root.width * 0.62, root.height * 0.6 - self.height * 0.5
+        #     on_text: app.gender_selected()
             
         LoggedButton:
             id: tega_sleep_button
@@ -192,49 +192,49 @@ root_widget = Builder.load_string('''
             pos: root.width * 0.08, root.height * 0.4 - self.height * 0.5
             on_press: app.press_load_transition('last_game')
 
-        LoggedButton:
-            id: goto_game4_button
-            name: 'goto_game4_button'
-            background_color: 0.5,0.5,0.5,1
-            background_normal: ''
-            text: 'game4'
-            font_size: 16
-            size: root.width * 0.15, root.height * 0.07
-            pos: root.width * 0.25, root.height * 0.4 - self.height * 0.5
-            on_press: app.press_load_transition('game4')
-
-        LoggedButton:
-            id: goto_game6_button
-            name: 'goto_game6_button'
-            background_color: 0.5,0.5,0.5,1
-            background_normal: ''
-            text: 'game6'
-            font_size: 16
-            size: root.width * 0.15, root.height * 0.07
-            pos: root.width * 0.42, root.height * 0.4 - self.height * 0.5
-            on_press: app.press_load_transition('game6')
-
-        LoggedButton:
-            id: goto_game8_button
-            name: 'goto_game8_button'
-            background_color: 0.5,0.5,0.5,1
-            background_normal: ''
-            text: 'game8'
-            font_size: 16
-            size: root.width * 0.15, root.height * 0.07
-            pos: root.width * 0.59, root.height * 0.4 - self.height * 0.5
-            on_press: app.press_load_transition('game8')
-
-        LoggedButton:
-            id: goto_game10_button
-            name: 'goto_game10_button'
-            background_color: 0.5,0.5,0.5,1
-            background_normal: ''
-            text: 'game10'
-            font_size: 16
-            size: root.width * 0.15, root.height * 0.07
-            pos: root.width * 0.76, root.height * 0.4 - self.height * 0.5
-            on_press: app.press_load_transition('game10')
+        # LoggedButton:
+        #     id: goto_game4_button
+        #     name: 'goto_game4_button'
+        #     background_color: 0.5,0.5,0.5,1
+        #     background_normal: ''
+        #     text: 'game4'
+        #     font_size: 16
+        #     size: root.width * 0.15, root.height * 0.07
+        #     pos: root.width * 0.25, root.height * 0.4 - self.height * 0.5
+        #     on_press: app.press_load_transition('game4')
+        # 
+        # LoggedButton:
+        #     id: goto_game6_button
+        #     name: 'goto_game6_button'
+        #     background_color: 0.5,0.5,0.5,1
+        #     background_normal: ''
+        #     text: 'game6'
+        #     font_size: 16
+        #     size: root.width * 0.15, root.height * 0.07
+        #     pos: root.width * 0.42, root.height * 0.4 - self.height * 0.5
+        #     on_press: app.press_load_transition('game6')
+        # 
+        # LoggedButton:
+        #     id: goto_game8_button
+        #     name: 'goto_game8_button'
+        #     background_color: 0.5,0.5,0.5,1
+        #     background_normal: ''
+        #     text: 'game8'
+        #     font_size: 16
+        #     size: root.width * 0.15, root.height * 0.07
+        #     pos: root.width * 0.59, root.height * 0.4 - self.height * 0.5
+        #     on_press: app.press_load_transition('game8')
+        # 
+        # LoggedButton:
+        #     id: goto_game10_button
+        #     name: 'goto_game10_button'
+        #     background_color: 0.5,0.5,0.5,1
+        #     background_normal: ''
+        #     text: 'game10'
+        #     font_size: 16
+        #     size: root.width * 0.15, root.height * 0.07
+        #     pos: root.width * 0.76, root.height * 0.4 - self.height * 0.5
+        #     on_press: app.press_load_transition('game10')
 
 
 <FirstScreenRoom>:
@@ -587,13 +587,13 @@ class TangramMindsetApp(App):
     text_handler = None
     tablet_disabled = False
     yes_clicked_flag = False
-    subject_gender = ""
+    subject_gender = "m"
     study_world = None
 
     filled_all_data = False
     filled_subject_id = False
     filled_world = False
-    filled_gender = False
+    filled_gender = True
     filled_condition = False
 
     def build(self):
@@ -614,6 +614,7 @@ class TangramMindsetApp(App):
         self.interaction.components['tablet'].hourglass_widget = self.str_screen.ids['hourglass_widget']
         # self.interaction.components['hourglass'].widget = s.ids['hourglass_widget']
         self.interaction.components['tablet'].app = self
+        self.interaction.components['robot'].gender = ""
         if not GAME_WITH_ROBOT:
             self.interaction.components['robot'].app = self
             self.interaction.components['robot'].load_text(filename='./tablet_app/robot_text/robot_text_revised5_tau_long.json') #added in order to play sound files
@@ -654,16 +655,16 @@ class TangramMindsetApp(App):
         #     local_ip = ip_addr
 
         KC.start(the_parents=[self, self.interaction.components['robot']], the_ip=local_ip)
-        KL.start(mode=[DataMode.file, DataMode.communication, DataMode.ros], pathname=self.user_data_dir, the_ip=local_ip)
+        KL.start(mode=[DataMode.communication, DataMode.ros], pathname=self.user_data_dir, the_ip=local_ip)
 
     def on_connection(self):
         KL.log.insert(action=LogAction.data, obj='TangramMindsetApp', comment='start')
 
-        zero_screen = ZeroScreenRoom(self)
+        self.zero_screen = ZeroScreenRoom(self)
         self.android_set_hide_menu()
-        zero_screen.ids['subject_id'].bind(text=zero_screen.ids['subject_id'].on_text_change)
-        zero_screen.ids['subject_id'].bind(text=self.subject_id_changed)
-        self.screen_manager.add_widget(zero_screen)
+        self.zero_screen.ids['subject_id'].bind(text=self.zero_screen.ids['subject_id'].on_text_change)
+        self.zero_screen.ids['subject_id'].bind(text=self.subject_id_changed)
+        self.screen_manager.add_widget(self.zero_screen)
         self.screen_manager.add_widget(FirstScreenRoom(self.interaction.components['tablet']))
         self.screen_manager.add_widget(SelectionScreenRoom(self.interaction.components['tablet']))
         self.screen_manager.add_widget(PartyScreenRoom(self.interaction.components['tablet']))
@@ -672,6 +673,7 @@ class TangramMindsetApp(App):
         self.screen_manager.current = 'zero_screen_room'
 
     def subject_id_changed(self, *args):
+        print args
         if len(args[1]) > 0:
             self.filled_subject_id = True
             self.update_filled()
@@ -691,6 +693,32 @@ class TangramMindsetApp(App):
             #self.sounds[s] = SoundLoader.load("./tablet_app/sounds/" + s)
         self.current_sound = None
 
+    def data_received(self, data):
+        # receive pid, session, condition, start stage information
+        if self.screen_manager.current == "zero_screen_room":
+            info = data.split(",")
+            print info
+            for i in info:
+                print i
+                if "pid" in i:
+                    self.zero_screen.ids['subject_id'].text = i.split(":")[1]
+                elif "condition" in i:
+                    val = i.split(":")[1]
+                    if val in self.zero_screen.ids['condition_spinner'].values:
+                        self.zero_screen.ids['condition_spinner'].text = val
+                elif "world" in i:
+                    val = i.split(":")[1]
+                    if val in self.zero_screen.ids['world_spinner'].values:
+                        self.zero_screen.ids['world_spinner'].text = val
+                elif "start" in i:
+                    self.press_start_button()
+                elif "last_game" in i:
+                    self.press_load_transition("last_game")
+
+        print(self.name, data)
+        #the_data = json.loads(data)
+        #self.finished_expression(the_data[self.robot_name][1])
+
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Messages from robot to tablet to interaction
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -705,7 +733,6 @@ class TangramMindsetApp(App):
         # ONLY WHEN THE PIECES FINISHED MOVING, then call the interaction with the line below.
         # time.sleep(1)
         # self.interaction.components['child'].on_action(['tangram_change', x])
-
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Messages from tablet to interaction
@@ -1121,6 +1148,7 @@ class TangramMindsetApp(App):
         #self.the_app.update_condition(condition)
         self.update_gender(gender)
         print(gender)
+
 
     @run_on_ui_thread
     def android_set_hide_menu(self):

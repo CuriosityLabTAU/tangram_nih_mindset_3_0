@@ -43,12 +43,14 @@ class RobotComponent(Component):
             else:
                 getattr(self, action[0])()
             return True
-        except:
+        except Exception as e:
+            print e
             if not isinstance(sys.exc_info()[1], AttributeError):
                 print ("unexpected error:",sys.exc_info())
             try:
                 self.express(action)
-            except:
+            except Exception as e:
+                print e
                 print ("except except: could not except in run_function:",sys.exc_info())
         return False
 

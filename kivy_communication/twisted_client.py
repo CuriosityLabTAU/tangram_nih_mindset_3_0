@@ -34,6 +34,7 @@ class EchoClient(protocol.Protocol):
 
     def dataReceived(self, data):
         self.factory.client.data_received(data)
+        print data
 
 
 class EchoFactory(protocol.ReconnectingClientFactory):
@@ -129,7 +130,8 @@ class TwistedClient:
                 try:
                     p.data_received(data)
                     print('twisted client: parent ', p, 'received ', data)
-                except:
+                except Exception as e:
+                    print e
                     print('twisted client: parent ', p, ' has no data_received')
         print('data: ', data)
 
