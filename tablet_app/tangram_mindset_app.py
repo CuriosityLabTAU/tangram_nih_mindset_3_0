@@ -282,9 +282,10 @@ root_widget = Builder.load_string('''
         LoggedButton:
             id: stop_button
             name: 'stop_button'
-            background_normal:  './tablet_app/images/reset_button.jpg'
-            background_down:  './tablet_app/images/reset_button_down.jpg'
-            border: (0,0,0,0)
+            background_color: 0, 0, 0, 0
+            #background_normal:  './tablet_app/images/reset_button.jpg'
+            #background_down:  './tablet_app/images/reset_button_down.jpg'
+            #border: (0,0,0,0)
             size: root.width * 0.03, root.width * 0.03
             pos: root.width * 0.98 - self.width * 0.5, root.height * 0.975 - self.height * 0.5
             on_press: app.press_stop_button()
@@ -404,8 +405,9 @@ root_widget = Builder.load_string('''
         LoggedButton:
             id: stop_button
             name: 'stop_button'
-            background_normal:  './tablet_app/images/reset_button.jpg'
-            background_down:  './tablet_app/images/reset_button_down.jpg'
+            background_color: 0, 0, 0, 0
+            #background_normal:  './tablet_app/images/reset_button.jpg'
+            #background_down:  './tablet_app/images/reset_button_down.jpg'
             border: (0,0,0,0)
             size: root.width * 0.04, root.width * 0.04
             pos: root.width * 0.975 - self.width * 0.5, root.height * 0.970 - self.height * 0.5
@@ -1131,7 +1133,9 @@ class TangramMindsetApp(App):
 
     def press_stop_button(self):
         print('stop button pressed')
+        #if self.screen_manager.current == "solve_tangram_room":
         self.interaction.components['hourglass'].stop()
+        #    self.interaction.current_interaction -= 1
         self.interaction.end_interaction()
 
     def difficulty_selected(self):

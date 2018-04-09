@@ -1,7 +1,7 @@
 {
   "introduction":{
     "all": [
-      ["<es name='Body_Look_Center_Down_01'> Look! <break size='0.5'/> My friend </es> is diving in the water world. <es name='1-gift-show-01'> There are lots of treasures, vegetation, and shells there</es>. Let's discover together what there is in the water world. <es name='Emoji_Fish' /> ", "YAWN", "LOOKAT_CHILD", "introduction_all_0"]
+      ["<es name='Yawn_02' /> <break size='1.0' /> Oh! Hello! Nice to meet you. My name is Jibo. J I B O. <break size='1.0' />  What is your name? <es name='affection_05' /> <break size='1.0' />  Great! Here is my dance to celebrate our first day! <es name='Twerking_music_dance_01' /> That was fun. <break size='1.0' />  <es name='Body_Look_Center_Down_01'> Oh, look! <break size='1.0'/> My friend </es> is diving in the water world. <es name='1-gift-show-01'> There are lots of treasures, vegetation, and shells there</es>. Let's discover together what there is in the water world. <es name='Emoji_Fish' /> ", "YAWN", "LOOKAT_CHILD", "introduction_all_0"]
     ],
     "c-g-": [
       ["<es cat='question'> Will you help me find different shells in the water world?</es>", "introduction_c-g-_0", "POSE_FORWARD"]
