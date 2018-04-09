@@ -2,7 +2,7 @@ import sys
 from functools import partial
 
 from kivy.clock import Clock
-is_logged = False
+is_logged = True
 try:
     from kivy_communication import *
 except:
@@ -141,8 +141,9 @@ class Component:
                     KL.log.insert(action=LogAction.data, obj=self.name,
                                   comment=[self.current_state, self.current_param, target, action], sync=False)
                 elif action[0] == 'hourglass_update':
-                    KL.log.insert(action=LogAction.data, obj=self.name,
-                                  comment=[self.current_state, self.current_param, target, action], sync=False)
+                    pass
+                #    KL.log.insert(action=LogAction.data, obj=self.name,
+                #                  comment=[self.current_state, self.current_param, target, action], sync=False)
                 else:
                     KL.log.insert(action=LogAction.data, obj=self.name,
                                   comment=[self.current_state, self.current_param, target, action])
