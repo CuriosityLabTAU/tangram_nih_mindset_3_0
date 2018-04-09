@@ -62,6 +62,7 @@ GAME_WITH_ROBOT = True  # False
 ROBOT_SOUND_FROM_TABLET = False # False
 #rinat
 STUDY_SITE = 'MIT-JIBO'      #'TAU'      # MIT   #MIT-JIBO
+ROBOT_TEXT = './tablet_app/robot_text/robot_text_long_w1.json'
 
 class MyScreenManager (ScreenManager):
     the_tablet = None
@@ -186,7 +187,7 @@ root_widget = Builder.load_string('''
             name: 'goto_last_game_button'
             background_color: 0.5,0.5,0.5,1
             background_normal: ''
-            text: 'last game'
+            text: 'continue'
             font_size: 16
             size: root.width * 0.15, root.height * 0.07
             pos: root.width * 0.08, root.height * 0.4 - self.height * 0.5
@@ -617,17 +618,15 @@ class TangramMindsetApp(App):
         self.interaction.components['robot'].gender = ""
         if not GAME_WITH_ROBOT:
             self.interaction.components['robot'].app = self
-            self.interaction.components['robot'].load_text(filename='./tablet_app/robot_text/robot_text_revised5_tau_long.json') #added in order to play sound files
+            self.interaction.components['robot'].load_text(filename=ROBOT_TEXT) #added in order to play sound files
 
         else:
+            self.interaction.components['robot'].load_text(filename=ROBOT_TEXT)
             if STUDY_SITE == 'MIT':
-                self.interaction.components['robot'].load_text(filename='./tablet_app/robot_text/robot_text_revised5_tau_long.json')
                 self.interaction.components['robot'].robot_name = 'tega'
             elif STUDY_SITE == 'MIT-JIBO':
-                self.interaction.components['robot'].load_text(filename='./tablet_app/robot_text/robot_text_revised5_tau_long.json')
                 self.interaction.components['robot'].robot_name = 'jibo'
             elif STUDY_SITE == 'TAU':
-                self.interaction.components['robot'].load_text(filename='./tablet_app/robot_text/robot_text_revised5_tau_long.json')
                 self.interaction.components['robot'].robot_name = 'nao'
         self.interaction.load(filename='./tablet_app/general_transitions.json')
         self.interaction.load_sequence(filename='./tablet_app/general_sequence.json')
@@ -661,7 +660,7 @@ class TangramMindsetApp(App):
         #     local_ip = ip_addr
 
         KC.start(the_parents=[self, self.interaction.components['robot']], the_ip=local_ip)
-        KL.start(mode=[DataMode.communication, DataMode.ros], pathname=self.user_data_dir, the_ip=local_ip)
+        KL.start(mode=[DataMode.file, DataMode.communication, DataMode.ros], pathname=self.user_data_dir, the_ip=local_ip)
 
     def on_connection(self):
         KL.log.insert(action=LogAction.data, obj='TangramMindsetApp', comment='start')
@@ -701,7 +700,11 @@ class TangramMindsetApp(App):
 
     def data_received(self, data):
         # receive pid, session, condition, start stage information
-        if self.screen_manager.current == "zero_screen_room":
+        #if self.screen_manager.current == "zero_screen_room":
+        if True:
+            if "pid" in data:
+               self.screen_manager.current = "zero_screen_room"
+
             info = data.split(",")
             print info
             for i in info:
@@ -717,9 +720,11 @@ class TangramMindsetApp(App):
                     if val in self.zero_screen.ids['world_spinner'].values:
                         self.zero_screen.ids['world_spinner'].text = val
                 elif "start" in i:
+                    time.sleep(1)
                     self.press_start_button()
-                elif "last_game" in i:
-                    self.press_load_transition("last_game")
+                elif "continue" in i:
+                    time.sleep(1)
+                    self.press_load_transition('last_game')
 
         print(self.name, data)
         #the_data = json.loads(data)
@@ -1077,10 +1082,7 @@ class TangramMindsetApp(App):
         self.condition = condition
         self.update_filled()
         self.text_handler = TextHandler(condition)
-        if 'MIT' in STUDY_SITE:
-            self.text_handler.load_text(filename='./tablet_app/robot_text/robot_text_revised5_tau_long.json')
-        elif STUDY_SITE == 'TAU':
-            self.text_handler.load_text(filename='./tablet_app/robot_text/robot_text_revised5_tau_long.json')
+        self.text_handler.load_text(filename=ROBOT_TEXT)
         self.interaction.components['robot'].agent.update_condition(condition)
 
     def update_gender(self, gender):
