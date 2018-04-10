@@ -32,12 +32,15 @@ class HourglassComponent(Component):
         Clock.unschedule(self.the_clock)
 
     def update(self, dt):
-        self.current_param[0] -= self.general_param['update_interval']
+        try:
+            self.current_param[0] -= self.general_param['update_interval']
 
-        if self.current_param[0] <= 0:
-            self.current_state = 'finish'
-            self.current_param[0] = 0
-            return False
+            if self.current_param[0] <= 0:
+                self.current_state = 'finish'
+                self.current_param[0] = 0
+                return False
+        except:
+            pass
 
     def after_called(self):
         if self.current_state is not 'update':
