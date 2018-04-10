@@ -487,7 +487,7 @@
     ["test","test_0"]
   ],
   "tega_init": [
-    ["<es name='YAWN_01' />", "POSE_SLEEPING"]
+    [" ", "POSE_SLEEPING"]
   ]
 
 }

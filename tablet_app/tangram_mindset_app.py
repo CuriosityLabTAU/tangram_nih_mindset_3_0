@@ -58,7 +58,7 @@ except ImportError:
         return wrapper
 
 
-GAME_WITH_ROBOT = True  # False
+GAME_WITH_ROBOT = True
 ROBOT_SOUND_FROM_TABLET = False # False
 #rinat
 STUDY_SITE = 'MIT-JIBO'      #'TAU'      # MIT   #MIT-JIBO
@@ -88,9 +88,9 @@ root_widget = Builder.load_string('''
             text: '132.66.50.139'
             text: '132.66.198.164'
             text: '192.168.1.104'
-            font_size: 16
+            font_size: 16 * root.width/800
             multiline: False
-            size: root.width * 0.4, root.height * 0.07
+            size: root.width * 0.4* root.width/800, root.height * 0.07* root.width/800
             pos: root.width * 0.18, root.height * 0.8 - self.height * 0.5
 
         Button:
@@ -99,8 +99,8 @@ root_widget = Builder.load_string('''
             background_color: 0.1,0.5,0.2,1
             background_normal: ''
             text: 'Connect'
-            font_size: 16
-            size: root.width * 0.15, root.height * 0.07
+            font_size: 16* root.width/800
+            size: root.width * 0.15* root.width/800, root.height * 0.07* root.width/800
             pos: root.width * 0.62, root.height * 0.8 - self.height * 0.5
             on_press: app.press_connect_button(roscore_ip.text)
 
@@ -149,7 +149,7 @@ root_widget = Builder.load_string('''
             font_size: 16
             size: root.width * 0.15, root.height * 0.07
             pos: root.width * 0.8, root.height * 0.8 - self.height * 0.5
-            on_press: app.press_start_button()
+            #on_press: app.press_start_button()
        
         LoggedSpinner:
             id: world_spinner
@@ -191,7 +191,7 @@ root_widget = Builder.load_string('''
             font_size: 16
             size: root.width * 0.15, root.height * 0.07
             pos: root.width * 0.08, root.height * 0.4 - self.height * 0.5
-            on_press: app.press_load_transition('last_game')
+            #on_press: app.press_load_transition('last_game')
 
         # LoggedButton:
         #     id: goto_game4_button
@@ -289,6 +289,14 @@ root_widget = Builder.load_string('''
             size: root.width * 0.03, root.width * 0.03
             pos: root.width * 0.98 - self.width * 0.5, root.height * 0.975 - self.height * 0.5
             on_press: app.press_stop_button()
+        Label:
+            id: round_label
+            text: ""
+            color: 1,1,1,1 
+            font_size:32
+            bold: True
+            size: root.width * 0.1, root.height * 0.1
+            pos: root.width * 0.8, root.height * 0.9
 
 
 <TangramSelectionWidget>
@@ -776,7 +784,7 @@ class TangramMindsetApp(App):
 
     def press_robot_init (self):
         # put tega to sleep
-        action_script = ["behavior_robot_init"]
+        action_script = ["tega_init"]
         self.interaction.components['robot'].express(action_script)
 
     def press_load_transition(self, stage):
@@ -825,12 +833,13 @@ class TangramMindsetApp(App):
             self.interaction.components['game'].game_facilitator.current_player = self.state['current_player']
             print('current_player: ', self.interaction.components['game'].game_facilitator.current_player)
 
+
             # agent
             self.interaction.components['robot'].agent.current_round = self.state['current_round']
             print('current_round: ', self.interaction.components['robot'].agent.current_round)
-            current_round = int(np.floor(self.state['current_interaction'] / 2))
-            self.interaction.components['robot'].agent.current_round = current_round
-            print('fixed current_round: ', current_round)
+            #current_round = int(np.floor(self.state['current_interaction'] / 2))
+            #self.interaction.components['robot'].agent.current_round = current_round
+            #print('fixed current_round: ', current_round)
 
             # interaction
             self.interaction.current_interaction = self.state['current_interaction'] - 1
@@ -838,6 +847,9 @@ class TangramMindsetApp(App):
 
             TangramGame.cog_tangram_selection = self.state['cog_tangram_selection']
             print ('cog_tangram_selection: ', TangramGame.cog_tangram_selection)
+
+            self.interaction.components['robot'].question_index = self.state['robot_play_question_counter']
+            print('robot_play_question_counter: ', self.interaction.components['robot'].question_index)
 
             #games_played = int(stage.replace('game',''))-1
 
@@ -860,6 +872,10 @@ class TangramMindsetApp(App):
             # filename = './tablet_app/worlds_sequences/sequence_w1_'+'counter_' + str(game_counter) + '.json'
             # self.interaction.load_sequence(filename=filename)
             self.interaction.next_interaction()
+
+            if self.interaction.components['game'].game_facilitator.current_player == "Child":
+                self.enable_tablet()
+            print "hello"
             #self.press_start_button()
 
     def press_yes_button(self):
@@ -909,6 +925,7 @@ class TangramMindsetApp(App):
         # Rinat: x is a list of tangrams from maor
         # you need to present all options with the tangram pieces
 
+            # str(self.interaction.components['robot'].agent.current_round)
         # Maor: save game state for recovery
         print('Saving game state')
         # the
@@ -958,6 +975,9 @@ class TangramMindsetApp(App):
         print ('cog_tangram_selection: ', TangramGame.cog_tangram_selection)
         state['cog_tangram_selection'] = TangramGame.cog_tangram_selection
 
+        print ('robot_play_question_counter', self.interaction.components['robot'].question_index)
+        state['robot_play_question_counter'] = self.interaction.components['robot'].question_index
+
         with open('last_saved_state'+'.pkl', 'wb') as f:
             pickle.dump(state, f, pickle.HIGHEST_PROTOCOL)
         print('Finished saving game state')
@@ -966,6 +986,7 @@ class TangramMindsetApp(App):
         print('x=',x)
         TangramGame.SCALE = round(Window.size[0] / 75)
         self.screen_manager.get_screen('selection_screen_room').init_selection_options(x=x,the_app=self)
+        #self.screen_manager.get_screen('selection_screen_room').ids["round_label"].text = str(self.interaction.components['game'].game_facilitator.game_counter+1)
         self.screen_manager.current = 'selection_screen_room'
         self.android_set_hide_menu()
 
