@@ -784,7 +784,7 @@ class TangramMindsetApp(App):
 
     def press_robot_init (self):
         # put tega to sleep
-        action_script = ["tega_init"]
+        action_script = ["tega_sleep"]
         self.interaction.components['robot'].express(action_script)
 
     def press_load_transition(self, stage):

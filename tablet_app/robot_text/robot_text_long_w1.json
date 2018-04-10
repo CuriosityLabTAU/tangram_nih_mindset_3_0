@@ -80,7 +80,7 @@
       ["<es cat='confused'>I want to try something new. maybe move this piece here. </es> ","tangram_tutorial_c+g+_0"],
       ["<es name='Emoji_ExclamationRed' />  ah! ", "LOOKAT_TABLET"],
       ["<es name='Emoji_ExclamationYellow' /> ah-ha! ", "LOOKAT_TABLET"],
-      ["<es cat='frustrated'", "POSE_FORWARD"],
+      ["<es cat='frustrated'/>", "POSE_FORWARD"],
       ["<es name='Body_Lean_Left_Forward_01' />", "POSE_FORWARD"],
       ["<es name='Body_Lean_Right_Forward_01' />", "POSE_FORWARD"]
     ],
@@ -487,6 +487,9 @@
     ["test","test_0"]
   ],
   "tega_init": [
+    [" ", "POSE_SLEEPING"]
+  ],
+  "tega_sleep": [
     [" ", "POSE_SLEEPING"]
   ]
 
