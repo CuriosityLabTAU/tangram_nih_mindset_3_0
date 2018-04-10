@@ -53,10 +53,10 @@
       ["<es cat='frustrated'> hmm.. it's hard </es>","IDLESTILL", "move_explanation_c-g-_4","POSE_FORWARD"],
       ["<es name='Body_Lean_Left_Forward_01' /> hmm", "POSE_FORWARD"],
       ["<es name='Body_Lean_Center_Forward_01' /> hmm", "POSE_FORWARD"],
-      ["<es cat='frustrated' hmm </es>", "POSE_FORWARD"],
+      ["<es cat='frustrated'> hmm </es>", "POSE_FORWARD"],
       ["<es cat='frustrated'/>ah..", "POSE_FORWARD"],
       ["<es cat='sad' /> ", "POSE_FORWARD"],
-      ["<es cat='sad' hmm </es> ", "POSE_FORWARD"]
+      ["<es cat='sad'> hmm </es> ", "POSE_FORWARD"]
 
     ],
     "c-g+": [
@@ -68,10 +68,10 @@
       ["<es cat='confirm'> I'll try again. </es> ","move_explanation_c-g+_5"],
       ["<es name='Emoji_ExclamationRed' /> ah-ha!  ", "LOOKAT_TABLET"],
       ["<es name='Emoji_ExclamationYellow' /> ah-ha!  ", "LOOKAT_TABLET"],
-      ["  ", "POSE_FORWARD"],
-      ["  ", "POSE_FORWARD"],
-      ["  ", "POSE_FORWARD"],
-      ["  ", "POSE_FORWARD"]
+      ["<es name='Body_Lean_Left_Forward_01' />", "POSE_FORWARD"],
+      ["<es name='Body_Lean_Right_Forward_01' />", "POSE_FORWARD"],
+      ["<es name='Body_Lean_Left_Forward_01' />", "POSE_FORWARD"],
+      ["<es name='Body_Lean_Right_Forward_01' />", "POSE_FORWARD"]
     ],
     "c+g-": [
       ["<es cat='confused'>I wonder what I'll learn if I move it here. </es> ","move_explanation_c+g-_0"],
@@ -80,17 +80,17 @@
       ["<es cat='confused'>I want to try something new. maybe move this piece here. </es> ","tangram_tutorial_c+g+_0"],
       ["<es name='Emoji_ExclamationRed' />  ah! ", "LOOKAT_TABLET"],
       ["<es name='Emoji_ExclamationYellow' /> ah-ha! ", "LOOKAT_TABLET"],
-      [" ", "POSE_FORWARD"],
-      [" ", "POSE_FORWARD"],
-      [" ", "POSE_FORWARD"]
+      ["<es cat='frustrated'", "POSE_FORWARD"],
+      ["<es name='Body_Lean_Left_Forward_01' />", "POSE_FORWARD"],
+      ["<es name='Body_Lean_Right_Forward_01' />", "POSE_FORWARD"]
     ],
     "c+g+": [
       ["<es cat='confirm'>I am sure I can figure it out. I will move this piece.</es> ","POSE_FORWARD","move_explanation_c+g+_0", "LOOKAT_TABLET"],
       ["I want to try something new. <break size='0.5' /><es name='Emoji_ExclamationBlue' > maybe move this piece here.</es> ","POSE_FORWARD","tangram_tutorial_c+g+_0", "LOOKAT_TABLET"],
       ["<es name='Emoji_ExclamationRed' />  ah! ", "LOOKAT_TABLET"],
       ["<es name='Emoji_ExclamationYellow' /> ah-ha! ", "LOOKAT_TABLET"],
-      [" ", "POSE_FORWARD"],
-      [" ", "POSE_FORWARD"]
+      ["<es name='Body_Lean_Left_Forward_01' />", "POSE_FORWARD"],
+      ["<es name='Body_Lean_Right_Forward_01' />", "POSE_FORWARD"]
     ]
   },
   "child_win": {
@@ -310,37 +310,36 @@
       ["ok","comment_move_c-g-_3"],
       ["good","comment_move_c-g-_4"],
       ["great","comment_move_c-g-_5"],
-      [" ", "POSE_FORWARD"],
-      [" ", "POSE_FORWARD"],
-      [" ", "POSE_FORWARD"],
-      [" ", "POSE_FORWARD"],
-      [" ", "POSE_FORWARD"]
+      ["<es cat='happy' />", "POSE_FORWARD"],
+      ["<es cat='happy' />", "POSE_FORWARD"],
+      ["<es cat='confirm' />", "POSE_FORWARD"],
+      ["<es cat='confirm' />", "POSE_FORWARD"]
     ],
     "c-g+": [
       ["you are working hard to solve this puzzle","IDLESTILL", "comment_move_c-g+_0","POSE_FORWARD"],
       ["keep on trying","comment_move_c-g+_1","SILENT_INTERESTED","POSE_FORWARD"],
-      [" ", "POSE_FORWARD"],
-      [" ", "POSE_FORWARD"]
+      ["<es cat='happy' />", "POSE_FORWARD"],
+      ["<es cat='confirm' />", "POSE_FORWARD"]
     ],
     "c+g-": [
       ["great!","comment_move_c+g-_0","SILENT_YES","POSE_FORWARD"],
       ["this is a creative move, very good","comment_move_c+g-_1","YES","POSE_FORWARD"],
       ["interesting strategy","comment_move_c+g-_2","INTERESTED","POSE_FORWARD"],
       ["this is a great idea","comment_move_c+g-_3","AGREEMENT","POSE_FORWARD"],
-      [" ", "POSE_FORWARD"],
-      [" ", "POSE_FORWARD"],
-      [" ", "POSE_FORWARD"],
-      [" ", "POSE_FORWARD"]
+      ["<es cat='happy' />", "POSE_FORWARD"],
+      ["<es cat='happy' />", "POSE_FORWARD"],
+      ["<es cat='confirm' />", "POSE_FORWARD"],
+      ["<es cat='confirm' />", "POSE_FORWARD"]
     ],
     "c+g+": [
       ["this is a great idea","comment_move_c+g+_0","SILENT_INTERESTED","POSE_FORWARD"],
       ["keep trying new ideas","comment_move_c+g+_1","AGREEMENT","POSE_FORWARD"],
       ["interesting strategy","comment_move_c+g+_2","INTERESTED","POSE_FORWARD"],
       ["this is a creative move","comment_move_c+g+_3","INTERESTED","POSE_FORWARD"],
-      [" ", "POSE_FORWARD"],
-      [" ", "POSE_FORWARD"],
-      [" ", "POSE_FORWARD"],
-      [" ", "POSE_FORWARD"]
+      ["<es cat='happy' />", "POSE_FORWARD"],
+      ["<es cat='happy' />", "POSE_FORWARD"],
+      ["<es cat='confirm' />", "POSE_FORWARD"],
+      ["<es cat='confirm' />", "POSE_FORWARD"]
     ]
   },
   "conclusion": {
@@ -409,7 +408,7 @@
       ["let’s try this move","rotation_explanation_c-g-_4"],
       ["I'll move this piece","rotation_explanation_c-g-_5"],
       ["mhmm","comment_move_c-g-_0", "POSE_FORWARD"],
-      ["", "SILENT_CONFIRM", "POSE_FORWARD"],
+      ["<es cat='confirm' />", "SILENT_CONFIRM", "POSE_FORWARD"],
       ["", "SILENT_CONFIRM", "POSE_FORWARD"],
       ["", "SILENT_CONFIRM", "POSE_FORWARD"]
     ],
@@ -488,7 +487,7 @@
     ["test","test_0"]
   ],
   "tega_init": [
-    ["I'm sleepy.", "POSE_SLEEPING"]
+    ["<es name='YAWN_01' />", "POSE_SLEEPING"]
   ]
 
 }
