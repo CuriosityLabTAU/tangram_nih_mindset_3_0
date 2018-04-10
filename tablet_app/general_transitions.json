@@ -9,17 +9,7 @@
       "child:press_start_button:tablet:first_screen:1",
       "child:press_start_button:child:idle:1",
       "tablet:first_screen:robot:introduction:1:done",
-      "robot:introduction:tablet:yes:1",
-      "robot:introduction:robot:idle:1",
-      "tablet:yes:child:yes:1",
-      "tablet:yes:internal_clock:yes:1",
-      "internal_clock:prompt_yes:robot:ask_again:1:done",
-      "robot:ask_again:child:yes:1",
-      "robot:ask_again:internal_clock:yes:1",
-      "child:press_yes_button:internal_clock:stop:1",
-      "child:press_yes_button:robot:lets_play:1",
-      "robot:lets_play:internal_clock:stop:1",
-      "robot:lets_play:interaction:end:1"
+      "robot:introduction:interaction:end:1"
     ]
   },
   "tutorial": {
