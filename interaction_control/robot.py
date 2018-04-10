@@ -163,13 +163,14 @@ class RobotComponent(Component):
 
     def select_treasure(self):
         print("robot select_treasure")
-        the_selection = self.agent.set_selection()
-        print("finished set_selection")
-        print(self.name, 'select_treasure', the_selection, self.current_param)
-        self.current_tangram = self.current_param[0][the_selection]
-        self.current_state = 'select_treasure'
-        self.current_param = the_selection
-        self.agent.finish_moves() #  indication to the agent that the last game is finished. agent clears the last solution
+        if not isinstance(self.current_param, int):  # tangram already selected
+            the_selection = self.agent.set_selection()
+            print("finished set_selection")
+            print(self.name, 'select_treasure', the_selection, self.current_param)
+            self.current_tangram = self.current_param[0][the_selection]
+            self.current_state = 'select_treasure'
+            self.current_param = the_selection
+        self.agent.finish_moves()  # indication to the agent that the last game is finished. agent clears the last solution
 
     def select_move(self, x):
         print(self.name, 'select_move', x)
