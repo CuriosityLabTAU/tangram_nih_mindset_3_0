@@ -237,7 +237,17 @@ class RobotComponent(Component):
     def data_received(self, data):
         # if data signals end of speech
         # call: self.finished_expression(action)
-        print(self.name, data)
+        if "pid" in data and "condition" in data: #message for tangram app
+            return
+
+        idx = data.find("}{")
+        while idx >= 0:
+            print(self.name, data[:(idx+1)])
+            the_data = json.loads(data[:(idx+1)])
+            self.finished_expression(the_data[self.robot_name][1])
+            data = data[(idx+1):]
+            idx = data.find("}{")
+
         the_data = json.loads(data)
         self.finished_expression(the_data[self.robot_name][1])
 

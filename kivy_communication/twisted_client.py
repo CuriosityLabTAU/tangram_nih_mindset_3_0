@@ -127,12 +127,12 @@ class TwistedClient:
         print('received data:', data, ' sending it to ', TwistedClient.parents)
         if TwistedClient.parents is not None:
             for p in TwistedClient.parents:
-                try:
-                    p.data_received(data)
-                    print('twisted client: parent ', p, 'received ', data)
-                except Exception as e:
-                    print e
-                    print('twisted client: parent ', p, ' has no data_received')
+                # try:
+                p.data_received(data)
+                print('twisted client: parent ', p, 'received ', data)
+                # except Exception as e:
+                #     print e
+                #     print('twisted client: parent ', p, ' has no data_received')
         print('data: ', data)
 
 ''' Example usage:
