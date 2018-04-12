@@ -30,11 +30,12 @@ class FirstScreenRoom(Screen):
     def init_first_screen_room(self,the_app):
         print('init_first_screen_room')
         world = the_app.study_world
+        robot_char = the_app.robot_character
         print(world)
         self.ids['background_image'].source = './tablet_app/images/worlds/' + world + '/TangramGame_Open.png'
         self.ids['yes_button'].background_normal =  './tablet_app/images/worlds/' + world + '/PriceBtn.png'
         self.ids['yes_button'].background_down = './tablet_app/images/worlds/' + world + '/PriceBtn_on.png'
-
+        self.ids['robot_character'].source = './tablet_app/images/worlds/' + robot_char +'.png'
 
     def on_enter(self, *args):
         print("on_enter first_screen_room")
