@@ -29,7 +29,8 @@ class EchoClient(protocol.Protocol):
         for p in self.factory.client.parents:
             try:
                 p.on_connection()
-            except:
+            except Exception as e:
+                print e
                 print('parent ', p, ' has no on_connection')
 
     def dataReceived(self, data):

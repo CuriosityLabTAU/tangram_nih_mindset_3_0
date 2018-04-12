@@ -15,5 +15,6 @@ class ChildComponent(Component):
             print(self.name, 'action ', action)
             self.current_state = action[0]
             self.current_param = action[1:]
-        except:
+        except Exception as e:
+            print e
             print ("child unexpected error:", action,sys.exc_info())

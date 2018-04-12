@@ -70,6 +70,7 @@ class MyScreenManager (ScreenManager):
 # MyScreenManager:
 #    SetupScreenRoom:
 #    ZeroScreenRoom:
+#    RobotSelectionScreenRoom:
 #    FirstScreenRoom:
 #    SelectionScreenRoom:
 #    SolveTangramRoom:r
@@ -237,6 +238,51 @@ root_widget = Builder.load_string('''
         #     pos: root.width * 0.76, root.height * 0.4 - self.height * 0.5
         #     on_press: app.press_load_transition('game10')
 
+<RobotSelectionScreenRoom>:
+    name: 'robot_selection_screen_room'
+    Widget:
+        Image:
+            id: background_image
+            size: root.size
+            pos: root.pos
+            source: './tablet_app/images/worlds/w1/background.png'
+            allow_stretch: True
+            keep_ratio: False
+        LoggedButton:
+            id: robot1_button
+            name: 'robot1_button'
+            background_normal: './tablet_app/images/worlds/robot1.png'
+            background_down: './tablet_app/images/worlds/robot1_on.png'
+            size: root.width * 0.25, root.height * 0.25
+            pos: root.width * 0.25 - self.width * 0.5, root.height * 0.75 - self.height * 0.5
+            on_press: app.press_robot_selection_button('robot1')
+        LoggedButton:
+            id: robot2_button
+            name: 'robot2_button'
+            background_normal: './tablet_app/images/worlds/robot2.png'
+            background_down: './tablet_app/images/worlds/robot2_on.png'
+            height: root.height * 0.25
+            size_hint_x: None
+            width: self.height * 1.2
+            #size: root.width * 0.15, root.height * 0.25
+            pos: root.width * 0.75 - self.width * 0.5, root.height * 0.75 - self.height * 0.5
+            on_press: app.press_robot_selection_button('robot2')
+        LoggedButton:
+            id: robot3_button
+            name: 'robot3_button'
+            background_normal: './tablet_app/images/worlds/robot3.png'
+            background_down: './tablet_app/images/worlds/robot3_on.png'
+            size: root.width * 0.25, root.height * 0.25
+            pos: root.width * 0.25 - self.width * 0.5, root.height * 0.25 - self.height * 0.5
+            on_press: app.press_robot_selection_button('robot3')
+        LoggedButton:
+            id: robot4_button
+            name: 'robot4_button'
+            background_normal: './tablet_app/images/worlds/robot4.png'
+            background_down: './tablet_app/images/worlds/robot4_on.png'
+            size: root.width * 0.25, root.height * 0.25
+            pos: root.width * 0.75 - self.width * 0.5, root.height * 0.25 - self.height * 0.5
+            on_press: app.press_robot_selection_button('robot4')
 
 <FirstScreenRoom>:
     name: 'first_screen_room'
@@ -258,6 +304,23 @@ root_widget = Builder.load_string('''
             pos: root.width * 0.5 - self.width * 0.5, root.height * 0.8 - self.height * 0.5
             on_press: app.press_yes_button()
             opacity: 0
+            
+        Image:
+            id: robot_character
+            name: 'robot_character'
+            source: './tablet_app/images/worlds/robot1.png' 
+            size_hint_x: None
+            height: root.height * 0.4
+            width: self.height * 1.2
+            allow_stretch: True
+            pos: root.width * 0.2 - self.width * 0.5, root.height * 0.3 - self.height * 0.5
+            canvas.before:
+                PushMatrix
+                Rotate:
+                    angle: 350
+                    origin: self.center
+            canvas.after:
+                PopMatrix
 
 <SelectionScreenRoom>:
     name: 'selection_screen_room'
@@ -492,6 +555,22 @@ root_widget = Builder.load_string('''
         source: './tablet_app/images/TangramGame_Open.jpg'
         allow_stretch: True
         keep_ratio: False
+    Image:
+        id: robot_character
+        name: 'robot_character'
+        source: './tablet_app/images/worlds/robot1.png' 
+        size_hint_x: None
+        height: root.height * 0.4
+        width: self.height * 1.2
+        allow_stretch: True
+        pos: root.width * 0.2 - self.width * 0.5, root.height * 0.3 - self.height * 0.5
+        canvas.before:
+            PushMatrix
+            Rotate:
+                angle: 350
+                origin: self.center
+        canvas.after:
+            PopMatrix
 
 <PartyScreenPricesWidget>
     Image:
@@ -583,7 +662,11 @@ root_widget = Builder.load_string('''
 
 # functions connecting to button pressed
 class SetupScreenRoom(Screen):
-    ip=''
+    pass
+
+class RobotSelectionScreenRoom(Screen):
+    pass
+
 
 class TangramMindsetApp(App):
     tangrams_solved = 0
@@ -600,6 +683,8 @@ class TangramMindsetApp(App):
     yes_clicked_flag = False
     subject_gender = "m"
     study_world = None
+    robot_character = None
+    treasure_selected = False
 
     filled_all_data = False
     filled_subject_id = False
@@ -680,6 +765,7 @@ class TangramMindsetApp(App):
         self.zero_screen.ids['subject_id'].bind(text=self.zero_screen.ids['subject_id'].on_text_change)
         self.zero_screen.ids['subject_id'].bind(text=self.subject_id_changed)
         self.screen_manager.add_widget(self.zero_screen)
+        self.screen_manager.add_widget(RobotSelectionScreenRoom())
         self.screen_manager.add_widget(FirstScreenRoom(self.interaction.components['tablet']))
         self.screen_manager.add_widget(SelectionScreenRoom(self.interaction.components['tablet']))
         self.screen_manager.add_widget(PartyScreenRoom(self.interaction.components['tablet']))
@@ -777,10 +863,18 @@ class TangramMindsetApp(App):
     def press_start_button (self):
         # child pressed the start button
         if (self.filled_all_data):
-            self.interaction.components['child'].on_action(["press_start_button"])
+            if self.study_world == "w1":
+                self.screen_manager.current = "robot_selection_screen_room"
+            else:
+                self.interaction.components['child'].on_action(["press_start_button"])
+
         else:
             print ("please fill all the data")
 
+    def press_robot_selection_button(self, robot):
+        print robot
+        self.robot_character = robot
+        self.interaction.components['child'].on_action(["press_start_button"])
 
     def press_robot_init (self):
         # put tega to sleep
@@ -888,7 +982,9 @@ class TangramMindsetApp(App):
         # child selected treasure (1/2/3)
         # print("press_treasure", treasure)
         #self.screen_manager.current_screen.show_selection(treasure)
-        self.interaction.components['child'].on_action(['press_treasure', treasure])
+        if not self.treasure_selected:
+            self.interaction.components['child'].on_action(['press_treasure', treasure])
+            self.treasure_selected = True
 
     def tangram_move(self, x):
         # child moved a tangram piece (json of all the pieces)
@@ -909,6 +1005,10 @@ class TangramMindsetApp(App):
     # Messages from interaction to tablet
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+    def robot_selection_screen(self):
+        self.screen_manager.current = 'robot_selection_screen_room'
+        self.android_set_hide_menu()
+
     def first_screen(self):
         self.screen_manager.get_screen('first_screen_room').init_first_screen_room(the_app=self)
         self.screen_manager.current = 'first_screen_room'
@@ -922,6 +1022,7 @@ class TangramMindsetApp(App):
 
 
     def selection_screen(self, x):
+        self.treasure_selected = False
         # Rinat: x is a list of tangrams from maor
         # you need to present all options with the tangram pieces
 
