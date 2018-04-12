@@ -690,7 +690,6 @@ class TangramMindsetApp(App):
     subject_gender = "m"
     study_world = None
     robot_character = None
-    treasure_selected = False
 
     filled_all_data = False
     filled_subject_id = False
@@ -988,9 +987,7 @@ class TangramMindsetApp(App):
         # child selected treasure (1/2/3)
         # print("press_treasure", treasure)
         #self.screen_manager.current_screen.show_selection(treasure)
-        if not self.treasure_selected:
-            self.interaction.components['child'].on_action(['press_treasure', treasure])
-            self.treasure_selected = True
+        self.interaction.components['child'].on_action(['press_treasure', treasure])
 
     def tangram_move(self, x):
         # child moved a tangram piece (json of all the pieces)
@@ -1028,7 +1025,6 @@ class TangramMindsetApp(App):
 
 
     def selection_screen(self, x):
-        self.treasure_selected = False
         # Rinat: x is a list of tangrams from maor
         # you need to present all options with the tangram pieces
 
@@ -1107,6 +1103,8 @@ class TangramMindsetApp(App):
     def tangram_screen(self, x):
         # Rinat: x is a single tangram from maor
         # you need to present it and allow game
+        if self.interaction.components['game'].game_facilitator.current_player == "Child":
+            self.enable_tablet()
         print("tangram_screen",x)
         TangramGame.SCALE = round(Window.size[0] / 25)
         self.screen_manager.get_screen('solve_tangram_room').init_task(x, the_app=self)

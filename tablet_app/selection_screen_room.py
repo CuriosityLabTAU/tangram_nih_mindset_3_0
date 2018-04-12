@@ -167,6 +167,7 @@ class SelectionTaskLayout(LoggedButton, TaskLayout):
         #self.set_border()
         self.parent.parent.parent.show_selection(self.index) #parent.parent.parent = the screen
         self.parent.the_app.press_treasure(self.index)
+        self.parent.the_app.disable_tablet()
 
     def set_border (self):
         print ('set_border')
