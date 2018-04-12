@@ -253,7 +253,9 @@ root_widget = Builder.load_string('''
             name: 'robot1_button'
             background_normal: './tablet_app/images/worlds/robot1.png'
             background_down: './tablet_app/images/worlds/robot1_on.png'
-            size: root.width * 0.25, root.height * 0.25
+            height: root.height * 0.4
+            size_hint_x: None
+            width: self.height * 1.07
             pos: root.width * 0.25 - self.width * 0.5, root.height * 0.75 - self.height * 0.5
             on_press: app.press_robot_selection_button('robot1')
         LoggedButton:
@@ -261,9 +263,9 @@ root_widget = Builder.load_string('''
             name: 'robot2_button'
             background_normal: './tablet_app/images/worlds/robot2.png'
             background_down: './tablet_app/images/worlds/robot2_on.png'
-            height: root.height * 0.25
+            height: root.height * 0.4
             size_hint_x: None
-            width: self.height * 1.2
+            width: self.height * 1.07
             #size: root.width * 0.15, root.height * 0.25
             pos: root.width * 0.75 - self.width * 0.5, root.height * 0.75 - self.height * 0.5
             on_press: app.press_robot_selection_button('robot2')
@@ -272,7 +274,9 @@ root_widget = Builder.load_string('''
             name: 'robot3_button'
             background_normal: './tablet_app/images/worlds/robot3.png'
             background_down: './tablet_app/images/worlds/robot3_on.png'
-            size: root.width * 0.25, root.height * 0.25
+            height: root.height * 0.4
+            size_hint_x: None
+            width: self.height * 1.07
             pos: root.width * 0.25 - self.width * 0.5, root.height * 0.25 - self.height * 0.5
             on_press: app.press_robot_selection_button('robot3')
         LoggedButton:
@@ -280,7 +284,9 @@ root_widget = Builder.load_string('''
             name: 'robot4_button'
             background_normal: './tablet_app/images/worlds/robot4.png'
             background_down: './tablet_app/images/worlds/robot4_on.png'
-            size: root.width * 0.25, root.height * 0.25
+            height: root.height * 0.4
+            size_hint_x: None
+            width: self.height * 1.07
             pos: root.width * 0.75 - self.width * 0.5, root.height * 0.25 - self.height * 0.5
             on_press: app.press_robot_selection_button('robot4')
 
@@ -311,7 +317,7 @@ root_widget = Builder.load_string('''
             source: './tablet_app/images/worlds/robot1.png' 
             size_hint_x: None
             height: root.height * 0.4
-            width: self.height * 1.2
+            width: self.height * 1.07
             allow_stretch: True
             pos: root.width * 0.2 - self.width * 0.5, root.height * 0.3 - self.height * 0.5
             canvas.before:
