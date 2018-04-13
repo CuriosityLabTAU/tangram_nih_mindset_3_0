@@ -33,7 +33,7 @@ class PartyScreenRoom(Screen):
         self.world = the_app.study_world
         robot_char = the_app.robot_character
         self.ids['party_screen_background'].ids['background_image'].source = './tablet_app/images/worlds/' + self.world + '/TangramGame_Open.png'
-        self.ids['robot_character'].source = './tablet_app/images/worlds/' + robot_char + '.png'
+        self.ids['party_screen_background'].ids['robot_character'].source = './tablet_app/images/worlds/' + robot_char + '.png'
         i = 0
         # for balloon in self.ids['balloons_won_widget'].ids:
         while i < 12:

@@ -1,7 +1,7 @@
 {
   "introduction":{
     "all": [
-      ["<es name='Yawn_02' /> Oh! Hello! Nice to meet you. My name is Jibo. J I B O. <break size='1.0' />  What is your name? <es name='affection_05' /> <break size='1.0' />  Great! Here is my dance to celebrate our first day! <es name='Twerking_music_dance_01' /> That was fun. <break size='1.0' />  <es name='Body_Look_Center_Down_01'> Oh, look! <break size='1.0'/> My friend </es> is diving in the water world. <es name='1-gift-show-01'> There are lots of treasures, vegetation, and shells there</es>. Let's discover together what there is in the water world. <es name='Emoji_Fish' /> ", "YAWN", "LOOKAT_CHILD", "introduction_all_0"]
+      ["<es cat='happy' /> Great! You and I are diving in the water world. <es name='1-gift-show-01'> There are lots of treasures, vegetation, and shells there</es>. Let's discover together what there is in the water world. <es name='Emoji_Fish' /> ", "YAWN", "LOOKAT_CHILD", "introduction_all_0"]
     ],
     "c-g-": [
       ["<es cat='question'> Will you help me find different shells in the water world?</es> <break size='1.0' /> <es name='SpinHead_01' /> Let's play! we need to go to the magic treasure room.", "introduction_c-g-_0", "POSE_FORWARD"]
@@ -16,7 +16,9 @@
       ["<es cat='curious'>I wonder what’s inside the shells. </es> <break size='0.5'/> will you help me find different shells in the water world?<break size='1.0' /> <es name='SpinHead_01' /> Let's play! we need to go to the magic treasure room.", "robot_question_intro", "POSE_FORWARD", "introduction_c-g-_0", "LOOKAT_TABLET"]
     ]
   },
-
+  "robot_select":[
+    ["<es name='Yawn_02' /> Oh! Hello! Nice to meet you. My name is Jibo. J I B O. <break size='1.0' />  What is your name? <es name='affection_05' /> <break size='1.0' />  Great! Here is my dance to celebrate our first day! <es name='Twerking_music_dance_01' /> That was fun. <break size='1.0' />  <es name='Body_Look_Center_Down_01'> Oh, look! <break size='1.0'/> You need to first select which robot you want to be</es> , so we can go to adventures together in the robot world. Pick a robot!"]
+  ],
   "ask_again": [
     ["do you want to play with me? <es name='Body_Look_Center_Down_01'> Click yes on the screen!</es>","ask_again_0"],
     ["<es cat='happy'> I will be very happy if you play with me, would you?</es>","ask_again_1"]
@@ -487,7 +489,7 @@
     ["test","test_0"]
   ],
   "tega_init": [
-    [" ", "POSE_SLEEPING"]
+    [" ", "SILENT_INTERESTED"]
   ],
   "tega_sleep": [
     [" ", "POSE_SLEEPING"]

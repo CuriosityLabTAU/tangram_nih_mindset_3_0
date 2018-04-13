@@ -181,7 +181,7 @@ root_widget = Builder.load_string('''
             font_size: 16
             size: root.width * 0.15, root.height * 0.07
             pos: root.width * 0.08, root.height * 0.5 - self.height * 0.5
-            on_press: app.press_robot_init()
+            #on_press: app.press_robot_init()
 
         LoggedButton:
             id: goto_last_game_button
@@ -671,6 +671,27 @@ class SetupScreenRoom(Screen):
     pass
 
 class RobotSelectionScreenRoom(Screen):
+
+    def init_robot_selection_screen_room(self, the_app):
+        self.the_app = the_app
+
+    def on_enter(self, *args):
+        #self.the_app.disable_tablet()
+        pass
+
+    def disable_widgets(self):
+        self.ids['robot1_button'].disabled = True
+        self.ids['robot2_button'].disabled = True
+        self.ids['robot3_button'].disabled = True
+        self.ids['robot4_button'].disabled = True
+        # for c in self.ids["tangram_selection_widget"].children:
+        #     c.disabled = True
+    def enable_widgets(self):
+        self.ids['robot1_button'].disabled = False
+        self.ids['robot2_button'].disabled = False
+        self.ids['robot3_button'].disabled = False
+        self.ids['robot4_button'].disabled = False
+
     pass
 
 
@@ -688,6 +709,7 @@ class TangramMindsetApp(App):
     tablet_disabled = False
     yes_clicked_flag = False
     subject_gender = "m"
+    pid = ""
     study_world = None
     robot_character = None
 
@@ -811,7 +833,21 @@ class TangramMindsetApp(App):
             for i in info:
                 print i
                 if "pid" in i:
-                    self.zero_screen.ids['subject_id'].text = i.split(":")[1]
+                    self.pid = i.split(":")[1]
+                    self.zero_screen.ids['subject_id'].text = self.pid
+
+                    try:
+                        with open("robot_log.txt", "r") as f:
+                            for line in f:
+                                l = line.split(":")
+                                try:
+                                    if l[0] == self.pid:
+                                        self.robot_character = l[1]
+                                except:
+                                    pass
+                    except:
+                        print "no robot_log.txt file yet"
+
                 elif "condition" in i:
                     val = i.split(":")[1]
                     if val in self.zero_screen.ids['condition_spinner'].values:
@@ -820,6 +856,10 @@ class TangramMindsetApp(App):
                     val = i.split(":")[1]
                     if val in self.zero_screen.ids['world_spinner'].values:
                         self.zero_screen.ids['world_spinner'].text = val
+                #elif "robot" in i:
+                #    val = i.split(":")[1]
+                #    if val in ['robot1','robot2','robot3','robot4']:
+                #        self.robot_character = val
                 elif "start" in i:
                     time.sleep(1)
                     self.press_start_button()
@@ -868,8 +908,12 @@ class TangramMindsetApp(App):
     def press_start_button (self):
         # child pressed the start button
         if (self.filled_all_data):
-            if self.study_world == "w1":
+            if self.study_world == "w1": #and not self.robot_character:
+
+                self.screen_manager.get_screen('robot_selection_screen_room').init_robot_selection_screen_room(the_app=self)
                 self.screen_manager.current = "robot_selection_screen_room"
+                self.interaction.components['robot'].express(['robot_select'])
+
             else:
                 self.interaction.components['child'].on_action(["press_start_button"])
 
@@ -878,6 +922,13 @@ class TangramMindsetApp(App):
 
     def press_robot_selection_button(self, robot):
         print robot
+        try:
+            with open("robot_log.txt","a") as f:
+                f.write(self.pid+":"+robot+"\n")
+        except:
+            with open("robot_log.txt", "w") as f:
+                f.write(self.pid + ":" + robot + "\n")
+
         self.robot_character = robot
         self.interaction.components['child'].on_action(["press_start_button"])
 
