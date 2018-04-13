@@ -239,6 +239,10 @@ root_widget = Builder.load_string('''
         #     on_press: app.press_load_transition('game10')
 
 <RobotSelectionScreenRoom>:
+    robot1_button: robot1_button
+    robot2_button: robot2_button
+    robot3_button: robot3_button
+    robot4_button: robot4_button
     name: 'robot_selection_screen_room'
     Widget:
         Image:
@@ -251,6 +255,7 @@ root_widget = Builder.load_string('''
         LoggedButton:
             id: robot1_button
             name: 'robot1_button'
+            background_disabled_normal: './tablet_app/images/worlds/robot1_on.png'
             background_normal: './tablet_app/images/worlds/robot1.png'
             background_down: './tablet_app/images/worlds/robot1_on.png'
             height: root.height * 0.4
@@ -261,6 +266,7 @@ root_widget = Builder.load_string('''
         LoggedButton:
             id: robot2_button
             name: 'robot2_button'
+            background_disabled_normal: './tablet_app/images/worlds/robot2_on.png'
             background_normal: './tablet_app/images/worlds/robot2.png'
             background_down: './tablet_app/images/worlds/robot2_on.png'
             height: root.height * 0.4
@@ -272,6 +278,7 @@ root_widget = Builder.load_string('''
         LoggedButton:
             id: robot3_button
             name: 'robot3_button'
+            background_disabled_normal: './tablet_app/images/worlds/robot3_on.png'
             background_normal: './tablet_app/images/worlds/robot3.png'
             background_down: './tablet_app/images/worlds/robot3_on.png'
             height: root.height * 0.4
@@ -282,6 +289,7 @@ root_widget = Builder.load_string('''
         LoggedButton:
             id: robot4_button
             name: 'robot4_button'
+            background_disabled_normal: './tablet_app/images/worlds/robot4_on.png'
             background_normal: './tablet_app/images/worlds/robot4.png'
             background_down: './tablet_app/images/worlds/robot4_on.png'
             height: root.height * 0.4
@@ -676,23 +684,19 @@ class RobotSelectionScreenRoom(Screen):
         self.the_app = the_app
 
     def on_enter(self, *args):
-        #self.the_app.disable_tablet()
         pass
 
     def disable_widgets(self):
-        self.ids['robot1_button'].disabled = True
-        self.ids['robot2_button'].disabled = True
-        self.ids['robot3_button'].disabled = True
-        self.ids['robot4_button'].disabled = True
-        # for c in self.ids["tangram_selection_widget"].children:
-        #     c.disabled = True
-    def enable_widgets(self):
-        self.ids['robot1_button'].disabled = False
-        self.ids['robot2_button'].disabled = False
-        self.ids['robot3_button'].disabled = False
-        self.ids['robot4_button'].disabled = False
+        self.robot1_button.disabled = True
+        self.robot2_button.disabled = True
+        self.robot3_button.disabled = True
+        self.robot4_button.disabled = True
 
-    pass
+    def enable_widgets(self):
+        self.robot1_button.disabled = False
+        self.robot2_button.disabled = False
+        self.robot3_button.disabled = False
+        self.robot4_button.disabled = False
 
 
 class TangramMindsetApp(App):
@@ -825,7 +829,7 @@ class TangramMindsetApp(App):
         # receive pid, session, condition, start stage information
         #if self.screen_manager.current == "zero_screen_room":
         if True:
-            if "pid" in data:
+            if "start" in data or "continue" in data:
                self.screen_manager.current = "zero_screen_room"
 
             info = data.split(",")
@@ -861,11 +865,13 @@ class TangramMindsetApp(App):
                 #    if val in ['robot1','robot2','robot3','robot4']:
                 #        self.robot_character = val
                 elif "start" in i:
-                    time.sleep(1)
+                    time.sleep(0.5)
                     self.press_start_button()
                 elif "continue" in i:
-                    time.sleep(1)
+                    time.sleep(0.5)
                     self.press_load_transition('last_game')
+                elif "skip" in i:
+                    self.press_stop_button()
 
         print(self.name, data)
         #the_data = json.loads(data)
@@ -1254,7 +1260,11 @@ class TangramMindsetApp(App):
 
     def enable_tablet(self):
         self.tablet_disabled = False
-        self.screen_manager.current_screen.enable_widgets()
+        try:
+            self.screen_manager.current_screen.enable_widgets()
+        except Exception as e:
+            print self.screen_manager.current_screen
+            print e
 
     def update_condition(self, condition):
         self.filled_condition = True
