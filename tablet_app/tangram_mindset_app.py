@@ -552,6 +552,7 @@ root_widget = Builder.load_string('''
             pos: root.pos
 
 <PartyScreenBackground>:
+    robot_character:robot_character
     Image:
         id: background_image
         size: root.size
@@ -567,7 +568,6 @@ root_widget = Builder.load_string('''
         height: root.height * 0.4
         width: self.height * 1.2
         allow_stretch: True
-        pos: root.width * 0.2 - self.width * 0.5, root.height * 0.3 - self.height * 0.5
         canvas.before:
             PushMatrix
             Rotate:
