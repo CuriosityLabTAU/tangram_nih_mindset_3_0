@@ -1,3 +1,6 @@
+last_ip.pkl
+last_saved_state.pkl
+robot_log.txt
 bin/
 rosbag
 *.bag*

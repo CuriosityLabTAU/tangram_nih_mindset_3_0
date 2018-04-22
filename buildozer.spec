@@ -1,10 +1,10 @@
 [app]
 
 # (str) Title of your application
-title = Tangram_nih_mindset_3_0
+title = Tangram_nih_mindset_3_1
 
 # (str) Package name
-package.name = Tangram_nih_mindset_3_0
+package.name = Tangram_nih_mindset_3_1
 
 # (str) Package domain (needed for android/ios packaging)
 package.domain = com.gorengordon.curiosity

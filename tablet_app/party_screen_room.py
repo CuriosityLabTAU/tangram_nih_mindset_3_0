@@ -27,13 +27,16 @@ class PartyScreenRoom(Screen):
         print("on_enter first_screen_room")
         self.the_tablet.change_state('party_screen')
 
+    def update_robot_character(self, robot_c):
+        self.ids['party_screen_background'].ids['robot_character'].source = './tablet_app/images/worlds/' + robot_c + '.png'
+
     def init_party(self, the_app, tangrams_solved):
         # display the number of tangrams solved (by the Robot and Child).
 
         self.world = the_app.study_world
         robot_char = the_app.robot_character
         self.ids['party_screen_background'].ids['background_image'].source = './tablet_app/images/worlds/' + self.world + '/TangramGame_Open.png'
-        self.ids['party_screen_background'].ids['robot_character'].source = './tablet_app/images/worlds/' + robot_char + '.png'
+        self.update_robot_character(robot_char)
         i = 0
         # for balloon in self.ids['balloons_won_widget'].ids:
         while i < 12:
