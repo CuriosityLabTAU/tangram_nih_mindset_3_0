@@ -9,16 +9,16 @@
       ["<es cat='happy'> Great! Today I'm going to make my favorite dish.</es> My favorite dish is an apple pie. But I don't have enough apples to make the pie. <es cat='sad' /> ", "YAWN", "LOOKAT_CHILD", "introduction_all_1"]
     ],
     "c-g-": [
-      ["<es cat='question'> Will you help me find lots of apples?</es> <break size='1.0' /> <es name='SpinHead_01' /> Let's discover together what there is in the hills.", "introduction_c-g-_0", "POSE_FORWARD"]
+      ["<es cat='question'> Will you help me find different apples here?</es> <break size='1.0' /> <es name='SpinHead_01' /> Let's discover together what there is in the hills.", "introduction_c-g-_0", "POSE_FORWARD"]
     ],
     "c-g+":[
-      ["<es cat='question'> Will you help me find lots of apples?</es><break size='1.0' /> <es name='SpinHead_01' /> Let's discover together what there is in the hills.", "introduction_c-g-_0", "POSE_FORWARD"]
+      ["<es cat='question'> Will you help me find different apples here?</es><break size='1.0' /> <es name='SpinHead_01' /> Let's discover together what there is in the hills.", "introduction_c-g-_0", "POSE_FORWARD"]
     ],
     "c+g-":[
-      ["<es cat='curious'>I wonder how many apples there are on the tree?</es><break size='0.5'/> Will you help me find lots of apples?<break size='1.0' /> <es name='SpinHead_01' /> Let's discover together what there is in the hills.", "robot_question_intro", "POSE_FORWARD", "introduction_c-g-_0", "POSE_FORWARD"]
+      ["<es cat='curious'>I wonder how many apples there are on the tree?</es><break size='0.5'/> Will you help me find different apples here?<break size='1.0' /> <es name='SpinHead_01' /> Let's discover together what there is in the hills.", "robot_question_intro", "POSE_FORWARD", "introduction_c-g-_0", "POSE_FORWARD"]
     ],
     "c+g+":[
-      ["<es cat='curious'>I wonder how many apples there are on the tree? </es> <break size='0.5'/> Will you help me find lots of apples?<break size='1.0' /> <es name='SpinHead_01' /> Let's discover together what there is in the hills.", "robot_question_intro", "POSE_FORWARD", "introduction_c-g-_0", "LOOKAT_TABLET"]
+      ["<es cat='curious'>I wonder how many apples there are on the tree? </es> <break size='0.5'/> Will you help me find different apples here?<break size='1.0' /> <es name='SpinHead_01' /> Let's discover together what there is in the hills.", "robot_question_intro", "POSE_FORWARD", "introduction_c-g-_0", "LOOKAT_TABLET"]
     ]
   },
   "conclusion": {
