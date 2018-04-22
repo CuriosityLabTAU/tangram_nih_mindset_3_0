@@ -35,7 +35,10 @@ class FirstScreenRoom(Screen):
         self.ids['background_image'].source = './tablet_app/images/worlds/' + world + '/TangramGame_Open.png'
         self.ids['yes_button'].background_normal =  './tablet_app/images/worlds/' + world + '/PriceBtn.png'
         self.ids['yes_button'].background_down = './tablet_app/images/worlds/' + world + '/PriceBtn_on.png'
-        self.ids['robot_character'].source = './tablet_app/images/worlds/' + robot_char +'.png'
+        self.robot_character.source = './tablet_app/images/worlds/' + robot_char +'.png'
+        pos = the_app.interaction.components['robot'].animation['robot-position']
+        self.robot_character.x = the_app.root.size[0] * pos[0]
+        self.robot_character.y = the_app.root.size[1] * pos[1]
 
     def on_enter(self, *args):
         print("on_enter first_screen_room")
@@ -44,12 +47,10 @@ class FirstScreenRoom(Screen):
         #self.play_sound("TangramOpen_myFriend")
 
     def disable_widgets(self):
-        for c in self.ids["tangram_selection_widget"].children:
-            c.disabled = True
+        pass
 
     def enable_widgets(self):
-        for c in self.ids["tangram_selection_widget"].children:
-            c.disabled = False
+        pass
 
 
 

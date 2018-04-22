@@ -37,6 +37,10 @@ class PartyScreenRoom(Screen):
         robot_char = the_app.robot_character
         self.ids['party_screen_background'].ids['background_image'].source = './tablet_app/images/worlds/' + self.world + '/TangramGame_Open.png'
         self.update_robot_character(robot_char)
+        pos = the_app.interaction.components['robot'].animation['robot-position']
+        self.ids['party_screen_background'].ids['robot_character'].x = the_app.root.size[0] * pos[0]
+        self.ids['party_screen_background'].ids['robot_character'].y = the_app.root.size[1] * pos[1]
+
         i = 0
         # for balloon in self.ids['balloons_won_widget'].ids:
         while i < 12:

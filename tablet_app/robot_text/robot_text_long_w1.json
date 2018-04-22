@@ -1,9 +1,10 @@
 {
   "prize-name": "shell",
+  "robot-position": [0.1,0.06],
+  "greeting":[
+    ["<es cat='happy' /> Great! You and I are diving in the water world. <es name='1-gift-show-01'> There are lots of treasures, vegetation, and shells there</es>. Let's discover together what there is in the water world. <es name='Emoji_Fish' /> ", "YAWN", "LOOKAT_CHILD", "introduction_all_0"]
+  ],
   "introduction":{
-    "all": [
-      ["<es cat='happy' /> Great! You and I are diving in the water world. <es name='1-gift-show-01'> There are lots of treasures, vegetation, and shells there</es>. Let's discover together what there is in the water world. <es name='Emoji_Fish' /> ", "YAWN", "LOOKAT_CHILD", "introduction_all_0"]
-    ],
     "c-g-": [
       ["<es cat='question'> Will you help me find different shells in the water world?</es> <break size='1.0' /> <es name='SpinHead_01' /> Let's play! we need to go to the magic treasure room.", "introduction_c-g-_0", "POSE_FORWARD"]
     ],

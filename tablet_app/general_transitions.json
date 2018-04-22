@@ -10,7 +10,8 @@
       "robot:robot_select:tablet:enable_tablet:1:done",
       "child:press_start_button:tablet:first_screen:1",
       "child:press_start_button:child:idle:1",
-      "tablet:first_screen:robot:introduction:1:done",
+      "tablet:first_screen:robot:greeting:1",
+      "robot:greeting:robot:introduction:1:done",
       "robot:introduction:interaction:end:1"
     ]
   },
@@ -84,7 +85,7 @@
   },
   "robot_play": {
     "start": "robot:start_play",
-    "hourglass" : ["max_counter:45"],
+    "hourglass" : ["max_counter:30"],
     "transitions": [
       "robot:start_play:game:generate_selection:1:done",
       "game:generate_selection:tablet:selection_screen:1:x",

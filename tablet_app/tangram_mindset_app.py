@@ -288,6 +288,7 @@ root_widget = Builder.load_string('''
             on_press: app.press_robot_selection_button('robot4')
 
 <FirstScreenRoom>:
+    robot_character:robot_character
     name: 'first_screen_room'
     Widget:
         Image:
@@ -315,8 +316,8 @@ root_widget = Builder.load_string('''
             size_hint_x: None
             height: root.height * 0.4
             width: self.height * 1.07
+            do_translation: True
             allow_stretch: True
-            pos: root.width * 0.2 - self.width * 0.5, root.height * 0.3 - self.height * 0.5
             canvas.before:
                 PushMatrix
                 Rotate:
@@ -843,7 +844,6 @@ class TangramMindsetApp(App):
         KL.log.insert(action=LogAction.data, obj='TangramMindsetApp', comment='start')
 
         self.zero_screen = ZeroScreenRoom(self)
-        self.party_screen_room = PartyScreenRoom(self.interaction.components['tablet'])
         self.android_set_hide_menu()
         self.zero_screen.ids['subject_id'].bind(text=self.zero_screen.ids['subject_id'].on_text_change)
         self.zero_screen.ids['subject_id'].bind(text=self.subject_id_changed)
@@ -851,7 +851,7 @@ class TangramMindsetApp(App):
         self.screen_manager.add_widget(RobotSelectionScreenRoom())
         self.screen_manager.add_widget(FirstScreenRoom(self.interaction.components['tablet']))
         self.screen_manager.add_widget(SelectionScreenRoom(self.interaction.components['tablet']))
-        self.screen_manager.add_widget(self.party_screen_room)
+        self.screen_manager.add_widget(PartyScreenRoom(self.interaction.components['tablet']))
         self.screen_manager.add_widget(self.str_screen)
 
         self.screen_manager.current = 'zero_screen_room'
@@ -879,52 +879,45 @@ class TangramMindsetApp(App):
 
     def data_received(self, data):
         # receive pid, session, condition, start stage information
-        #if self.screen_manager.current == "zero_screen_room":
-        if True:
-            if "start" in data or "continue" in data:
-               self.screen_manager.current = "zero_screen_room"
 
-            info = data.split(",")
-            print info
-            for i in info:
-                print i
-                if "pid" in i:
-                    self.pid = i.split(":")[1]
-                    self.zero_screen.ids['subject_id'].text = self.pid
+        if "start" in data or "continue" in data:
+            self.screen_manager.current = "zero_screen_room"
 
+        info = json.loads(data)
+        print info
+
+        self.pid = info['pid']
+        self.zero_screen.ids['subject_id'].text = self.pid
+
+        try:
+            with open("robot_log.txt", "r") as f:
+                for line in f:
+                    l = line.split(":")
                     try:
-                        with open("robot_log.txt", "r") as f:
-                            for line in f:
-                                l = line.split(":")
-                                try:
-                                    if l[0] == self.pid:
-                                        self.robot_character = l[1]
-                                except:
-                                    pass
+                        if l[0] == self.pid:
+                            self.robot_character = l[1].replace('\n','')
                     except:
-                        print "no robot_log.txt file yet"
-                elif "name" in i:
-                    self.pname = i.split(":")[1]
-                elif "condition" in i:
-                    val = i.split(":")[1]
-                    if val in self.zero_screen.ids['condition_spinner'].values:
-                        self.zero_screen.ids['condition_spinner'].text = val
-                elif "world" in i:
-                    val = i.split(":")[1]
-                    if val in self.zero_screen.ids['world_spinner'].values:
-                        self.zero_screen.ids['world_spinner'].text = val
-                #elif "robot" in i:
-                #    val = i.split(":")[1]
-                #    if val in ['robot1','robot2','robot3','robot4']:
-                #        self.robot_character = val
-                elif "start" in i:
-                    time.sleep(0.5)
-                    self.press_start_button()
-                elif "continue" in i:
-                    time.sleep(0.5)
-                    self.press_load_transition('last_game')
-                elif "skip" in i:
-                    self.press_stop_button()
+                        pass
+        except:
+            print "no robot_log.txt file yet"
+
+        self.pname = info['pname']
+
+        if info['condition'] in self.zero_screen.ids['condition_spinner'].values:
+            self.zero_screen.ids['condition_spinner'].text = info['condition']
+
+
+        if info['world'] in self.zero_screen.ids['world_spinner'].values:
+            self.zero_screen.ids['world_spinner'].text = info['world']
+
+        if info['entry'] == "start":
+            time.sleep(0.5)
+            self.press_start_button()
+        elif info['entry'] == "continue":
+            time.sleep(0.5)
+            self.press_load_transition('last_game')
+        elif info['entry'] == "skip":
+            self.press_stop_button()
 
         print(self.name, data)
         #the_data = json.loads(data)
@@ -991,7 +984,6 @@ class TangramMindsetApp(App):
                 f.write(self.pid + ":" + robot + "\n")
 
         self.robot_character = robot
-        self.party_screen_room.update_robot_character(self.robot_character)
         self.interaction.components['child'].on_action(["press_start_button"])
 
     def press_robot_init (self):
@@ -1019,7 +1011,6 @@ class TangramMindsetApp(App):
             # state['condition'] = self.condition
 
             self.robot_character = self.state['robot_character']
-            self.party_screen_room.update_robot_character(self.robot_character)
 
             self.tangrams_solved = self.state['tangram_solved']
             print('tangrams solved: ', self.tangrams_solved)
@@ -1357,7 +1348,7 @@ class TangramMindsetApp(App):
         self.filled_world  = True
         self.update_filled()
 
-        self.robot_text_json.replace('w1', world)
+        self.robot_text_json = self.robot_text_json.replace('w1', world)
         self.interaction.components['robot'].load_text(session_filename=self.robot_text_json,
                                                        general_filename=ROBOT_TEXT_GENERAL,
                                                        participant_name=self.pname)

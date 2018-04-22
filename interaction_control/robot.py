@@ -26,7 +26,7 @@ class RobotComponent(Component):
     gender = None
     study_world = "w"
 
-    def load_text(self, session_filename='./tablet_app/robot_text_revised5_tau_long.json', general_filename='', participant_name=''):  #robot_text_revised3
+    def load_text(self, session_filename='', general_filename='', participant_name=''):  #robot_text_revised3
         self.animation={}
         with open(session_filename) as data_file:
             self.animation.update(json.load(data_file))
@@ -36,6 +36,8 @@ class RobotComponent(Component):
                 self.animation.update(json.load(general_f))
 
         for item in self.animation:
+            if item in ["robot-position", "prize-name"]:
+                continue
             if isinstance(self.animation[item], dict):
                 for condition in self.animation[item]: #all, c-g-, ...
                     for script in self.animation[item][condition]:
@@ -43,14 +45,12 @@ class RobotComponent(Component):
                             script[0] = script[0].replace("<prize-name>", self.animation['prize-name'])
                         if "<participant-name>" in script[0]:
                             script[0] = script[0].replace("<participant-name>", participant_name)
-                        print script
             elif isinstance(self.animation[item], list):
                 for script in self.animation[item]:
                     if "<prize-name>" in script[0]:
                         script[0] = script[0].replace("<prize-name>", self.animation['prize-name'])
                     if "<participant-name>" in script[0]:
                         script[0] = script[0].replace("<participant-name>", participant_name)
-                    print script
 
     def run_function(self, action):
         print(self.name, 'run_function', action[0], action[1:])

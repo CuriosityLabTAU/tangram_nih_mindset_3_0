@@ -95,21 +95,21 @@
       ["I seem to be on the right track","robot_win_c-g-_6"]
     ],
     "c-g+": [
-      ["that was hard, but I tried hard and nailed it","robot_win_c-g+_0","PROUD"],
-      ["working hard is worth it","robot_win_c-g+_1","PROUD"],
-      ["I tried hard and made it!","robot_win_c-g+_2","PROUD"],
-      ["I'm not afraid of a challenge. I like it!","robot_win_c-g+_3","PROUD"]
+      ["that was hard, but I tried hard and nailed it<es cat='proud' />","robot_win_c-g+_0","PROUD"],
+      ["working hard is worth it<es cat='proud' />","robot_win_c-g+_1","PROUD"],
+      ["I tried hard and made it!<es cat='proud' />","robot_win_c-g+_2","PROUD"],
+      ["I'm not afraid of a challenge. I like it!<es cat='proud' />","robot_win_c-g+_3","PROUD"]
     ],
     "c+g-": [
-      ["I tried something new and different - I know I haven't done this before","robot_win_c+g-_0", "YES"],
-      ["I tried a different strategy","robot_win_c+g-_", "PROUD"]
+      ["I tried something new and different - I know I haven't done this before<es cat='proud' />","robot_win_c+g-_0", "YES"],
+      ["I tried a different strategy<es cat='proud' />","robot_win_c+g-_", "PROUD"]
     ],
     "c+g+": [
-      ["i worked out my brain and did it","PROUD","robot_win_c+g+_0"],
-      ["Wow, I really practiced that, and look how I have improved","LEFTRIGHTLOOKING","robot_win_c+g+_1"],
-      ["I like the way I tried all kinds of strategies on that problem until I finally got it","PROUD","robot_win_c+g+_2"],
-      ["I tried different strategies","LEFTRIGHTLOOKING","robot_win_c+g+_3"],
-      ["I like new challenges, I will get better and better!","LEFTRIGHTLOOKING","robot_win_c+g+_4"]
+      ["Wow, I really practiced that, and look how I have improved.<es cat='proud' />","LEFTRIGHTLOOKING","robot_win_c+g+_1"],
+      ["i worked out my brain and did it.<es cat='proud' />","PROUD","robot_win_c+g+_0"],
+      ["I like the way I tried all kinds of strategies on that problem until I finally got it.<es cat='proud' />","PROUD","robot_win_c+g+_2"],
+      ["I tried different strategies.<es cat='proud' />","LEFTRIGHTLOOKING","robot_win_c+g+_3"],
+      ["I like new challenges, I will get better and better!<es cat='proud' />","LEFTRIGHTLOOKING","robot_win_c+g+_4"]
     ]
   },
   "robot_lose": {

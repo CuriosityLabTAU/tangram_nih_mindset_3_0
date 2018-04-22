@@ -32,9 +32,7 @@ class ZeroScreenRoom(Screen):
     #     print(condition)
 
     def disable_widgets(self):
-        for c in self.ids["tangram_selection_widget"].children:
-            c.disabled = True
+        pass
 
     def enable_widgets(self):
-        for c in self.ids["tangram_selection_widget"].children:
-            c.disabled = False
+        pass
