@@ -20,7 +20,7 @@
     ]
   },
   "robot_select":[
-    ["<es name='Yawn_02' /> Oh! Hello! Great to see you again. Remember me? I am Jibo. <break size='1.0' /> <es name='affection_05' /> <break size='1.0' />  I am so happy to see you again, that I am going to do a little dance. <es name='Twerking_music_dance_01' /> That was fun. <break size='1.0' />  <es name='Body_Look_Center_Down_01'> Oh, look! <break size='1.0'/> It's the robot that you selected last time </es> , so we are ready go to adventures together in the robot world!"]
+    ["<es name='Yawn_02' /> Oh! Hello <participant-name> ! Great to see you again. Remember me? I am Jibo. <break size='1.0' /> <es name='affection_05' /> <break size='1.0' />  I am so happy to see you again, that I am going to do a little dance. <es name='Twerking_music_dance_01' /> That was fun. <break size='1.0' />  <es name='Body_Look_Center_Down_01'> Oh, look! <break size='1.0'/> It's the robot that you selected last time </es> , so we are ready go to adventures together in the robot world!"]
   ],
   "ask_again": [
     ["do you want to play with me? <es name='Body_Look_Center_Down_01'> Click yes on the screen!</es>","ask_again_0"],
