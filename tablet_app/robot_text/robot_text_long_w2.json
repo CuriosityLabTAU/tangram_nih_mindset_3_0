@@ -7,16 +7,16 @@
 
     ],
     "c-g-": [
-      ["<es cat='question'> Will you help me find different shells in the water world?</es> <break size='1.0' /> <es name='SpinHead_01' /> Let's play! we need to go to the magic treasure room.", "introduction_c-g-_0", "POSE_FORWARD"]
+      ["<es cat='question'> Will you help me find different apples here?</es> <break size='1.0' /> <es name='SpinHead_01' /> Let's play! we need to go to the magic treasure room.", "introduction_c-g-_0", "POSE_FORWARD"]
     ],
     "c-g+":[
-      ["<es cat='question'> Will you help me find different shells in the water world?</es><break size='1.0' /> <es name='SpinHead_01' /> Let's play! we need to go to the magic treasure room.", "introduction_c-g-_0", "POSE_FORWARD"]
+      ["<es cat='question'> Will you help me find different apples here?</es><break size='1.0' /> <es name='SpinHead_01' /> Let's play! we need to go to the magic treasure room.", "introduction_c-g-_0", "POSE_FORWARD"]
     ],
     "c+g-":[
-      ["<es cat='curious'>I wonder what’s inside the shells. </es><break size='0.5'/> will you help me find different shells in the water world?<break size='1.0' /> <es name='SpinHead_01' /> Let's play! we need to go to the magic treasure room.", "robot_question_intro", "POSE_FORWARD", "introduction_c-g-_0", "POSE_FORWARD"]
+      ["<es cat='curious'>I wonder what colors apples come in. </es><break size='0.5'/> will you help me find different apples here?<break size='1.0' /> <es name='SpinHead_01' /> Let's play! we need to go to the magic treasure room.", "robot_question_intro", "POSE_FORWARD", "introduction_c-g-_0", "POSE_FORWARD"]
     ],
     "c+g+":[
-      ["<es cat='curious'>I wonder what’s inside the shells. </es> <break size='0.5'/> will you help me find different shells in the water world?<break size='1.0' /> <es name='SpinHead_01' /> Let's play! we need to go to the magic treasure room.", "robot_question_intro", "POSE_FORWARD", "introduction_c-g-_0", "LOOKAT_TABLET"]
+      ["<es cat='curious'>I wonder what colors apples come in. </es> <break size='0.5'/> will you help me find different apples here?<break size='1.0' /> <es name='SpinHead_01' /> Let's play! we need to go to the magic treasure room.", "robot_question_intro", "POSE_FORWARD", "introduction_c-g-_0", "LOOKAT_TABLET"]
     ]
   },
   "robot_select":[
@@ -238,7 +238,7 @@
     "all": [
       ["its your turn now.","LOOKAT_CHILD","your_turn_all_0"],
       ["you try to open a box now.","LOOKAT_CHILD","your_turn_all_1"],
-      ["now you get us a new shell.","LOOKAT_CHILD","your_turn_all_2"],
+      ["now you get us a new apple.","LOOKAT_CHILD","your_turn_all_2"],
       ["you are next.","LOOKAT_CHILD","your_turn_all_3"],
       ["ok, now you.","LOOKAT_CHILD","your_turn_all_4"],
       ["so, it is your turn now.","LOOKAT_CHILD","your_turn_all_5"]
@@ -444,7 +444,7 @@
       ["let's select one.","comment_selection_c-g-_0"],
       ["what do you think, which should we choose?","comment_selection_c-g-_1"],
       ["let's select one of the treasures","comment_selection_c-g-_2"],
-      ["let's get some more shells","comment_selection_c-g-_3"]
+      ["let's get some more apples","comment_selection_c-g-_3"]
     ],
     "c-g+": [
       ["I want to try a new level","comment_selection_c-g+_0"],
