@@ -19,7 +19,7 @@
     ]
   },
   "robot_select":[
-    ["<es name='Yawn_02' /> Oh! Hello! Nice to meet you. My name is Jibo. J I B O. <break size='1.0' />  What is your name? <es name='affection_05' /> <break size='1.0' />  <participant-name>, great! Here is my dance to celebrate our first day! <es name='Twerking_music_dance_01' /> That was fun. <break size='1.0' />  <es name='Body_Look_Center_Down_01'> Oh, look! <break size='1.0'/> You need to first select which robot you want to be</es> , so we can go to adventures together in the robot world. Pick a robot!"]
+    ["<es name='Yawn_02' /> Oh! Hello! Nice to meet you. My name is Jibo. J I B O. <break size='1.0' />  What is your name? <es name='affection_05' /> <break size='1.0' />  <participant-name>, great! If my pronunciation is a bit wrong, <es name='Emoji_HeartRed'>I'll get better as we become more close to each other </es>. Here is my dance to celebrate our first day! <es name='Twerking_music_dance_01' /> That was fun. <break size='1.0' />  <es name='Body_Look_Center_Down_01'> Oh, look! <break size='1.0'/> You need to first select which robot you want to be</es> , so we can go to adventures together in the robot world. Pick a robot!"]
   ],
   "selection_tutorial": {
    "all" : [
