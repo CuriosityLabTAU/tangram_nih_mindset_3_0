@@ -23,6 +23,7 @@ class SolveTangramRoom(Screen):
     tangram_game_widget = None
     time_is_up = False
     disabled_ = None
+    box_open = SoundLoader.load('./tablet_app/sounds/open.wav')
 
     def __init__(self, the_tablet):
         self.the_tablet = the_tablet
@@ -139,13 +140,14 @@ class SolveTangramRoom(Screen):
             if isinstance(c, TangramPiece):
                 c.do_rotation = True
                 c.do_translation = True
-                c.do_scale = True
+                c.do_scale = False
                 c.disabled = False
             else:
                 c.disabled = False
 
     def solved(self):
         print("solve_tangram_room: solved")
+        self.box_open.play()
         i = self.the_app.tangrams_solved
         #i = (i-1)%3 + 1
         self.ids['treasure_box'].ids['box'].source = './tablet_app/images/worlds/' + self.world + '/TreasureOpenBoxLayers.png'
@@ -494,7 +496,7 @@ class HourGlassWidget (Widget):
 
     def after_init(self, *args):
         print ('HourGlassWidget: after init')
-        self.time_over_sound = SoundLoader.load('./tablet_app/sounds/time_over.m4a')
+        self.time_over_sound = SoundLoader.load('./tablet_app/sounds/time_over.wav')
         self.hourglass = self.ids['hourglass']
         self.topSand = self.ids['topSand']
         self.middleSand = self.ids['middleSand']

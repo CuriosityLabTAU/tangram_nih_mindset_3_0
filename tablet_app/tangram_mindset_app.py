@@ -16,24 +16,13 @@ from interaction_control import *
 from game import *
 from tablet import *
 
-from kivy.uix.label import Label
-from kivy.uix.floatlayout import FloatLayout
-from kivy.uix.widget import Widget
-from kivy.uix.boxlayout import Layout
-from kivy.uix.image import Image
-from kivy.uix.dropdown import DropDown
-from kivy.uix.spinner import Spinner
 from kivy.lang import Builder
-from kivy.base import runTouchApp
 from kivy.clock import Clock
 from kivy.app import App
-from kivy.animation import Animation
 from kivy.core.window import Window
 from kivy_communication import *
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.core.audio import SoundLoader
-
-from random import choice
 
 try:
     from jnius import autoclass
@@ -62,7 +51,7 @@ GAME_WITH_ROBOT = True
 ROBOT_SOUND_FROM_TABLET = False # False
 #rinat
 STUDY_SITE = 'MIT-JIBO'      #'TAU'      # MIT   #MIT-JIBO
-ROBOT_TEXT = './tablet_app/robot_text/robot_text_long_w1.json'
+ROBOT_TEXT_GENERAL = './tablet_app/robot_text/robot_text_long_general.json'
 
 class MyScreenManager (ScreenManager):
     the_tablet = None
@@ -370,10 +359,10 @@ root_widget = Builder.load_string('''
             id: round_label
             text: ""
             color: 1,1,1,1 
-            font_size:32
+            font_size:16
             bold: True
-            size: root.width * 0.1, root.height * 0.1
-            pos: root.width * 0.8, root.height * 0.9
+            size: root.width * 0.9, root.height * 0.1
+            pos: root.width * 0.2, root.height * 0.9
 
 
 <TangramSelectionWidget>
@@ -676,7 +665,11 @@ root_widget = Builder.load_string('''
 
 # functions connecting to button pressed
 class SetupScreenRoom(Screen):
-    pass
+    def disable_widgets(self):
+        pass
+
+    def enable_widgets(self):
+        pass
 
 class RobotSelectionScreenRoom(Screen):
 
@@ -700,6 +693,7 @@ class RobotSelectionScreenRoom(Screen):
 
 
 class TangramMindsetApp(App):
+
     tangrams_solved = 0
     interaction = None
     sounds = None
@@ -714,8 +708,10 @@ class TangramMindsetApp(App):
     yes_clicked_flag = False
     subject_gender = "m"
     pid = ""
+    pname = ""
     study_world = None
     robot_character = None
+    robot_text_json = './tablet_app/robot_text/robot_text_long_w1.json'
 
     filled_all_data = False
     filled_subject_id = False
@@ -744,10 +740,7 @@ class TangramMindsetApp(App):
         self.interaction.components['robot'].gender = ""
         if not GAME_WITH_ROBOT:
             self.interaction.components['robot'].app = self
-            self.interaction.components['robot'].load_text(filename=ROBOT_TEXT) #added in order to play sound files
-
         else:
-            self.interaction.components['robot'].load_text(filename=ROBOT_TEXT)
             if STUDY_SITE == 'MIT':
                 self.interaction.components['robot'].robot_name = 'tega'
             elif STUDY_SITE == 'MIT-JIBO':
@@ -772,6 +765,64 @@ class TangramMindsetApp(App):
 
         return self.screen_manager
 
+    # def init_variables(self):
+    #     self.tangrams_solved = 0
+    #     self.interaction = None
+    #     self.sounds = None
+    #     self.current_sound = None
+    #     self.current_action = None
+    #     self.screen_manager = None
+    #     self.current = None
+    #     self.game = None
+    #     self.selection = None
+    #     self.text_handler = None
+    #     self.tablet_disabled = False
+    #     self.yes_clicked_flag = False
+    #     self.subject_gender = "m"
+    #     self.pid = ""
+    #     self.study_world = None
+    #     self.robot_character = None
+    #
+    #     self.filled_all_data = False
+    #     self.filled_subject_id = False
+    #     self.filled_world = False
+    #     self.filled_gender = True
+    #     self.filled_condition = False
+    #
+    #     self.interaction = Interaction(
+    #         [('robot', 'RobotComponent'),
+    #          ('child', 'ChildComponent'),
+    #          ('internal_clock', 'ClockComponent'),
+    #          ('hourglass', 'HourglassComponent')
+    #          ]
+    #     )
+    #     self.interaction.components['tablet'] = TabletComponent(self.interaction, 'tablet')
+    #     self.interaction.components['game'] = GameComponent(self.interaction, 'game')
+    #     self.interaction.components['game'].game_facilitator = GameFacilitator()
+    #
+    #     self.str_screen = SolveTangramRoom(self.interaction.components['tablet'])
+    #
+    #     self.interaction.components['tablet'].hourglass_widget = self.str_screen.ids['hourglass_widget']
+    #     # self.interaction.components['hourglass'].widget = s.ids['hourglass_widget']
+    #     self.interaction.components['tablet'].app = self
+    #     self.interaction.components['robot'].gender = ""
+    #     if not GAME_WITH_ROBOT:
+    #         self.interaction.components['robot'].app = self
+    #         self.interaction.components['robot'].load_text(filename=ROBOT_TEXT)  # added in order to play sound files
+    #
+    #     else:
+    #         self.interaction.components['robot'].load_text(filename=ROBOT_TEXT)
+    #         if STUDY_SITE == 'MIT':
+    #             self.interaction.components['robot'].robot_name = 'tega'
+    #         elif STUDY_SITE == 'MIT-JIBO':
+    #             self.interaction.components['robot'].robot_name = 'jibo'
+    #         elif STUDY_SITE == 'TAU':
+    #             self.interaction.components['robot'].robot_name = 'nao'
+    #     self.interaction.load(filename='./tablet_app/general_transitions.json')
+    #     self.interaction.load_sequence(filename='./tablet_app/general_sequence.json')
+    #     self.interaction.next_interaction()
+
+
     def on_start(self):
         print ('app: on_start')
         self.android_set_hide_menu()
@@ -792,6 +843,7 @@ class TangramMindsetApp(App):
         KL.log.insert(action=LogAction.data, obj='TangramMindsetApp', comment='start')
 
         self.zero_screen = ZeroScreenRoom(self)
+        self.party_screen_room = PartyScreenRoom(self.interaction.components['tablet'])
         self.android_set_hide_menu()
         self.zero_screen.ids['subject_id'].bind(text=self.zero_screen.ids['subject_id'].on_text_change)
         self.zero_screen.ids['subject_id'].bind(text=self.subject_id_changed)
@@ -799,7 +851,7 @@ class TangramMindsetApp(App):
         self.screen_manager.add_widget(RobotSelectionScreenRoom())
         self.screen_manager.add_widget(FirstScreenRoom(self.interaction.components['tablet']))
         self.screen_manager.add_widget(SelectionScreenRoom(self.interaction.components['tablet']))
-        self.screen_manager.add_widget(PartyScreenRoom(self.interaction.components['tablet']))
+        self.screen_manager.add_widget(self.party_screen_room)
         self.screen_manager.add_widget(self.str_screen)
 
         self.screen_manager.current = 'zero_screen_room'
@@ -851,7 +903,8 @@ class TangramMindsetApp(App):
                                     pass
                     except:
                         print "no robot_log.txt file yet"
-
+                elif "name" in i:
+                    self.pname = i.split(":")[1]
                 elif "condition" in i:
                     val = i.split(":")[1]
                     if val in self.zero_screen.ids['condition_spinner'].values:
@@ -913,7 +966,9 @@ class TangramMindsetApp(App):
 
     def press_start_button (self):
         # child pressed the start button
+
         if (self.filled_all_data):
+
             if self.study_world == "w1": #and not self.robot_character:
 
                 self.screen_manager.get_screen('robot_selection_screen_room').init_robot_selection_screen_room(the_app=self)
@@ -936,6 +991,7 @@ class TangramMindsetApp(App):
                 f.write(self.pid + ":" + robot + "\n")
 
         self.robot_character = robot
+        self.party_screen_room.update_robot_character(self.robot_character)
         self.interaction.components['child'].on_action(["press_start_button"])
 
     def press_robot_init (self):
@@ -945,6 +1001,7 @@ class TangramMindsetApp(App):
 
     def press_load_transition(self, stage):
         if (self.filled_all_data):
+
             print("loading new transition file")
 
             with open('last_saved_state' + '.pkl', 'rb') as f:
@@ -961,7 +1018,10 @@ class TangramMindsetApp(App):
             # print('condition: ', self.condition)
             # state['condition'] = self.condition
 
-            self.tangrams_solved = self.state['tnagram_solved']
+            self.robot_character = self.state['robot_character']
+            self.party_screen_room.update_robot_character(self.robot_character)
+
+            self.tangrams_solved = self.state['tangram_solved']
             print('tangrams solved: ', self.tangrams_solved)
             # game_facilitator
 
@@ -993,9 +1053,9 @@ class TangramMindsetApp(App):
             # agent
             self.interaction.components['robot'].agent.current_round = self.state['current_round']
             print('current_round: ', self.interaction.components['robot'].agent.current_round)
-            #current_round = int(np.floor(self.state['current_interaction'] / 2))
+            current_round = int(np.floor(self.state['current_interaction'] / 2))
             #self.interaction.components['robot'].agent.current_round = current_round
-            #print('fixed current_round: ', current_round)
+            print('fixed current_round: ', current_round)
 
             # interaction
             self.interaction.current_interaction = self.state['current_interaction'] - 1
@@ -1100,8 +1160,9 @@ class TangramMindsetApp(App):
         # print('condition: ', self.condition)
         # state['condition'] = self.condition
 
+        state['robot_character'] = self.robot_character
         print('tangrams solved: ',self.tangrams_solved)
-        state['tnagram_solved'] = self.tangrams_solved
+        state['tangram_solved'] = self.tangrams_solved
         # game_facilitator
         print('player: ', self.interaction.components['game'].game_facilitator.selection_gen.player)
         state['player'] = self.interaction.components['game'].game_facilitator.selection_gen.player
@@ -1146,7 +1207,15 @@ class TangramMindsetApp(App):
         print('x=',x)
         TangramGame.SCALE = round(Window.size[0] / 75)
         self.screen_manager.get_screen('selection_screen_room').init_selection_options(x=x,the_app=self)
-        #self.screen_manager.get_screen('selection_screen_room').ids["round_label"].text = str(self.interaction.components['game'].game_facilitator.game_counter+1)
+        self.screen_manager.get_screen('selection_screen_room').ids["round_label"].text = \
+            str(self.interaction.components['game'].game_facilitator.game_counter) + "/" + \
+            str(self.interaction.components['robot'].agent.current_round) + "/" + \
+            str(self.interaction.current_interaction) + "/" + \
+            str(self.interaction.components['robot'].question_index) + "/" + \
+            str(TangramGame.cog_tangram_selection) + "/" + \
+            self.interaction.components['game'].game_facilitator.current_player + "/" + \
+            self.interaction.components['game'].game_facilitator.selection_gen.player
+
         self.screen_manager.current = 'selection_screen_room'
         self.android_set_hide_menu()
 
@@ -1271,7 +1340,6 @@ class TangramMindsetApp(App):
         self.condition = condition
         self.update_filled()
         self.text_handler = TextHandler(condition)
-        self.text_handler.load_text(filename=ROBOT_TEXT)
         self.interaction.components['robot'].agent.update_condition(condition)
 
     def update_gender(self, gender):
@@ -1288,6 +1356,14 @@ class TangramMindsetApp(App):
     def update_world(self, world):
         self.filled_world  = True
         self.update_filled()
+
+        self.robot_text_json.replace('w1', world)
+        self.interaction.components['robot'].load_text(session_filename=self.robot_text_json,
+                                                       general_filename=ROBOT_TEXT_GENERAL,
+                                                       participant_name=self.pname)
+
+        self.text_handler.load_text(session_filename=self.robot_text_json,
+                                    general_filename=ROBOT_TEXT_GENERAL)
 
         if 'MIT' in STUDY_SITE:
             self.study_world = world
@@ -1320,8 +1396,10 @@ class TangramMindsetApp(App):
 
     def press_stop_button(self):
         print('stop button pressed')
-        #if self.screen_manager.current == "solve_tangram_room":
-        self.interaction.components['hourglass'].stop()
+        if self.screen_manager.current == "solve_tangram_room":
+            # advance game_counter, player,
+            self.interaction.components['game'].game_facilitator.update_game_result('S')
+            self.interaction.components['hourglass'].stop()
         #    self.interaction.current_interaction -= 1
         self.interaction.end_interaction()
 
