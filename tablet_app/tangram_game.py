@@ -406,7 +406,7 @@ class TaskLayout(FloatLayout):
 
 
 class TangramGame:
-    cog_tangram_selection = None
+    cog_tangram_selection = 1
     SCALE = None
     window_size = []
 
