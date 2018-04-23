@@ -28,7 +28,7 @@
   },
   "end_party" : { 
     "all": [
-      ["<es name='Yawn_01' > I'm going to count the sheeps and go back to sleep. Bye for now, but see you again soon! <break size='1.0' /> bye. </es>", "party_all_1", "YAWN", "party_all_2", "POSE_SLEEPING"]
+      ["<es name='Yawn_01' > I'm going to count the sheep and go back to sleep. Bye for now, but see you again soon! <break size='1.0' /> bye. </es>", "party_all_1", "YAWN", "party_all_2", "POSE_SLEEPING"]
     ]
   },
 

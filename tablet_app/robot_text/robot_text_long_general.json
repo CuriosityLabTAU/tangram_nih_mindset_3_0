@@ -117,7 +117,7 @@
       ["idle", "IDLESTILL"]
     ],
     "c-g-": [
-      ["that was hard","robot_lose_c-g-_0","SAD"],
+      ["<es cat='sad'> that was hard </es>","robot_lose_c-g-_0","SAD"],
       ["I didn't succeed","robot_lose_c-g-_1","FRUSTRATED"],
       ["I hope to have better luck next time","robot_lose_c-g-_2","SAD"],
       ["times up","robot_lose_c-g-_3","FRUSTRATED"],
@@ -189,7 +189,7 @@
       ["you try to open a box now.","LOOKAT_CHILD","your_turn_all_1"],
       ["now you get us a new <prize-name>.","LOOKAT_CHILD","your_turn_all_2"],
       ["you are next.","LOOKAT_CHILD","your_turn_all_3"],
-      ["ok, now you.","LOOKAT_CHILD","your_turn_all_4"],
+      ["ok, now you go.","LOOKAT_CHILD","your_turn_all_4"],
       ["so, it is your turn now.","LOOKAT_CHILD","your_turn_all_5"]
     ],
     "c-g-": [
