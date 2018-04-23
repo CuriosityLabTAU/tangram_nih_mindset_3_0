@@ -1,6 +1,6 @@
 {
   "explain_move_tutorial":{
-    "all":[
+    "all" : [
       ["<es name='Emoji_ExclamationRed'/>  ah ha! I can rotate pieces with the button on the right!"],
       ["which piece will fit in the black area.."],
       ["<es name='Emoji_ExclamationYellow'> The button on the right rotates the pieces. Interesting!</es>"],
@@ -10,16 +10,16 @@
   "explain_move": {
     "c-g-": [
       ["<es name='sad_01' /> it's hard.<es name='Body_Lean_Center_Forward_01' />","IDLESTILL", "move_explanation_c-g-_0","POSE_FORWARD"],
-      ["<es name='sad_02' /> hmm<es name='Body_Lean_Center_Forward_01' />", "POSE_FORWARD"],
-      ["<es cat='disgust'> there </es>","move_explanation_c-g-_1","POSE_FORWARD"],
-      ["<es name='Body_Lean_Center_Forward_01' /> hmm", "POSE_FORWARD"],
+      ["<es name='sad_02' /> hmm.<es name='Body_Lean_Center_Forward_01' />", "POSE_FORWARD"],
+      ["<es cat='disgust'> there. </es>","move_explanation_c-g-_1","POSE_FORWARD"],
+      ["<es name='Body_Lean_Center_Forward_01' /> hmm.", "POSE_FORWARD"],
       ["I'll move this piece.","move_explanation_c-g-_2","POSE_FORWARD"],
-      ["<es cat='frustrated'> hmm </es>", "POSE_FORWARD"],
+      ["<es cat='frustrated.'> hmm </es>", "POSE_FORWARD"],
       ["there are pieces left.","move_explanation_c-g-_3","POSE_FORWARD"],
-      ["<es cat='frustrated'/>ah..", "POSE_FORWARD"],
-      ["<es cat='confused'> how do I solve this  </es>", "POSE_FORWARD"],
-      ["<es cat='frustrated'> hmm.. it's hard </es>","IDLESTILL", "move_explanation_c-g-_4","POSE_FORWARD"],
-      ["<es cat='sad'> hmm </es> ", "POSE_FORWARD"]
+      ["<es cat='frustrated'/>ah.", "POSE_FORWARD"],
+      ["<es cat='confused'> how do I solve this?  </es>", "POSE_FORWARD"],
+      ["<es cat='frustrated'> hmm. it's hard. </es>","IDLESTILL", "move_explanation_c-g-_4","POSE_FORWARD"],
+      ["<es cat='sad'> hmm. </es> ", "POSE_FORWARD"]
 
     ],
     "c-g+": [
@@ -95,7 +95,7 @@
     ]
   },
   "robot_win": {
-    "all":[
+    "all" : [
       ["idle", "LOOKAT_CHILD"]
     ],
     "c-g-": [
@@ -126,7 +126,7 @@
     ]
   },
   "robot_lose": {
-    "all":[
+    "all" : [
       ["idle", "IDLESTILL"]
     ],
     "c-g-": [
@@ -170,7 +170,7 @@
     ]
   },
   "child_lose": {
-    "all":[
+    "all" : [
       ["idle", "IDLESTILL"]
     ],
     "c-g-": [
