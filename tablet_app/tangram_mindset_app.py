@@ -355,7 +355,7 @@ root_widget = Builder.load_string('''
             #border: (0,0,0,0)
             size: root.width * 0.03, root.width * 0.03
             pos: root.width * 0.98 - self.width * 0.5, root.height * 0.975 - self.height * 0.5
-            on_press: app.press_stop_button()
+            #on_press: app.press_stop_button()
         Label:
             id: round_label
             text: ""
@@ -486,7 +486,7 @@ root_widget = Builder.load_string('''
             border: (0,0,0,0)
             size: root.width * 0.04, root.width * 0.04
             pos: root.width * 0.975 - self.width * 0.5, root.height * 0.970 - self.height * 0.5
-            on_press: app.press_stop_button()
+            #on_press: app.press_stop_button()
 
 <Background>:
     Image:
@@ -1209,14 +1209,14 @@ class TangramMindsetApp(App):
         print('x=',x)
         TangramGame.SCALE = round(Window.size[0] / 75)
         self.screen_manager.get_screen('selection_screen_room').init_selection_options(x=x,the_app=self)
-        self.screen_manager.get_screen('selection_screen_room').ids["round_label"].text = \
-            str(self.interaction.components['game'].game_facilitator.game_counter) + "/" + \
-            str(self.interaction.components['robot'].agent.current_round) + "/" + \
-            str(self.interaction.current_interaction) + "/" + \
-            str(TangramGame.cog_tangram_selection) + "/" + \
-            str(self.interaction.components['game'].game_facilitator.selection_gen.is_last_challenge) + "/" + \
-            str(self.interaction.components['game'].game_facilitator.selection_gen.challenge_counter) + "/" + \
-            self.interaction.components['game'].game_facilitator.current_player
+        # self.screen_manager.get_screen('selection_screen_room').ids["round_label"].text = \
+        #     str(self.interaction.components['game'].game_facilitator.game_counter) + "/" + \
+        #     str(self.interaction.components['robot'].agent.current_round) + "/" + \
+        #     str(self.interaction.current_interaction) + "/" + \
+        #     str(TangramGame.cog_tangram_selection) + "/" + \
+        #     str(self.interaction.components['game'].game_facilitator.selection_gen.is_last_challenge) + "/" + \
+        #     str(self.interaction.components['game'].game_facilitator.selection_gen.challenge_counter) + "/" + \
+        #     self.interaction.components['game'].game_facilitator.current_player
 
         self.screen_manager.current = 'selection_screen_room'
         self.android_set_hide_menu()

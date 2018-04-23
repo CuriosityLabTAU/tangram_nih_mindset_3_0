@@ -23,7 +23,7 @@
   ],
   "selection_tutorial": {
    "all" : [
-      ["Look at all those <es cat='gift'> magical treasure boxes</es>! <break size='0.5' />in each treasure box, we will find exactly what we are looking for,<break size='0.2' />if we can open it by solving a puzzle. <break size='0.5' /> There is also a puzzle <es name='Emoji_Question'> behind the question mark, but we can't see it until we select it. <break size='0.5' />first we need to choose </es>which box to try to open. I will try first, but because I have no hands, I will use my brain power to move things on the screen! <es cat='happy' />", "LOOKAT_TABLET", "selection_tutorial_all_0_question"]
+      ["Look at all those <es cat='gift'> magical treasure boxes</es>! <break size='0.5' />in each treasure box, we will find exactly what we are looking for,<break size='0.2' />if we can open it by solving a puzzle. <break size='0.5' /> There is also a puzzle <es name='Emoji_Question'> behind the question mark, but we can't see it until we select it. <break size='0.5' />first we need to choose </es>which box to try to open. I will try first, but because I have no hands, I will <es name='Emoji_Brain'> use my brain power to move things on the screen!</es><break size='1.0/>", "LOOKAT_TABLET", "selection_tutorial_all_0_question"]
     ],
     "c-g-" : [
       ["<es name='Body_Look_Center_Down_01'>hmm.. <break size='1.0'/>I will choose this one.</es>","selection_tutorial_c-g-_0", "IDLESTILL"]
