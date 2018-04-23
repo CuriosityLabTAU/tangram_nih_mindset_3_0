@@ -238,14 +238,14 @@
   },
   "my_turn": {
     "all": [
-      ["its my turn now.","my_turn_all_0"],
-      ["I will try to open a box now.","my_turn_all_1"],
-      ["I'm next","my_turn_all_2"],
-      ["ok, now me","my_turn_all_3", "POSE_FORWARD"],
-      ["so, it is my turn now","my_turn_all_4"]
+      ["<es cat = 'happy' filter = 'excited'> its my turn now.","my_turn_all_0"],
+      ["<es cat = 'happy' filter = 'excited'> I will try to open a box now.","my_turn_all_1"],
+      ["<es cat = 'happy' filter = 'excited'> I'm next","my_turn_all_2"],
+      ["<es cat = 'happy' filter = 'excited'> ok, now me","my_turn_all_3", "POSE_FORWARD"],
+      ["<es cat = 'happy' filter = 'excited'> so, it is my turn now","my_turn_all_4"]
     ],
     "c-g-": [
-      ["selection current: I want to really win, so I will choose what I know I can solve.","my_turn_c-g-_current0"],
+      ["selection current: I want to win easily, so I will choose what I know I can solve.","my_turn_c-g-_current0"],
       ["selection next: I think I know how to solve the next level, so I will choose this box.","my_turn_c-g-_next0"],
       ["selection question mark: I should know how to solve it. This time, I will choose this one.","my_turn_c-g-_question0"],
       ["I will select a box","my_turn_c-g-_0", "POSE_FORWARD"]
