@@ -1401,10 +1401,10 @@ class TangramMindsetApp(App):
         print('stop button pressed')
         if self.screen_manager.current == "solve_tangram_room":
             # advance game_counter, player, tangram_solved..
-            self.tangrams_solved += 1
-            self.interaction.components['game'].game_facilitator.update_game_result('S')
+            #self.tangrams_solved += 1
+            self.interaction.components['game'].game_facilitator.update_game_result('F')
             self.interaction.components['hourglass'].stop()
-            self.screen_manager.get_screen('solve_tangram_room').solved()
+            # self.screen_manager.get_screen('solve_tangram_room').solved()
         #    self.interaction.current_interaction -= 1
         self.interaction.end_interaction()
 
