@@ -9,8 +9,8 @@
   },
   "explain_move": {
     "c-g-": [
-      ["<es cat='sad' /> it's hard.","IDLESTILL", "move_explanation_c-g-_0","POSE_FORWARD"],
-      ["<es name='Body_Lean_Left_Forward_01' /> hmm", "POSE_FORWARD"],
+      ["<es cat='sad_01' /> it's hard.","IDLESTILL", "move_explanation_c-g-_0","POSE_FORWARD"],
+      ["<es cat='sad_02'='Body_Lean_Left_Forward_01' /> hmm", "POSE_FORWARD"],
       ["<es cat='disgust'> there </es>","move_explanation_c-g-_1","POSE_FORWARD"],
       ["<es name='Body_Lean_Center_Forward_01' /> hmm", "POSE_FORWARD"],
       ["I'll move this piece.","move_explanation_c-g-_2","POSE_FORWARD"],
@@ -99,7 +99,7 @@
       ["idle", "LOOKAT_CHILD"]
     ],
     "c-g-": [
-      ["yay","robot_win_c-g-_0"],
+      ["<es cat='confirm'/> yay","robot_win_c-g-_0"],
       ["woohoo","robot_win_c-g-_1"],
       ["I beat the challenge! I really used my skills on that game","robot_win_c-g-_2"],
       ["I did it!","robot_win_c-g-_3"],
@@ -114,15 +114,15 @@
       ["I'm not afraid of a challenge. I like it!<es cat='proud' />","robot_win_c-g+_3","PROUD"]
     ],
     "c+g-": [
-      ["I tried something new and different - I know I haven't done this before<es cat='proud' />","robot_win_c+g-_0", "YES"],
-      ["I tried a different strategy<es cat='proud' />","robot_win_c+g-_", "PROUD"]
+      ["I tried something new and different - I know I haven't done this before<es cat='proud'/>","robot_win_c+g-_0", "YES"],
+      ["I tried a different strategy<es cat='proud'/>","robot_win_c+g-_", "PROUD"]
     ],
     "c+g+": [
-      ["Wow, I really practiced that, and look how I have improved.<es cat='proud' />","LEFTRIGHTLOOKING","robot_win_c+g+_1"],
-      ["i worked out my brain and did it.<es cat='proud' />","PROUD","robot_win_c+g+_0"],
-      ["I like the way I tried all kinds of strategies on that problem until I finally got it.<es cat='proud' />","PROUD","robot_win_c+g+_2"],
-      ["I tried different strategies, so I'm proud of myself.<es cat='proud' />","LEFTRIGHTLOOKING","robot_win_c+g+_3"],
-      ["I like new challenges, I will get better and better!<es cat='proud' />","LEFTRIGHTLOOKING","robot_win_c+g+_4"]
+      ["<es name='confident_01'/> Wow, I really practiced that, and look how I have improved.</es>","LEFTRIGHTLOOKING","robot_win_c+g+_1"],
+      ["<es name='confident_02'/> i worked out my brain and did it.</es>","PROUD","robot_win_c+g+_0"],
+      ["<es cat='proud' filter = '!sad'/> I like the way I tried all kinds of strategies on that problem until I finally got it.","PROUD","robot_win_c+g+_2"],
+      ["<es cat='confident_04'/> I tried different strategies, so I'm proud of myself.","LEFTRIGHTLOOKING","robot_win_c+g+_3"],
+      ["<es cat='proud' filter = '!sad'/>I like new challenges, I will get better and better!","LEFTRIGHTLOOKING","robot_win_c+g+_4"]
     ]
   },
   "robot_lose": {
@@ -130,20 +130,20 @@
       ["idle", "IDLESTILL"]
     ],
     "c-g-": [
-<<<<<<< HEAD
-      ["<es cat='sad'> that was hard </es>","robot_lose_c-g-_0","SAD"],
+
+      ["<es name='Sad_03'> that was hard </es>","robot_lose_c-g-_0","SAD"],
       ["I didn't succeed","robot_lose_c-g-_1","FRUSTRATED"],
       ["I hope to have better luck next time","robot_lose_c-g-_2","SAD"],
       ["times up","robot_lose_c-g-_3","FRUSTRATED"],
       ["that was difficult","robot_lose_c-g-_4","FRUSTRATED"]
-=======
+
       ["<es cat='confirm'>that was hard</es>","robot_lose_c-g-_0","SAD"],
       ["<es cat='frustrated'>I didn't succeed</es>","robot_lose_c-g-_1","FRUSTRATED"],
       ["<es cat='frustrated'>I hope to have better luck next time</es>","robot_lose_c-g-_2","SAD"],
       ["<es cat='confirm'>time's up</es>","robot_lose_c-g-_3","FRUSTRATED"],
       ["<es cat='sad'>that was difficult</es>","robot_lose_c-g-_4","FRUSTRATED"]
->>>>>>> 967e463269de613852fb1f47bd08b9bfc2e1934a
     ],
+
     "c-g+": [
       ["<es cat='proud'>  next time I will put more effort.</es>","robot_lose_c-g+_0","AGREEMENT"],
       ["<es cat='proud'>  next time I will try harder.</es>","robot_lose_c-g+_1","AGREEMENT"],
@@ -207,10 +207,10 @@
   },
   "your_turn": {
     "all": [
-      ["its your turn now.","LOOKAT_CHILD","your_turn_all_0"],
-      ["you try to open a box now.","LOOKAT_CHILD","your_turn_all_1"],
-      ["now you get us a new <prize-name>.","LOOKAT_CHILD","your_turn_all_2"],
-      ["you are next.","LOOKAT_CHILD","your_turn_all_3"],
+      ["<es name = 'Body_Lean_Forward_01'> its your turn now. </es>","LOOKAT_CHILD","your_turn_all_0"],
+      ["<es name = 'excited_01'> you try to open a box now. </es>","LOOKAT_CHILD","your_turn_all_1"],
+      ["<es name = 'Body_Lean_Forward_01'> now you get us a new <prize-name>.","LOOKAT_CHILD","your_turn_all_2"],
+      ["<es name = 'excited_02'>you are next.","LOOKAT_CHILD","your_turn_all_3"],
       ["ok, now you go.","LOOKAT_CHILD","your_turn_all_4"],
       ["so, it is your turn now.","LOOKAT_CHILD","your_turn_all_5"]
     ],
