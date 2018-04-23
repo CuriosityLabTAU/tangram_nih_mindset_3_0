@@ -880,8 +880,8 @@ class TangramMindsetApp(App):
     def data_received(self, data):
         # receive pid, session, condition, start stage information
 
-        if "start" in data or "continue" in data:
-            self.screen_manager.current = "zero_screen_room"
+        if not all(item in data for item in ['pid', 'pname', 'robot', 'condition', 'world', 'entry']):
+            return
 
         info = json.loads(data)
         print info
@@ -902,18 +902,21 @@ class TangramMindsetApp(App):
             print "no robot_log.txt file yet"
 
         self.pname = info['pname']
+        if info['robot'] != '':
+            self.robot_character = info['robot']
 
         if info['condition'] in self.zero_screen.ids['condition_spinner'].values:
             self.zero_screen.ids['condition_spinner'].text = info['condition']
-
 
         if info['world'] in self.zero_screen.ids['world_spinner'].values:
             self.zero_screen.ids['world_spinner'].text = info['world']
 
         if info['entry'] == "start":
+            self.screen_manager.current = "zero_screen_room"
             time.sleep(0.5)
             self.press_start_button()
         elif info['entry'] == "continue":
+            self.screen_manager.current = "zero_screen_room"
             time.sleep(0.5)
             self.press_load_transition('last_game')
         elif info['entry'] == "skip":
@@ -994,7 +997,7 @@ class TangramMindsetApp(App):
     def press_load_transition(self, stage):
         if (self.filled_all_data):
 
-            print("loading new transition file")
+            print("\033[94mloading new transition file")
 
             with open('last_saved_state' + '.pkl', 'rb') as f:
                 self.state = pickle.load(f)
@@ -1014,10 +1017,8 @@ class TangramMindsetApp(App):
 
             self.tangrams_solved = self.state['tangram_solved']
             print('tangrams solved: ', self.tangrams_solved)
-            # game_facilitator
 
-            self.interaction.components['game'].game_facilitator.selection_gen.player = self.state['player']
-            print('player: ', self.interaction.components['game'].game_facilitator.selection_gen.player)
+            # game_facilitator
 
             self.interaction.components['game'].game_facilitator.selection_gen.is_last_challenge = self.state['is_last_challenge']
             print(
@@ -1027,37 +1028,50 @@ class TangramMindsetApp(App):
             print(
             'challenge_counter: ', self.interaction.components['game'].game_facilitator.selection_gen.challenge_counter)
 
+            # is_last_challenge and challenge_counter updated just before tangram_selection_room. Need adjustment
+            if self.state['is_last_challenge']:
+                self.interaction.components['game'].game_facilitator.selection_gen.challenge_counter -= 1
+                self.interaction.components['game'].game_facilitator.selection_gen.is_last_challenge = False
+
+
             self.interaction.components['game'].game_facilitator.selection_gen.path_indexes = self.state['path_indexes']
             print('path_indexes: ', self.interaction.components['game'].game_facilitator.selection_gen.path_indexes)
 
             self.interaction.components['game'].game_facilitator.selection_gen.seen_puzzles = self.state['seen_puzzles']
             print('seen_puzzles: ', self.interaction.components['game'].game_facilitator.selection_gen.seen_puzzles)
 
+            # game_counter updated after S/F game result. No need for adjustment
             self.interaction.components['game'].game_facilitator.game_counter = self.state['game_counter']
             print('game_counter: ', self.interaction.components['game'].game_facilitator.game_counter)
             game_counter = self.interaction.components['game'].game_facilitator.game_counter
 
-            self.interaction.components['game'].game_facilitator.current_player = self.state['current_player']
-            print('current_player: ', self.interaction.components['game'].game_facilitator.current_player)
-
+            # current_interaction dependable variables.
+            # current_player updated after S/F game result. No need for adjustment
+            #self.interaction.components['game'].game_facilitator.current_player = self.state['current_player']
+            #print('current_player: ', self.interaction.components['game'].game_facilitator.current_player)
 
             # agent
-            self.interaction.components['robot'].agent.current_round = self.state['current_round']
-            print('current_round: ', self.interaction.components['robot'].agent.current_round)
-            current_round = int(np.floor(self.state['current_interaction'] / 2))
+            # current_round: +1 after robot makes tangram selection. No need for adjustment
+            #self.interaction.components['robot'].agent.current_round = self.state['current_round']
+            #print('current_round: ', self.interaction.components['robot'].agent.current_round)
+            #current_round = int(np.floor(self.state['current_interaction'] / 2))
             #self.interaction.components['robot'].agent.current_round = current_round
-            print('fixed current_round: ', current_round)
+            #print('fixed current_round: ', current_round)
+
+            # question_index: +1 after robot curiosity comment in robot turn. No need for adjustment
+            # self.interaction.components['robot'].question_index = self.state['robot_play_question_counter']
+            # print('robot_play_question_counter: ', self.interaction.components['robot'].question_index)
 
             # interaction
+            # current_interaction: +1 after advancing to next sequence in sequence.json. Need adjustment to restart sequence.
             self.interaction.current_interaction = self.state['current_interaction'] - 1
             print('current_interaction: ', self.interaction.current_interaction)
 
+            # cog_tangram_selection: update after robot makes tangram selection. No need for adjustment
             TangramGame.cog_tangram_selection = self.state['cog_tangram_selection']
             print ('cog_tangram_selection: ', TangramGame.cog_tangram_selection)
 
-            self.interaction.components['robot'].question_index = self.state['robot_play_question_counter']
-            print('robot_play_question_counter: ', self.interaction.components['robot'].question_index)
-
+            print('Finished loading game states\033[0m')
             #games_played = int(stage.replace('game',''))-1
 
             # increase challenge_counter
@@ -1080,9 +1094,9 @@ class TangramMindsetApp(App):
             # self.interaction.load_sequence(filename=filename)
             self.interaction.next_interaction()
 
-            if self.interaction.components['game'].game_facilitator.current_player == "Child":
-                self.enable_tablet()
-            print "hello"
+            #if self.interaction.components['game'].game_facilitator.current_player == "Child":
+            #    self.enable_tablet()
+            #print "hello"
             #self.press_start_button()
 
     def press_yes_button(self):
@@ -1138,7 +1152,7 @@ class TangramMindsetApp(App):
 
             # str(self.interaction.components['robot'].agent.current_round)
         # Maor: save game state for recovery
-        print('Saving game state')
+        print('\033[92mSaving game state')
         # the
         state = {}
 
@@ -1155,9 +1169,6 @@ class TangramMindsetApp(App):
         print('tangrams solved: ',self.tangrams_solved)
         state['tangram_solved'] = self.tangrams_solved
         # game_facilitator
-        print('player: ', self.interaction.components['game'].game_facilitator.selection_gen.player)
-        state['player'] = self.interaction.components['game'].game_facilitator.selection_gen.player
-
         print('is_last_challenge: ', self.interaction.components['game'].game_facilitator.selection_gen.is_last_challenge)
         state['is_last_challenge'] = self.interaction.components['game'].game_facilitator.selection_gen.is_last_challenge
 
@@ -1173,12 +1184,12 @@ class TangramMindsetApp(App):
         print('game_counter: ', self.interaction.components['game'].game_facilitator.game_counter)
         state['game_counter'] = self.interaction.components['game'].game_facilitator.game_counter
 
-        print('current_player: ', self.interaction.components['game'].game_facilitator.current_player)
-        state['current_player'] = self.interaction.components['game'].game_facilitator.current_player
+        # print('current_player: ', self.interaction.components['game'].game_facilitator.current_player)
+        # state['current_player'] = self.interaction.components['game'].game_facilitator.current_player
 
         # agent
-        print('current_round: ', self.interaction.components['robot'].agent.current_round)
-        state['current_round'] = self.interaction.components['robot'].agent.current_round
+        # print('current_round: ', self.interaction.components['robot'].agent.current_round)
+        # state['current_round'] = self.interaction.components['robot'].agent.current_round
 
         # interaction
         print('current_interaction: ', self.interaction.current_interaction)
@@ -1187,12 +1198,12 @@ class TangramMindsetApp(App):
         print ('cog_tangram_selection: ', TangramGame.cog_tangram_selection)
         state['cog_tangram_selection'] = TangramGame.cog_tangram_selection
 
-        print ('robot_play_question_counter', self.interaction.components['robot'].question_index)
-        state['robot_play_question_counter'] = self.interaction.components['robot'].question_index
+        # print ('robot_play_question_counter', self.interaction.components['robot'].question_index)
+        # state['robot_play_question_counter'] = self.interaction.components['robot'].question_index
 
         with open('last_saved_state'+'.pkl', 'wb') as f:
             pickle.dump(state, f, pickle.HIGHEST_PROTOCOL)
-        print('Finished saving game state')
+        print('Finished saving game state\033[0m')
         # Maor: end of save game state
 
         print('x=',x)
@@ -1202,10 +1213,10 @@ class TangramMindsetApp(App):
             str(self.interaction.components['game'].game_facilitator.game_counter) + "/" + \
             str(self.interaction.components['robot'].agent.current_round) + "/" + \
             str(self.interaction.current_interaction) + "/" + \
-            str(self.interaction.components['robot'].question_index) + "/" + \
             str(TangramGame.cog_tangram_selection) + "/" + \
-            self.interaction.components['game'].game_facilitator.current_player + "/" + \
-            self.interaction.components['game'].game_facilitator.selection_gen.player
+            str(self.interaction.components['game'].game_facilitator.selection_gen.is_last_challenge) + "/" + \
+            str(self.interaction.components['game'].game_facilitator.selection_gen.challenge_counter) + "/" + \
+            self.interaction.components['game'].game_facilitator.current_player
 
         self.screen_manager.current = 'selection_screen_room'
         self.android_set_hide_menu()

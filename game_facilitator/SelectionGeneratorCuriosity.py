@@ -15,7 +15,6 @@ class SelectionGeneratorCuriosity:
         self.paths = []
         self.path_indexes = np.zeros([self.N_paths], dtype=np.int)
         self.current_level = 2
-        self.player = 'Robot'
 #        self.same_game_counter_child = 0
         self.child_selection_history = []
         self.robot_selection_history = []
@@ -23,7 +22,6 @@ class SelectionGeneratorCuriosity:
         # self.increased_robot = True
         # self.same_game_counter_child = 0
         # self.same_game_counter_robot = 0
-        self.round_number = 1 # the current round of the game (tutorial-1, child_play-2, robot_play-3,...)
         self.child_path_idx = 0
         self.robot_path_idx = 1
         self.other_path_idx = 2
@@ -59,7 +57,7 @@ class SelectionGeneratorCuriosity:
         self.seen_puzzles = np.zeros([self.N_paths, max([len(self.paths[i]) for i in range(self.N_paths)])])
 
 
-    def get_current_selection(self):
+    def get_current_selection(self, player):
         # return three json_strings
         temp_task = Task()
         all_pieces_task = Task()
@@ -68,7 +66,7 @@ class SelectionGeneratorCuriosity:
         all_pieces_init_pos = all_pieces_task.transfer_json_to_json_initial_pos(
             '{"pieces": [["large triangle2", "180", "1 1"], ["large triangle1", "0", "1 1"], ["parrallelogram", "0", "2 0"],  ["medium triangle", "0", "3 1"], ["small triangle2", "0", "0 1"], ["small triangle1", "90", "1 0"], ["square", "0", "0 0"]], "size": "5 5"}')
 
-        if self.player == 'Child':
+        if player == 'Child':
             T1 = self.paths[self.child_path_idx][self.path_indexes[self.child_path_idx]]
             T1_init_pos = temp_task.transfer_json_to_json_initial_pos(T1)
             T2 = self.paths[self.child_path_idx][self.path_indexes[self.child_path_idx]+1]
@@ -76,7 +74,7 @@ class SelectionGeneratorCuriosity:
             T3 = self.paths[self.other_path_idx][self.path_indexes[self.other_path_idx]]
             T3_init_pos = temp_task.transfer_json_to_json_initial_pos(T3)
             return [[T1, all_pieces_init_pos], [T2, all_pieces_init_pos], [T3, all_pieces_init_pos]]
-        else:
+        elif player == 'Robot':
             T1 = self.paths[self.robot_path_idx][self.path_indexes[self.robot_path_idx]]
             T1_init_pos = temp_task.transfer_json_to_json_initial_pos(T1)
             T2 = self.paths[self.robot_path_idx][self.path_indexes[self.robot_path_idx]+1]
@@ -91,7 +89,7 @@ class SelectionGeneratorCuriosity:
         # user_selection is 0/1/2
         # game_result is 'S' or 'F'
 
-        if self.is_last_challenge is False: # if last round was not a challenge
+        if not self.is_last_challenge: # if last round was not a challenge
             if player == 'Child':
                 if user_selection == 2: # unknown puzzle
                     # self.seen_puzzles[self.child_path_idx, self.path_indexes[self.child_path_idx]] += 1
@@ -107,7 +105,6 @@ class SelectionGeneratorCuriosity:
                     self.seen_puzzles[self.child_path_idx, self.path_indexes[self.child_path_idx] + 1] += 1
                     self.path_indexes[self.child_path_idx] += 1
                     self.path_indexes[self.other_path_idx] += 1
-                self.player = 'Robot'
             elif player == 'Robot':
                 if user_selection == 2:  # unknown puzzle
                     # self.seen_puzzles[self.child_path_idx, self.path_indexes[self.child_path_idx]] += 1
@@ -123,23 +120,15 @@ class SelectionGeneratorCuriosity:
                     self.seen_puzzles[self.robot_path_idx, self.path_indexes[self.robot_path_idx] + 1] += 1
                     self.path_indexes[self.robot_path_idx] += 1
                     self.path_indexes[self.other_rot_path_idx] += 1
-                self.player = 'Child'
         else: # if last game was a challenge then don't progress the paths.
             self.is_last_challenge = False
-            if player == 'Child':
-                self.player = 'Robot'
-            elif player == 'Robot':
-                self.player = 'Child'
 
 
     def get_challenge_selection(self):
         # return three json_strings of special challenge level.
-
+        self.is_last_challenge = True
         if self.challenge_counter == 0: # first challenge is hard tangrams, short time
-
             self.challenge_counter += 1
-            self.is_last_challenge = True
-
             temp_task = Task()
             all_pieces_task = Task()
             all_pieces_task.create_from_json(
@@ -157,8 +146,7 @@ class SelectionGeneratorCuriosity:
             T3_init_pos = temp_task.transfer_json_to_json_initial_pos(T3)
             return [[T1, all_pieces_init_pos], [T2, all_pieces_init_pos], [T3, all_pieces_init_pos]]
         else:       # second challenge is impossible tangrams, long time
-            self.is_last_challenge = True
-
+            self.challenge_counter += 1
             temp_task = Task()
             all_pieces_task = Task()
             all_pieces_task.create_from_json(

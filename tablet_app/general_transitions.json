@@ -35,8 +35,8 @@
       "hourglass:finish:hourglass:stop:1",
       "tablet:tangram_screen:robot:tangram_tutorial:1:x",
       "robot:tangram_tutorial:robot:select_move:1:x",
-      "robot:select_move:robot:explain_move:1:x",
-      "robot:explain_move:tablet:change_pieces:1:x:done",
+      "robot:select_move:robot:explain_move_tutorial:1:x",
+      "robot:explain_move_tutorial:tablet:change_pieces:1:x:done",
       "child:tangram_change:game:tangram_changed:1:x:done",
       "game:not_solved:tablet:not_solved:1:x",
       "tablet:not_solved:robot:select_move:1:x",
@@ -51,7 +51,7 @@
   },
   "robot_play": {
     "start": "robot:start_play",
-    "hourglass" : ["max_counter:30"],
+    "hourglass" : ["max_counter:40"],
     "transitions": [
       "robot:start_play:game:generate_selection:1:done",
       "game:generate_selection:tablet:selection_screen:1:x",

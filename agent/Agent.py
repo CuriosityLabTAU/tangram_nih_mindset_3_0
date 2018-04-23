@@ -52,11 +52,13 @@ class Agent:
 
     def solve_task(self, json_str_task):
         print ('solve task', self.current_round)
+
+        idx = self.current_round + 1
         if 'c-' in self.condition:
             # self.seq_of_jsons = self.solve_cache_not_curious[json_str_task]
-            self.seq_of_jsons = self.solve_cache_not_curious[str(self.current_round)]
+            self.seq_of_jsons = self.solve_cache_not_curious[str(idx)]
         elif 'c+' in self.condition:
-            self.seq_of_jsons = self.solve_cache_curious[str(self.current_round)]
+            self.seq_of_jsons = self.solve_cache_curious[str(idx)]
         # self.seq_of_jsons = self.solve_cache[json_str_task]
         self.current_move = 0
         # task = Task()
@@ -105,14 +107,16 @@ class Agent:
 
     def set_selection(self):
         print ("Agent: set selection","current_round=",self.current_round, "selection_sequence_not_curious=",self.selection_sequence_not_curious)
+
+        idx = self.current_round
         if 'c+' in self.condition:
             # get H for puzzles
-            select = self.selection_sequence_curious[self.current_round-1]  #Rinat added -1
+            select = self.selection_sequence_curious[idx]  #Rinat added -1
             TangramGame.cog_tangram_selection = select
         elif 'c-' in self.condition:
-            select = self.selection_sequence_not_curious[self.current_round-1] #Rinat added -1
+            select = self.selection_sequence_not_curious[idx] #Rinat added -1
             TangramGame.cog_tangram_selection = select
-        self.current_round += 1
+        # self.current_round += 1
 
         # if self.condition == 'c-g+':
         #     if self.child_result == None:

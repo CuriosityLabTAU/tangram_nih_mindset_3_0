@@ -1,50 +1,63 @@
 {
+  "explain_move_tutorial":{
+    "all":[
+      ["<es name='Emoji_ExclamationRed'> ah ha! I can rotate pieces with the button on the right!</es>"],
+      ["which piece will fit in the black area.."],
+      ["<es name='Emoji_ExclamationYellow'> The button on the right rotates the pieces. Interesting!</es>"],
+      ["Let's move this piece to fit in the black area.."]
+    ]
+  },
   "explain_move": {
     "c-g-": [
       ["<es cat='sad' /> it's hard.","IDLESTILL", "move_explanation_c-g-_0","POSE_FORWARD"],
-      ["<es cat='disgust'> there </es>","move_explanation_c-g-_1","POSE_FORWARD"],
-      ["I'll move this piece.","move_explanation_c-g-_2","POSE_FORWARD"],
-      ["there are pieces left.","move_explanation_c-g-_3","POSE_FORWARD"],
-      ["<es cat='frustrated'> hmm.. it's hard </es>","IDLESTILL", "move_explanation_c-g-_4","POSE_FORWARD"],
       ["<es name='Body_Lean_Left_Forward_01' /> hmm", "POSE_FORWARD"],
+      ["<es cat='disgust'> there </es>","move_explanation_c-g-_1","POSE_FORWARD"],
       ["<es name='Body_Lean_Center_Forward_01' /> hmm", "POSE_FORWARD"],
+      ["I'll move this piece.","move_explanation_c-g-_2","POSE_FORWARD"],
       ["<es cat='frustrated'> hmm </es>", "POSE_FORWARD"],
+      ["there are pieces left.","move_explanation_c-g-_3","POSE_FORWARD"],
       ["<es cat='frustrated'/>ah..", "POSE_FORWARD"],
       ["<es cat='sad' /> ", "POSE_FORWARD"],
+      ["<es cat='frustrated'> hmm.. it's hard </es>","IDLESTILL", "move_explanation_c-g-_4","POSE_FORWARD"],
       ["<es cat='sad'> hmm </es> ", "POSE_FORWARD"]
 
     ],
     "c-g+": [
       ["<es cat='confirm'> it’s quite hard, so I will try even more. </es> ","move_explanation_c-g+_0"],
-      ["<es cat='confirm'> it’s quite hard, so I will try even more. let's move this piece.</es> ","move_explanation_c-g+_1"],
-      ["<es cat='happy'> ooh this is challenging! <break size='0.5' /> let me try this move. </es> ","move_explanation_c-g+_2"],
-      ["<es cat='confirm'> If I keep trying, I will succeed. </es> ", "move_explanation_c-g+_3"],
-      ["<es cat='confirm'> maybe I'll try again. </es> ","move_explanation_c-g+_4"],
-      ["<es cat='confirm'> I'll try again. </es> ","move_explanation_c-g+_5"],
       ["<es name='Emoji_ExclamationYellow' /> ah-ha!  ", "LOOKAT_TABLET"],
-      ["<es name='Body_Lean_Left_Forward_01' />", "POSE_FORWARD"],
-      ["<es name='Body_Lean_Right_Forward_01' />", "POSE_FORWARD"]
+      ["<es cat='happy'> ooh this is challenging! <break size='0.5' /> let me try this move. </es> ","move_explanation_c-g+_2"],
+      ["<es name='Emoji_ExclamationYellow' /> ah-ha!  ", "LOOKAT_TABLET"],
+      ["<es cat='confirm'> If I keep trying, I will succeed. </es> ", "move_explanation_c-g+_3"],
+      ["<es cat='happy' />", "POSE_FORWARD"],
+      ["<es cat='confirm'> maybe this will work.. </es> ","move_explanation_c-g+_4"],
+      ["<es cat='happy' />", "POSE_FORWARD"],
+      ["<es cat='confirm'> it’s quite hard, so I will try even more. let's move this piece.</es> ","move_explanation_c-g+_1"],
+      ["<es name='Body_Lean_Left_Forward_01' />", "POSE_FORWARD"]
     ],
     "c+g-": [
       ["<es cat='confused'>I wonder what I'll learn if I move it here. </es> ","move_explanation_c+g-_0"],
-      ["<es cat='confused'>let’s try something new. </es> ", "IDLESTILL", "move_explanation_c+g-_1","POSE_FORWARD"],
-      ["<es cat='confused'>I'll try something I didn't do before. </es> ","move_explanation_c+g-_2"],
-      ["<es cat='confused'>I want to try something new. maybe move this piece here. </es> ","tangram_tutorial_c+g+_0"],
       ["<es name='Emoji_ExclamationYellow' /> ah-ha! ", "LOOKAT_TABLET"],
-      ["<es cat='frustrated'/>", "POSE_FORWARD"],
+      ["<es cat='confused'>let’s try something new. </es> ", "IDLESTILL", "move_explanation_c+g-_1","POSE_FORWARD"],
       ["<es name='Body_Lean_Left_Forward_01' />", "POSE_FORWARD"],
+      ["<es cat='confused'>I'll try something I didn't do before. </es> ","move_explanation_c+g-_2"],
+      ["<es cat='frustrated'/>", "POSE_FORWARD"],
+      ["<es cat='confused'>I want to try something new. maybe move this piece here. </es> ","tangram_tutorial_c+g+_0"],
       ["<es name='Body_Lean_Right_Forward_01' />", "POSE_FORWARD"]
     ],
     "c+g+": [
       ["<es cat='confirm'> it’s quite hard, so I will try even more. </es> ","move_explanation_c-g+_0"],
-      ["<es cat='confused'>I'll try something I didn't do before. </es> ","move_explanation_c+g-_2"],
-      ["<es cat='confused'>I wonder what I'll learn if I move it here. </es> ","move_explanation_c+g-_0"],
-      ["<es cat='happy'> ooh this is challenging and new! <break size='0.5' /> let me try this move. </es> ","move_explanation_c-g+_2"],
-      ["<es cat='confirm'> If I keep trying, I will succeed. </es> ", "move_explanation_c-g+_3"],
-      ["<es cat='confirm'> maybe I'll try again. </es> ","move_explanation_c-g+_4"],
-      ["<es cat='confirm'> I'll try again. </es> ","move_explanation_c-g+_5"],
       ["<es name='Emoji_ExclamationYellow' /> ah-ha!  ", "LOOKAT_TABLET"],
+      ["<es cat='confused'>I'll try something I didn't do before. </es> ","move_explanation_c+g-_2"],
       ["<es name='Body_Lean_Left_Forward_01' />", "POSE_FORWARD"],
+      ["<es cat='confused'>I wonder what I'll learn if I move it here. </es> ","move_explanation_c+g-_0"],
+      ["<es name='Emoji_ExclamationYellow' /> ah-ha!  ", "LOOKAT_TABLET"],
+      ["<es cat='happy'> ooh this is challenging and new! <break size='0.5' /> let me try this move. </es> ","move_explanation_c-g+_2"],
+      ["<es name='Body_Lean_Left_Forward_01' />", "POSE_FORWARD"],
+      ["<es cat='confirm'> If I keep trying, I will succeed. </es> ", "move_explanation_c-g+_3"],
+      ["<es cat='happy' />", "POSE_FORWARD"],
+      ["<es cat='confirm'> maybe I'll try again. </es> ","move_explanation_c-g+_4"],
+      ["<es cat='happy' />", "POSE_FORWARD"],
+      ["<es cat='confirm'> I'll try again. </es> ","move_explanation_c-g+_5"],
       ["<es name='Body_Lean_Right_Forward_01' />", "POSE_FORWARD"]
     ]
   },
@@ -117,35 +130,36 @@
       ["idle", "IDLESTILL"]
     ],
     "c-g-": [
-      ["that was hard","robot_lose_c-g-_0","SAD"],
-      ["I didn't succeed","robot_lose_c-g-_1","FRUSTRATED"],
-      ["I hope to have better luck next time","robot_lose_c-g-_2","SAD"],
-      ["times up","robot_lose_c-g-_3","FRUSTRATED"],
-      ["that was difficult","robot_lose_c-g-_4","FRUSTRATED"]
+      ["<es cat='confirm'>that was hard</es>","robot_lose_c-g-_0","SAD"],
+      ["<es cat='frustrated'>I didn't succeed</es>","robot_lose_c-g-_1","FRUSTRATED"],
+      ["<es cat='frustrated'>I hope to have better luck next time</es>","robot_lose_c-g-_2","SAD"],
+      ["<es cat='confirm'>time's up</es>","robot_lose_c-g-_3","FRUSTRATED"],
+      ["<es cat='sad'>that was difficult</es>","robot_lose_c-g-_4","FRUSTRATED"]
     ],
     "c-g+": [
-      ["next time I will put more effort.","robot_lose_c-g+_0","AGREEMENT"],
-      ["next time I will try harder.","robot_lose_c-g+_1","AGREEMENT"],
-      ["I worked hard, next time I will succeed.","robot_lose_c-g+_2","AGREEMENT"],
-      ["I tried very hard. That's what matters","robot_lose_c-g+_3","AGREEMENT"],
-      ["I'm proud of myself for trying really hard","robot_lose_c-g+_4","AGREEMENT"],
-      ["I never gave up even when it was hard","robot_lose_c-g+_5","AGREEMENT"],
-      ["This is going to take some time and effort","robot_lose_c-g+_6","AGREEMENT"],
-      ["I'm not afraid of a challenge. I like it!","robot_lose_c-g+_7","AGREEMENT"]
+      ["<es cat='proud'>  next time I will put more effort.</es>","robot_lose_c-g+_0","AGREEMENT"],
+      ["<es cat='proud'>  next time I will try harder.</es>","robot_lose_c-g+_1","AGREEMENT"],
+      ["<es cat='proud'>  I worked hard, next time I will succeed.</es>","robot_lose_c-g+_2","AGREEMENT"],
+      ["<es cat='proud'>  I tried very hard. That's what matters</es>","robot_lose_c-g+_3","AGREEMENT"],
+      ["<es cat='proud'> I'm proud of myself for trying really hard</es>","robot_lose_c-g+_4","AGREEMENT"],
+      ["<es cat='proud'> I never gave up even when it was hard</es>","robot_lose_c-g+_5","AGREEMENT"],
+      ["<es cat='proud'> This is going to take some time and effort</es>","robot_lose_c-g+_6","AGREEMENT"],
+      ["<es cat='proud'> I'm not afraid of a challenge. I like it!</es>","robot_lose_c-g+_7","AGREEMENT"]
     ],
     "c+g-": [
-      ["I failed, but that's okay. I learned new things.","robot_lose_c+g-_0","AGREEMENT"],
-      ["I learned so much, I will do better next time","robot_lose_c+g-_1","AGREEMENT"],
-      ["That was hard, but I have learned a lot. I'll do better next time","robot_lose_c+g-_2","AGREEMENT"],
-      ["That puzzle really taught me to think differently","robot_lose_c+g-_3","AGREEMENT"],
-      ["Let me think about why it didn't work. May be it will give me clues for a new method","robot_lose_c+g-_4","SILENT_INTERESTED"],
-      ["Mistakes help me improve","robot_lose_c+g-_5","AGREEMENT"],
-      ["I tried something new and different - I know I haven't done this before","robot_lose_c+g-_6","AGREEMENT"]
+      ["<es cat='confirm'> I failed, but that's okay. I learned new things.</es>","robot_lose_c+g-_0","AGREEMENT"],
+      ["<es cat='happy'>I learned so much, I will do better next time</es>","robot_lose_c+g-_1","AGREEMENT"],
+      ["<es cat='curious'>That puzzle really taught me to think differently</es>","robot_lose_c+g-_3","AGREEMENT"],
+      ["<es cat='curious'>I'm curious why it didn't work.</es>","robot_lose_c+g-_4","SILENT_INTERESTED"],
+      ["<es cat='frustrated'>I tried something new and different, <break size='0.5'/>that's what matters.</es>","robot_lose_c+g-_6","AGREEMENT"]
     ],
     "c+g+": [
-      ["Ah, I didn't make it in time, but I can try different methods. I should try again","robot_lose_c+g+_0","AGREEMENT"],
-      ["I tried different strategies, and they worked!","robot_lose_c+g+_1","AGREEMENT"],
-      ["I like new challenges, I can get better and better!","robot_lose_c+g+_2","AGREEMENT"]
+      ["<es cat='proud'> Ah, I didn't make it in time, but I can try a different method. I want to try again</es>","robot_lose_c+g+_0","AGREEMENT"],
+      ["<es cat='proud'> I tried different strategies, and over time, I will get better!</es>","robot_lose_c+g+_1","AGREEMENT"],
+      ["<es cat='happy'> I like new challenges, I can get better and better!</es>","robot_lose_c+g+_2","AGREEMENT"],
+      ["<es cat='confirm'> Mistakes help me improve, good job Jibo.</es>","robot_lose_c+g-_5","AGREEMENT"],
+      ["<es cat='happy'> Wow, that wasn't easy, but I learned a lot. I'll do better next time</es>","robot_lose_c+g-_2","AGREEMENT"],
+      ["<es cat='question'> I'm curious why it didn't work. May be it will give me clues for a new method</es>","robot_lose_c+g-_4","SILENT_INTERESTED"]
     ]
   },
   "child_lose": {
@@ -269,40 +283,43 @@
   "comment_move": {
     "c-g-": [
       ["mhmm","comment_move_c-g-_0"],
+      ["<es cat='happy' />", "POSE_FORWARD"],
       ["nice","comment_move_c-g-_1"],
+      ["<es cat='happy' />", "POSE_FORWARD"],
       ["nice move","comment_move_c-g-_2"],
+      ["<es cat='confirm' />", "POSE_FORWARD"],
       ["ok","comment_move_c-g-_3"],
       ["good","comment_move_c-g-_4"],
-      ["great","comment_move_c-g-_5"],
-      ["<es cat='happy' />", "POSE_FORWARD"],
-      ["<es cat='happy' />", "POSE_FORWARD"],
       ["<es cat='confirm' />", "POSE_FORWARD"],
-      ["<es cat='confirm' />", "POSE_FORWARD"]
+      ["great","comment_move_c-g-_5"]
     ],
     "c-g+": [
-      ["you are working hard to solve this puzzle","IDLESTILL", "comment_move_c-g+_0","POSE_FORWARD"],
-      ["keep on trying","comment_move_c-g+_1","SILENT_INTERESTED","POSE_FORWARD"],
+      ["This is an excellent time to work hard!","IDLESTILL", "comment_move_c-g+_0","POSE_FORWARD"],
       ["<es cat='happy' />", "POSE_FORWARD"],
+      ["ah ha!","comment_move_c+g-_1","YES","POSE_FORWARD"],
+      ["<es cat='happy' />", "POSE_FORWARD"],
+      ["keep on trying and you'll succeed!","comment_move_c-g+_1","SILENT_INTERESTED","POSE_FORWARD"],
       ["<es cat='confirm' />", "POSE_FORWARD"]
     ],
     "c+g-": [
       ["great!","comment_move_c+g-_0","SILENT_YES","POSE_FORWARD"],
-      ["that is a creative move, very good","comment_move_c+g-_1","YES","POSE_FORWARD"],
-      ["interesting strategy","comment_move_c+g-_2","INTERESTED","POSE_FORWARD"],
-      ["that is a great idea","comment_move_c+g-_3","AGREEMENT","POSE_FORWARD"],
       ["<es cat='happy' />", "POSE_FORWARD"],
+      ["keep trying interesting strategies","comment_move_c+g-_2","INTERESTED","POSE_FORWARD"],
       ["<es cat='happy' />", "POSE_FORWARD"],
+      ["ah ha!","comment_move_c+g-_1","YES","POSE_FORWARD"],
       ["<es cat='confirm' />", "POSE_FORWARD"],
+      ["I think you have lots of creative ideas","comment_move_c+g-_3","AGREEMENT","POSE_FORWARD"],
       ["<es cat='confirm' />", "POSE_FORWARD"]
     ],
     "c+g+": [
-      ["that is a great idea","comment_move_c+g+_0","SILENT_INTERESTED","POSE_FORWARD"],
       ["keep trying new ideas","comment_move_c+g+_1","AGREEMENT","POSE_FORWARD"],
+      ["<es cat='happy' />", "POSE_FORWARD"],
       ["umhmm","comment_move_c+g+_2","INTERESTED","POSE_FORWARD"],
-      ["that is a creative move, keep it up.","comment_move_c+g+_3","INTERESTED","POSE_FORWARD"],
+      ["I know you never give up, <participant-name>!","comment_move_c+g+_0","SILENT_INTERESTED","POSE_FORWARD"],
+      ["<es cat='curious' />", "POSE_FORWARD"],
+      ["keep up the good effort","comment_move_c+g+_3","INTERESTED","POSE_FORWARD"],
       ["<es cat='happy' />", "POSE_FORWARD"],
-      ["<es cat='happy' />", "POSE_FORWARD"],
-      ["<es cat='confirm' />", "POSE_FORWARD"],
+      ["if you don't give up, you will eventually learn something you didn't know before!","comment_move_c+g+_3","INTERESTED","POSE_FORWARD"],
       ["<es cat='confirm' />", "POSE_FORWARD"]
     ]
   },
