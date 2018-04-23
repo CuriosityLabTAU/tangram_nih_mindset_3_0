@@ -2,9 +2,9 @@
   "explain_move_tutorial":{
     "all" : [
       ["<es name='Emoji_ExclamationRed'/>  ah ha! I can rotate pieces with the button on the right!"],
-      ["which piece will fit in the black area.."],
+      ["which piece will fit in the black area."],
       ["<es name='Emoji_ExclamationYellow'> The button on the right rotates the pieces. Interesting!</es>"],
-      ["Let's move this piece to fit in the black area.."]
+      ["Let's move this piece to fit in the black area."]
     ]
   },
   "explain_move": {
@@ -29,7 +29,7 @@
       ["<es name='Emoji_ExclamationYellow' /> ah-ha!  ", "LOOKAT_TABLET"],
       ["<es cat='confirm'> If I keep trying, I will succeed. </es> ", "move_explanation_c-g+_3"],
       ["<es cat='happy' />", "POSE_FORWARD"],
-      ["<es cat='confirm'> maybe this will work.. </es> ","move_explanation_c-g+_4"],
+      ["<es cat='confirm'> maybe this will work. </es> ","move_explanation_c-g+_4"],
       ["<es cat='happy' />", "POSE_FORWARD"],
       ["<es cat='confirm'> its quite hard, so I will try even more. let's move this piece.</es> ","move_explanation_c-g+_1"],
       ["<es name='Body_Lean_Left_Forward_01' />", "POSE_FORWARD"]
