@@ -226,7 +226,7 @@
   },
   "your_turn": {
     "all": [
-      ["<es name = 'Body_Lean_Forward_01'> its your turn now. </es>","LOOKAT_CHILD","your_turn_all_0"],
+      ["<es name = 'Body_Lean_Forward_01'/> its your turn now. ","LOOKAT_CHILD","your_turn_all_0"],
       ["<es name = 'excited_01'> you try to open a box now. </es>","LOOKAT_CHILD","your_turn_all_1"],
       ["<es name = 'Body_Lean_Forward_01'/> now you get us a new   <prize-name>. ","LOOKAT_CHILD","your_turn_all_2"],
       ["<es name = 'excited_02'>you are next. </es>","LOOKAT_CHILD","your_turn_all_3"],
