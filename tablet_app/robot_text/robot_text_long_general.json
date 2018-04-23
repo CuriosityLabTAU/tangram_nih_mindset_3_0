@@ -37,11 +37,11 @@
     "c+g-": [
       ["<es cat='confused'>I wonder what I'll learn if I move it here. </es> ","move_explanation_c+g-_0"],
       ["<es name='Emoji_ExclamationYellow' /> ah-ha! ", "LOOKAT_TABLET"],
-      ["<es cat='confused'>let’s try something new. </es> ", "IDLESTILL", "move_explanation_c+g-_1","POSE_FORWARD"],
+      ["<es cat='confirm'>let’s try something new. </es> ", "IDLESTILL", "move_explanation_c+g-_1","POSE_FORWARD"],
       ["<es name='Body_Lean_Left_Forward_01' />", "POSE_FORWARD"],
-      ["<es cat='confused'>I'll try something I didn't do before. </es> ","move_explanation_c+g-_2"],
+      ["<es cat='confirm>I'll try something I didn't do before. </es> ","move_explanation_c+g-_2"],
       ["<es cat='frustrated'/>", "POSE_FORWARD"],
-      ["<es cat='confused'>I want to try something new. maybe move this piece here. </es> ","tangram_tutorial_c+g+_0"],
+      ["<es cat='confirm'>I want to try something new. maybe move this piece here. </es> ","tangram_tutorial_c+g+_0"],
       ["<es name='Body_Lean_Right_Forward_01' />", "POSE_FORWARD"]
     ],
     "c+g+": [
@@ -56,7 +56,7 @@
       ["<es cat='confirm'> If I keep trying, I will succeed. </es> ", "move_explanation_c-g+_3"],
       ["<es cat='happy' />", "POSE_FORWARD"],
       ["<es cat='confirm'> maybe I'll try again. </es> ","move_explanation_c-g+_4"],
-      ["<es cat='happy' />", "POSE_FORWARD"],
+      ["<es cat='happy'/> Ah!", "POSE_FORWARD"],
       ["<es cat='confirm'> I'll try again. </es> ","move_explanation_c-g+_5"],
       ["<es name='Body_Lean_Right_Forward_01'/>", "POSE_FORWARD"]
     ]
@@ -67,7 +67,7 @@
     ],
     "c-g-": [
       ["<es cat = 'proud'> good job </es>","child_win_c-g-_0","PERKUP"],
-      ["<es cat = 'proud'> great playing </es>","child_win_c-g-_1","SILENT_YES"],
+      ["<es cat = 'proud'> well played </es>","child_win_c-g-_1","SILENT_YES"],
       ["<es cat = 'proud'> you did it </es>","child_win_c-g-_2","SILENT_YES"],
       ["<es cat = 'proud'> You beat the challenge! You really used your skills on that game </es>","child_win_c-g-_3","SILENT_YES"],
       ["<es cat = 'proud'> very good </es>","child_win_c-g-_4","PERKUP"],
@@ -101,11 +101,11 @@
     "c-g-": [
       ["yay","robot_win_c-g-_0"],
       ["<es cat='excited'>woohoo</es>","robot_win_c-g-_1"],
-      ["I beat the challenge! I really used my skills on that game","robot_win_c-g-_2"],
-      ["I did it!","robot_win_c-g-_3"],
-      ["I solved the puzzle","robot_win_c-g-_4"],
-      ["yes! I'm good at solving puzzles","robot_win_c-g-_5"],
-      ["I seem to be on the right track","robot_win_c-g-_6"]
+      ["<es name = 'excited_03'/> I beat the challenge! I really used my skills on that game","robot_win_c-g-_2"],
+      ["<es name = 'excited_03'/>  I did it!","robot_win_c-g-_3"],
+      ["<es name = 'excited_02'/>  I solved the puzzle","robot_win_c-g-_4"],
+      ["<es name = 'excited_01'/>  yes! I'm good at solving puzzles","robot_win_c-g-_5"],
+      ["<es name = 'excited_04'/> I seem to be on the right track","robot_win_c-g-_6"]
     ],
     "c-g+": [
       ["<es cat='proud'> that was hard, but I tried hard and nailed it</es>","robot_win_c-g+_0","PROUD"],
