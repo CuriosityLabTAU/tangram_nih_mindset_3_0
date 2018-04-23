@@ -275,7 +275,7 @@
   "comment_robot_selection": {
     "all": [
       ["alright, here I go.", "comment_move_c-g-_5"],
-      ["nice, my first move is,", "comment_move_c-g-_1"],
+      ["great, my first move is,", "comment_move_c-g-_1"],
       ["cool, watch me play."],
       ["here I go!"]
     ]
@@ -284,7 +284,7 @@
     "all": [
       ["alright, show me what you got!"],
       ["great", "comment_move_c-g-_5"],
-      ["nice", "comment_move_c-g-_1"],
+      ["aha, interesting choice", "comment_move_c-g-_1"],
       ["good choice"]
     ]
   },
@@ -292,7 +292,7 @@
     "c-g-": [
       ["mhmm","comment_move_c-g-_0"],
       ["<es cat='happy' />", "POSE_FORWARD"],
-      ["nice","comment_move_c-g-_1"],
+      ["good going","comment_move_c-g-_1"],
       ["<es cat='happy' />", "POSE_FORWARD"],
       ["nice move","comment_move_c-g-_2"],
       ["<es cat='confirm' />", "POSE_FORWARD"],
