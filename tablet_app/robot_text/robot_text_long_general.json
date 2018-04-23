@@ -9,12 +9,12 @@
   },
   "explain_move": {
     "c-g-": [
-      ["<es name='sad_01' /> it's hard.<es name='Body_Lean_Center_Forward_01' />","IDLESTILL", "move_explanation_c-g-_0","POSE_FORWARD"],
-      ["<es name='sad_02' /> hmm.<es name='Body_Lean_Center_Forward_01' />", "POSE_FORWARD"],
+      ["<es name='sad_01' /> it's hard.","IDLESTILL", "move_explanation_c-g-_0","POSE_FORWARD"],
+      ["<es name='sad_02' /> hmm.", "POSE_FORWARD"],
       ["<es cat='disgust'> there. </es>","move_explanation_c-g-_1","POSE_FORWARD"],
       ["<es name='Body_Lean_Center_Forward_01' /> hmm.", "POSE_FORWARD"],
       ["I'll move this piece.","move_explanation_c-g-_2","POSE_FORWARD"],
-      ["<es cat='frustrated.'> hmm </es>", "POSE_FORWARD"],
+      ["<es cat='frustrated'> hmm </es>", "POSE_FORWARD"],
       ["there are pieces left.","move_explanation_c-g-_3","POSE_FORWARD"],
       ["<es cat='frustrated'/>ah.", "POSE_FORWARD"],
       ["<es cat='confused'> how do I solve this?  </es>", "POSE_FORWARD"],
@@ -206,7 +206,7 @@
   },
   "your_turn": {
     "all": [
-      ["<es name = 'Body_Lean_Forward_01'> its your turn now. </es>","LOOKAT_CHILD","your_turn_all_0"],
+      ["<es name = 'Body_Lean_Forward_01'/> its your turn now. ","LOOKAT_CHILD","your_turn_all_0"],
       ["<es name = 'excited_01'> you try to open a box now. </es>","LOOKAT_CHILD","your_turn_all_1"],
       ["<es name = 'Body_Lean_Forward_01'/> now you get us a new   <prize-name>. ","LOOKAT_CHILD","your_turn_all_2"],
       ["<es name = 'excited_02'>you are next. </es>","LOOKAT_CHILD","your_turn_all_3"],
