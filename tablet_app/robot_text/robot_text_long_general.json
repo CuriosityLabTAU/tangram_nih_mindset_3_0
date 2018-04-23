@@ -1,7 +1,7 @@
 {
   "explain_move_tutorial":{
     "all":[
-      ["<es name='Emoji_ExclamationRed'> ah ha! I can rotate pieces with the button on the right!</es>"],
+      ["<es name='Emoji_ExclamationRed'/>  ah ha! I can rotate pieces with the button on the right!"],
       ["which piece will fit in the black area.."],
       ["<es name='Emoji_ExclamationYellow'> The button on the right rotates the pieces. Interesting!</es>"],
       ["Let's move this piece to fit in the black area.."]
