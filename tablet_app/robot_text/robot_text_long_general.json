@@ -245,13 +245,13 @@
       ["<es cat = 'happy' filter = 'excited'> so, it is my turn now","my_turn_all_4"]
     ],
     "c-g-": [
-      ["selection current: I want to win easily, so I will choose what I know I can solve.","my_turn_c-g-_current0"],
-      ["selection next: I think I know how to solve the next level, so I will choose this box.","my_turn_c-g-_next0"],
-      ["selection question mark: I should know how to solve it. This time, I will choose this one.","my_turn_c-g-_question0"],
-      ["I will select a box","my_turn_c-g-_0", "POSE_FORWARD"]
+      ["selection current: I want to win easily, so I will choose what I know I can solve. <es name = 'eye_unimpressed_bored_in_01'/>","my_turn_c-g-_current0"],
+      ["selection next: I think I know how to solve the next level, so I will choose this box. <es cat = 'relieved' />","my_turn_c-g-_next0"],
+      ["selection question mark: I should know how to solve it. This time, I will choose this one. <es cat = 'relieved' />","my_turn_c-g-_question0"],
+      ["I will select a puzzle that I might be able to solve <es cat = 'relieved' />","my_turn_c-g-_0", "POSE_FORWARD"]
     ],
     "c-g+":[
-      ["selection current: Even it looks easy, I will work hard to get us the next <prize-name>.","my_turn_c-g+_0","SILENT_YES", "POSE_FORWARD"],
+      ["selection current: Even if it looks easy, I will work hard to get us the next <prize-name>.","my_turn_c-g+_0","SILENT_YES", "POSE_FORWARD"],
       ["selection next: Even it looks hard, I will give my best.","my_turn_c-g+_1","SILENT_YES", "POSE_FORWARD"],
       ["selection question mark: If I try hard, I will succeed.","my_turn_c-g+_2", "POSE_FORWARD"]
     ],
@@ -266,9 +266,10 @@
       ["I prefer the challenging one","my_turn_c+g-_4", "POSE_FORWARD"]
     ],
     "c+g+": [
-      ["This one looks challenging and I'm curious if I can solve it!","my_turn_c+g+_0","SILENT_YES", "POSE_FORWARD"],
-      ["Woo, this one looks interesting. I wonder if I can try something new.","IDLESTILL", "my_turn_c+g+_1","POSE_FORWARD"],
+      ["<es cat = 'curious'> This one looks challenging and I'm curious if I can solve it! </es>","my_turn_c+g+_0","SILENT_YES", "POSE_FORWARD"],
+      ["<es name = 'engaged-01'> Woo, this one looks interesting. </es> <es cat = 'curious'> I wonder if I can try something new. </es>","IDLESTILL", "my_turn_c+g+_1","POSE_FORWARD"],
       ["I'm going to choose the one that looks the most challenging and interesting. This is my pick!","my_turn_c+g+_2","INTERESTED", "POSE_FORWARD"],
+      ["Hmm. I wonder what this one will feel like. <es cat = 'curious'/>","my_turn_c+g+_3", "POSE_FORWARD"],
       ["I'm curious if I will learn something new if I select a puzzle that I haven't seen before. <break size='0.5' />This one!","my_turn_c+g+_3", "POSE_FORWARD"]
     ]
   },
