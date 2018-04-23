@@ -17,7 +17,7 @@
       ["<es cat='frustrated'> hmm </es>", "POSE_FORWARD"],
       ["there are pieces left.","move_explanation_c-g-_3","POSE_FORWARD"],
       ["<es cat='frustrated'/>ah..", "POSE_FORWARD"],
-      ["<es cat='sad' /> ", "POSE_FORWARD"],
+      ["<es cat='confused'> how do I solve this  </es>", "POSE_FORWARD"],
       ["<es cat='frustrated'> hmm.. it's hard </es>","IDLESTILL", "move_explanation_c-g-_4","POSE_FORWARD"],
       ["<es cat='sad'> hmm </es> ", "POSE_FORWARD"]
 
@@ -58,7 +58,7 @@
       ["<es cat='confirm'> maybe I'll try again. </es> ","move_explanation_c-g+_4"],
       ["<es cat='happy' />", "POSE_FORWARD"],
       ["<es cat='confirm'> I'll try again. </es> ","move_explanation_c-g+_5"],
-      ["<es name='Body_Lean_Right_Forward_01' />", "POSE_FORWARD"]
+      ["<es name='Body_Lean_Right_Forward_01'/>", "POSE_FORWARD"]
     ]
   },
   "child_win": {
@@ -108,10 +108,10 @@
       ["I seem to be on the right track","robot_win_c-g-_6"]
     ],
     "c-g+": [
-      ["that was hard, but I tried hard and nailed it<es cat='proud' />","robot_win_c-g+_0","PROUD"],
-      ["working hard is worth it<es cat='proud' />","robot_win_c-g+_1","PROUD"],
-      ["I tried hard and made it!<es cat='proud' />","robot_win_c-g+_2","PROUD"],
-      ["I'm not afraid of a challenge. I like it!<es cat='proud' />","robot_win_c-g+_3","PROUD"]
+      ["<es cat='proud'> that was hard, but I tried hard and nailed it</es>","robot_win_c-g+_0","PROUD"],
+      ["<es cat='proud'> working hard is worth it </es>","robot_win_c-g+_1","PROUD"],
+      ["<es cat='proud'> I tried hard and made it!</es>","robot_win_c-g+_2","PROUD"],
+      ["I'm not afraid of a challenge. <es cat='proud'> I like it!</es>","robot_win_c-g+_3","PROUD"]
     ],
     "c+g-": [
       ["I tried something new and different - I know I haven't done this before<es cat='proud'/>","robot_win_c+g-_0", "YES"],
@@ -132,10 +132,10 @@
     "c-g-": [
 
       ["<es name='Sad_03'> that was hard </es>","robot_lose_c-g-_0","SAD"],
-      ["I didn't succeed","robot_lose_c-g-_1","FRUSTRATED"],
-      ["I hope to have better luck next time","robot_lose_c-g-_2","SAD"],
-      ["times up","robot_lose_c-g-_3","FRUSTRATED"],
-      ["that was difficult","robot_lose_c-g-_4","FRUSTRATED"]
+      ["<es cat='frustrated'> I didn't succeed","robot_lose_c-g-_1","FRUSTRATED"],
+      ["<es cat='sad'> I hope to have better luck next time","robot_lose_c-g-_2","SAD"],
+      ["<es cat='frustrated'> times up","robot_lose_c-g-_3","FRUSTRATED"],
+      ["<es cat='frustrated'> that was difficult","robot_lose_c-g-_4","FRUSTRATED"]
 
       ["<es cat='confirm'>that was hard</es>","robot_lose_c-g-_0","SAD"],
       ["<es cat='frustrated'>I didn't succeed</es>","robot_lose_c-g-_1","FRUSTRATED"],
@@ -185,7 +185,7 @@
       ["you worked hard, next time you will succeed. <es name='Emoji_Star'/>","child_lose_c-g+_0","YES"],
       ["you tried very hard. That's what matters<es name='Emoji_Star'/>","child_lose_c-g+_1","AGREEMENT"],
       ["I'm proud that you tried really hard<es name='Emoji_Star'/>","child_lose_c-g+_2","AGREEMENT"],
-      ["you never gave up even when it was hard<es name='Emoji_Star'/>","child_lose_c-g+_3","SILENT_YES"],
+      ["You never gave up even when it was hard<es name='Emoji_Star'/>","child_lose_c-g+_3","SILENT_YES"],
       ["This is going to take some time and effort<es name='Emoji_Star'/>","child_lose_c-g+_4","AGREEMENT"],
       ["You are not afraid of a challenge. I like that!<es name='Emoji_Star'/>","child_lose_c-g+_5","AGREEMENT"]
     ],
@@ -211,8 +211,8 @@
       ["<es name = 'excited_01'> you try to open a box now. </es>","LOOKAT_CHILD","your_turn_all_1"],
       ["<es name = 'Body_Lean_Forward_01'> now you get us a new <prize-name>.","LOOKAT_CHILD","your_turn_all_2"],
       ["<es name = 'excited_02'>you are next.","LOOKAT_CHILD","your_turn_all_3"],
-      ["ok, now you go.","LOOKAT_CHILD","your_turn_all_4"],
-      ["so, it is your turn now.","LOOKAT_CHILD","your_turn_all_5"]
+      ["<es cat = 'happy' filter = 'excited'>ok, now you go. </es>","LOOKAT_CHILD","your_turn_all_4"],
+      ["<es cat = 'happy' filter = 'excited'>so, it is your turn now. </es>","LOOKAT_CHILD","your_turn_all_5"]
     ],
     "c-g-": [
       ["start by selecting a box.","your_turn_c-g-_0", "POSE_FORWARD"],
@@ -238,11 +238,11 @@
   },
   "my_turn": {
     "all": [
-      ["<es cat = 'happy' filter = 'excited'> its my turn now.","my_turn_all_0"],
-      ["<es cat = 'happy' filter = 'excited'> I will try to open a box now.","my_turn_all_1"],
-      ["<es cat = 'happy' filter = 'excited'> I'm next","my_turn_all_2"],
-      ["<es cat = 'happy' filter = 'excited'> ok, now me","my_turn_all_3", "POSE_FORWARD"],
-      ["<es cat = 'happy' filter = 'excited'> so, it is my turn now","my_turn_all_4"]
+      ["<es cat = 'happy' filter = 'excited'> its my turn now. </es>","my_turn_all_0"],
+      ["<es cat = 'happy' filter = 'excited'> I will try to open a box now. </es>","my_turn_all_1"],
+      ["<es cat = 'happy' filter = 'excited'> I'm next </es>","my_turn_all_2"],
+      ["<es cat = 'happy' filter = 'excited'> ok, now me </es>","my_turn_all_3", "POSE_FORWARD"],
+      ["<es cat = 'happy' filter = 'excited'> so, it is my turn now </es>","my_turn_all_4"]
     ],
     "c-g-": [
       ["selection current: I want to win easily, so I will choose what I know I can solve. <es name = 'eye_unimpressed_bored_in_01'/>","my_turn_c-g-_current0"],
@@ -270,7 +270,7 @@
       ["<es name = 'engaged-01'> Woo, this one looks interesting. </es> <es cat = 'curious'> I wonder if I can try something new. </es>","IDLESTILL", "my_turn_c+g+_1","POSE_FORWARD"],
       ["I'm going to choose the one that looks the most challenging and interesting. This is my pick!","my_turn_c+g+_2","INTERESTED", "POSE_FORWARD"],
       ["Hmm. I wonder what this one will feel like. <es cat = 'curious'/>","my_turn_c+g+_3", "POSE_FORWARD"],
-      ["I'm curious if I will learn something new if I select a puzzle that I haven't seen before. <break size='0.5' />This one!","my_turn_c+g+_3", "POSE_FORWARD"]
+      ["<es cat = 'curious'> I'm curious if I will learn something new if I select a puzzle that I haven't seen before. </es> <break size='0.5' />This one!","my_turn_c+g+_3", "POSE_FORWARD"]
     ]
   },
   "comment_robot_selection": {
