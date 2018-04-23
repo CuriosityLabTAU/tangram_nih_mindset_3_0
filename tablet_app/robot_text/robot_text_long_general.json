@@ -303,11 +303,11 @@
     ],
     "c-g+": [
       ["<es cat='proud' /> This is an excellent time to work hard!","IDLESTILL", "comment_move_c-g+_0","POSE_FORWARD"],
-      ["<es cat='happy' />", "POSE_FORWARD"],
+      ["<es cat='happy' /> Try try till you succeed", "POSE_FORWARD"],
       ["ah ha!","comment_move_c+g-_1","YES","POSE_FORWARD"],
-      ["<es cat='happy' />", "POSE_FORWARD"],
+      ["<es cat='happy' /> keep going", "POSE_FORWARD"],
       ["keep on trying and you'll succeed!","comment_move_c-g+_1","SILENT_INTERESTED","POSE_FORWARD"],
-      ["<es cat='confirm' />", "POSE_FORWARD"]
+      ["<es cat='confirm' /> you are getting there!", "POSE_FORWARD"]
     ],
     "c+g-": [
       ["great!","comment_move_c+g-_0","SILENT_YES","POSE_FORWARD"],
