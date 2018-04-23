@@ -250,7 +250,7 @@
       ["I will select a puzzle that I might be able to solve. <es cat = 'relieved' />","my_turn_c-g-_0", "POSE_FORWARD"]
     ],
     "c-g+":[
-      ["selection current: Even if it looks easy, I will work hard to get us the next <prize-name>.","my_turn_c-g+_0","SILENT_YES", "POSE_FORWARD"],
+      ["selection current: Even if it looks difficult, I will work hard to get us the next <prize-name>.","my_turn_c-g+_0","SILENT_YES", "POSE_FORWARD"],
       ["selection next: Even it looks hard, I will give my best.","my_turn_c-g+_1","SILENT_YES", "POSE_FORWARD"],
       ["selection question mark: If I try hard, I will succeed.","my_turn_c-g+_2", "POSE_FORWARD"]
     ],
@@ -323,7 +323,7 @@
       ["keep trying new ideas.","comment_move_c+g+_1","AGREEMENT","POSE_FORWARD"],
       ["<es cat='happy' />", "POSE_FORWARD"],
       ["umhmm","comment_move_c+g+_2","INTERESTED","POSE_FORWARD"],
-      ["I know you never give up., <participant-name>!","comment_move_c+g+_0","SILENT_INTERESTED","POSE_FORWARD"],
+      ["I know you never give up, <participant-name>!","comment_move_c+g+_0","SILENT_INTERESTED","POSE_FORWARD"],
       ["<es cat='curious' />", "POSE_FORWARD"],
       ["keep up the good effort","comment_move_c+g+_3","INTERESTED","POSE_FORWARD"],
       ["<es cat='happy' />", "POSE_FORWARD"],
