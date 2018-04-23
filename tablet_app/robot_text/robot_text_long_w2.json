@@ -2,7 +2,7 @@
   "prize-name": "apple",
   "robot-position": [0.2,0.06],
   "greeting":[
-    ["<es name='Yawn_02' /> Oh! Hello, <participant-name>! Great to see you again. Remember me? I am Jibo. <es name='affection_05' />  I am so happy to see you again, that I am going to do a little dance. <es name='Samba_00' /> That was fun. <break size='1.0' />  <es name='Body_Look_Center_Down_01'> Oh, look! <break size='1.0'/> It's the robot that you selected last time </es> , so we are ready to go to adventures together in the robot world!"]
+    ["<es name='Yawn_02' /> Oh! Hello, <participant-name>! Great to see you again. Remember me? I am Jibo. <es name='affection_05' />  I am so happy to see you again, that I am going to do a little dance. <es name='flamenco_strum_up_down_01' /> That was fun. <break size='1.0' />  <es name='Body_Look_Center_Down_01'> Oh, look! <break size='1.0'/> It's the robot that you selected last time </es> , so we are ready to go to adventures together in the robot world!"]
   ],
   "introduction":{
     "all": [

@@ -31,7 +31,7 @@
       ["<es cat='happy' />", "POSE_FORWARD"],
       ["<es cat='confirm'> maybe this will work.. </es> ","move_explanation_c-g+_4"],
       ["<es cat='happy' />", "POSE_FORWARD"],
-      ["<es cat='confirm'> it’s quite hard, so I will try even more. let's move this piece.</es> ","move_explanation_c-g+_1"],
+      ["<es cat='confirm'> its quite hard, so I will try even more. let's move this piece.</es> ","move_explanation_c-g+_1"],
       ["<es name='Body_Lean_Left_Forward_01' />", "POSE_FORWARD"]
     ],
     "c+g-": [
@@ -100,7 +100,7 @@
     ],
     "c-g-": [
       ["<es cat='confirm'/> yay","robot_win_c-g-_0"],
-      ["woohoo","robot_win_c-g-_1"],
+      ["<es cat='excited'> woohoo","robot_win_c-g-_1"],
       ["I beat the challenge! I really used my skills on that game","robot_win_c-g-_2"],
       ["I did it!","robot_win_c-g-_3"],
       ["I solved the puzzle","robot_win_c-g-_4"],
@@ -118,8 +118,8 @@
       ["I tried a different strategy<es cat='proud'/>","robot_win_c+g-_", "PROUD"]
     ],
     "c+g+": [
-      ["<es name='confident_01'/> Wow, I really practiced that, and look how I have improved.</es>","LEFTRIGHTLOOKING","robot_win_c+g+_1"],
-      ["<es name='confident_02'/> i worked out my brain and did it.</es>","PROUD","robot_win_c+g+_0"],
+      ["<es name='confident_01'/> Wow, I really practiced that, and look how I have improved.","LEFTRIGHTLOOKING","robot_win_c+g+_1"],
+      ["<es name='confident_02'/> i worked out my brain and did it.","PROUD","robot_win_c+g+_0"],
       ["<es cat='proud' filter = '!sad'/> I like the way I tried all kinds of strategies on that problem until I finally got it.","PROUD","robot_win_c+g+_2"],
       ["<es cat='confident_04'/> I tried different strategies, so I'm proud of myself.","LEFTRIGHTLOOKING","robot_win_c+g+_3"],
       ["<es cat='proud' filter = '!sad'/>I like new challenges, I will get better and better!","LEFTRIGHTLOOKING","robot_win_c+g+_4"]
@@ -135,8 +135,7 @@
       ["<es cat='frustrated'> I didn't succeed","robot_lose_c-g-_1","FRUSTRATED"],
       ["<es cat='sad'> I hope to have better luck next time","robot_lose_c-g-_2","SAD"],
       ["<es cat='frustrated'> times up","robot_lose_c-g-_3","FRUSTRATED"],
-      ["<es cat='frustrated'> that was difficult","robot_lose_c-g-_4","FRUSTRATED"]
-
+      ["<es cat='frustrated'> that was difficult","robot_lose_c-g-_4","FRUSTRATED"],
       ["<es cat='confirm'>that was hard</es>","robot_lose_c-g-_0","SAD"],
       ["<es cat='frustrated'>I didn't succeed</es>","robot_lose_c-g-_1","FRUSTRATED"],
       ["<es cat='frustrated'>I hope to have better luck next time</es>","robot_lose_c-g-_2","SAD"],
@@ -209,7 +208,7 @@
     "all": [
       ["<es name = 'Body_Lean_Forward_01'> its your turn now. </es>","LOOKAT_CHILD","your_turn_all_0"],
       ["<es name = 'excited_01'> you try to open a box now. </es>","LOOKAT_CHILD","your_turn_all_1"],
-      ["<es name = 'Body_Lean_Forward_01'> now you get us a new <prize-name>. </es>","LOOKAT_CHILD","your_turn_all_2"],
+      ["<es name = 'Body_Lean_Forward_01'/> now you get us a new   <prize-name> ","LOOKAT_CHILD","your_turn_all_2"],
       ["<es name = 'excited_02'>you are next. </es>","LOOKAT_CHILD","your_turn_all_3"],
       ["<es cat = 'happy' filter = 'excited'>ok, now you go. </es>","LOOKAT_CHILD","your_turn_all_4"],
       ["<es cat = 'happy' filter = 'excited'>so, it is your turn now. </es>","LOOKAT_CHILD","your_turn_all_5"]
