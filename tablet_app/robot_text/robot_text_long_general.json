@@ -274,35 +274,35 @@
   },
   "comment_robot_selection": {
     "all": [
-      ["alright, here I go.", "comment_move_c-g-_5"],
-      ["great, my first move is,", "comment_move_c-g-_1"],
-      ["cool, watch me play."],
-      ["here I go!"]
+      ["<es cat='excited' /> alright, here I go.", "comment_move_c-g-_5"],
+      ["<es cat='excited' /> great, my first move is,", "comment_move_c-g-_1"],
+      ["<es cat='excited' /> cool, watch me play."],
+      ["<es cat='excited' /> here I go!"]
     ]
   },
   "comment_selection": {
     "all": [
-      ["alright, show me what you got!"],
-      ["great.", "comment_move_c-g-_5"],
-      ["aha, interesting choice.", "comment_move_c-g-_1"],
-      ["good choice."]
+      ["<es cat='excited' /> alright, show me what you got!"],
+      ["<es cat='excited' /> great.", "comment_move_c-g-_5"],
+      ["<es cat='excited' /> aha, interesting choice.", "comment_move_c-g-_1"],
+      ["<es cat='excited' /> good choice."]
     ]
   },
   "comment_move": {
     "c-g-": [
-      ["mhmm.","comment_move_c-g-_0"],
+      ["<es name = 'default-to-engaged-01' /> hmm.","comment_move_c-g-_0"],
       ["<es cat='happy' />", "POSE_FORWARD"],
       ["good going!","comment_move_c-g-_1"],
       ["<es cat='happy' />", "POSE_FORWARD"],
-      ["nice move.","comment_move_c-g-_2"],
+      ["<es cat='proud' />nice move.","comment_move_c-g-_2"],
       ["<es cat='confirm' />", "POSE_FORWARD"],
       ["ok.","comment_move_c-g-_3"],
-      ["good.","comment_move_c-g-_4"],
+      ["<es cat='proud' />good.","comment_move_c-g-_4"],
       ["<es cat='confirm' />", "POSE_FORWARD"],
       ["great!","comment_move_c-g-_5"]
     ],
     "c-g+": [
-      ["This is an excellent time to work hard!","IDLESTILL", "comment_move_c-g+_0","POSE_FORWARD"],
+      ["<es cat='proud' /> This is an excellent time to work hard!","IDLESTILL", "comment_move_c-g+_0","POSE_FORWARD"],
       ["<es cat='happy' />", "POSE_FORWARD"],
       ["ah ha!","comment_move_c+g-_1","YES","POSE_FORWARD"],
       ["<es cat='happy' />", "POSE_FORWARD"],
@@ -312,16 +312,16 @@
     "c+g-": [
       ["great!","comment_move_c+g-_0","SILENT_YES","POSE_FORWARD"],
       ["<es cat='happy' />", "POSE_FORWARD"],
-      ["keep trying interesting strategies.","comment_move_c+g-_2","INTERESTED","POSE_FORWARD"],
+      ["<es cat='confirm' /> keep trying interesting strategies.","comment_move_c+g-_2","INTERESTED","POSE_FORWARD"],
       ["<es cat='happy' />", "POSE_FORWARD"],
-      ["ah ha!","comment_move_c+g-_1","YES","POSE_FORWARD"],
-      ["<es cat='confirm' />", "POSE_FORWARD"],
+      ["<es cat='confirm' /> ah ha!","comment_move_c+g-_1","YES","POSE_FORWARD"],
+      ["<es cat='curious' /> I wonder what your strategy is", "POSE_FORWARD"],
       ["I think you have lots of creative ideas.","comment_move_c+g-_3","AGREEMENT","POSE_FORWARD"],
-      ["<es cat='confirm' />", "POSE_FORWARD"]
+      ["<es cat='confirm' /> oh, interesting", "POSE_FORWARD"]
     ],
     "c+g+": [
-      ["keep trying new ideas.","comment_move_c+g+_1","AGREEMENT","POSE_FORWARD"],
-      ["<es cat='happy' />", "POSE_FORWARD"],
+      ["<es cat='proud' /> keep trying new ideas.","comment_move_c+g+_1","AGREEMENT","POSE_FORWARD"],
+      ["<es cat='happy' /> you are learning so much by trying hard", "POSE_FORWARD"],
       ["umhmm","comment_move_c+g+_2","INTERESTED","POSE_FORWARD"],
       ["I know you never give up, <participant-name>!","comment_move_c+g+_0","SILENT_INTERESTED","POSE_FORWARD"],
       ["<es cat='curious' />", "POSE_FORWARD"],
