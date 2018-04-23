@@ -22,7 +22,6 @@ class RobotComponent(Component):
     current_tangram = None
     robot_name = 'tega'
     animation = None
-    question_index = 0 #Rinat added
     gender = None
     study_world = "w"
 
@@ -77,7 +76,7 @@ class RobotComponent(Component):
     def express(self, action):
         print("rinat express", action, action[0])
         print("TangramGame.cog_tangram_selection=", TangramGame.cog_tangram_selection)
-        print ('question=', self.question_index)
+        print ('question=', self.agent.current_round)
         self.current_state = 'express'
         if len(action) > 1:
             self.current_param = action[1:]
@@ -111,9 +110,8 @@ class RobotComponent(Component):
             elif isinstance(the_options, dict):
                 # Rinat added
                 if what == "ask_question_robot_play":
-                    self.question_index += 1
                     if self.agent.condition == 'c+g-' or self.agent.condition == 'c+g+':
-                        the_expressions = self.add_expression(the_expressions, the_options['question' + str(self.question_index)])
+                        the_expressions = self.add_expression(the_expressions, the_options['question' + str(self.agent.current_round)])
                 elif what == "my_turn":
                     the_expressions = self.add_expression(the_expressions,the_options[self.agent.condition][TangramGame.cog_tangram_selection])
                 else:

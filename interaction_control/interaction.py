@@ -1,5 +1,6 @@
 import json
 from component import *
+import math
 
 
 class Interaction:
@@ -49,11 +50,18 @@ class Interaction:
 
     def next_interaction(self):
         self.current_interaction += 1
+        self.components['robot'].agent.current_round = int(math.floor(self.current_interaction / 2))
+
         if self.current_interaction >= len(self.data['sequence']):
             KL.log.insert(action=LogAction.data, obj='game', comment='the_end', sync=True)
             print('THE END!')
             return True
         the_interaction = self.data['sequence'][self.current_interaction]
+        if 'child_play' in the_interaction:
+            self.components['game'].game_facilitator.update_player('Child')
+        elif 'robot_play' in the_interaction or 'tutorial' in the_interaction:
+            self.components['game'].game_facilitator.update_player('Robot')
+
         the_data = self.data[the_interaction]
 
         for c in self.components.values():

@@ -49,7 +49,7 @@ requirements = kivy,pycrypto,numpy,twisted,plyer,android
 #icon.filename = %(source.dir)s/data/icon.png
 
 # (str) Supported orientation (one of landscape, portrait or all)
-orientation = landscape
+orientation = sensorLandscape
 
 #
 # OSX Specific

@@ -14,7 +14,7 @@ class GameFacilitator():
         # self.selection_gen = SelectionGenerator()
         self.selection_gen = SelectionGeneratorCuriosity()
         self.selection_gen.load_dif_levels()
-        self.current_player = 'Robot'  # current_player can be 'Robot' or 'Child'
+        self.current_player = ''  # current_player can be 'Robot' or 'Child'
         self.game_counter = 0 #  count number of games
 
     def check_solution(self, json_str_board):
@@ -28,7 +28,7 @@ class GameFacilitator():
         if challange:
             self.selection_tasks = self.selection_gen.get_challenge_selection()
         else:
-            self.selection_tasks = self.selection_gen.get_current_selection()
+            self.selection_tasks = self.selection_gen.get_current_selection(self.current_player)
 
         # T = []
         # test1_dict = {'size': '5 5', 'pieces': [('square', '90', '1 1'), ('small triangle2', '180', '0 1')]}
@@ -50,8 +50,14 @@ class GameFacilitator():
         #if self.game_counter != 9: #
         self.selection_gen.update_game_result(self.current_player, self.selected_task_index, game_result)
         self.game_counter +=1
+
         if self.current_player == 'Robot':
-            self.current_player = 'Child'
+            self.update_player('Child')
+        #     self.current_player = 'Child'
         elif self.current_player == 'Child':
-            self.current_player = 'Robot'
+            self.update_player('Robot')
+        #     self.current_player = 'Robot'
         print ('GameFacilitator:updated game result ','#',self.game_counter, 'is:',game_result,'next player is:' ,self.current_player)
+
+    def update_player(self, player):
+        self.current_player = player
