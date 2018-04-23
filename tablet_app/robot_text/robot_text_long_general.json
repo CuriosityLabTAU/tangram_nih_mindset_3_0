@@ -9,8 +9,8 @@
   },
   "explain_move": {
     "c-g-": [
-      ["<es cat='sad_01' /> it's hard.","IDLESTILL", "move_explanation_c-g-_0","POSE_FORWARD"],
-      ["<es cat='sad_02'='Body_Lean_Left_Forward_01' /> hmm", "POSE_FORWARD"],
+      ["<es name='sad_01' /> it's hard.","IDLESTILL", "move_explanation_c-g-_0","POSE_FORWARD"],
+      ["<es name='sad_02' /> hmm", "POSE_FORWARD"],
       ["<es cat='disgust'> there </es>","move_explanation_c-g-_1","POSE_FORWARD"],
       ["<es name='Body_Lean_Center_Forward_01' /> hmm", "POSE_FORWARD"],
       ["I'll move this piece.","move_explanation_c-g-_2","POSE_FORWARD"],
@@ -66,13 +66,13 @@
       ["idle", "LOOKAT_CHILD"]
     ],
     "c-g-": [
-      ["good job","child_win_c-g-_0","PERKUP"],
-      ["great playing","child_win_c-g-_1","SILENT_YES"],
-      ["you did it","child_win_c-g-_2","SILENT_YES"],
-      ["You beat the challenge! You really used your skills on that game","child_win_c-g-_3","SILENT_YES"],
-      ["very good","child_win_c-g-_4","PERKUP"],
-      ["you solved the puzzle","child_win_c-g-_5","SILENT_YES"],
-      ["You seem to be on the right track","child_win_c-g-_7","SILENT_YES"]
+      ["<es cat = 'proud'> good job </es>","child_win_c-g-_0","PERKUP"],
+      ["<es cat = 'proud'> great playing </es>","child_win_c-g-_1","SILENT_YES"],
+      ["<es cat = 'proud'> you did it </es>","child_win_c-g-_2","SILENT_YES"],
+      ["<es cat = 'proud'> You beat the challenge! You really used your skills on that game </es>","child_win_c-g-_3","SILENT_YES"],
+      ["<es cat = 'proud'> very good </es>","child_win_c-g-_4","PERKUP"],
+      ["<es cat = 'proud'> you solved the puzzle </es>","child_win_c-g-_5","SILENT_YES"],
+      ["<es cat = 'proud'> You seem to be on the right track </es>","child_win_c-g-_7","SILENT_YES"]
     ],
     "c-g+": [
       ["you worked really hard, and it was worth it, yay! <es name='Emoji_ThumbsUp' />","child_win_c-g+_0","HAPPY_UP"],
@@ -175,11 +175,11 @@
       ["idle", "IDLESTILL"]
     ],
     "c-g-": [
-      ["next time, friend.","child_lose_c-g-_0","SIDEPERK"],
-      ["that was really hard","child_lose_c-g-_1","SIDEPERK"],
-      ["better luck next time","child_lose_c-g-_3","SIDEPERK"],
-      ["maybe it will be easier next time","child_lose_c-g-_4","SIDEPERK"],
-      ["that was difficult","child_lose_c-g-_5","SIDEPERK"]
+      ["<es cat = 'sad' /> next time, friend.","child_lose_c-g-_0","SIDEPERK"],
+      ["<es cat = 'sad' /> that was really hard","child_lose_c-g-_1","SIDEPERK"],
+      ["<es cat = 'sad' /> better luck next time","child_lose_c-g-_3","SIDEPERK"],
+      ["<es cat = 'sad' /> maybe it will be easier next time","child_lose_c-g-_4","SIDEPERK"],
+      ["<es cat = 'sad' /> that was difficult","child_lose_c-g-_5","SIDEPERK"]
     ],
     "c-g+": [
       ["you worked hard, next time you will succeed. <es name='Emoji_Star'/>","child_lose_c-g+_0","YES"],
@@ -209,8 +209,8 @@
     "all": [
       ["<es name = 'Body_Lean_Forward_01'> its your turn now. </es>","LOOKAT_CHILD","your_turn_all_0"],
       ["<es name = 'excited_01'> you try to open a box now. </es>","LOOKAT_CHILD","your_turn_all_1"],
-      ["<es name = 'Body_Lean_Forward_01'> now you get us a new <prize-name>.","LOOKAT_CHILD","your_turn_all_2"],
-      ["<es name = 'excited_02'>you are next.","LOOKAT_CHILD","your_turn_all_3"],
+      ["<es name = 'Body_Lean_Forward_01'> now you get us a new <prize-name>. </es>","LOOKAT_CHILD","your_turn_all_2"],
+      ["<es name = 'excited_02'>you are next. </es>","LOOKAT_CHILD","your_turn_all_3"],
       ["<es cat = 'happy' filter = 'excited'>ok, now you go. </es>","LOOKAT_CHILD","your_turn_all_4"],
       ["<es cat = 'happy' filter = 'excited'>so, it is your turn now. </es>","LOOKAT_CHILD","your_turn_all_5"]
     ],
@@ -228,12 +228,12 @@
       ["try hard and you will succeed.","your_turn_c-g+_1","SILENT_YES", "POSE_FORWARD"]
     ],
     "c+g-": [
-      ["which one will you learn from?.","your_turn_c+g-_0","INTERESTED", "POSE_FORWARD"],
-      ["which tangram do you want to learn from?","your_turn_c+g-_1","INTERESTED", "POSE_FORWARD"]
+      ["<es cat = 'curious'> which one will you learn from?. </es>","your_turn_c+g-_0","INTERESTED", "POSE_FORWARD"],
+      ["<es cat = 'curious'> which tangram do you want to learn from? </es>","your_turn_c+g-_1","INTERESTED", "POSE_FORWARD"]
     ],
     "c+g+": [
-      ["which one will you learn from?","your_turn_c+g+_0","INTERESTED", "LOOKAT_TABLET"],
-      ["which tangram do you want to learn from?","your_turn_c+g+_1","INTERESTED", "LOOKAT_TABLET"]
+      [" <es cat = 'curious'>which one will you learn from? </es>","your_turn_c+g+_0","INTERESTED", "LOOKAT_TABLET"],
+      [" <es cat = 'curious'>which tangram do you want to learn from? </es>","your_turn_c+g+_1","INTERESTED", "LOOKAT_TABLET"]
     ]
   },
   "my_turn": {
@@ -334,16 +334,16 @@
   },
   "party" : {
     "c-g-": [
-      ["we had a great game together. <es name='Emoji_HeartRed' />", "conclusion_c-g-_0"]
+      ["<es name = 'affection_01'> we had a great game together. </es> <es name='Emoji_HeartRed' />", "conclusion_c-g-_0"]
     ],
     "c-g+": [
-      ["we worked hard and succeeded. <es name='Emoji_HeartRed' />", "conclusion_c-g+_0"]
+      ["<es cat = 'proud'> we worked hard and succeeded. </es> <es name='Emoji_HeartRed' />", "conclusion_c-g+_0"]
     ],
     "c+g-": [
-      ["we learned so much together. <es name='Emoji_HeartRed' />", "conclusion_c+g-_0"]
+      ["<es name = 'affection_03'> we learned so much together. </es> <es name='Emoji_HeartRed' />", "conclusion_c+g-_0"]
     ],
     "c+g+": [
-      ["we worked hard and learned a lot. <es name='Emoji_HeartRed' />", "conclusion_c+g+_0"]
+      ["<es name = 'affection_02'> we worked hard and learned a lot. </es> <es name='Emoji_HeartRed' />", "conclusion_c+g+_0"]
     ]
   },
   "tega_init": [
