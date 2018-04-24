@@ -1,5 +1,5 @@
 {
-  "prize-name": "flag",
+  "prize-name": "flags",
   "robot-position": [0.1,0.06],
   "greeting":[
     ["<es name='Yawn_02' />  Oh! Hello, <participant-name>! So nice to see you again. <es name='affection_05' /> Looking at you reminds me it's dance time! <es name='Groovy_music_dance_01' /> That was fun. <break size='1.0' />  <es name='Body_Look_Center_Down_01'> Oh, look! <break size='1.0'/> It's your robot </es>. We are ready to go play together in the playground this time!<es name='Emoji_Sun' /> ", "YAWN", "LOOKAT_CHILD", "introduction_all_0"]
@@ -9,16 +9,16 @@
       ["Oh, it looks like someone hid all the flags in a secret place, and we need to find them. <es cat='sad' /> ", "YAWN", "LOOKAT_CHILD", "introduction_all_1"]
     ],
     "c-g-": [
-      ["<es cat='question'> Will you help me find different <prize-name>s here?</es> <break size='1.0' /> <es name='SpinHead_01' /> Let's discover together what there is in the playground.", "introduction_c-g-_0", "POSE_FORWARD"]
+      ["<es cat='question'> Will you help me find different flags here?</es> <break size='1.0' /> <es name='SpinHead_01' /> Let's discover together what there is in the playground.", "introduction_c-g-_0", "POSE_FORWARD"]
     ],
     "c-g+":[
-      ["<es cat='question'> Will you help me find different <prize-name>s here?</es> <break size='1.0' /> <es name='SpinHead_01' /> Let's discover together what there is in the playground.", "introduction_c-g-_0", "POSE_FORWARD"]
+      ["<es cat='question'> Will you help me find different flags here?</es> <break size='1.0' /> <es name='SpinHead_01' /> Let's discover together what there is in the playground.", "introduction_c-g-_0", "POSE_FORWARD"]
     ],
     "c+g-":[
-      ["<es cat='curious'>I wonder how many <prize-name>s there are in the playground?</es><break size='0.5'/> <es cat='question'> Will you help me find different <prize-name> here?<break size='1.0' /> <es name='SpinHead_01' /> Let's discover together what there is in the playground.", "robot_question_intro", "POSE_FORWARD", "introduction_c-g-_0", "POSE_FORWARD"]
+      ["<es cat='curious'>I wonder how many flags there are in the playground?</es><break size='0.5'/> <es cat='question'> Will you help me find different <prize-name> here?<break size='1.0' /> <es name='SpinHead_01' /> Let's discover together what there is in the playground.", "robot_question_intro", "POSE_FORWARD", "introduction_c-g-_0", "POSE_FORWARD"]
     ],
     "c+g+":[
-      ["<es cat='curious'>I wonder how many <prize-name>s there are in the playground?</es><break size='0.5'/> <es cat='question'> Will you help me find different <prize-name> here?<break size='1.0' /> <es name='SpinHead_01' /> Let's discover together what there is in the playground.", "robot_question_intro", "POSE_FORWARD", "introduction_c-g-_0", "POSE_FORWARD"]
+      ["<es cat='curious'>I wonder how many flags there are in the playground?</es><break size='0.5'/> <es cat='question'> Will you help me find different <prize-name> here?<break size='1.0' /> <es name='SpinHead_01' /> Let's discover together what there is in the playground.", "robot_question_intro", "POSE_FORWARD", "introduction_c-g-_0", "POSE_FORWARD"]
     ]
   },
 
