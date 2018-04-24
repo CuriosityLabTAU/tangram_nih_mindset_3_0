@@ -18,7 +18,7 @@
       ["<es cat='curious'>I wonder how many nuts there are in the playground?</es><break size='0.5'/> <es cat='question'/> Will you help me find different <prize-name> here?<break size='1.0' /> <es name='SpinHead_01' /> Let's discover together what there is in the playground.", "robot_question_intro", "POSE_FORWARD", "introduction_c-g-_0", "POSE_FORWARD"]
     ],
     "c+g+":[
-      ["<es cat='curious'>I wonder how many <prize-name> there are in the playground?</es><break size='0.5'/> <es cat='question'/> Will you help me find different <prize-name> here?<break size='1.0' /> <es name='SpinHead_01' /> Let's discover together what there is in the playground.", "robot_question_intro", "POSE_FORWARD", "introduction_c-g-_0", "POSE_FORWARD"]
+      ["<es cat='curious'>I wonder how many nuts there are in the playground?</es><break size='0.5'/> <es cat='question'/> Will you help me find different <prize-name> here?<break size='1.0' /> <es name='SpinHead_01' /> Let's discover together what there is in the playground.", "robot_question_intro", "POSE_FORWARD", "introduction_c-g-_0", "POSE_FORWARD"]
     ]
   },
 
@@ -52,7 +52,7 @@
 
   "end_party" : { 
     "all": [
-      ["<es name='Yawn_01' > Okay, I feel very tired after digging up those flags from the playground. Nap time, it is. <break size='1.0' /> Chao! </es>", "party_all_1", "YAWN", "party_all_2", "POSE_SLEEPING"]
+      ["<es name='Yawn_01' /> Okay, I feel very tired after digging up those flags from the playground. Nap time, it is. <break size='1.0' /> Chao!", "party_all_1", "YAWN", "party_all_2", "POSE_SLEEPING"]
     ]
   },
 

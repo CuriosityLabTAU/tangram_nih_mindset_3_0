@@ -48,7 +48,7 @@
   },
   "end_party" : { 
     "all": [
-      ["<es name='Yawn_01' > i'm tired now, let's play again next time. <break size='1.0' /> bye. </es>", "party_all_1", "YAWN", "party_all_2", "POSE_SLEEPING"]
+      ["<es name='Yawn_01' /> i'm tired now, let's play again next time. <break size='1.0' /> bye.", "party_all_1", "YAWN", "party_all_2", "POSE_SLEEPING"]
     ]
   },
 
