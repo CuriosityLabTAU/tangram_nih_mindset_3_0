@@ -2,7 +2,7 @@
   "prize-name": "apple",
   "robot-position": [0.1,0.06],
   "greeting":[
-    ["<es name='Yawn_02' />  Oh! Hello, <participant-name>! Great to see you again. Remember me? I am Jibo.! I love coming to school and getting to play with you. <es name='affection_05' /> It makes me so happy that I want to dance! <es name='flamenco_strum_up_down_01' /> That was fun. <break size='1.0' />  <es name='Body_Look_Center_Down_01'> Oh, look! <break size='1.0'/> It's the robot that you selected last time </es>. We are ready to go to adventures together in the playgorund full of fruits this time!<es name='Emoji_Apple' /> ", "YAWN", "LOOKAT_CHILD", "introduction_all_0"]
+    ["<es name='Yawn_02' />  Oh! Hello, <participant-name>! Great to see you again. Remember me? I am Jibo.! I love coming to school and getting to play with you. <es name='affection_05' /> It makes me so happy that I want to dance! <es name='flamenco_strum_up_down_01' /> That was fun. <break size='1.0' />  <es name='Body_Look_Center_Down_01'> Oh, look! <break size='1.0'/> It's the robot that you selected last time </es>. We are ready to go to adventures together in the hills full of fruits this time!<es name='Emoji_Apple' /> ", "YAWN", "LOOKAT_CHILD", "introduction_all_0"]
   ],
   "introduction":{
     "all": [
@@ -62,7 +62,7 @@
     "question3": ["<es cat='question'>I'd like to know how many apples there are in the whole world!</es>", "ask_question_robot_play3","POSE_FORWARD"],
     "question4": ["<es cat='curious'>Hmm.. Shall I make the pie round? <break size='0.5'/>triangle? <break size='0.5'/>or square?</es>", "ask_question_robot_play4","POSE_FORWARD"],
     "question5": ["<es cat='question'>I wonder how many cakes I can make with all these apples? </es>", "ask_question_robot_play5","POSE_FORWARD"],
-    "question6": ["<es cat='confused'>I wonder what's on the other side of the hill?</es>", "ask_question_robot_play6","POSE_FORWARD"]
+    "question6": ["<es cat='curious'>I wonder what's on the other side of the hill?</es>", "ask_question_robot_play6","POSE_FORWARD"]
   },
 
   "ask_question_party":[
