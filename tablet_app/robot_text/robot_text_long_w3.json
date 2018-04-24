@@ -57,12 +57,12 @@
   },
 
   "ask_question_robot_play":{
-    "question1": ["<es cat='question'>I wonder if there are bugs underneath the rocks.</es>", "ask_question_robot_play1","POSE_FORWARD"],
-    "question2": ["<es cat='curious'>I wonder who makes all these flags?</es>", "ask_question_robot_play2","POSE_FORWARD"],
-    "question3": ["<es cat='question'>I wonder where the world's first ever flag was made.</es>", "ask_question_robot_play3","POSE_FORWARD"],
-    "question4": ["<es cat='curious'>I wonder why I have one big eye, instead of two eyes like yours. <break size='0.5'/>triangle? <break size='0.5'/>or square?</es>", "ask_question_robot_play4","POSE_FORWARD"],
-    "question5": ["<es cat='question'>I wonder if it's allowed to pick the flowers. </es>", "ask_question_robot_play5","POSE_FORWARD"],
-    "question6": ["<es cat='curious'>I wonder if robots can climb the ladder too.</es>", "ask_question_robot_play6","POSE_FORWARD"]
+    "question1": ["<es cat='question'/>I wonder if there are bugs underneath the rocks.", "ask_question_robot_play1","POSE_FORWARD"],
+    "question2": ["<es cat='curious'/>I wonder who makes all these flags?", "ask_question_robot_play2","POSE_FORWARD"],
+    "question3": ["<es cat='question'/>I wonder where the world's first ever flag was made.", "ask_question_robot_play3","POSE_FORWARD"],
+    "question4": ["<es cat='curious'/>I wonder why I have one big eye, instead of two eyes like yours. <break size='0.5'/>triangle? <break size='0.5'/>or square?", "ask_question_robot_play4","POSE_FORWARD"],
+    "question5": ["<es cat='question'/>I wonder if it's allowed to pick the flowers. ", "ask_question_robot_play5","POSE_FORWARD"],
+    "question6": ["<es cat='curious'/>I wonder if robots can climb the ladder too.", "ask_question_robot_play6","POSE_FORWARD"]
   },
 
   "ask_question_party":[
