@@ -752,7 +752,8 @@ class TangramMindsetApp(App):
         self.interaction.load_sequence(filename='./tablet_app/general_sequence.json')
         self.interaction.next_interaction()
 
-        self.load_sounds()
+        if not GAME_WITH_ROBOT or ROBOT_SOUND_FROM_TABLET:
+            self.load_sounds()
         self.screen_manager = MyScreenManager()
 
         self.screen_manager.add_widget(SetupScreenRoom())
@@ -765,64 +766,6 @@ class TangramMindsetApp(App):
         self.screen_manager.current = 'setup_screen_room'
 
         return self.screen_manager
-
-    # def init_variables(self):
-    #     self.tangrams_solved = 0
-    #     self.interaction = None
-    #     self.sounds = None
-    #     self.current_sound = None
-    #     self.current_action = None
-    #     self.screen_manager = None
-    #     self.current = None
-    #     self.game = None
-    #     self.selection = None
-    #     self.text_handler = None
-    #     self.tablet_disabled = False
-    #     self.yes_clicked_flag = False
-    #     self.subject_gender = "m"
-    #     self.pid = ""
-    #     self.study_world = None
-    #     self.robot_character = None
-    #
-    #     self.filled_all_data = False
-    #     self.filled_subject_id = False
-    #     self.filled_world = False
-    #     self.filled_gender = True
-    #     self.filled_condition = False
-    #
-    #     self.interaction = Interaction(
-    #         [('robot', 'RobotComponent'),
-    #          ('child', 'ChildComponent'),
-    #          ('internal_clock', 'ClockComponent'),
-    #          ('hourglass', 'HourglassComponent')
-    #          ]
-    #     )
-    #     self.interaction.components['tablet'] = TabletComponent(self.interaction, 'tablet')
-    #     self.interaction.components['game'] = GameComponent(self.interaction, 'game')
-    #     self.interaction.components['game'].game_facilitator = GameFacilitator()
-    #
-    #     self.str_screen = SolveTangramRoom(self.interaction.components['tablet'])
-    #
-    #     self.interaction.components['tablet'].hourglass_widget = self.str_screen.ids['hourglass_widget']
-    #     # self.interaction.components['hourglass'].widget = s.ids['hourglass_widget']
-    #     self.interaction.components['tablet'].app = self
-    #     self.interaction.components['robot'].gender = ""
-    #     if not GAME_WITH_ROBOT:
-    #         self.interaction.components['robot'].app = self
-    #         self.interaction.components['robot'].load_text(filename=ROBOT_TEXT)  # added in order to play sound files
-    #
-    #     else:
-    #         self.interaction.components['robot'].load_text(filename=ROBOT_TEXT)
-    #         if STUDY_SITE == 'MIT':
-    #             self.interaction.components['robot'].robot_name = 'tega'
-    #         elif STUDY_SITE == 'MIT-JIBO':
-    #             self.interaction.components['robot'].robot_name = 'jibo'
-    #         elif STUDY_SITE == 'TAU':
-    #             self.interaction.components['robot'].robot_name = 'nao'
-    #     self.interaction.load(filename='./tablet_app/general_transitions.json')
-    #     self.interaction.load_sequence(filename='./tablet_app/general_sequence.json')
-    #     self.interaction.next_interaction()
-
 
     def on_start(self):
         print ('app: on_start')
@@ -838,7 +781,9 @@ class TangramMindsetApp(App):
         #     local_ip = ip_addr
 
         KC.start(the_parents=[self, self.interaction.components['robot']], the_ip=local_ip)
-        KL.start(mode=[DataMode.file, DataMode.communication, DataMode.ros], pathname=self.user_data_dir, the_ip=local_ip)
+        #KL.start(mode=[DataMode.file, DataMode.communication, DataMode.ros], pathname=self.user_data_dir, the_ip=local_ip)
+        KL.start(mode=[DataMode.communication, DataMode.ros], pathname=self.user_data_dir,
+                 the_ip=local_ip)
 
     def on_connection(self):
         KL.log.insert(action=LogAction.data, obj='TangramMindsetApp', comment='start')
@@ -1251,18 +1196,10 @@ class TangramMindsetApp(App):
                 if name.lower() == name:
                     print('filename: ', name)
                     try_sound = name +'.wav'
-                    #I am already doing this step of adding gender/world in robot.py
-                    #try_sound_gender = name + '_' + self.gender + '.wav'
-                    #try_sound_world = name + "_" + self.study_world + '.wav'
-                    #try_sound_world_gender = name + "_" + self.study_world + '_' + self.gender + '.wav'
+
                     if (try_sound in self.sounds.keys()):
                         self.sound_filenames.append (try_sound)
-                    #elif (try_sound_gender in self.sounds.keys()):
-                    #    self.sound_filenames.append (try_sound_gender)
-                    #elif (try_sound_world in self.sounds.keys()):
-                    #    self.sound_filenames.append (try_sound_world)
-                    #elif (try_sound_world_gender in self.sounds.keys()):
-                    #    self.sound_filenames.append (try_sound_world_gender)
+
                     else:
                         print ("could not find filename", name)
                         self.finish_robot_express(0)
@@ -1278,10 +1215,6 @@ class TangramMindsetApp(App):
         except:
             print ("unexpected error in robot_express:", sys.exc_info())
 
-#Text to speech:
-        # attempt tts
-        #if self.text_handler.say(self.current_sound):
-        #    self.finish_robot_express(0)
 
     def play_next_sound(self, *args):
         print("play_next_sound")
