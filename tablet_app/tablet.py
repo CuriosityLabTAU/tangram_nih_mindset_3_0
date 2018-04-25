@@ -40,6 +40,11 @@ class TabletComponent(Component):
         self.current_state = 'idle'
         self.app.select_treasure(x)
 
+    def press_treasure(self, x):
+        print(self.name, 'press_treasure', x)
+        self.current_state = 'idle'
+        self.app.press_treasure(x)
+
     def tangram_screen(self, x):
         print(self.name, 'tangram_screen', x)
         self.app.tangram_screen(x)

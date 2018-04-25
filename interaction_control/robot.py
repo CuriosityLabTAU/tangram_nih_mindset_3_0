@@ -109,15 +109,22 @@ class RobotComponent(Component):
                     the_expressions = self.add_expression(the_expressions, choice(the_options))
             elif isinstance(the_options, dict):
                 # Rinat added
+                if 'all' in the_options:
+                    the_expressions = self.add_expression(the_expressions, choice(the_options['all']))
+
                 if what == "ask_question_robot_play":
                     if self.agent.condition == 'c+g-' or self.agent.condition == 'c+g+':
                         the_expressions = self.add_expression(the_expressions, the_options['question' + str(self.agent.current_round)])
                 elif what == "my_turn":
-                    the_expressions = self.add_expression(the_expressions,the_options[self.agent.condition][TangramGame.cog_tangram_selection])
-                else:
+                    do_selection_speech = choice([0,1,2])
+                    if do_selection_speech == 0 and TangramGame.cog_tangram_selection in [0,1,2]:
+                            the_expressions = self.add_expression(the_expressions,the_options[self.agent.condition][TangramGame.cog_tangram_selection])
+                    else:
+                        the_expressions = self.add_expression(the_expressions,
+                                                              choice(the_options[self.agent.condition][3:]))
+
                 # Rinat end
-                    if 'all' in the_options:
-                        the_expressions = self.add_expression(the_expressions, choice(the_options['all']))
+                else:
                     if self.agent.condition in the_options:
                         the_expressions = self.add_expression(the_expressions, choice(the_options[self.agent.condition]))
 

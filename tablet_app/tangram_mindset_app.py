@@ -1050,11 +1050,12 @@ class TangramMindsetApp(App):
             self.interaction.components['child'].on_action(["press_yes_button"])
             self.yes_clicked_flag = True
 
-    def press_treasure(self, treasure, dt=0):
+    def press_treasure(self, treasure):
         # child selected treasure (1/2/3)
         # print("press_treasure", treasure)
         #self.screen_manager.current_screen.show_selection(treasure)
-        self.interaction.components['child'].on_action(['press_treasure', treasure])
+        Clock.schedule_once(lambda dt: self.interaction.components['child'].on_action(['press_treasure', treasure]), 0.5)
+
 
     def tangram_move(self, x):
         # child moved a tangram piece (json of all the pieces)
@@ -1172,7 +1173,7 @@ class TangramMindsetApp(App):
         print ("select_treasure",treasure)
         print()
         self.screen_manager.current_screen.show_selection(treasure)
-        Clock.schedule_once(lambda dt: self.press_treasure(treasure),1)
+        #Clock.schedule_once(lambda dt: self.press_treasure(treasure),4)
 
     def tangram_screen(self, x):
         # Rinat: x is a single tangram from maor
