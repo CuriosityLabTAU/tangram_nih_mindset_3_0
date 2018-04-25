@@ -1,18 +1,6 @@
-from interaction_control import *
-from interaction_control import *
-from kivy.uix.label import Label
-from kivy.uix.floatlayout import FloatLayout
-from kivy.uix.widget import Widget
-from kivy.uix.boxlayout import Layout
-from kivy.uix.image import Image
-from kivy.lang import Builder
-from kivy.base import runTouchApp
-from kivy.clock import Clock
-from kivy.app import App
 from kivy.animation import Animation
-from kivy.core.window import Window
 from kivy_communication import *
-from kivy.uix.screenmanager import ScreenManager, Screen
+from kivy.uix.screenmanager import Screen
 from kivy.core.audio import SoundLoader
 from tangram_game import *
 
@@ -502,6 +490,7 @@ class HourGlassWidget (Widget):
         self.middleSand = self.ids['middleSand']
         self.bottomSand = self.ids['bottomSand']
         self.init = False
+        self.played_time_over = False
         self.do_layout()
         # self.start_hourglass(120)
         return False
@@ -543,9 +532,14 @@ class HourGlassWidget (Widget):
         self.topSand.height =  self.sandHeight * current_percent
         self.bottomSand.height = self.sandHeight* (1 - current_percent)
         if (current_percent < 0.02):
-            #self.middleSand.height = 0
-            self.middleSand.opacity = 0
-            self.topSand.opacity = 0
-            self.time_over_sound.play()
+            if not self.played_time_over:
+                #self.middleSand.height = 0
+                self.middleSand.opacity = 0
+                self.topSand.opacity = 0
+                self.time_over_sound.play()
+                self.played_time_over = True
+        else:
+            self.played_time_over = False
+
             # self.time_is_up = True
 
