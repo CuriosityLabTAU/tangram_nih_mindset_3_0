@@ -134,7 +134,7 @@
       ["I'm not afraid of a challenge. <es cat='proud'> I like it!</es>","robot_win_c-g+_3","PROUD"]
     ],
     "c+g-": [
-      ["I tried something new and different - I know I haven't done this before<es cat='proud'/>","robot_win_c+g-_0", "YES"],
+      ["I tried something new and different. I know I haven't done this before<es cat='proud'/>","robot_win_c+g-_0", "YES"],
       ["I tried a different strategy<es cat='proud'/>","robot_win_c+g-_", "PROUD"]
     ],
     "c+g+": [
@@ -247,12 +247,12 @@
       ["try hard and you will succeed.","your_turn_c-g+_1","SILENT_YES", "POSE_FORWARD"]
     ],
     "c+g-": [
-      ["<es cat = 'curious'> which one will you learn from?. </es>","your_turn_c+g-_0","INTERESTED", "POSE_FORWARD"],
-      ["<es cat = 'curious'> which tangram do you want to learn from? </es>","your_turn_c+g-_1","INTERESTED", "POSE_FORWARD"]
+      ["which one will you learn from?.","your_turn_c+g-_0","INTERESTED", "POSE_FORWARD"],
+      ["which tangram do you want to learn from?","your_turn_c+g-_1","INTERESTED", "POSE_FORWARD"]
     ],
     "c+g+": [
-      [" <es cat = 'curious'>which one will you learn from? </es>","your_turn_c+g+_0","INTERESTED", "LOOKAT_TABLET"],
-      [" <es cat = 'curious'>which tangram do you want to learn from? </es>","your_turn_c+g+_1","INTERESTED", "LOOKAT_TABLET"]
+      ["which one will you learn from?","your_turn_c+g+_0","INTERESTED", "LOOKAT_TABLET"],
+      ["which tangram do you want to learn from?","your_turn_c+g+_1","INTERESTED", "LOOKAT_TABLET"]
     ]
   },
   "my_turn": {
@@ -264,31 +264,40 @@
       ["<es cat = 'happy' filter = 'excited'> so, it is my turn now. </es>","my_turn_all_4"]
     ],
     "c-g-": [
-      ["selection current: I want to win easily, so I will choose what I know I can solve. <es name = 'eye_unimpressed_bored_in_01'/>","my_turn_c-g-_current0"],
-      ["selection next: I think I know how to solve the next level, so I will choose this box. <es cat = 'relieved' />","my_turn_c-g-_next0"],
-      ["selection question mark: I should know how to solve it. This time, I will choose this one. <es cat = 'relieved' />","my_turn_c-g-_question0"],
-      ["I will select a puzzle that I might be able to solve. <es cat = 'relieved' />","my_turn_c-g-_0", "POSE_FORWARD"]
+      ["selection current: I want to win easily, so I will choose what I know I can solve, like this one!","my_turn_c-g-_current0"],
+      ["selection next: I think I know how to solve the next level, so I will choose this middle box.","my_turn_c-g-_next0"],
+      ["selection question mark: I should know how to solve it. This time, I will choose this one.","my_turn_c-g-_question0"],
+      ["I will select a puzzle that I might be able to solve.","my_turn_c-g-_0", "POSE_FORWARD"],
+      ["I don't like losing, so I will select the puzzle I think I can solve.","my_turn_c-g-_0", "POSE_FORWARD"],
+      ["I don't want to disappoint you, <participant-name>, <break size='0.3'/> so I will select an easy puzzle and get the <prize-name>.","my_turn_c-g-_0", "POSE_FORWARD"]
     ],
     "c-g+":[
-      ["selection current: Even if it looks difficult, I will work hard to get us the next <prize-name>.","my_turn_c-g+_0","SILENT_YES", "POSE_FORWARD"],
-      ["selection next: Even it looks hard, I will give my best.","my_turn_c-g+_1","SILENT_YES", "POSE_FORWARD"],
-      ["selection question mark: If I try hard, I will succeed.","my_turn_c-g+_2", "POSE_FORWARD"]
+      ["selection current: This one doesn't look difficult, but I will still work hard to get us the next <prize-name>.","my_turn_c-g+_0","SILENT_YES", "POSE_FORWARD"],
+      ["selection next: This box looks a bit hard, so I will give my best.","my_turn_c-g+_1","SILENT_YES", "POSE_FORWARD"],
+      ["selection question mark: I don't know what this box is, but if I try hard, I will succeed.","my_turn_c-g+_2", "POSE_FORWARD"],
+      ["I learned so much watching you play, <participant-name>. I will give my best effort and play as hard as you did!","IDLESTILL", "my_turn_c+g-_0","POSE_FORWARD"],
+      ["I love working out my brain. I will choose this one.","my_turn_c-g+_2", "POSE_FORWARD"],
+      ["<participant-name>, <break size='0.3'/> did you know you can work out your brain like your muscles? I'm going to try this puzzle and put my brain to work.","my_turn_c-g+_2", "POSE_FORWARD"],
+      ["I'm going to work hard on this.","my_turn_c-g+_2", "POSE_FORWARD"]
     ],
     "c+g-": [
       ["selection current: This one is easy, but I'm curious if there are other ways to solve this puzzle.","my_turn_c+g-_current0"],
       ["selection next: I want to try a new puzzle, so I will select the box in the middle.","my_turn_c+g-_next0"],
       ["selection question mark: I know how to solve the other ones so I will try the mystery box.","my_turn_c+g-_question0"],
-      ["I learned so much watching you.","IDLESTILL", "my_turn_c+g-_0","POSE_FORWARD"],
-      ["I was able to learn new things from your moves.","my_turn_c+g-_1","SILENT_YES", "POSE_FORWARD"],
+      ["<participant-name>, <break size='0.3'/> I was able to learn new things from your moves, and I will try the same on the next puzzle.","my_turn_c+g-_1","SILENT_YES", "POSE_FORWARD"],
       ["if I choose a challenging puzzle, I will learn more.","my_turn_c+g-_2","SILENT_YES", "POSE_FORWARD"],
-      ["if I'll choose a hard one, I will get more brain power.","my_turn_c+g-_3", "POSE_FORWARD"],
-      ["I prefer the challenging one.","my_turn_c+g-_4", "POSE_FORWARD"]
+      ["Hmm. I wonder what it will feel like if I solve this puzzle.<es cat = 'curious'/>","my_turn_c+g+_3", "POSE_FORWARD"],
+      ["I'm going to pick without looking, I'm curious which puzzle I will get!<es cat = 'curious'/>","my_turn_c+g+_3", "POSE_FORWARD"]
     ],
     "c+g+": [
-      ["<es cat = 'curious'> This one looks challenging and I'm curious if I can solve it! </es>","my_turn_c+g+_0","SILENT_YES", "POSE_FORWARD"],
-      ["<es name = 'engaged-01'> Woo, this one looks interesting. </es> <es cat = 'curious'> I wonder if I can try something new. </es>","IDLESTILL", "my_turn_c+g+_1","POSE_FORWARD"],
+      ["selection current: I know how to solve this first puzzle with one method, so I will try new moves!<es cat = 'curious'/>","my_turn_c+g+_3", "POSE_FORWARD"],
+      ["selection next: This box in the middle looks both challenging and interesting. <es cat = 'happy'/>I will give my best and try new strategies.","my_turn_c+g-_next0"],
+      ["selection question mark: I'll try the mystery box. I'm curious to find out what's inside, and I will try hard no matter what I get! <es cat = 'happy'/>","my_turn_c+g-_question0"],
+      ["<es name = 'engaged-01'> <participant-name>, <break size='0.5'/>  doesn't this puzzle look interesting? </es> <es cat = 'curious'> I wonder if I can try something new. </es>","IDLESTILL", "my_turn_c+g+_1","POSE_FORWARD"],
+      ["I learned so much watching you play, <participant-name>. I will give my best effort and play as hard as you did!","IDLESTILL", "my_turn_c+g-_0","POSE_FORWARD"],
       ["I'm going to choose the one that looks the most challenging and interesting. This is my pick!","my_turn_c+g+_2","INTERESTED", "POSE_FORWARD"],
-      ["Hmm. I wonder what this one will feel like. <es cat = 'curious'/>","my_turn_c+g+_3", "POSE_FORWARD"],
+      ["<es cat = 'curious'> This one looks challenging and I'm curious if I can solve it! </es>","my_turn_c+g+_0","SILENT_YES", "POSE_FORWARD"],
+      ["Did you know you can work out your brain like your muscles? I'm going to try this puzzle and put my brain to work.<es cat = 'happy'/>","my_turn_c-g+_2", "POSE_FORWARD"],
       ["<es cat = 'curious'> I'm curious if I will learn something new if I select a puzzle that I haven't seen before. </es> <break size='0.5' />This one!","my_turn_c+g+_3", "POSE_FORWARD"]
     ]
   },
