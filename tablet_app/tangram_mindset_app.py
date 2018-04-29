@@ -711,7 +711,7 @@ class TangramMindsetApp(App):
     pid = ""
     pname = ""
     study_world = None
-    robot_character = None
+    robot_character = ""
     robot_text_json = './tablet_app/robot_text/robot_text_long_w1.json'
 
     filled_all_data = False
@@ -910,7 +910,12 @@ class TangramMindsetApp(App):
 
         if (self.filled_all_data):
 
-            if self.study_world == "w1": #and not self.robot_character:
+            if self.robot_character == "": #and not self.robot_character:
+
+                if self.study_world == "w2":
+                    self.interaction.components['robot'].animation['greeting'][0][0]="Great! <es cat='happy'/> We are now ready " \
+                                                                                 "to go to adventures together in the hills full " \
+                                                                                 "of fruits this time!<es name='Emoji_Apple' /> "
 
                 self.screen_manager.get_screen('robot_selection_screen_room').init_robot_selection_screen_room(the_app=self)
                 self.screen_manager.current = "robot_selection_screen_room"

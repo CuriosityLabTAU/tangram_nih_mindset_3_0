@@ -53,7 +53,7 @@
   },
   "robot_play": {
     "start": "robot:start_play",
-    "hourglass" : ["max_counter:33"],
+    "hourglass" : ["max_counter:30"],
     "transitions": [
       "robot:start_play:game:generate_selection:1:done",
       "game:generate_selection:tablet:selection_screen:1:x",

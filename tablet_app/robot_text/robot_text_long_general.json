@@ -86,7 +86,7 @@
       ["idle", "LOOKAT_CHILD"]
     ],
     "c-g-": [
-      ["<es cat = 'proud'> good job </es>","child_win_c-g-_0","PERKUP"],
+      ["<es cat = 'proud'> good job, <participant-name>! </es>","child_win_c-g-_0","PERKUP"],
       ["<es cat = 'proud'> well played </es>","child_win_c-g-_1","SILENT_YES"],
       ["<es cat = 'proud'> you did it </es>","child_win_c-g-_2","SILENT_YES"],
       ["<es cat = 'proud'> You beat the challenge! You really used your skills on that game </es>","child_win_c-g-_3","SILENT_YES"],
@@ -99,18 +99,18 @@
       ["that wasn't easy, but you tried hard and succeeded <es name='Emoji_ThumbsUp' />","child_win_c-g+_1","EXCITED"],
       ["working hard is worth it. Yay!","child_win_c-g+_2","LEFTRIGHTLOOKING"],
       ["You tried hard and made it! Woo hoo!<es name='Emoji_ThumbsUp' />","child_win_c-g+_3","EXCITED"],
-      ["You are not afraid of a challenge. I like that! <es name='Emoji_ThumbsUp' />","child_win_c-g+_4","EXCITED"]
+      ["<participant-name>, You are not afraid of a challenge. I like that! <es name='Emoji_ThumbsUp' />","child_win_c-g+_4","EXCITED"]
     ],
     "c+g-": [
       ["you learned and nailed it <es name='Emoji_ThumbsUp' />","child_win_c+g-_0","HAPPY_UP"],
       ["Good job trying something new and different. I know you haven't done this before. <es name='Emoji_ThumbsUp' />","child_win_c+g-_1","EXCITED"],
-      ["you used your strategy, great job <es name='Emoji_ThumbsUp' />","child_win_c+g-_2","EXCITED"]
+      ["<participant-name>, you used your strategy, great job <es name='Emoji_ThumbsUp' />","child_win_c+g-_2","EXCITED"]
     ],
     "c+g+": [
       ["Wow, you really practiced that, and look how you've improved <es name='Emoji_ThumbsUp' />","HAPPY_UP","child_win_c+g+_0"],
       ["I like the way you tried all kinds of strategies on that problem until you finally got it <es name='Emoji_ThumbsUp' />","EXCITED","child_win_c+g+_1"],
       ["You really tried different strategies. I'm curious how you found the solution! <es name='Emoji_ThumbsUp' />","LEFTRIGHTLOOKING","child_win_c+g+_2"],
-      ["If you like new challenges, you can get better and better! <es name='Emoji_ThumbsUp' />","EXCITED","child_win_c+g+_3"],
+      ["<participant-name>, If you like new challenges, you can get better and better! <es name='Emoji_ThumbsUp' />","EXCITED","child_win_c+g+_3"],
       ["You beat that challenge! You really worked out your brain on this game<es name='Emoji_ThumbsUp' />","EXCITED","child_win_c+g+_4"]
     ]
   },
@@ -134,8 +134,8 @@
       ["I'm not afraid of a challenge. <es cat='proud'> I like it!</es>","robot_win_c-g+_3","PROUD"]
     ],
     "c+g-": [
-      ["I tried something new and different. I know I haven't done this before<es cat='proud'/>","robot_win_c+g-_0", "YES"],
-      ["I tried a different strategy<es cat='proud'/>","robot_win_c+g-_", "PROUD"]
+      ["I tried something new and different. <es cat='proud'>I know I haven't done this before.</es>","robot_win_c+g-_0", "YES"],
+      ["<es cat='proud'>I tried a different strategy and got us another <prize-name>! </es>","robot_win_c+g-_", "PROUD"]
     ],
     "c+g+": [
       ["<es name='confident_01'> Wow, I really practiced that, and look how I have improved.</es>","LEFTRIGHTLOOKING","robot_win_c+g+_1"],
@@ -202,34 +202,34 @@
     ],
     "c-g+": [
       ["you worked hard, next time you will succeed. <es name='Emoji_Star'/>","child_lose_c-g+_0","YES"],
-      ["you tried very hard. That's what matters.<es name='Emoji_Star'/>","child_lose_c-g+_1","AGREEMENT"],
+      ["<participant-name>, you tried very hard. That's what matters.<es name='Emoji_Star'/>","child_lose_c-g+_1","AGREEMENT"],
       ["I'm proud that you tried really hard.<es name='Emoji_Star'/>","child_lose_c-g+_2","AGREEMENT"],
       ["You never gave up even when it was hard.<es name='Emoji_Star'/>","child_lose_c-g+_3","SILENT_YES"],
       ["This is going to take some time and effort.<es name='Emoji_Star'/>","child_lose_c-g+_4","AGREEMENT"],
-      ["You are not afraid of a challenge. I like that!<es name='Emoji_Star'/>","child_lose_c-g+_5","AGREEMENT"]
+      ["<participant-name>, You are not afraid of a challenge. I like that!<es name='Emoji_Star'/>","child_lose_c-g+_5","AGREEMENT"]
     ],
     "c+g-": [
       ["you must have learned new things.<es name='Emoji_Star'/>","child_lose_c+g-_0","SILENT_YES"],
       ["That was hard, but you must have learned a lot.<es name='Emoji_Star'/>","child_lose_c+g-_1","AGREEMENT"],
       ["That puzzle really taught you to think differently, didn't it?<es name='Emoji_Star'/>","child_lose_c+g-_2"],
       ["That's an interesting strategy. Let's think about why it didn't work. It could give us some clues for a new method.<es name='Emoji_Star'/>","child_lose_c+g-_3","PUZZLED"],
-      ["Good job trying something new and different. I know you haven't done this before.<es name='Emoji_Star'/>","child_lose_c+g-_4","SILENT_YES"]
+      ["<participant-name>, Good job trying something new and different. I know you haven't done this before.<es name='Emoji_Star'/>","child_lose_c+g-_4","SILENT_YES"]
     ],
     "c+g+": [
-      ["you probably learned something new, you will do better next time.<es name='Emoji_Star'/>","child_lose_c+g+_0","SILENT_YES"],
+      ["<participant-name>, you probably learned something new. you will do better next time.<es name='Emoji_Star'/>","child_lose_c+g+_0","SILENT_YES"],
       ["You've put in great effort on that round! I'm curious how you will solve the puzzle next time.<es name='Emoji_Star'/>","child_lose_c+g+_1","AGREEMENT"],
       ["Oh, you didn't make it in time, but you can try different methods. You should try again!<es name='Emoji_Star'/>","child_lose_c+g+_2","SILENT_YES"],
       ["Mistakes help you improve, and you tried different strategies!<es name='Emoji_Star'/>","child_lose_c+g+_3","AGREEMENT"],
-      ["No worries. If you like new challenges, you can get better and better!<es name='Emoji_Star'/>","child_lose_c+g+_5","AGREEMENT"],
-      ["You didn’t master that challenge yet, but you can keep growing your brain by practicing on the next games!<es name='Emoji_Star'/>","child_lose_c+g+_6","SILENT_YES"]
+      ["No worries, <participant-name>. If you like new challenges, you can get better and better!<es name='Emoji_Star'/>","child_lose_c+g+_5","AGREEMENT"],
+      ["You haven't mastered that challenge yet, but you can keep growing your brain by practicing on the next games!<es name='Emoji_Star'/>","child_lose_c+g+_6","SILENT_YES"]
     ]
   },
   "your_turn": {
     "all": [
-      ["<es name = 'Body_Lean_Forward_01'/> its your turn now. ","LOOKAT_CHILD","your_turn_all_0"],
+      ["its your turn now, <participant-name>. ","LOOKAT_CHILD","your_turn_all_0"],
       ["<es name = 'excited_01'> you try to open a box now. </es>","LOOKAT_CHILD","your_turn_all_1"],
-      ["<es name = 'Body_Lean_Forward_01'/> now you get us a new   <prize-name>. ","LOOKAT_CHILD","your_turn_all_2"],
-      ["<es name = 'excited_02'>you are next. </es>","LOOKAT_CHILD","your_turn_all_3"],
+      ["now you get us a new   <prize-name>. ","LOOKAT_CHILD","your_turn_all_2"],
+      ["<es name = 'excited_02'>you are next, <participant-name>. </es>","LOOKAT_CHILD","your_turn_all_3"],
       ["<es cat = 'happy' filter = 'excited'>ok, now you go. </es>","LOOKAT_CHILD","your_turn_all_4"],
       ["<es cat = 'happy' filter = 'excited'>so, it is your turn now. </es>","LOOKAT_CHILD","your_turn_all_5"]
     ],
@@ -269,7 +269,7 @@
       ["selection question mark: I should know how to solve it. This time, I will choose this one.","my_turn_c-g-_question0"],
       ["I will select a puzzle that I might be able to solve.","my_turn_c-g-_0", "POSE_FORWARD"],
       ["I don't like losing, so I will select the puzzle I think I can solve.","my_turn_c-g-_0", "POSE_FORWARD"],
-      ["I don't want to disappoint you, <participant-name>, <break size='0.3'/> so I will select an easy puzzle and get the <prize-name>.","my_turn_c-g-_0", "POSE_FORWARD"]
+      ["I don't want to disappoint you, <participant-name>, <break size='0.3'/> so I will select an easy puzzle and get us the <prize-name>.","my_turn_c-g-_0", "POSE_FORWARD"]
     ],
     "c-g+":[
       ["selection current: This one doesn't look difficult, but I will still work hard to get us the next <prize-name>.","my_turn_c-g+_0","SILENT_YES", "POSE_FORWARD"],
@@ -285,19 +285,19 @@
       ["selection next: I want to try a new puzzle, so I will select the box in the middle.","my_turn_c+g-_next0"],
       ["selection question mark: I know how to solve the other ones so I will try the mystery box.","my_turn_c+g-_question0"],
       ["<participant-name>, <break size='0.3'/> I was able to learn new things from your moves, and I will try the same on the next puzzle.","my_turn_c+g-_1","SILENT_YES", "POSE_FORWARD"],
-      ["if I choose a challenging puzzle, I will learn more.","my_turn_c+g-_2","SILENT_YES", "POSE_FORWARD"],
-      ["Hmm. I wonder what it will feel like if I solve this puzzle.<es cat = 'curious'/>","my_turn_c+g+_3", "POSE_FORWARD"],
-      ["I'm going to pick without looking, I'm curious which puzzle I will get!<es cat = 'curious'/>","my_turn_c+g+_3", "POSE_FORWARD"]
+      ["<participant-name>, don't you think if I choose a challenging puzzle, I will learn more? I will pick this one.","my_turn_c+g-_2","SILENT_YES", "POSE_FORWARD"],
+      ["Hmm. <es cat = 'curious'>I wonder what it will feel like if I solve this puzzle.</es>","my_turn_c+g+_3", "POSE_FORWARD"],
+      ["I'm going to pick without looking, <es cat = 'curious'>I'm curious which puzzle I will get!</es>","my_turn_c+g+_3", "POSE_FORWARD"]
     ],
     "c+g+": [
-      ["selection current: I know how to solve this first puzzle with one method, so I will try new moves!<es cat = 'curious'/>","my_turn_c+g+_3", "POSE_FORWARD"],
+      ["selection current: I know how to solve this first puzzle with one method, <es cat = 'curious'>so I will try new moves!</es>","my_turn_c+g+_3", "POSE_FORWARD"],
       ["selection next: This box in the middle looks both challenging and interesting. <es cat = 'happy'/>I will give my best and try new strategies.","my_turn_c+g-_next0"],
-      ["selection question mark: I'll try the mystery box. I'm curious to find out what's inside, and I will try hard no matter what I get! <es cat = 'happy'/>","my_turn_c+g-_question0"],
+      ["selection question mark: I'll try the mystery box. I'm curious to find out what's inside,<es cat = 'happy'> and I will try hard no matter what I get! </es>","my_turn_c+g-_question0"],
       ["<es name = 'engaged-01'> <participant-name>, <break size='0.5'/>  doesn't this puzzle look interesting? </es> <es cat = 'curious'> I wonder if I can try something new. </es>","IDLESTILL", "my_turn_c+g+_1","POSE_FORWARD"],
       ["I learned so much watching you play, <participant-name>. I will give my best effort and play as hard as you did!","IDLESTILL", "my_turn_c+g-_0","POSE_FORWARD"],
       ["I'm going to choose the one that looks the most challenging and interesting. This is my pick!","my_turn_c+g+_2","INTERESTED", "POSE_FORWARD"],
       ["<es cat = 'curious'> This one looks challenging and I'm curious if I can solve it! </es>","my_turn_c+g+_0","SILENT_YES", "POSE_FORWARD"],
-      ["Did you know you can work out your brain like your muscles? I'm going to try this puzzle and put my brain to work.<es cat = 'happy'/>","my_turn_c-g+_2", "POSE_FORWARD"],
+      ["<es cat = 'happy'>Did you know you can work out your brain like your muscles? </es>I'm going to try this puzzle and put my brain to work.","my_turn_c-g+_2", "POSE_FORWARD"],
       ["<es cat = 'curious'> I'm curious if I will learn something new if I select a puzzle that I haven't seen before. </es> <break size='0.5' />This one!","my_turn_c+g+_3", "POSE_FORWARD"]
     ]
   },
