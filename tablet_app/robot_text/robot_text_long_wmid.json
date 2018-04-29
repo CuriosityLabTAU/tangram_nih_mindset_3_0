@@ -2,7 +2,7 @@
   "prize-name": "nut",
   "robot-position": [0.6,0.06],
   "greeting":[
-    ["<es name='Yawn_02' />  Oh! Hello, <participant-name>! So nice to see you again. <es name='affection_05' /> Looking at you reminds me it's dance time! <es name='Groovy_music_dance_01' /> That was fun. <break size='1.0' />  <es name='Body_Look_Center_Down_01'> Oh, look! <break size='1.0'/> It's your robot </es>. We are ready to go meet my friend Zoey, the squirrel!<es name='Emoji_Sun' /> ", "YAWN", "LOOKAT_CHILD", "introduction_all_0"]
+    ["<es name='Yawn_02' />  Oh! Hello, <participant-name>! So nice to see you again. <es name='affection_05' /> Looking at you reminds me it's dance time! <es name='Groovy_music_dance_01' /> That was fun. <break size='1.0' />  <es name='Body_Look_Center_Down_01'> Oh, look! <break size='1.0'/> It's your robot </es>, and that's my friend Zoey, the squirrel!<es name='Emoji_Sun' /> ", "YAWN", "LOOKAT_CHILD", "introduction_all_0"]
   ],
   "introduction":{
     "all": [
@@ -24,7 +24,7 @@
 
   "conclusion": {
     "all": [
-      ["<participant-name>, We found so many <prize-name>s! <es name = 'affection_01'> Great job, partner! <es name='SpinHead_01' /> ", "conclusion_all_0", "LEFTRIGHTLOOKING", "conclusion_all_0", "HAPPY_DANCE"]
+      ["We found so many <prize-name>s! <es name = 'affection_01'> Great job partner! <es name='SpinHead_01' /> ", "conclusion_all_0", "LEFTRIGHTLOOKING", "conclusion_all_0", "HAPPY_DANCE"]
     ]
   },
 
@@ -39,7 +39,7 @@
     "question1": ["<es cat='curious'/>I wonder how long the winter is.", "ask_question_robot_play2","POSE_FORWARD"],
     "question2": ["<es cat='question'/>It would be so interesting to know how tall the world's tallest tree is.", "ask_question_robot_play3","POSE_FORWARD"],
     "question3": ["<es cat='curious'/>I wonder what kind of tree these nuts grow on. <break size='0.5'/>maple? <break size='0.5'/>or chestnut?", "ask_question_robot_play4","POSE_FORWARD"],
-    "question4": ["<es cat='question'/>I wonder how many nuts Zoey put in her mouth.", "ask_question_robot_play5","POSE_FORWARD"],
+    "question4": ["<es cat='question'/>I wonder how many nuts Zoey can put in her mouth.", "ask_question_robot_play5","POSE_FORWARD"],
     "question5": ["<es cat='curious'/>I am curious how fast Zoey can peel these nuts.", "ask_question_robot_play6","POSE_FORWARD"]
   },
 

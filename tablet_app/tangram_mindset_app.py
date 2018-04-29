@@ -146,7 +146,7 @@ root_widget = Builder.load_string('''
             text: 'world (w1-w10)'
             font_size: 16
             background_color: 0.2,0.2,0.2,1
-            values: ('w1','w2','w3','w4','w5','w6','w7','w8','w9','w10')
+            values: ('w1','w2','w3','w4','w5','w6','w7','w8','wmid','wend')
             size: root.width * 0.15, root.height * 0.07
             pos: root.width * 0.62, root.height * 0.7 - self.height * 0.5
             on_text: app.world_selected()
