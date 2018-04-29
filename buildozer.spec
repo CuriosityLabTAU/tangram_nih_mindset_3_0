@@ -1,10 +1,10 @@
 [app]
 
 # (str) Title of your application
-title = Tangram_nih_mindset_3_1
+title = Tangram_nih_mindset_3_2
 
 # (str) Package name
-package.name = Tangram_nih_mindset_3_1
+package.name = Tangram_nih_mindset_3_2
 
 # (str) Package domain (needed for android/ios packaging)
 package.domain = com.gorengordon.curiosity
@@ -13,7 +13,7 @@ package.domain = com.gorengordon.curiosity
 source.dir = .
 
 # (list) Source files to include (let empty to include all the files)
-source.include_exts = py,png,jpg,kv,atlas,json,m4a,mp3,wav,gif,txt,pkl
+source.include_exts = py,png,jpg,kv,atlas,json,wav,gif,txt,pkl
 
 # (list) Source files to exclude (let empty to not exclude anything)
 #source.exclude_exts = spec
@@ -25,7 +25,7 @@ source.exclude_dirs = bin
 #source.exclude_patterns = license,images/*/*.jpg
 
 # (str) Application versioning (method 1)
-version = 0.1
+version = 3.2
 
 # (str) Application versioning (method 2)
 # version.regex = __version__ = ['"](.*)['"]

@@ -781,10 +781,8 @@ class TangramMindsetApp(App):
         #     local_ip = ip_addr
 
         KC.start(the_parents=[self, self.interaction.components['robot']], the_ip=local_ip)
-        #KL.start(mode=[DataMode.file, DataMode.communication, DataMode.ros], pathname=self.user_data_dir, the_ip=local_ip)
-        KL.start(mode=[DataMode.communication, DataMode.ros], pathname=self.user_data_dir,
-                 the_ip=local_ip)
-
+        KL.start(mode=[DataMode.file, DataMode.communication, DataMode.ros], pathname=self.user_data_dir, the_ip=local_ip)
+        
     def on_connection(self):
         KL.log.insert(action=LogAction.data, obj='TangramMindsetApp', comment='start')
 
