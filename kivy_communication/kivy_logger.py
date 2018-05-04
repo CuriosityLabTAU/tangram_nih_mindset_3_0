@@ -213,7 +213,7 @@ class KivyLogger:
         try:
             if TwistedClient.ip is None:
                 KC.client = TwistedClient(the_ip=KL.log.ip)
-            KC.client.connect_to_server(KC.client.ip)
+            KC.client.connect_to_server(KC.client.ip, KC.client.port)
         except:
             KivyLogger.base_mode.remove(DataMode.communication)
             Logger.info("connect: fail")

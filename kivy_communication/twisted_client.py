@@ -75,11 +75,15 @@ class TwistedClient:
     connection = None
     parents = None
     ip = None
+    port = None
     factory = None
 
     def __init__(self, the_parents=None, the_ip=None):
         TwistedClient.parents = the_parents
         TwistedClient.ip = the_ip
+        if ":" in the_ip:
+            TwistedClient.ip = the_ip.split(":")[0]
+            TwistedClient.port = int(the_ip.split(":")[1])
         TwistedClient.factory = EchoFactory(TwistedClient)
 
     @staticmethod
@@ -89,13 +93,17 @@ class TwistedClient:
         TwistedClient.parents.append(the_parent)
 
     @staticmethod
-    def connect_to_server(the_ip=None):
+    def connect_to_server(the_ip=None, the_port=None):
         if the_ip:
             TwistedClient.ip = the_ip
-        if TwistedClient.ip:
-            TwistedClient.send_status('connecting to ' + TwistedClient.ip)
-
-            reactor.connectTCP(TwistedClient.ip, 8000, TwistedClient.factory)
+            TwistedClient.port = the_port
+        if TwistedClient.ip is not None:
+            TwistedClient.send_status('connecting to ' + TwistedClient.ip)# + ":"+str(TwistedClient.port))
+            if TwistedClient.port is not None:
+                TwistedClient.send_status('connecting to port ' + str(TwistedClient.port))
+                reactor.connectTCP(TwistedClient.ip, TwistedClient.port, TwistedClient.factory)
+            else:
+                reactor.connectTCP(TwistedClient.ip, 8000, TwistedClient.factory)
         else:
             TwistedClient.print_message('missing ip!')
 
