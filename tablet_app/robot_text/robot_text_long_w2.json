@@ -1,6 +1,6 @@
 {
   "prize-name": "apple",
-  "robot-position": [0.1,0.06],
+  "robot-position": [0.2,0.06],
   "greeting":[
     ["<es name='Yawn_02' />  Oh! Hello, <participant-name>! Great to see you again. Remember me? I am Jibo.! I love coming to school and getting to play with you. <es name='affection_05' /> It makes me so happy that I want to dance! <es name='dance_flamenco_guitar_00' /> That was fun. <break size='1.0' />  <es name='Body_Look_Center_Down_01'> Oh, look! <break size='1.0'/> It's the robot that you selected last time </es>. We are ready to go to adventures together in the hills full of fruits this time!<es name='Emoji_Apple' /> ", "YAWN", "LOOKAT_CHILD", "introduction_all_0"]
   ],
