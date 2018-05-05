@@ -12,13 +12,13 @@
       ["<es cat='question'> Will you help me find different nuts here?</es> <break size='1.0' /> <es name='SpinHead_01' /> Let's discover together what there is in the playground.", "introduction_c-g-_0", "POSE_FORWARD"]
     ],
     "c-g+":[
-      ["<es cat='question'> Will you help me find different nuts here?</es> <break size='1.0' /> <es name='SpinHead_01' /> Let's discover together what there is in the playground.", "introduction_c-g-_0", "POSE_FORWARD"]
+      ["<es cat='question'> Will you help me find different nuts here?</es> <break size='1.0' /> <es name='SpinHead_01' /> Let's discover together what there is in the playground.", "introduction_c-g+_0", "POSE_FORWARD"]
     ],
     "c+g-":[
-      ["<es cat='curious'>I wonder how many nuts there are in the playground?</es><break size='0.5'/> <es cat='question'/> Will you help me find different <prize-name>s here?<break size='1.0' /> <es name='SpinHead_01' /> Let's discover together what there is in the playground.", "robot_question_intro", "POSE_FORWARD", "introduction_c-g-_0", "POSE_FORWARD"]
+      ["<es cat='curious'>I wonder how many nuts there are in the playground?</es><break size='0.5'/> <es cat='question'/> Will you help me find different <prize-name>s here?<break size='1.0' /> <es name='SpinHead_01' /> Let's discover together what there is in the playground.", "robot_question_intro", "POSE_FORWARD", "introduction_c+g-_0", "POSE_FORWARD"]
     ],
     "c+g+":[
-      ["<es cat='curious'>I wonder how many nuts there are in the playground?</es><break size='0.5'/> <es cat='question'/> Will you help me find different <prize-name>s here?<break size='1.0' /> <es name='SpinHead_01' /> Let's discover together what there is in the playground.", "robot_question_intro", "POSE_FORWARD", "introduction_c-g-_0", "POSE_FORWARD"]
+      ["<es cat='curious'>I wonder how many nuts there are in the playground?</es><break size='0.5'/> <es cat='question'/> Will you help me find different <prize-name>s here?<break size='1.0' /> <es name='SpinHead_01' /> Let's discover together what there is in the playground.", "robot_question_intro", "POSE_FORWARD", "introduction_c+g+_0", "POSE_FORWARD"]
     ]
   },
 
