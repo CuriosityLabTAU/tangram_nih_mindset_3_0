@@ -2,7 +2,7 @@
   "prize-name": "apple",
   "robot-position": [0.2,0.06],
   "greeting":[
-    ["<es name='Yawn_02' />  Hey hey hey <participant-name>! So exciting to see you again. It's your friend, Jibo! <es name='spin_02' /> Playing with you is my favorite part of the day. <es name='affection_05' /> I will now do what I am best at, <break size='0.2'/> <es name = 'Emoji_Disco_Spin_01'> dancing! <es name='dance_funk_02' /> That was so much fun. <break size='1.0' />  <es name='Body_Look_Center_Down_01'> Oh, look! <break size='1.0'/> It's the robot that you selected last time </es>. We are ready to go to adventures together in the hills full of fruits this time!<es name='Emoji_Apple' /> ", "YAWN", "LOOKAT_CHILD", "introduction_all_0"]
+    ["<es name='Yawn_02' />  Hey hey hey <participant-name>! So exciting to see you again. It's your friend, Jibo! <es name='spin_02' /> Playing with you is my favorite part of the day. <es name='affection_05' /> I will now do what I am best at, <break size='0.2'/> <es name = 'Emoji_Disco_Spin_01'> dancing! <es name='dance_funk_02' /> That was so much fun. <break size='1.0' />  <es name='Body_Look_Center_Down_01'> Oh, look! <break size='0.5'/> It's your robot. </es>.  <es name = 'Body_Look_Center_Up_01' /> <es name='Emoji_Apple' /> ", "YAWN", "LOOKAT_CHILD", "introduction_all_0"]
   ],
   "introduction":{
     "all": [

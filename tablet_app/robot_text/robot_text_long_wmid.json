@@ -32,7 +32,7 @@
 
   "end_party" : { 
     "all": [
-      ["<es name='Yawn_01' /> I'm so tired after looking for all those spaceships. I will now transport to my own <es name='Emoji_Moon'> outer space </es> and go to sleep. <break size='1.0' /> bye <participant-name>. See you next time! ", "party_all_1", "YAWN", "party_all_2", "POSE_SLEEPING"]
+      ["<es name='Yawn_01' /> It's now time to collect all our spaceship stickers! <break size='0.5' /> I'm so tired after looking for all those spaceships. I will now transport to my own <es name='Emoji_Moon'> outer space </es> and go to sleep. <break size='1.0' /> bye <participant-name>. See you next time! ", "party_all_1", "YAWN", "party_all_2", "POSE_SLEEPING"]
     ]
   },
 
