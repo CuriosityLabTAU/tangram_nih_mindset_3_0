@@ -40,7 +40,7 @@
     "question0": ["<es cat='question'> I wonder how many stars there are in the Milky Way Galaxy. </es>", "ask_question_robot_play1","POSE_FORWARD"],
     "question1": ["<es cat='confused'>I wonder how big the earth looks from Jupiter.</es>", "ask_question_robot_play2","POSE_FORWARD"],
     "question2": ["<es cat='question'>I am so curious if there are any robots <es name='Emoji_Robot' /> like me in the outer space.</es>", "ask_question_robot_play3","POSE_FORWARD"],
-    "question3": ["<es cat='curious'>Hmm.. Do you think there is life beyond planet earth? <break size='0.5'/>or square?</es>", "ask_question_robot_play4","POSE_FORWARD"],
+    "question3": ["<es cat='curious'>Hmm.. Do you think there is life beyond planet earth?", "ask_question_robot_play4","POSE_FORWARD"],
     "question4": ["<es cat='question'>I wonder how long it takes to get to Jupiter. </es>", "ask_question_robot_play5","POSE_FORWARD"],
     "question5": ["<es cat='curious'>I wonder what the planet with all the rings is called. </es>", "ask_question_robot_play6","POSE_FORWARD"],
     "question6": ["<es cat='question'> I wonder how long it takes to build a spaceship. </es> <es cat='question'> Do you know <participant-name>?</es>", "ask_question_robot_play1","POSE_FORWARD"]
