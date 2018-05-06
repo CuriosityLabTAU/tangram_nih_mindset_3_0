@@ -26,7 +26,7 @@
   ],
   "conclusion": {
     "all": [
-      ["We found so many <prize-name>s. Yay! My friend can now get so many of his spaceships back to Earth! <es name = 'affection_01'> Thank you for helping him! <es name='SpinHead_01' /> ", "conclusion_all_0", "LEFTRIGHTLOOKING", "conclusion_all_0", "HAPPY_DANCE"]
+      ["We found so many <prize-name>s. Yay! My friend can now get so many of his spaceships back to Earth! <es name = 'affection_01'/> Thank you for helping him! <es name='SpinHead_01' /> ", "conclusion_all_0", "LEFTRIGHTLOOKING", "conclusion_all_0", "HAPPY_DANCE"]
     ]
   },
 

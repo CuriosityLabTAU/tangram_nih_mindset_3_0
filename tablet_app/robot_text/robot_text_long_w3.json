@@ -23,7 +23,7 @@
   },
   "conclusion": {
     "all": [
-      ["We found so many <prize-name>s! <es name = 'affection_01'> Way to go, <participant-name>! <es name='SpinHead_01' /> ", "conclusion_all_0", "LEFTRIGHTLOOKING", "conclusion_all_0", "HAPPY_DANCE"]
+      ["We found so many <prize-name>s! <es name = 'affection_01'/> Way to go, <participant-name>! <es name='SpinHead_01' /> ", "conclusion_all_0", "LEFTRIGHTLOOKING", "conclusion_all_0", "HAPPY_DANCE"]
     ]
   },
 
