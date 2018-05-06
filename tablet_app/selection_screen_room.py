@@ -61,17 +61,20 @@ class SelectionScreenRoom(Screen):
 
     def init_prices(self):
         #display the number of tangrams solved (by the Robot and Child).
-        i=0
         #for price in self.ids['prices_won_widget'].ids:
-        while i < 12:
+        i = 1
+        while i < self.the_app.tangrams_solved + 1:
+
+            #price_num = (i-1) % 3 + 1
+            self.ids['prices_won_widget'].ids["price" + str(i)].source = './tablet_app/images/worlds/' + self.world + '/Price_' + str(i) + '.png'
+
+            self.ids['prices_won_widget'].ids["price"+str(i)].opacity = 1
+            print("visible",i)
             i += 1
-            price_num = (i-1) % 3 + 1
-            self.ids['prices_won_widget'].ids["price" + str(i)].source = './tablet_app/images/worlds/' + self.world + '/Price_' + str(price_num) + '.png'
-            if (i <= self.the_app.tangrams_solved):
-                self.ids['prices_won_widget'].ids["price"+str(i)].opacity = 1
-                print("visible",i)
-            else:
-                self.ids['prices_won_widget'].ids["price"+str(i)].opacity = 0
+
+        while i < 13:
+            self.ids['prices_won_widget'].ids["price"+str(i)].opacity = 0
+            i += 1
 
 
     def init_tasks (self):

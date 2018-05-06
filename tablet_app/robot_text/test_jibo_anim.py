@@ -225,14 +225,14 @@ def main(info):
                 tts_msg = idx[0].encode('ascii', 'ignore').replace('idle', '').split(':')[-1]
                 print tts_msg
                 mySender.send_robot_tts_cmd(tts_msg)
-                time.sleep(8)
+                time.sleep(12)
         exit()
     except TypeError:
         for idx in data[info[1]]:
             print idx
             tts_msg = idx[0].encode('ascii', 'ignore').replace('idle', '').split(':')[-1]
             mySender.send_robot_tts_cmd(tts_msg)
-            time.sleep(8)
+            time.sleep(12)
         exit()
 
 
