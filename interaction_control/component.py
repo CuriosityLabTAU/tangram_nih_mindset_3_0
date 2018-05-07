@@ -112,8 +112,8 @@ class Component:
                 getattr(self, action[0])()
             return True
         except:
-            print ("unexpected error:", action,sys.exc_info())
-            print('No function: ', self.name, action)
+           print ("unexpected error:", action,sys.exc_info())
+           print('No function: ', self.name, action)
         return False
 
     def is_done(self, action):

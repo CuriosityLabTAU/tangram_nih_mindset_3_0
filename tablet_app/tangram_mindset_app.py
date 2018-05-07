@@ -183,49 +183,6 @@ root_widget = Builder.load_string('''
             pos: root.width * 0.08, root.height * 0.4 - self.height * 0.5
             #on_press: app.press_load_transition('last_game')
 
-        # LoggedButton:
-        #     id: goto_game4_button
-        #     name: 'goto_game4_button'
-        #     background_color: 0.5,0.5,0.5,1
-        #     background_normal: ''
-        #     text: 'game4'
-        #     font_size: 16
-        #     size: root.width * 0.15, root.height * 0.07
-        #     pos: root.width * 0.25, root.height * 0.4 - self.height * 0.5
-        #     on_press: app.press_load_transition('game4')
-        # 
-        # LoggedButton:
-        #     id: goto_game6_button
-        #     name: 'goto_game6_button'
-        #     background_color: 0.5,0.5,0.5,1
-        #     background_normal: ''
-        #     text: 'game6'
-        #     font_size: 16
-        #     size: root.width * 0.15, root.height * 0.07
-        #     pos: root.width * 0.42, root.height * 0.4 - self.height * 0.5
-        #     on_press: app.press_load_transition('game6')
-        # 
-        # LoggedButton:
-        #     id: goto_game8_button
-        #     name: 'goto_game8_button'
-        #     background_color: 0.5,0.5,0.5,1
-        #     background_normal: ''
-        #     text: 'game8'
-        #     font_size: 16
-        #     size: root.width * 0.15, root.height * 0.07
-        #     pos: root.width * 0.59, root.height * 0.4 - self.height * 0.5
-        #     on_press: app.press_load_transition('game8')
-        # 
-        # LoggedButton:
-        #     id: goto_game10_button
-        #     name: 'goto_game10_button'
-        #     background_color: 0.5,0.5,0.5,1
-        #     background_normal: ''
-        #     text: 'game10'
-        #     font_size: 16
-        #     size: root.width * 0.15, root.height * 0.07
-        #     pos: root.width * 0.76, root.height * 0.4 - self.height * 0.5
-        #     on_press: app.press_load_transition('game10')
 
 <RobotSelectionScreenRoom>:
     robot1_button: robot1_button
@@ -989,9 +946,11 @@ class TangramMindsetApp(App):
             print('seen_puzzles: ', self.interaction.components['game'].game_facilitator.selection_gen.seen_puzzles)
 
             # game_counter updated after S/F game result. No need for adjustment
+            self.interaction.components['game'].game_facilitator.game_results = self.state['game_results']
+            print('game_results: ', self.interaction.components['game'].game_facilitator.game_results)
             self.interaction.components['game'].game_facilitator.game_counter = self.state['game_counter']
             print('game_counter: ', self.interaction.components['game'].game_facilitator.game_counter)
-            game_counter = self.interaction.components['game'].game_facilitator.game_counter
+            #game_counter = self.interaction.components['game'].game_facilitator.game_counter
 
             # current_interaction dependable variables.
             # current_player updated after S/F game result. No need for adjustment
@@ -1130,6 +1089,9 @@ class TangramMindsetApp(App):
         print('seen_puzzles: ', self.interaction.components['game'].game_facilitator.selection_gen.seen_puzzles)
         state['seen_puzzles'] = self.interaction.components['game'].game_facilitator.selection_gen.seen_puzzles
 
+        print('game_results: ', self.interaction.components['game'].game_facilitator.game_results)
+        state['game_results'] = self.interaction.components['game'].game_facilitator.game_results
+
         print('game_counter: ', self.interaction.components['game'].game_facilitator.game_counter)
         state['game_counter'] = self.interaction.components['game'].game_facilitator.game_counter
 
@@ -1159,6 +1121,7 @@ class TangramMindsetApp(App):
         TangramGame.SCALE = round(Window.size[0] / 75)
         self.screen_manager.get_screen('selection_screen_room').init_selection_options(x=x,the_app=self)
         # self.screen_manager.get_screen('selection_screen_room').ids["round_label"].text = \
+        #     str(self.interaction.components['game'].game_facilitator.game_results) + "/" + \
         #     str(self.interaction.components['game'].game_facilitator.game_counter) + "/" + \
         #     str(self.interaction.components['robot'].agent.current_round) + "/" + \
         #     str(self.interaction.current_interaction) + "/" + \

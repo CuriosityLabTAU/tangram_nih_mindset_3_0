@@ -45,7 +45,7 @@ class GameComponent(Component):
 
     def win(self):
         print(self.name, 'game.py: win')
-        self.game_facilitator.update_game_result('S')
+        self.game_facilitator.update_game_result(game_result='S')
         self.current_state = 'solved'
 
     def not_yet(self):
@@ -55,5 +55,5 @@ class GameComponent(Component):
     def finish(self):
         print(self.name, 'game.py: finish')
         if self.current_state != 'solved':
-            self.game_facilitator.update_game_result('F')
+            self.game_facilitator.update_game_result(game_result='F')
         self.current_state = 'finish'

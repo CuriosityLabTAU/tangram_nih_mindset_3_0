@@ -51,6 +51,7 @@ class Interaction:
     def next_interaction(self):
         self.current_interaction += 1
         self.components['robot'].agent.current_round = int(math.floor(self.current_interaction / 2))
+        self.components['game'].game_facilitator.game_counter = self.current_interaction - 1
 
         if self.current_interaction >= len(self.data['sequence']):
             KL.log.insert(action=LogAction.data, obj='game', comment='the_end', sync=True)

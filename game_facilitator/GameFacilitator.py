@@ -16,6 +16,7 @@ class GameFacilitator():
         self.selection_gen.load_dif_levels()
         self.current_player = ''  # current_player can be 'Robot' or 'Child'
         self.game_counter = 0 #  count number of games
+        self.game_results = ["","","","","","","","","","","",""]
 
     def check_solution(self, json_str_board):
         board_task = Task()
@@ -45,11 +46,15 @@ class GameFacilitator():
         #print 'GameFacilitator: '+str(self.selected_task_index)
         self.current_task.create_from_json(self.selection_tasks[self.selected_task_index][0])
 
-    def update_game_result(self, game_result):
+    def update_game_result(self, game_result=""):
         # game_result can be 'S' (Success) or 'F' (Failure)
         #if self.game_counter != 9: #
+        if self.game_results[self.game_counter] != "":
+            return
+
+        self.game_results[self.game_counter] = game_result
         self.selection_gen.update_game_result(self.current_player, self.selected_task_index, game_result)
-        self.game_counter +=1
+        #self.game_counter +=1
 
         if self.current_player == 'Robot':
             self.update_player('Child')
