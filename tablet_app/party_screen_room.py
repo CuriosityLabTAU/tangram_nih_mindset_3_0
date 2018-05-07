@@ -39,18 +39,20 @@ class PartyScreenRoom(Screen):
         self.ids['party_screen_background'].robot_character.x = the_app.root.size[0] * pos[0]
         self.ids['party_screen_background'].robot_character.y = the_app.root.size[1] * pos[1]
 
-        i = 0
-        # for balloon in self.ids['balloons_won_widget'].ids:
-        while i < 12:
+        i = 1
+        while i < the_app.tangrams_solved + 1:
+
+            self.ids['party_screen_prices_widget'].ids["price" + str(i)].source = './tablet_app/images/worlds/' + self.world + '/Price_' + str(i) + '.png'
+            self.ids['party_screen_prices_widget'].ids["price" + str(i)].opacity = 1
+            print("visible", i)
+
             i += 1
-            price_num = (i-1) % 3 + 1
-            self.ids['party_screen_prices_widget'].ids["price" + str(i)].source = './tablet_app/images/worlds/' + self.world + '/Price_' + str(price_num) + '.png'
-            if (i <= tangrams_solved):
-                self.ids['party_screen_prices_widget'].ids["price" + str(i)].opacity = 1
-                print("visible", i)
-            else:
-                self.ids['party_screen_prices_widget'].ids["price" + str(i)].opacity = 0
-                print("invisible", i)
+
+        while i < 13:
+            self.ids['party_screen_prices_widget'].ids["price" + str(i)].opacity = 0
+            print("invisible", i)
+
+            i += 1
 
 
 
