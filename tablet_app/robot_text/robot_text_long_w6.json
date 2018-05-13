@@ -6,13 +6,13 @@
   ],
   "introduction":{
     "all": [
-      ["<es cat='surprised'> Uh oh. </es> My friend might be running out of ice cream. <es cat='worried'/>He needs help looking for more ice cream <es name = 'Emoji_IceCream_HF_01'>", "YAWN", "LOOKAT_CHILD", "introduction_all_1"]
+      ["<es cat='surprised'> Uh oh. </es> My friend might be running out of ice cream. <es cat='worried'/>He needs help looking for more ice cream <es name = 'Emoji_IceCream_HF_01'/>", "YAWN", "LOOKAT_CHILD", "introduction_all_1"]
     ],
     "c-g-": [
       ["<es cat='question'> Will you help me find more ice cream?</es> <break size='1.0' /> <es name='SpinHead_01' /> Let's discover together where the ice cream went.", "introduction_c-g-_0", "POSE_FORWARD"]
     ],
     "c-g+":[
-      ["<es cat='question'> Will you help me find more ice cream?</es> <break size='1.0' /> <es name='SpinHead_01' /> Let's discover together where the ice cream went.", "introduction_c-g-_0", "POSE_FORWARD"]
+      ["<es cat='question'> Will you help me find more ice cream?</es> <break size='1.0' /> <es name='SpinHead_01' /> Let's discover together where the ice cream went.", "introduction_c-g+_0", "POSE_FORWARD"]
     ],
     "c+g-":[
       ["<es cat='curious'>I wonder how many ice cream flavours there are in the world. </es><break size='0.5'/> <es cat='question'> Will you help me find more ice cream?</es> <break size='1.0' /> <es name='SpinHead_01' /> Let's discover together where the ice cream went.<break size='1.0' />", "robot_question_intro", "POSE_FORWARD", "introduction_c+g-_0", "POSE_FORWARD"]
@@ -47,7 +47,7 @@
   },
 
   "ask_question_party":[
-    ["<es cat='question'>I wonder what will happen if the dinosaurs were to reappear one day.</es>", "ask_question_party","POSE_FORWARD"]
+    ["<es cat='question'>I wonder who hid all the ice creams?</es>", "ask_question_party","POSE_FORWARD"]
   ]
 }
 
