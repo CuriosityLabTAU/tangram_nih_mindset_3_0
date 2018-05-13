@@ -2,14 +2,14 @@
   "prize-name": "ice cream",
   "robot-position": [0.2,0.06],
   "greeting":[
-    ["<es name='Yawn_02' />  Hey hey hey <participant-name>! So exciting to see you again. It's your friend, Jibo! <es name='spin_02' /> It's play time again! <es name='affection_05' /> I will now do what I am best at, <break size='0.2'/> <es name = 'Emoji_Disco_Spin_01'> dancing! <es name='Twerking_music_dance_01' /> That was so much fun. <break size='1.0' />  <es name='Body_Look_Center_Down_01'> Oh, look! <break size='0.5'/> It's your robot. </es>.  <es name = 'Body_Look_Center_Up_01' /> Today I want to introduce you to my friend Lorenza the Dinosaur. ", "YAWN", "LOOKAT_CHILD", "introduction_all_0"]
+    ["<es name='Yawn_02' />  Oh hello <paricipant-name>! So exciting to see you again. It's your friend, Jibo! <es name='spin_01' /> Meeting you makes me so happy <es name='affection_05' />  <es name = 'Curious_02'> Will you dance with me? </es> <es name='dance_funny_01' /> That was so much fun. <break size='1.0' />  <es name='Body_Look_Center_Down_01'> Oh, look! <break size='0.5'/> It's your robot. </es> <es name = 'Body_Look_Center_Up_01' /> My friend Sam is <es name = 'Emoji_IceCream'> sells ice cream on his ice cream truck.</es>. I love ice cream.  <es name = 'excited_02/> ", "YAWN", "LOOKAT_CHILD", "introduction_all_0"]
   ],
   "introduction":{
     "all": [
-      ["<es cat='happy'> Looks like my friend Lorenza has lost all her <es name = 'Emoji_EasterEgg'> dinosaur eggs. </es>  <es cat='sad' /> Lorenza needs help looking for her eggs.", "YAWN", "LOOKAT_CHILD", "introduction_all_1"]
+      ["<es cat='surprised'> Uh oh. </es> My friend might be running out of ice cream. <es cat='worried'/>He needs help looking for more ice cream <es name = 'Emoji_IceCream_HF_01'>", "YAWN", "LOOKAT_CHILD", "introduction_all_1"]
     ],
     "c-g-": [
-      ["<es cat='question'> Will you help me find Lorenza's dinosaur eggs here?</es> <break size='1.0' /> <es name='SpinHead_01' /> Let's discover together what there is in the dinosaur world.", "introduction_c-g-_0", "POSE_FORWARD"]
+      ["<es cat='question'> Will you help me find more ice cream?</es> <break size='1.0' /> <es name='SpinHead_01' /> Let's discover together what there is in the dinosaur world.", "introduction_c-g-_0", "POSE_FORWARD"]
     ],
     "c-g+":[
       ["<es cat='question'> Will you help me find Lorenza's dinosaur eggs here?</es> <break size='1.0' /> <es name='SpinHead_01' /> Let's discover together what there is in the dinosaur world.", "introduction_c-g+_0", "POSE_FORWARD"]
