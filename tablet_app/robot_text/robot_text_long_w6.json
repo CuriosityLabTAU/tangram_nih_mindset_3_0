@@ -9,16 +9,16 @@
       ["<es cat='surprised'> Uh oh. </es> My friend might be running out of ice cream. <es cat='worried'/>He needs help looking for more ice cream <es name = 'Emoji_IceCream_HF_01'>", "YAWN", "LOOKAT_CHILD", "introduction_all_1"]
     ],
     "c-g-": [
-      ["<es cat='question'> Will you help me find more ice cream?</es> <break size='1.0' /> <es name='SpinHead_01' /> Let's discover together what there is in the dinosaur world.", "introduction_c-g-_0", "POSE_FORWARD"]
+      ["<es cat='question'> Will you help me find more ice cream?</es> <break size='1.0' /> <es name='SpinHead_01' /> Let's discover together where the ice cream went.", "introduction_c-g-_0", "POSE_FORWARD"]
     ],
     "c-g+":[
-      ["<es cat='question'> Will you help me find Lorenza's dinosaur eggs here?</es> <break size='1.0' /> <es name='SpinHead_01' /> Let's discover together what there is in the dinosaur world.", "introduction_c-g+_0", "POSE_FORWARD"]
+      ["<es cat='question'> Will you help me find more ice cream?</es> <break size='1.0' /> <es name='SpinHead_01' /> Let's discover together where the ice cream went.", "introduction_c-g-_0", "POSE_FORWARD"]
     ],
     "c+g-":[
-      ["<es cat='curious'>I wonder what it would feel like to pet a real dinosaur.</es><break size='0.5'/> Will you help me find Lorenza's dinosaur eggs here?<break size='1.0' /> <es name='SpinHead_01' /> Let's discover together what there is in the dinosaur world.", "robot_question_intro", "POSE_FORWARD", "introduction_c+g-_0", "POSE_FORWARD"]
+      ["<es cat='curious'>I wonder how many ice cream flavours there are in the world. </es><break size='0.5'/> <es cat='question'> Will you help me find more ice cream?</es> <break size='1.0' /> <es name='SpinHead_01' /> Let's discover together where the ice cream went.<break size='1.0' />", "robot_question_intro", "POSE_FORWARD", "introduction_c+g-_0", "POSE_FORWARD"]
     ],
     "c+g+":[
-      ["<es cat='curious'>I wonder what it would feel like to pet a real dinosaur.</es><break size='0.5'/> Will you help me find Lorenza's dinosaur eggs here?<break size='1.0' /> <es name='SpinHead_01' /> Let's discover together what there is in the dinosaur world.", "robot_question_intro", "POSE_FORWARD", "introduction_c+g+_0", "POSE_FORWARD"]
+      ["<es cat='curious'>I wonder how many ice cream flavours there are in the world. </es><break size='0.5'/> <es cat='question'> Will you help me find more ice cream?</es> <break size='1.0' /> <es name='SpinHead_01' /> Let's discover together where the ice cream went.<break size='1.0' />", "robot_question_intro", "POSE_FORWARD", "introduction_c+g+_0", "POSE_FORWARD"]
     ]
   },
   "robot_select":[
@@ -32,18 +32,18 @@
 
   "end_party" : { 
     "all": [
-      ["<es name='Yawn_01' /> I am so tired now! I will go back to sleep and dream about dinosaurs, while you collect the dinosaur egg stickers. <break size='1.0' /> good bye. ", "party_all_1", "YAWN", "party_all_2", "POSE_SLEEPING"]
+      ["<es name='Yawn_01' /> I feel so full after all that ice cream! I will go back to sweet dreams, while you collect <es name = 'Emoji_IceCream'> the ice cream stickers. </es><break size='1.0' /> Bye bye. ", "party_all_1", "YAWN", "party_all_2", "POSE_SLEEPING"]
     ]
   },
 
   "ask_question_robot_play":{
-    "question0": ["<es cat='question'> I wonder how long it takes for a dinosaur egg take to hatch. </es>", "ask_question_robot_play1","POSE_FORWARD"],
-    "question1": ["<es cat='confused'>Do you know why it's so hot near volcanos?</es>", "ask_question_robot_play2","POSE_FORWARD"],
-    "question2": ["<es cat='question'> I wonder what happened to the dinosaurs. <break size='0.5'/> I don't see them around anymore. </es>", "ask_question_robot_play3","POSE_FORWARD"],
-    "question3": ["<es cat='curious'> It is interesting to know whether a dinosaurs eggs are exactly like a <es name = 'Emoji_EasterEgg'> chicken's eggs. </es> </es>", "ask_question_robot_play4","POSE_FORWARD"],
-    "question4": ["<es cat='question'>Do you think robots can climb a volcano? </es>", "ask_question_robot_play5","POSE_FORWARD"],
-    "question5": ["<es cat='curious'>I wonder what kind of sounds dinosaurs made.</es>", "ask_question_robot_play6","POSE_FORWARD"],
-    "question6": ["<es cat='question'> I wonder how big the biggest dinosaur was. <break size='0.5'/> Do you think it was bigger than <es name = 'Emoji_SchoolBus_HF_01'> our school bus? </es> </es>", "ask_question_robot_play1","POSE_FORWARD"]
+    "question0": ["<es cat='question'> I wonder how long it takes to make an ice cream. </es>", "ask_question_robot_play1","POSE_FORWARD"],
+    "question1": ["<es cat='confused'>I wonder how an ice cream is made.</es>", "ask_question_robot_play2","POSE_FORWARD"],
+    "question2": ["<es cat='question'> I wonder how tall you can make an ice cream? <break size='0.5' /> Maybe 30 scoops?  </es>", "ask_question_robot_play3","POSE_FORWARD"],
+    "question3": ["<es cat='curious'> It is interesting to know whether animals like ice cream too. </es>", "ask_question_robot_play4","POSE_FORWARD"],
+    "question4": ["<es cat='question'>Do you think that ice cream melts in the summer too? </es>", "ask_question_robot_play5","POSE_FORWARD"],
+    "question5": ["<es cat='curious'><participant-name>, I wonder if they have my favorite flavour, Strawberry. </es>", "ask_question_robot_play6","POSE_FORWARD"],
+    "question6": ["<es cat='question'> I wonder what the strangest ice cream flavour in the world is. </es>", "ask_question_robot_play1","POSE_FORWARD"]
   },
 
   "ask_question_party":[
