@@ -247,7 +247,7 @@
       ["try hard and you will succeed.","your_turn_c-g+_1","SILENT_YES", "POSE_FORWARD"]
     ],
     "c+g-": [
-      ["which one will you learn from?.","your_turn_c+g-_0","INTERESTED", "POSE_FORWARD"],
+      ["which one will you learn from?","your_turn_c+g-_0","INTERESTED", "POSE_FORWARD"],
       ["which tangram do you want to learn from?","your_turn_c+g-_1","INTERESTED", "POSE_FORWARD"]
     ],
     "c+g+": [

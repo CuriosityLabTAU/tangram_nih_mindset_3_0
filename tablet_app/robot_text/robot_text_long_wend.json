@@ -1,6 +1,6 @@
 {
   "prize-name": "coconut",
-  "robot-position": [0.1,0.06],
+  "robot-position": [0.35,0.06],
   "greeting":[
     ["<es name='Yawn_02' />  Hey there, <participant-name>! Great to see you today. I am your good ol robot friend, Jibo! <es name='affection_05' /> <es cat='question'> Do you know, today is going to be our last time playing the game? </es> <es cat='excited'> But hey, I am excited to play with you today. </es>  <es cat='question'> Will you do a last dance with me? </es> <es name='dance_pop_00' /> Always so fun! <break size='1.0' />  <es name='Body_Look_Center_Down_01'> Oh, look! <break size='1.0'/> It's your robot on the tablet screen. </es>. <es name = 'Body_Look_Center_Up_01'><es cat='question'> Are you ready to go on our last adventure together in the Hawaiian planes? <es name='Emoji_Beach' /> </es> </es> Let's go. <es name='SpinHead_01' /> ", "YAWN", "LOOKAT_CHILD", "introduction_all_0"]
   ],
