@@ -32,7 +32,7 @@
 
   "end_party" : { 
     "all": [
-      ["<es name='Yawn_01' /> It's now time to collect some coconut stickers. Look at all the stickers we have collected over the weeks. I am so proud of us, <participant-name>, <break size = '0.5' /> We make a great team. <es name='affection_03' /> I'm going to go back to sleep and dream of <es name='Emoji_Beach'> Hawaii. </es> I will miss playing all these games with you. <break size='1.0' /> Goodbye <participant-name>.    ", "party_all_1", "YAWN", "party_all_2", "POSE_SLEEPING"]
+      ["It's now time to collect <es name='Emoji_Star'>  some coconut stickers. </es> <es name='Body_Look_Center_Down_01'> Look at all the stickers we have collected over the weeks. </es> <es name = 'Body_Look_Center_Up_01'> I am so proud of us, <participant-name>, <es cat='proud'/> <break size = '0.5' /> We make a great team. </es> <es name='affection_03' /> I'm going to go back to sleep and dream of <es name='Emoji_Beach'> Hawaii. </es> I will miss playing all these games with you. <break size='1.0' /> Goodbye <participant-name>.", "party_all_1", "YAWN", "party_all_2", "POSE_SLEEPING"]
     ]
   },
 
