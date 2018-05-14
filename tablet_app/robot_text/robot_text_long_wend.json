@@ -2,11 +2,11 @@
   "prize-name": "coconut",
   "robot-position": [0.1,0.06],
   "greeting":[
-    ["<es name='Yawn_02' />  Oh! Hello, <participant-name>! Great to see you again. Remember me? I am Jibo.! I love coming to school and getting to play with you. <es name='affection_05' /> It makes me so happy that I want to dance! <es name='dance_flamenco_guitar_00' /> That was fun. <break size='1.0' />  <es name='Body_Look_Center_Down_01'> Oh, look! <break size='1.0'/> It's your robot. </es>. We are ready to go to adventures together in the Hawaiian planes!<es name='Emoji_Beach' /> ", "YAWN", "LOOKAT_CHILD", "introduction_all_0"]
+    ["<es name='Yawn_02' />  Hey there, <participant-name>! Great to see you today. I am your good ol robot friend, Jibo! <es name='affection_05' /> <es cat='question'> Do you know, today is going to be our last time playing the game? </es> <es cat='excited'> But hey, I am excited to play with you today. </es>  <es cat='question'> Will you do a last dance with me? </es> <es name='dance_pop_00' /> Always so fun! <break size='1.0' />  <es name='Body_Look_Center_Down_01'> Oh, look! <break size='1.0'/> It's your robot on the tablet screen. </es>. <es name = 'Body_Look_Center_Up_01'><es cat='question'> Are you ready to go on our last adventure together in the Hawaiian planes? <es name='Emoji_Beach' /> </es> </es> Let's go. <es name='SpinHead_01' /> ", "YAWN", "LOOKAT_CHILD", "introduction_all_0"]
   ],
   "introduction":{
     "all": [
-      ["<es cat='happy'> My friend Sam went on a holiday to <es name='Emoji_Beach' /> Hawaii.</es> He really loves coconuts! <es cat='sad' /> ", "YAWN", "LOOKAT_CHILD", "introduction_all_1"]
+      ["<es cat='happy'> My friend Sam went on a holiday to <es name='Emoji_Beach' /> Hawaii.</es> He really loves coconuts, but cannot find any! <es cat='sad' /> ", "YAWN", "LOOKAT_CHILD", "introduction_all_1"]
     ],
     "c-g-": [
       ["<es cat='question'> Will you help me find different coconuts?</es> <break size='1.0' /> <es name='SpinHead_01' /> Let's discover together what there is in the Hawaiian trees.", "introduction_c-g-_0", "POSE_FORWARD"]
@@ -22,17 +22,17 @@
     ]
   },
   "robot_select":[
-    ["<es name='Yawn_02' />  Oh! Hello, <participant-name>! Great to see you again. Remember me? I am Jibo.! I love coming to school and getting to play with you. <es name='affection_05' /> It makes me so happy that I want to dance! <es name='dance_flamenco_guitar_00' /> That was fun. <break size='1.0' />   <es name='Body_Look_Center_Down_01'> Oh, look! <break size='1.0'/> You need to first select which robot you want to be</es> , so we can go to adventures together in the robot world. Pick a robot!"]
+    ["<es name='Yawn_02' />  Not relevant"]
   ],
   "conclusion": {
     "all": [
-      ["We found so many <prize-name>s. Yay! We found so many coconuts <es name = 'affection_01'> Thank you for helping my friend in Hawaii <es name='SpinHead_01' /> ", "conclusion_all_0", "LEFTRIGHTLOOKING", "conclusion_all_0", "HAPPY_DANCE"]
+      ["We found so many <prize-name>s. Yay! We found so many coconuts <es name = 'affection_01'> Thank you for helping my friend in Hawaii <es name='SpinHead_01' />. <participant-name>, you helped me find so many treasures over the past few weeks.", "conclusion_all_0", "LEFTRIGHTLOOKING", "conclusion_all_0", "HAPPY_DANCE"]
     ]
   },
 
   "end_party" : { 
     "all": [
-      ["<es name='Yawn_01' /> I'm going to go back to sleep and dream of <es name='Emoji_Beach'> Hawaii. </es> I will miss playing all these games with you. It's now time to collect your coconut stickers. Goodbye <participant-name>.  <break size='1.0' /> bye. ", "party_all_1", "YAWN", "party_all_2", "POSE_SLEEPING"]
+      ["<es name='Yawn_01' /> It's now time to collect some coconut stickers. Look at all the stickers we have collected over the weeks. I am so proud of us, <participant-name>, <break size = '0.5' /> We make a great team. <es name='affection_03' /> I'm going to go back to sleep and dream of <es name='Emoji_Beach'> Hawaii. </es> I will miss playing all these games with you. <break size='1.0' /> Goodbye <participant-name>.    ", "party_all_1", "YAWN", "party_all_2", "POSE_SLEEPING"]
     ]
   },
 
